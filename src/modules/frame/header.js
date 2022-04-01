@@ -11,13 +11,14 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
+import { withRouter } from 'react-router-dom';
 
 const pages = [
   {page: 'Agent Looking for Helpa', route: '/agents'},
   {page: 'Helpa Looking to Earn', route: '/helpa'},
 ];
 
-const ResponsiveAppBar = () => {
+const ResponsiveAppBar = (props) => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -28,7 +29,11 @@ const ResponsiveAppBar = () => {
     setAnchorElUser(event.currentTarget);
   };
 
-  const handleCloseNavMenu = () => {
+  const handleCloseNavMenu = (route) => {
+    if(route){
+      console.log(route);
+      props.history.push(route)
+    }
     setAnchorElNav(null);
   };
 
@@ -68,20 +73,20 @@ const ResponsiveAppBar = () => {
                 horizontal: 'left',
               }}
               open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
+              onClose={() => handleCloseNavMenu()}
               sx={{
                 display: { xs: 'block', md: 'none' },
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                <MenuItem key={page.route} onClick={() => handleCloseNavMenu(page.route)}>
                   <Typography textAlign="center">{page.page}</Typography>
                 </MenuItem>
               ))}
-              <MenuItem  onClick={handleCloseNavMenu}>
+              <MenuItem  onClick={() => handleCloseNavMenu()}>
                   <Typography textAlign="center">Members Login</Typography>
                 </MenuItem>
-                <MenuItem  onClick={handleCloseNavMenu}>
+                <MenuItem  onClick={() => handleCloseNavMenu()}>
                   <Typography textAlign="center">Login</Typography>
                 </MenuItem>
             </Menu>
@@ -89,8 +94,8 @@ const ResponsiveAppBar = () => {
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
-                key={page}
-                onClick={handleCloseNavMenu}
+                key={page.route}
+                onClick={() => handleCloseNavMenu(page.route)}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
                 {page.page}
@@ -111,4 +116,4 @@ const ResponsiveAppBar = () => {
     </AppBar>
   );
 };
-export default ResponsiveAppBar;
+export default withRouter(ResponsiveAppBar);

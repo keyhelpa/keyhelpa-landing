@@ -2,7 +2,7 @@ import { Box, Container } from '@mui/material'
 import React, { Component } from 'react'
 import './Style.css'
 
-class Landing extends Component {
+class Homepage extends Component {
   constructor(props) {
     super(props)
     this.state={
@@ -87,4 +87,4 @@ class Landing extends Component {
   }
 }
 
-export default Landing
+export default Homepage

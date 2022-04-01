@@ -1,11 +1,14 @@
 import React from 'react'
-import { Routes, Route} from 'react-router-dom';
-import Landing from '../content/index.js'
+import { Switch} from 'react-router-dom';
+import Homepage from 'modules/content/index.js'
+import Landing from 'modules/landing/index.js'
+import Route from './route'
 function RouteList() {
   return (
-    <Routes>
-      <Route path="/" element={<Landing/>}></Route>
-    </Routes>
+    <Switch>
+      <Route path="/" exact component={Homepage}></Route>
+      <Route path="/agents" exact component={Landing}></Route>
+    </Switch>
   )
 }
 
