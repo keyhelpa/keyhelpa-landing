@@ -4,7 +4,7 @@ export class Landing extends Component {
   render() {
     return (
       <div className="banner-agent">
-        <h1>fdsfsd</h1>
+        {/* <h1>fdsfsd</h1> */}
       </div>
     )
   }

@@ -10,9 +10,7 @@ function App() {
     <div className="App">
       <React.Fragment>
         <Header/>
-        <Paper>
           <RouteList/>
-        </Paper>
       </React.Fragment>
     </div>
   );
