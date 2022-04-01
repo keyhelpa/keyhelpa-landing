@@ -1,0 +1,108 @@
+.container{
+  /* position: relative; */
+  background: linear-gradient(90deg,#59687A 50%,#f290bb 50%);
+  width: 100%;
+  height: 100vh;
+}
+
+.container-50{
+  width: 50%;
+  float: left;
+}
+
+.container-50.left{
+  /* background-color: #59687A; */
+  width: 100%;
+}
+
+.container-50.right{
+  /* background-color: #f290bb; */
+  width: 100%;
+}
+
+
+.landing-image.display{
+  display: block;
+  width: 55%;
+  height: auto;
+}
+
+#gray{
+  right: 6%;
+}
+#pink{
+  left: 6%;
+}
+.landing-image.hide{
+  display: none;
+}
+
+.leftBg{
+  background-color: #59687A;
+  width: 100%;
+  height: 100vh;
+}
+.rightBg{
+  background-color: #f290bb;
+  width: 100%;
+  height: 100vh;
+}
+
+.landing-image{
+  width: 70%;
+  height: auto;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  top: 50px;
+  z-index: 500;
+}
+
+
+.textRight{
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  background-color: #f290bb;
+  width: 5%;
+  height: 100vh;
+  transition: width 2s
+}
+
+.textLeft{
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  background-color: #59687A;
+  width: 5%;
+  height: 100vh;
+  transition: width 2s
+}
+
+.textLeft h1, .textRight h1{
+  writing-mode: vertical-rl;
+  font-size: 40px;
+  transform: rotate(180deg);
+}
+
+.textLeft h1{
+  color: #34475DAD;
+}
+.textRight h1{
+  color: #E62D7E8A;
+}
+
+.textLeft:active{
+  width: 100%;
+}
+.textLeft:active h1{
+  display: none;
+}
+
+.textRight:active{
+  width: 100%;
+}
+.textRight:active h1{
+  display: none;
+}
