@@ -7,6 +7,7 @@ class Homepage extends Component {
     super(props)
     this.state={
       showLeft: false,
+      agent: false,
       showRight: false,
       startAlt: false,
     }
@@ -42,9 +43,9 @@ class Homepage extends Component {
 
   async handleSelect(select){
     if(select === 'agent'){
-      await this.setState({showLeft: true, showRight: false})
+      await this.setState({showLeft: true, showRight: false, agent: true})
     }else{
-      await this.setState({showLeft: false, showRight: true})
+      await this.setState({showLeft: false, showRight: true, agent: true})
     }
   }
 
