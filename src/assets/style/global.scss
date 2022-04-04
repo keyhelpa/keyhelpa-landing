@@ -2,7 +2,7 @@
 
 .banner-agent{
   background-color: #59687A;
-  height: 100vh
+  // height: 100vh;
 }
 
 .banner-helpa{
@@ -16,11 +16,62 @@
   display: none;
 }
 
+.image.center, .image-logo{
+  position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
+
+
+.flex-page{
+  display: flex;
+}
+
+.column-45{
+  width: 45%;
+}
+.column-75{
+  width: 75%;
+}
+
+.content-left{
+  text-align: left;
+  z-index: 1;
+}
+
+h1{
+  font-size: 60px;
+}
+
+h1.agent{
+  color: #34475D
+}
+h1.helpa{
+  color: #E62D7E
+}
+
 @media (max-width: 991px){
   .web{
     display: none;
   }
   .mobile{
     display: block;
+  }
+  .column-45, .column-75{
+    width: 100%;
+  }
+  .flex-page{
+    display: block;
+    margin-bottom: 5%;
+    justify-content: 'center';
+    align-items: center;
+  }
+  .content-left{
+    text-align: center;
+  }
+  .image-logo{
+    z-index: -1;
   }
 }

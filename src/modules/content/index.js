@@ -1,5 +1,7 @@
 import { Box, Container } from '@mui/material'
 import React, { Component } from 'react'
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import './Style.css'
 
 class Homepage extends Component {
@@ -27,6 +29,7 @@ class Homepage extends Component {
     )
   }
   handleClick(event){
+    const {setSelectedUser} = this.props;
     let elem = document.getElementById('first')
     let coord = elem.getBoundingClientRect()
     let inWidth = coord.width
@@ -34,17 +37,22 @@ class Homepage extends Component {
     this.setState({startAlt: true})
     if(this.state.startAlt === false){
       if(inWidth/2 > temp){
+        setSelectedUser('agent')
         this.setState({showLeft: true, showRight: false})
       }else{
+        setSelectedUser('helpa')
         this.setState({showLeft: false, showRight: true})
       }
     }
   }
 
   async handleSelect(select){
+    const {setSelectedUser} = this.props;
     if(select === 'agent'){
+      setSelectedUser('agent')
       await this.setState({showLeft: true, showRight: false, agent: true})
     }else{
+      setSelectedUser('helpa')
       await this.setState({showLeft: false, showRight: true, agent: true})
     }
   }
@@ -88,4 +96,11 @@ class Homepage extends Component {
   }
 }
 
-export default Homepage
+const mapStateToProps = (state) => ({state: state});
+const mapDispatchToProps = (dispatch) =>{
+  const { actions } = require('reduxHandler');
+  return {
+    setSelectedUser: (user) => {dispatch(actions.setSelectedUser(user))}
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Homepage));
