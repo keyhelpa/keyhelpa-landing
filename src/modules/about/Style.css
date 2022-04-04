@@ -1,0 +1,26 @@
+.image-left{
+  width: 90%;
+  height:auto;
+}
+
+.about-banner{
+  padding-top: 5%;
+  padding-left: 20px;
+  padding-right: 2%;
+}
+
+.about-banner.agent{
+  background-color: #F1F5FB;
+}
+.about-banner.helpa{
+  background-color: #FFFAFC;
+}
+
+@media (max-width: 991px){
+  .image-left{
+    width: 80%;
+  }
+  .about-banner{
+    display: flex
+  }
+}

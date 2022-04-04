@@ -1,10 +1,13 @@
 import * as React from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
 import Helper from 'common/Helper.js'
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { Menu, MenuItem, Button, Toolbar,  Typography, IconButton, Box, AppBar} from '@mui/material';
 
-export default function ButtonAppBar() {
+function Header(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [color, setColor] = React.useState('white')
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -12,6 +15,26 @@ export default function ButtonAppBar() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  const handleRedirect = (route) => {
+    const {selectedUser} = props.state
+    console.log('=====', props.history);
+    props.history.push(`/${selectedUser}/${route}`)
+  }
+
+  React.useEffect(() => {
+    const {history} = props;
+    if(props){
+      if(history.location.pathname.includes('agent')){
+        setColor('#34475D')
+      }else if(history.location.pathname.includes('helpa')){
+        setColor('#E62D7E')
+      }else{
+        setColor('white')
+      }
+    }else{
+      setColor('white')
+    }
+  })
 
 
   const renderMenuWeb = () => (
@@ -21,7 +44,7 @@ export default function ButtonAppBar() {
           <div>
             {
               item.position == 'left' && (
-                <Button color="inherit">{item.title}</Button>
+                <Button style={{color: color}}>{item.title}</Button>
               )
             }
           </div>
@@ -34,7 +57,9 @@ export default function ButtonAppBar() {
           <div>
             {
               item.position == 'right' && (
-                <Button color="inherit">{item.title}</Button>
+                <Button 
+                  style={{color: color}}
+                  onClick={() => handleRedirect(item.route)}>{item.title}</Button>
               )
             }
           </div>
@@ -57,6 +82,7 @@ export default function ButtonAppBar() {
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
         sx={{ mr: 2 }}
+        style={{color: color}}
       >
         <MenuIcon />
       </IconButton>
@@ -96,3 +122,11 @@ export default function ButtonAppBar() {
     </Box>
   );
 }
+
+const mapStateToProps = (state) => ({state: state});
+const mapDispatchToProps = (dispatch) =>{
+  const { actions } = require('reduxHandler');
+  return {
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Header));
