@@ -2,3 +2,11 @@
   width: 5% !important;
   height: auto;
 }
+
+.footer{
+  min-height: 50%;
+  overflow-y: hidden;
+  padding-top: 100px;
+  padding-bottom: 20px;
+  overflow-x: hidden;
+}
