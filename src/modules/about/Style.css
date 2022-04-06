@@ -11,9 +11,11 @@
 
 .about-banner.agent{
   background-color: #F1F5FB;
+  /* height: 100vh */
 }
 .about-banner.helpa{
   background-color: #FFFAFC;
+  /* height: 100vh */
 }
 
 @media (max-width: 991px){

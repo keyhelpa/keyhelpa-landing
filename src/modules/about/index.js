@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './Style.css'
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import Footer from 'modules/frame/footer.js'
 export class About extends Component {
   constructor(props){
     super(props)
@@ -17,11 +18,17 @@ export class About extends Component {
       this.setState({theme: 'helpa'})
     }
   }
-  render() {
+  renderContent(){
     const {theme} = this.state
     return (
       <div className={theme === 'agent' ? 'about-banner agent' : 'about-banner helpa'}>
-          <img src={require('assets/logo_icon.png')} className="image-logo"></img>
+          {
+            theme === 'agent' ? (
+              <img src={require('assets/lighterGray.png')} className="image-logo"></img>
+            ) : (
+              <img src={require('assets/lighterPink.png')} className="image-logo"></img>
+            )
+          }
           <section className="flex-page content">
             <div className="column-45">
               {
@@ -47,6 +54,15 @@ export class About extends Component {
               their own individual lifestyles.</p>
             </div>
           </section>
+      </div>
+    )
+  }
+  render() {
+    const {theme} = this.state
+    return (
+      <div>
+        {this.renderContent()}
+        <Footer/>
       </div>
     )
   }
