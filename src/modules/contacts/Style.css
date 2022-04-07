@@ -1,0 +1,30 @@
+
+.form-helpa{
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  padding: 5%;
+  text-align: left;
+}
+
+.contents{
+  padding-top: 5%;
+}
+
+.contents.agent{
+  background-color: #F1F5FB;
+  display: flex;
+  height: 100vh
+}
+
+.contents.helpa{
+  background-color: #FFFAFC;
+  display: flex;
+  height: 100vh
+}
+
+.btn-submit{
+  background-color: white !important;
+  border:1px solid white !important;
+  color: #34475D !important;
+  border-radius: 20px !important;
+}

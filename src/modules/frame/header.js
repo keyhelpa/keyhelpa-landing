@@ -31,6 +31,25 @@ function Header(props) {
       }else{
         setColor('white')
       }
+      if(Helper.headerMenu.length <= 2){
+        Helper.headerMenu.push({
+          title: 'About',
+          position: 'right',
+          route: 'about'
+        }, {
+          title: 'Contact',
+          position: 'right',
+          route: 'contact'
+        }, {
+          title: 'Members Login',
+          position: 'right',
+          route: 'login-member'
+        }, {
+          title: 'Login',
+          position: 'right',
+          route: 'login'
+        })
+      }
     }else{
       setColor('white')
     }
