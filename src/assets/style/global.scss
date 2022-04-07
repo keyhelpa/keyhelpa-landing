@@ -3,8 +3,12 @@
 .banner-agent, .agent-bg{
   background-color: #59687A;
   // height: 100vh;
+  background-image: require('../../assets/lighterGray.png');
 }
-
+.bg-agent{
+  background-color: #E5E5E5;
+  background-image: require('../../assets/lighterGray.png');
+}
 .banner-helpa, .helpa-bg{
   background-color: #f290bb;
 }
@@ -51,7 +55,10 @@
 }
 
 h1{
-  font-size: 60px;
+  font-size: 60px ;
+}
+.h1-lg{
+  font-size: 80px !important;
 }
 
 h1.agent{
