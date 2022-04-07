@@ -30,6 +30,29 @@
   color: #61dafb;
 }
 
+.form-control{
+  background-color: transparent !important;
+  border: none !important;
+  border-bottom: 1px solid white !important;
+  margin-bottom: 20px;
+  color: white !important;
+}
+
+.form-control:focus, .form-select:focus{
+  box-shadow: none !important;
+}
+
+.form-select{
+  background-color: transparent !important;
+  border: none !important;
+  border-bottom: 1px solid white !important;
+  margin-bottom: 20px;
+  color: white !important;
+}
+.form-select option{
+  color: black !important;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

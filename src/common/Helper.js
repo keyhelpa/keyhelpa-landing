@@ -8,21 +8,5 @@ export default {
     title: 'Helpa Looking to Earn',
     position: 'left',
     route: 'helpa'
-  }, {
-    title: 'About',
-    position: 'right',
-    route: 'about'
-  }, {
-    title: 'Contact',
-    position: 'right',
-    route: 'contact'
-  }, {
-    title: 'Members Login',
-    position: 'right',
-    route: 'login-member'
-  }, {
-    title: 'Login',
-    position: 'right',
-    route: 'login'
   }]
 }

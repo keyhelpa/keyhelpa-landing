@@ -6,6 +6,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter  } from 'react-router-dom';
 import { Provider, connect } from 'react-redux'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { createStore } from 'redux';
 import rootReducer from './reduxHandler';
 
