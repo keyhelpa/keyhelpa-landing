@@ -3,6 +3,8 @@ import './Style.css'
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Footer from 'modules/frame/footer.js'
+import Routes from 'common/Routes'
+import API from 'services/Api'
 export class About extends Component {
   constructor(props){
     super(props)
@@ -17,6 +19,24 @@ export class About extends Component {
     }else{
       this.setState({theme: 'helpa'})
     }
+    this.retrieve()
+  }
+  retrieve(){
+    let params = {
+      condition: [
+        {
+          column: 'payload',
+          clause: '=',
+          value: 'helpa'
+        }, {
+          column: 'payload',
+          clause: 'or',
+          value: 'agent'
+        }
+      ]
+    }
+    API.request(Routes.retrievePayload, params, response => {
+    })
   }
   renderContent(){
     const {theme} = this.state
