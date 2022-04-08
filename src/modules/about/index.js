@@ -5,11 +5,14 @@ import { withRouter } from 'react-router-dom';
 import Footer from 'modules/frame/footer.js'
 import Routes from 'common/Routes'
 import API from 'services/Api'
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
 export class About extends Component {
   constructor(props){
     super(props)
     this.state={
-      theme: 'agent'
+      theme: 'agent',
+      data: null,
+      isLoading: false
     }
   }
   componentDidMount() {
@@ -35,11 +38,30 @@ export class About extends Component {
         }
       ]
     }
+    this.setState({isLoading: false})
     API.request(Routes.retrievePayload, params, response => {
+      this.setState({isLoading: false})
+      if(response.data.length > 0) {
+        console.log('======', this.state.theme);
+        if(this.state.theme === 'agent'){
+          let agentData = response.data.filter(item => {return item.payload === 'agent'});
+          console.log('========', agentData);
+          if(agentData.length > 0){
+            agentData[0].payload_value.about = agentData[0].payload_value.about.replace(/\n/g,"<br />");
+            this.setState({data: agentData[0].payload_value.about})
+          }
+        }else{
+          let helpaData = response.data.filter(item => {return item.payload === 'helpa'});
+          if(helpaData.length > 0){
+            helpaData[0].payload_value.about = helpaData[0].payload_value.about.replace(/\n/g,"<br />")
+            this.setState({data: helpaData[0].payload_value.about})
+          }
+        }
+      }
     })
   }
   renderContent(){
-    const {theme} = this.state
+    const {theme, isLoading, data} = this.state
     return (
       <div className={theme === 'agent' ? 'about-banner agent' : 'about-banner helpa'}>
           {
@@ -61,24 +83,20 @@ export class About extends Component {
             </div>
             <div className="column-75 content-left">
               <h1 className={theme==='agent' ? 'agent' : 'helpa'}>About Us</h1>
-              <p>KeyHelpa originated from the question of how to improve the
-              profitability of real estate agencies given the high cost of labour
-              and overhead expenses, employment regulations and the
-              competitive nature of the real estate industry.<br/><br/>
-              The founders bring to the table their knowledge of accountancy,
-              law and real estate practice to provide agency principals with the
-              flexibility and versatility to deal with their high-volume activities
-              without the need to undertake expensive employment and
-              recruitment expenses. It allows  experienced real estate
-              personnel the flexibility to choose their working times to suit
-              their own individual lifestyles.</p>
+              {
+                !isLoading && data !== null ? (
+                  <p  dangerouslySetInnerHTML={{ __html: data}}></p>
+                ) : (
+                  <Skeleton height={50} />
+                )
+              }
             </div>
           </section>
       </div>
     )
   }
   render() {
-    const {theme} = this.state
+    const {theme, isLoading, data} = this.state
     return (
       <div>
         {this.renderContent()}

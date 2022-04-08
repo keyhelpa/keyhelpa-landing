@@ -17,6 +17,7 @@ function Header(props) {
   };
   const handleRedirect = (route) => {
     const {selectedUser} = props.state
+    const {history} = props;
     console.log('=====', props.history);
     props.history.push(`/${selectedUser}/${route}`)
   }
