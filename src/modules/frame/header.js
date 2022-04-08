@@ -3,11 +3,13 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Helper from 'common/Helper.js'
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import Routes from 'common/Routes';
 import { Menu, MenuItem, Button, Toolbar,  Typography, IconButton, Box, AppBar} from '@mui/material';
 
 function Header(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [color, setColor] = React.useState('white')
+  const [theme, setTheme] = React.useState(null)
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -16,10 +18,18 @@ function Header(props) {
     setAnchorEl(null);
   };
   const handleRedirect = (route) => {
-    const {selectedUser} = props.state
+    // const {selectedUser} = props.state
     const {history} = props;
     console.log('=====', props.history);
-    props.history.push(`/${selectedUser}/${route}`)
+    if(route === 'login' || route === 'login-member'){
+      if(theme === 'agent'){
+        window.open(Routes.agent, '_blank')
+      }else{
+        window.open(Routes.freelancer, '_blank')
+      }
+    }else{
+      props.history.push(`/${theme}/${route}`)
+    }
   }
 
   React.useEffect(() => {
@@ -27,8 +37,10 @@ function Header(props) {
     if(props){
       if(history.location.pathname.includes('agent')){
         setColor('#34475D')
+        setTheme('agent')
       }else if(history.location.pathname.includes('helpa')){
         setColor('#E62D7E')
+        setTheme('helpa')
       }else{
         setColor('white')
       }

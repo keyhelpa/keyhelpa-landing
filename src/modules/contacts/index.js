@@ -126,10 +126,9 @@ export class Contacts extends Component {
     )
   }
   renderContent(){
-    const {selectedUser} = this.props.state
+    const {theme} = this.state
     return (
-      <div>
-      <div className={selectedUser === 'agent' ? 'contents agent' : 'contents helpa'}>
+      <div className={theme === 'agent' ? 'contents agent' : 'contents helpa'}>
         <div className="container-40-full-mobile" style={{
           marginTop: 50
         }}>
@@ -138,8 +137,6 @@ export class Contacts extends Component {
         <div className="container-60-full-mobile">
           {this.renderRight()}
         </div>
-        </div>
-        <Footer/>
       </div>
     )
   }
@@ -147,6 +144,7 @@ export class Contacts extends Component {
     return (
       <div>
         {this.renderContent()}
+        <Footer/>
       </div>
     )
   }

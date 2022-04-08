@@ -13,13 +13,13 @@
 .contents.agent{
   background-color: #F1F5FB;
   display: flex;
-  height: 100vh
+  padding-bottom: 10%;
 }
 
 .contents.helpa{
   background-color: #FFFAFC;
   display: flex;
-  height: 100vh
+  padding-bottom: 10%;
 }
 
 .btn-submit{

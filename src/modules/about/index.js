@@ -85,9 +85,9 @@ export class About extends Component {
               <h1 className={theme==='agent' ? 'agent' : 'helpa'}>About Us</h1>
               {
                 !isLoading && data !== null ? (
-                  <p  dangerouslySetInnerHTML={{ __html: data}}></p>
+                  <p  dangerouslySetInnerHTML={{ __html: data}}></p> // let p tag read html tag(e.g. <br/>) inside the data and format the text accordingly
                 ) : (
-                  <Skeleton height={50} />
+                  <Skeleton height={40} />
                 )
               }
             </div>
