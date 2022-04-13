@@ -62,7 +62,7 @@ class Homepage extends Component {
     console.log(showLeft, showRight);
     return (
       <div id="container" onClick={(event) => this.handleClick(event)}>
-        <div className={`${!showLeft && !showRight ? 'container' : showLeft ? 'leftBg' : 'rightBg'}`}>
+        <div className={`${!showLeft && !showRight ? 'containers' : showLeft ? 'leftBg' : 'rightBg'}`}>
           <img src={require('../../assets/landing_banner.png')} className={`landing-image ${showLeft || showRight ? 'hide' : ''}`} id="first"></img>
           {
             startAlt && (
