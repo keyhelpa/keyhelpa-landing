@@ -93,6 +93,12 @@ export class Landing extends Component {
             <h3 style={{
                 color: '#34475DA3'
               }}>A one-off setup that includes payment details for future work engagements and is editable anytime.</h3>
+              <h3 style={{
+                fontWeight: 'bold',
+                fontSize: '20px',
+                color: '#34475D',
+                position: 'absolute'
+              }}>Create Agency Profile</h3>
             <img style={{
             width: '100%',
             height: 'auto',
