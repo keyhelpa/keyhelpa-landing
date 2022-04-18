@@ -20,7 +20,7 @@ function App(props) {
 
 const mapStateToProps = (state) => ({state: state});
 const mapDispatchToProps = (dispatch) => {
-  const {action} = require('reduxHandler')
+  const {action} = require('reduxhandler')
   return {}
 }
 export default connect(mapStateToProps, mapDispatchToProps)(App);

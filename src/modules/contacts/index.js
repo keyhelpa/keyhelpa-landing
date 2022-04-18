@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom';
-import Social from 'modules/generic/Socials.js';
+import Social from 'common/Socials.js';
 import TextField from '@mui/material/TextField';
 import './Style.css'
-import Footer from 'modules/frame/footer.js'
+import Footer from 'modules/generic/frames/footer.js'
 import { Button, Form } from 'react-bootstrap';
 
 const style = {
@@ -153,7 +153,7 @@ export class Contacts extends Component {
 const mapStateToProps = (state) => ({state: state})
 
 const mapDispatchToProps = (dispatch) =>{
-  const { actions } = require('reduxHandler');
+  const { actions } = require('reduxhandler');
   return {
   }
 }

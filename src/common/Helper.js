@@ -1,5 +1,6 @@
 export default {
   name: 'Keyhelpa',
+  ACCOUNT_TYPE: 'landing',
   headerMenu: [{
     title: 'Agent Looking for Helpa',
     position: 'left',

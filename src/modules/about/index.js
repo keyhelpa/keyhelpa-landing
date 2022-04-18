@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import './Style.css'
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import Footer from 'modules/frame/footer.js'
+import Footer from 'modules/generic/frames/footer.js'
 import Routes from 'common/Routes'
 import API from 'services/Api'
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
@@ -108,7 +108,7 @@ export class About extends Component {
 
 const mapStateToProps = (state) => ({state: state});
 const mapDispatchToProps = (dispatch) =>{
-  const { actions } = require('reduxHandler');
+  const { actions } = require('reduxhandler');
   return {
   }
 }

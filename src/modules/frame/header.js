@@ -23,9 +23,10 @@ function Header(props) {
       const {history, setSelectedUser} = props;
       console.log('=====', props.history, route);
       if(route === ''){
-        window.location.reload()
+        props.history.push('/')
         setSelectedUser(null)
         Helper.headerMenu.splice(2, 2)
+        window.location.reload()
       }else{
         if(route === 'login' || route === 'login-member'){
           if(selectedUser === 'agent'){
@@ -151,8 +152,8 @@ function Header(props) {
     </Toolbar>
   )
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="fixed" style={{backgroundColor: 'transparent'}} elevation={0}>
+    <Box sx={{ flexGrow: 1}}>
+      <AppBar position="fixed" style={{backgroundColor: 'transparent', height: 70}} elevation={0}>
         <div className="web">
           {renderMenuWeb()}
         </div>
@@ -166,7 +167,7 @@ function Header(props) {
 
 const mapStateToProps = (state) => ({state: state});
 const mapDispatchToProps = (dispatch) =>{
-  const { actions } = require('reduxHandler');
+  const { actions } = require('reduxhandler');
   return {
     setSelectedUser: (user) => {dispatch(actions.setSelectedUser(user))}
   }

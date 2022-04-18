@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Footer from 'modules/frame/footer.js'
+import Footer from 'modules/generic/frames/footer.js'
 import { Container, Box, Grid } from '@mui/material';
 import bgAgent from 'assets/lighterGray.png'
 import bgHelpa from 'assets/lighterPink.png'
@@ -257,7 +257,7 @@ export class Landing extends Component {
 
 // const mapStateToProps = (state) => ({state: state});
 // const mapDispatchToProps = (dispatch) =>{
-//   const { actions } = require('reduxHandler');
+//   const { actions } = require('reduxhandler');
 //   return {
 //   }
 // }

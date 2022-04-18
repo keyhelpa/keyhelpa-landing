@@ -112,7 +112,7 @@ class Homepage extends Component {
 
 const mapStateToProps = (state) => ({state: state});
 const mapDispatchToProps = (dispatch) =>{
-  const { actions } = require('reduxHandler');
+  const { actions } = require('reduxhandler');
   return {
     setSelectedUser: (user) => {dispatch(actions.setSelectedUser(user))}
   }

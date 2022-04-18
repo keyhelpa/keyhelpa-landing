@@ -268,7 +268,7 @@ const style = {
 const mapStateToProps = (state) => ({ state: state });
 
 const mapDispatchToProps = (dispatch) => {
-  const { actions } = require('reduxHandler');
+  const { actions } = require('reduxhandler');
   return {
   };
 };

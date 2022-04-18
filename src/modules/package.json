@@ -1,3 +1,6 @@
 {
-  "name": "modules"
+  "name": "modules",
+  "dependencies": {
+    "@fortawesome/fontawesome-free-brands": "^5.0.13"
+  }
 }
