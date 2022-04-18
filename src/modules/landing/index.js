@@ -16,8 +16,10 @@ export class Landing extends Component {
   componentDidMount() {
     const {history} = this.props
     if(history.location.pathname.includes('agent')) {
+      console.log('agent')
       this.setState({theme: 'agent'})
     }else{
+      console.log('helpa')
       this.setState({theme: 'helpa'})
     }
   } 
@@ -94,6 +96,15 @@ export class Landing extends Component {
             <h3 style={{
                 color: '#34475DA3'
               }}>A one-off setup that includes payment details for future work engagements and is editable anytime.</h3>
+              <h3 style={{
+                fontWeight: 'bold',
+                fontSize: '20px',
+                color: '#34475D',
+                position: 'relative',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%,-50%)'
+              }}>Create Agency Profile</h3>
             <img style={{
             width: '100%',
             height: 'auto',
@@ -139,7 +150,7 @@ export class Landing extends Component {
         </Grid>
     )
   }
-  renderBenefits(){
+  renderBenefitsA(){
     return(
       <Grid style={{
         backgroundColor: '#E5E5E5',
@@ -227,26 +238,111 @@ export class Landing extends Component {
       </Grid>
     )
   }
-  render() {
-    const {theme} = this.state
-    return (
-      <div className='banner-agent'>
+  renderBenefitsF(){
+    return(
+      <div>
+      <h1 style={{
+        backgroundColor: '#E5E5E5',
+        marginBottom: 0
+      }}>Lifestyle. Choose your days, hours. </h1>
+      <h1 style={{
+          color: "#E62D7E",
+          backgroundColor: '#E5E5E5',
+          marginBottom: 0
+        }}>Be your own boss</h1>
+      <Grid style={{
+        backgroundColor: '#E5E5E5',
+        backgroundImage: `url(${bgAgent})`,
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
+        width: '100%'
+      }} container alignItems={'left'} justifyContent={'left'}>
+        
+          <Grid item xs={6} style={{
+            padding: '5%',
+            textAlign: 'center'
+          }}>
+            <img style={{
+            width: '80%',
+            height: 'auto',
+          }} src={require('../../assets/Illustration contact.png')}></img>
+          </Grid>
+          <Grid item xs={6} style={{
+            padding: '5% 5% 5% 5%',
+            textAlign: 'left'
+          }}>
+            <h2 style={{
+              color: ' #34475D'
+            }}>Total Control.</h2>
+            <h2 style={{
+              color: ' #34475D'
+            }}>Constant Contact.</h2>
+            <p style={{
+              color: '#34475DA3',
+              fontSize: '18px'
+            }}>Send instant messages to the person you choose as your Helpa. Once a job has been offered and accepted, you can automatically privately message one another so you’re in constant contact throughout. You’re in total control to communicate as and when you need to.</p>
+          </Grid>
+          
+          
+          <Grid item xs={6} style={{
+            padding: '5%',
+            textAlign: 'left'
+          }}>
+            <h2 style={{
+              color: ' #34475D'
+            }}>Your investment.</h2>
+            <h2 style={{
+              color: ' #34475D'
+            }}>Protected.</h2>
+            <p style={{
+              color: '#34475DA3',
+              fontSize: '18px'
+            }}>Once your job has been accepted by a Helpa, the agreed payment is securely held by Key Helpas' payment system. Only once the job has been completed to your satisfaction, do you authorise for your Helpa's funds to be released. With the touch of a button, you can approve for a payment to be automatically distributed in the next payment run. So you can get the help you need knowing that your investment is protected.</p>
+          </Grid>
+          <Grid item xs={6} style={{
+            padding: '5%',
+            textAlign: 'center'
+          }}>
+            <img style={{
+            width: '80%',
+            height: 'auto',
+          }} src={require('../../assets/Illustration investment.png')}></img>
+          </Grid>
+      </Grid>
+      </div>
+      
+    )
+  }
+  renderBanner(){
+    const {theme} = this.state;
+    return(
+      <div>
         <img style={{
           width: '100%',
           height: 'auto',
-        }} src={require('../../assets/agent-bg.png')}></img>
-        <div className='btnLeft'>
-          <h1>Freelancer</h1>
+        }} src={theme =='agent' ? require('../../assets/agent-bg.png') : require('../../assets/helpa-bg.png')}></img>
+        <div className={theme === 'agent' ? 'btnLeft' : 'btnRight'}>
+          <h1>{theme === 'agent' ? 'Freelancer' : 'Agents'}</h1>
         </div>
+      </div>
+    )
+  }
+  render() {
+    const {theme} = this.state
+    return (
+      <div className={theme === 'agent' ? ' banner-agent' : 'banner-helpa'}>
+        {
+          this.renderBanner()
+        }
         {
           this.renderVideo()
         }
         {
           this.renderFeatures()
         }
-       {
-         this.renderBenefits()
-       }
+        {
+          theme === 'agent' ? this.renderBenefitsA() : this.renderBenefitsF()
+        }
         
          
         <Footer/>

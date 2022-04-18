@@ -19,6 +19,7 @@
 
 .btnRight{
   position: absolute;
+  right: 0;
   top: 30%;
   background-color: #59687A;
   color: #34475D;
@@ -26,6 +27,6 @@
   width: 100px;
   padding-bottom: 30px;
   border-radius: 100%;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 }
