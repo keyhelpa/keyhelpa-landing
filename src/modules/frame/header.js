@@ -20,10 +20,12 @@ function Header(props) {
   const handleRedirect = (route) => {
     if(props !== undefined) {
       const {selectedUser} = props.state
-      const {history} = props;
+      const {history, setSelectedUser} = props;
       console.log('=====', props.history, route);
       if(route === ''){
-        props.history.push(`/${route}`)
+        window.location.reload()
+        setSelectedUser(null)
+        Helper.headerMenu.splice(2, 2)
       }else{
         if(route === 'login' || route === 'login-member'){
           if(selectedUser === 'agent'){
@@ -166,6 +168,7 @@ const mapStateToProps = (state) => ({state: state});
 const mapDispatchToProps = (dispatch) =>{
   const { actions } = require('reduxHandler');
   return {
+    setSelectedUser: (user) => {dispatch(actions.setSelectedUser(user))}
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Header));

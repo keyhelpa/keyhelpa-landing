@@ -14,6 +14,20 @@ class Homepage extends Component {
       startAlt: false,
     }
   }
+  componentDidMount() {
+    if(this.props !== undefined) {
+      const {selectedUser} = this.props.state
+      console.log('>>>>', selectedUser);
+      if(selectedUser == null){
+        this.setState({
+          showLeft: false,
+          showRight: false,
+          agent: false,
+          startAlt: false,
+        })
+      }
+    }
+  }
   renderLeft(){
     return(
       <Box sx={{  height: '100vh', bgColor: '#cfe8fc' }}>

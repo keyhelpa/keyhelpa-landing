@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux'
 
 function RouteWrapper({
   component: Component,
@@ -19,4 +20,9 @@ RouteWrapper.defaultProps = {
   isPrivate: false,
 }
 
-export default (RouteWrapper);
+const mapStateToProps = (state) => ({state: state});
+const mapDispatchToProps = (dispatch) => {
+  const {action} = require('reduxHandler')
+  return {}
+}
+export default connect(mapStateToProps, mapDispatchToProps)(RouteWrapper);
