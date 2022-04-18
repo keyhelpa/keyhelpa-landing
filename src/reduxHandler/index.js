@@ -22,7 +22,7 @@ const reducer = (state = initialState, action) => {
         selectedUser: selectedUser
       }
     default:
-      break;
+      return {...state}
   }
 }
 

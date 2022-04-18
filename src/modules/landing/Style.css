@@ -1,0 +1,31 @@
+.btnLeft h1, .btnRight h1{
+  writing-mode: vertical-rl;
+  font-size: 30px;
+  transform: rotate(180deg);
+}
+
+.btnLeft{
+  position: absolute;
+  top: 30%;
+  background-color: #f290bb;
+  color: #E62D7E;
+  padding-top: 30px;
+  width: 100px;
+  padding-bottom: 30px;
+  border-radius: 100%;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.btnRight{
+  position: absolute;
+  top: 30%;
+  background-color: #59687A;
+  color: #34475D;
+  padding-top: 30px;
+  width: 100px;
+  padding-bottom: 30px;
+  border-radius: 100%;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}

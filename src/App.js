@@ -4,16 +4,23 @@ import Header from './modules/frame/header.js'
 import RouteList from './modules/routes';
 import React from 'react';
 import { Paper } from '@mui/material';
+import { connect } from 'react-redux'
 
-function App() {
+function App(props) {
+  console.log('[props]', props);
   return (
     <div className="App">
       <React.Fragment>
-        <Header/>
+        <Header {...props}/>
           <RouteList/>
       </React.Fragment>
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = (state) => ({state: state});
+const mapDispatchToProps = (dispatch) => {
+  const {action} = require('reduxHandler')
+  return {}
+}
+export default connect(mapStateToProps, mapDispatchToProps)(App);

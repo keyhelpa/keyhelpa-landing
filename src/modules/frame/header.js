@@ -4,7 +4,7 @@ import Helper from 'common/Helper.js'
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Routes from 'common/Routes';
-import { Menu, MenuItem, Button, Toolbar,  Typography, IconButton, Box, AppBar} from '@mui/material';
+import { Menu, MenuItem, Button, Toolbar,  Typography, IconButton, Box, AppBar, Avatar} from '@mui/material';
 
 function Header(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -18,22 +18,33 @@ function Header(props) {
     setAnchorEl(null);
   };
   const handleRedirect = (route) => {
-    // const {selectedUser} = props.state
-    const {history} = props;
-    console.log('=====', props.history);
-    if(route === 'login' || route === 'login-member'){
-      if(theme === 'agent'){
-        window.open(Routes.agent, '_blank')
+    if(props !== undefined) {
+      const {selectedUser} = props.state
+      const {history, setSelectedUser} = props;
+      console.log('=====', props.history, route);
+      if(route === ''){
+        window.location.reload()
+        setSelectedUser(null)
+        Helper.headerMenu.splice(2, 2)
       }else{
-        window.open(Routes.freelancer, '_blank')
+        if(route === 'login' || route === 'login-member'){
+          if(selectedUser === 'agent'){
+            window.open(Routes.agent, '_blank')
+          }else{
+            window.open(Routes.freelancer, '_blank')
+          }
+        }else if(route !== 'helpa' && route !== 'agent'){
+          props.history.push(`/${selectedUser}/${route}`)
+        }else{
+          props.history.push(`/${route}`)
+        }
       }
-    }else{
-      props.history.push(`/${theme}/${route}`)
     }
   }
 
   React.useEffect(() => {
-    const {history} = props;
+    const {history, selectedUser} = props;
+    console.log('===========', selectedUser, props);
     if(props){
       if(history.location.pathname.includes('agent')){
         setColor('#34475D')
@@ -44,23 +55,17 @@ function Header(props) {
       }else{
         setColor('white')
       }
-      if(Helper.headerMenu.length <= 2){
-        Helper.headerMenu.push({
+      if(Helper.headerMenu.length <= 4){
+        Helper.headerMenu.splice(2, 0, {
           title: 'About',
           position: 'right',
           route: 'about'
-        }, {
+        })
+        
+        Helper.headerMenu.splice(2, 0, {
           title: 'Contact',
           position: 'right',
           route: 'contact'
-        }, {
-          title: 'Members Login',
-          position: 'right',
-          route: 'login-member'
-        }, {
-          title: 'Login',
-          position: 'right',
-          route: 'login'
         })
       }
     }else{
@@ -70,13 +75,17 @@ function Header(props) {
 
 
   const renderMenuWeb = () => (
-    <Toolbar style={{paddingRight: '5%', paddingLeft: '5%'}}>
+    <Toolbar style={{paddingRight: '5%',}}>
+      <img src={require('../../assets/logo_icon.png')} style={{height: 'auto', width: '30px', marginRight: '5%'}} onClick={() => handleRedirect('')}></img>
       {
-        Helper.headerMenu.map(item => (
-          <div>
+        Helper.headerMenu.map((item, indx) => (
+          <div key={indx}>
             {
               item.position == 'left' && (
-                <Button style={{color: color}}>{item.title}</Button>
+                <Button 
+                  style={{color: color}}
+                  onClick={() => handleRedirect(item.route)}
+                >{item.title}</Button>
               )
             }
           </div>
@@ -85,8 +94,8 @@ function Header(props) {
       <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
       </Typography>
       {
-        Helper.headerMenu.map(item => (
-          <div>
+        Helper.headerMenu.map((item, idx) => (
+          <div key={idx}>
             {
               item.position == 'right' && (
                 <Button 
@@ -134,8 +143,8 @@ function Header(props) {
         }}
       >
         {
-          Helper.headerMenu.map(item => (
-            <MenuItem onClick={handleClose}>{item.title}</MenuItem>
+          Helper.headerMenu.map((item, indx) => (
+            <MenuItem key={indx} onClick={handleClose}>{item.title}</MenuItem>
           ))
         }
       </Menu>
@@ -159,6 +168,7 @@ const mapStateToProps = (state) => ({state: state});
 const mapDispatchToProps = (dispatch) =>{
   const { actions } = require('reduxHandler');
   return {
+    setSelectedUser: (user) => {dispatch(actions.setSelectedUser(user))}
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Header));
