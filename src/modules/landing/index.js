@@ -3,6 +3,7 @@ import Footer from 'modules/frame/footer.js'
 import { Container, Box, Grid } from '@mui/material';
 import bgAgent from 'assets/lighterGray.png'
 import bgHelpa from 'assets/lighterPink.png'
+import './Style.css'
 
 
 export class Landing extends Component {
@@ -234,6 +235,9 @@ export class Landing extends Component {
           width: '100%',
           height: 'auto',
         }} src={require('../../assets/agent-bg.png')}></img>
+        <div className='btnLeft'>
+          <h1>Freelancer</h1>
+        </div>
         {
           this.renderVideo()
         }

@@ -42,7 +42,7 @@ function Header(props) {
 
   React.useEffect(() => {
     const {history, selectedUser} = props;
-    console.log('===========', selectedUser);
+    console.log('===========', selectedUser, props);
     if(props){
       if(history.location.pathname.includes('agent')){
         setColor('#34475D')
@@ -53,23 +53,17 @@ function Header(props) {
       }else{
         setColor('white')
       }
-      if(Helper.headerMenu.length <= 2){
-        Helper.headerMenu.push({
+      if(Helper.headerMenu.length <= 4){
+        Helper.headerMenu.splice(2, 0, {
           title: 'About',
           position: 'right',
           route: 'about'
-        }, {
+        })
+        
+        Helper.headerMenu.splice(2, 0, {
           title: 'Contact',
           position: 'right',
           route: 'contact'
-        }, {
-          title: 'Members Login',
-          position: 'right',
-          route: 'login-member'
-        }, {
-          title: 'Login',
-          position: 'right',
-          route: 'login'
         })
       }
     }else{
