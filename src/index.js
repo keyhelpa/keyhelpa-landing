@@ -4,6 +4,7 @@ import './index.css';
 import 'assets/style/global.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { AppProvider } from '@shopify/polaris'
 import { BrowserRouter  } from 'react-router-dom';
 import { Provider, connect } from 'react-redux'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -12,18 +13,16 @@ import rootReducer from './reduxHandler';
 
 const store = createStore(rootReducer);
 
-ReactDOM.render(
-  <Provider store={store}>
-  <React.StrictMode>
-    <BrowserRouter >
-      <App />
-    </BrowserRouter >
-  </React.StrictMode>
-  </Provider>,
-  document.getElementById('root')
-);
+function WrappedApp(){
+  return (
+    <Provider store={store}>
+      <AppProvider>
+        <BrowserRouter >
+          <App />
+        </BrowserRouter >
+      </AppProvider>
+    </Provider>
+  )
+}
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+ReactDOM.render(<WrappedApp/>, document.getElementById('root'));
