@@ -2,6 +2,7 @@ import { Box, Container } from '@mui/material'
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { Helper } from 'common'
 import './Style.css'
 
 class Homepage extends Component {
@@ -14,7 +15,7 @@ class Homepage extends Component {
       startAlt: false,
     }
   }
-  componentDidMount() {
+  async componentDidMount() {
     if(this.props !== undefined) {
       const {selectedUser} = this.props.state
       console.log('>>>>', selectedUser);
@@ -26,6 +27,11 @@ class Homepage extends Component {
           startAlt: false,
         })
       }
+    }
+    let userType = await localStorage.getItem('user_type');
+    if(userType){
+      this.setState({startAlt: true})
+      await this.handleSelect(userType)
     }
   }
   renderLeft(){
@@ -43,7 +49,7 @@ class Homepage extends Component {
     )
   }
   handleClick(event){
-    const {setSelectedUser} = this.props;
+    const {setSelectedUser, setRightMenu} = this.props;
     let elem = document.getElementById('first')
     let coord = elem.getBoundingClientRect()
     let inWidth = coord.width
@@ -52,23 +58,29 @@ class Homepage extends Component {
     if(this.state.startAlt === false){
       if(inWidth/2 > temp){
         setSelectedUser('agent')
+        localStorage.setItem('user_type', 'agent')
         this.setState({showLeft: true, showRight: false})
       }else{
         setSelectedUser('helpa')
+        localStorage.setItem('user_type', 'helpa')
         this.setState({showLeft: false, showRight: true})
       }
+      setRightMenu()
     }
   }
 
   async handleSelect(select){
-    const {setSelectedUser} = this.props;
+    const {setSelectedUser, setRightMenu} = this.props;
     if(select === 'agent'){
       setSelectedUser('agent')
+      localStorage.setItem('user_type', 'agent')
       await this.setState({showLeft: true, showRight: false, agent: true})
     }else{
       setSelectedUser('helpa')
+      localStorage.setItem('user_type', 'helpa')
       await this.setState({showLeft: false, showRight: true, agent: true})
     }
+    setRightMenu()
   }
 
   render() {
@@ -114,7 +126,8 @@ const mapStateToProps = (state) => ({state: state});
 const mapDispatchToProps = (dispatch) =>{
   const { actions } = require('reduxhandler');
   return {
-    setSelectedUser: (user) => {dispatch(actions.setSelectedUser(user))}
+    setSelectedUser: (user) => {dispatch(actions.setSelectedUser(user))},
+    setRightMenu: () => dispatch(actions.setRightMenu())
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Homepage));

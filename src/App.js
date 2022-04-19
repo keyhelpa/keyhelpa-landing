@@ -7,7 +7,8 @@ import { Paper } from '@mui/material';
 import { connect } from 'react-redux'
 
 function App(props) {
-  console.log('[props]', props);
+  const {loginRightMenu} = props.state
+  console.log('===', loginRightMenu);
   return (
     <div className="App">
       <React.Fragment>
@@ -20,7 +21,9 @@ function App(props) {
 
 const mapStateToProps = (state) => ({state: state});
 const mapDispatchToProps = (dispatch) => {
-  const {action} = require('reduxhandler')
-  return {}
+  const {actions} = require('reduxhandler')
+  return {
+    setRightMenu: () => dispatch(actions.setRightMenu())
+  }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(App);

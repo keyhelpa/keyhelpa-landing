@@ -32,16 +32,6 @@ export default {
       route: '/helpa'
     }],
     rightMenu: [{
-      title: 'About',
-      type: 'internal',
-      route:  '/about',
-      isShow: window.location.pathname.includes('agent') || window.location.pathname.includes('helpa') ? true : false
-    }, {
-      title: 'Contact',
-      type: 'internal',
-      route: '/contact',
-      isShow: window.location.pathname.includes('agent') || window.location.pathname.includes('helpa') ? true : false
-    }, {
       title: 'Members Login',
       type: 'external',
       route:  Config.HELPA
@@ -59,4 +49,19 @@ export default {
         return HelpaLogo
     }
   },
+  async addHeaderItem(){
+    let userType = await localStorage.getItem('user_type')
+    if(userType && this.login.rightMenu.length <= 2){
+      this.login.rightMenu.unshift({
+        title: 'About',
+        type: 'internal',
+        route:  '/' + userType + '/about'
+      })
+      this.login.rightMenu.unshift({
+        title: 'Contact',
+        type: 'internal',
+        route: '/' + userType + '/contact'
+      })
+    }
+  }
 }
