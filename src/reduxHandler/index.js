@@ -41,29 +41,49 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   const {selectedUser, type} = action
+  const {rightMenu} = action
   switch (type) {
     case types.SET_SELECTED_USER:
-      console.log(selectedUser);
+      let userTypes = localStorage.getItem('user_type');
       return {
         ...state,
-        selectedUser: selectedUser
+        selectedUser: userTypes ? userTypes : selectedUser
       }
     case types.SET_RIGHT_MENU:
+      console.log(action);
       let userType = localStorage.getItem('user_type');
-      if(userType && state.loginRightMenu.length <= 2){
-        state.loginRightMenu.unshift({
-          title: 'About',
-          type: 'internal',
-          route:  '/' + userType + '/about'
-        })
-        state.loginRightMenu.unshift({
-          title: 'Contact',
-          type: 'internal',
-          route: '/' + userType + '/contact'
-        })
+      if(userType){
+        let exist = state.loginRightMenu.filter(item => {return item.title === 'About'})
+        if(exist.length > 0){
+          state.loginRightMenu[state.loginRightMenu.indexOf(exist[0])] = {
+            title: 'About',
+            type: 'internal',
+            route:  '/' + rightMenu + '/about'
+          }
+        }else{
+          state.loginRightMenu.unshift({
+            title: 'About',
+            type: 'internal',
+            route:  '/' + rightMenu + '/about'
+          })
+        }
+        exist = state.loginRightMenu.filter(items => {return items.title === 'Contact'})
+        if(exist.length > 0){
+          state.loginRightMenu[state.loginRightMenu.indexOf(exist[0])] = {
+            title: 'Contact',
+            type: 'internal',
+            route: '/' + rightMenu + '/contact'
+          }
+        }else{
+          state.loginRightMenu.unshift({
+            title: 'Contact',
+            type: 'internal',
+            route: '/' + rightMenu + '/contact'
+          })
+        }
       }
       return {
-        ...state
+        ...state,
       }
     default:
       return {...state}

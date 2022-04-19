@@ -27,5 +27,9 @@ export default{
 	menuButton: {
 		backgroundColor: '#9A9899',
 		activeColor: '#fef2f7'
-	}
+	},
+	agentGray: '#59687A',
+	agentDarkGray: '#34475D',
+	helpaPink: '#f290bb',
+	helpaDarkPink: '#E62D7E'
 }

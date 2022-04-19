@@ -60,12 +60,13 @@ class Homepage extends Component {
         setSelectedUser('agent')
         localStorage.setItem('user_type', 'agent')
         this.setState({showLeft: true, showRight: false})
+        setRightMenu('agent')
       }else{
         setSelectedUser('helpa')
         localStorage.setItem('user_type', 'helpa')
         this.setState({showLeft: false, showRight: true})
+        setRightMenu('helpa')
       }
-      setRightMenu()
     }
   }
 
@@ -75,12 +76,13 @@ class Homepage extends Component {
       setSelectedUser('agent')
       localStorage.setItem('user_type', 'agent')
       await this.setState({showLeft: true, showRight: false, agent: true})
+      setRightMenu('agent')
     }else{
       setSelectedUser('helpa')
       localStorage.setItem('user_type', 'helpa')
       await this.setState({showLeft: false, showRight: true, agent: true})
+      setRightMenu('helpa')
     }
-    setRightMenu()
   }
 
   render() {
@@ -127,7 +129,7 @@ const mapDispatchToProps = (dispatch) =>{
   const { actions } = require('reduxhandler');
   return {
     setSelectedUser: (user) => {dispatch(actions.setSelectedUser(user))},
-    setRightMenu: () => dispatch(actions.setRightMenu())
+    setRightMenu: (type) => dispatch(actions.setRightMenu(type))
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Homepage));
