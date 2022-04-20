@@ -49,7 +49,7 @@ class Homepage extends Component {
     )
   }
   handleClick(event){
-    const {setSelectedUser, setRightMenu} = this.props;
+    const {setSelectedUser, setRightMenu, setColor} = this.props;
     let elem = document.getElementById('first')
     let coord = elem.getBoundingClientRect()
     let inWidth = coord.width
@@ -129,7 +129,8 @@ const mapDispatchToProps = (dispatch) =>{
   const { actions } = require('reduxhandler');
   return {
     setSelectedUser: (user) => {dispatch(actions.setSelectedUser(user))},
-    setRightMenu: (type) => dispatch(actions.setRightMenu(type))
+    setRightMenu: (type) => dispatch(actions.setRightMenu(type)),
+    setColor: (type) => dispatch(actions.setColor(type))
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Homepage));

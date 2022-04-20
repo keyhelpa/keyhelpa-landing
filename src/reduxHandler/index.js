@@ -2,7 +2,8 @@ import Config from "config";
 const types = {
   SET_SELECTED_USER: 'SET_SELECTED_USER',
   SET_RIGHT_MENU: 'SET_RIGHT_MENU',
-  SET_LEFT_MENU: 'SET_LEFT_MENU'
+  SET_LEFT_MENU: 'SET_LEFT_MENU',
+  SET_COLOR: 'SET_COLOR'
 };
 
 export const actions = {
@@ -14,11 +15,15 @@ export const actions = {
   },
   setLeftMenu: (leftMenu) => {
     return {type: types.SET_LEFT_MENU, leftMenu}
+  },
+  setColor: (userType) => {
+    return {type: types.SET_COLOR, userType}
   }
 }
 
 const initialState = {
   selectedUser: null,
+  color: null,
   loginLeftMenu: [{
     title: 'Agent Looking for Helpa',
     type: 'internal',
@@ -41,18 +46,16 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   const {selectedUser, type} = action
-  const {rightMenu} = action
+  const {rightMenu, userType} = action
+  let userTypes = localStorage.getItem('user_type');
   switch (type) {
     case types.SET_SELECTED_USER:
-      let userTypes = localStorage.getItem('user_type');
       return {
         ...state,
         selectedUser: userTypes ? userTypes : selectedUser
       }
     case types.SET_RIGHT_MENU:
-      console.log(action);
-      let userType = localStorage.getItem('user_type');
-      if(userType){
+      if(userTypes){
         let exist = state.loginRightMenu.filter(item => {return item.title === 'About'})
         if(exist.length > 0){
           state.loginRightMenu[state.loginRightMenu.indexOf(exist[0])] = {
@@ -84,6 +87,20 @@ const reducer = (state = initialState, action) => {
       }
       return {
         ...state,
+      }
+    case types.SET_COLOR:
+      let color = null
+      console.log('<<<<<', action);
+      if(state.selectedUser === 'agent'){
+        color = '#59687A'
+      }else if(state.selectedUser === 'helpa'){
+        color = '#f290bb'
+      }else{
+        color = null
+      }
+      return {
+        ...state,
+        color: color
       }
     default:
       return {...state}
