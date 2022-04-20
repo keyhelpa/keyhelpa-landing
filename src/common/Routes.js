@@ -5,6 +5,7 @@ const baseUrl = isDev ? localUrl : liveUrl
 
 export default{
   retrievePayload: baseUrl + '/payloads/retrieve',
+  createContact: baseUrl + '/contact_us/create',
   freelancer: 'https://sandbox.keyhelpa.com',
   agent: 'https://agent.sandbox.keyhelpa.com',
 }
