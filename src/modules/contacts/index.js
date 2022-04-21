@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom';
-import Social from 'common/Socials.js';
+import Strings from 'modules/generic/helper/String'
 import TextField from '@mui/material/TextField';
 import './Style.css'
 import Routes from 'common/Routes'
@@ -11,6 +11,7 @@ import { Button, Form } from 'react-bootstrap';
 import countryCodes from 'country-codes-list'
 import { Alert } from '@mui/material';
 import { Check } from '@mui/icons-material';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const style = {
   iconAgent: {
@@ -75,7 +76,14 @@ export class Contacts extends Component {
       })
     }
     API.request(Routes.createContact, params, response => {
-      this.setState({submitted: true})
+      this.setState({
+        submitted: true,
+        name: null,
+        email: null,
+        organization: null,
+        message: null,
+        contactNumber: null
+      })
       setTimeout(() => {
         this.setState({submitted: false})
       }, 5000)
@@ -98,14 +106,14 @@ export class Contacts extends Component {
                 justifyContent: 'center'
               }}>
                 {
-                  Social.socialMedias.map((item) => (
+                  Strings.socialMedias.map((item) => (
                     <span
                       style={theme === 'agent' ? style.iconAgent : style.iconHelpa} className="cursor-hover"
                       onClick={() => {
                         window.location.href = item.route
                       }}
                     >
-                      {item.icon}
+                       <FontAwesomeIcon icon={item.icon} size="1x"/>
                     </span>
                   ))
                 }
