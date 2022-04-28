@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Footer from 'modules/generic/frames/footer.js'
 import { Container, Box, Grid } from '@mui/material';
+import Button from 'modules/generic/button'
 import bgAgent from 'assets/lighterGray.png'
 import bgHelpa from 'assets/lighterPink.png'
 import './Style.css'
@@ -197,11 +198,23 @@ export class Landing extends Component {
                 color: '#34475DA3'
               }}>KeyHelpa's payment system releases payment once job milestones have been completed to satisfaction and authorization to release funds confirmed.</h3>
           </Grid>
+          <Button
+          title={'Get Started'}
+          style={theme==='agent' ? {
+          backgroundColor: '#34475D',color: 'white',
+          fontSize: '24px',
+          width: '10%'} : {
+          backgroundColor: '#E62D7E',color: 'white',
+          fontSize: '24px',
+          width: '10%'}}
+          ></Button>
         </Grid>
     )
   }
   renderBenefitsA(){
+    const {theme} = this.state;
     return(
+      <div>
       <Grid style={{
         backgroundColor: '#E5E5E5',
         backgroundImage: `url(${bgAgent})`,
@@ -285,10 +298,33 @@ export class Landing extends Component {
               fontSize: '18px'
             }}>Once your job has been accepted by a Helpa, the agreed payment is securely held by Key Helpas' payment system. Only once the job has been completed to your satisfaction, do you authorise for your Helpa's funds to be released. With the touch of a button, you can approve for a payment to be automatically distributed in the next payment run. So you can get the help you need knowing that your investment is protected.</p>
           </Grid>
+            
       </Grid>
+      <Box sx={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center', 
+        backgroundColor: '#E5E5E5',
+        backgroundPosition: 'center',
+        width: '100%',
+        height: '30vh',}}>
+      <Button
+          title={'Get Started'}
+          style={theme==='agent' ? {
+          backgroundColor: '#34475D',color: 'white',
+          fontSize: '24px',
+          width: '10%',
+          } : {
+          backgroundColor: '#E62D7E',color: 'white',
+          fontSize: '24px',
+          width: '10%'}}
+          ></Button>
+      </Box>
+      </div>
     )
   }
   renderBenefitsF(){
+    const {theme} = this.state;
     return(
       <div>
       <h1 style={{
@@ -359,6 +395,34 @@ export class Landing extends Component {
           }} src={require('../../assets/Illustration investment.png')}></img>
           </Grid>
       </Grid>
+      <Grid style={{
+        backgroundColor: '#E5E5E5',
+        backgroundImage: `url(${bgAgent})`,
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
+        width: '100%'
+      }} alignItems={'center'} justifyContent={'center'}>
+      </Grid>
+      <Box sx={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center', 
+        backgroundColor: '#E5E5E5',
+        backgroundPosition: 'center',
+        width: '100%',
+        height: '30vh',}}>
+      <Button
+          title={'Get Started'}
+          style={theme==='agent' ? {
+          backgroundColor: '#34475D',color: 'white',
+          fontSize: '24px',
+          width: '10%',
+          } : {
+          backgroundColor: '#E62D7E',color: 'white',
+          fontSize: '24px',
+          width: '10%'}}
+          ></Button>
+      </Box>
       </div>
       
     )
