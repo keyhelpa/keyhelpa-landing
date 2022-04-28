@@ -10,7 +10,55 @@ export class Landing extends Component {
   constructor(props) {
     super(props)
     this.state={
-      theme: 'agent'
+      theme: 'freelance',
+      data: [
+        {
+          type: 'agent',
+          actor: 'Sarah',
+          story: "Sarah is a mother of two, a licensed agent with years of experience; due to her family commitments, she is limited by the number of hours she can work each week. However, Sarah's lifestyle dynamics prompted her to find a new way of earning extra money and to be her own boss."
+        },
+        {
+          type: 'agent',
+          actor: 'Lana',
+          story: "Lana is a talented real estate agent with years of experience; due to the epidemic, she works remotely. This has changed the dynamics of her lifestyle and prompted her to find a new way of earning money and become her own boss."
+        },
+        {
+          type: 'agent',
+          actor: 'John ',
+          story: "John is a licensed real estate agent working in a busy real estate office. John needs additional assistance with his open homes and general marketing work."
+        },
+        {
+          type: 'agent',
+          actor: 'Tracey',
+          story: "Tracey is a property manager at a busy real estate office. The agency manages properties, and she has a lot going on dealing with landlords and tenants. She needs additional assistance to manage the overload of work."
+        },
+        {
+          type: 'agent',
+          actor: 'Alan',
+          story: "Alan turns to the KeyHelpa platform. It is free to join. He creates his unique business freelancer profile page, selects strata managers category, the days and times he is available to work, and within 2 minutes his profile is live and ready to search for work opportunities in his local area."
+        },
+        {
+          type: 'agent',
+          actor: 'John',
+          story: ''
+        },
+        {
+          type: 'agent',
+          actor: 'Robyn',
+          story: 'Robyn is a licence  Real Estate Agent. She just signed four new clients who have all put their properties on the market, and she needs help at the open houses.'
+        },
+        {
+          type: 'agent',
+          actor: 'Paul',
+          story: 'Paul is a senior property manager at a busy real estate office. The agency manages properties, and he has a lot going on dealing with landlords and tenants.'
+        },
+        {
+          type: 'agent',
+          actor: 'Trevor',
+          story: "Trevor is a Strata Manager at a busy Strata Agents' office. He has a lot going on dealing with annual general meetings, building repairs, tradespeople and budgets."
+        }
+      ]
+
     }
   }
   componentDidMount() {
@@ -96,19 +144,21 @@ export class Landing extends Component {
             <h3 style={{
                 color: '#34475DA3'
               }}>A one-off setup that includes payment details for future work engagements and is editable anytime.</h3>
-              <h3 style={{
-                fontWeight: 'bold',
-                fontSize: '20px',
-                color: '#34475D',
-                position: 'relative',
-                top: '50%',
-                left: '50%',
-                transform: 'translate(-50%,-50%)'
-              }}>Create Agency Profile</h3>
+              
             <img style={{
             width: '100%',
             height: 'auto',
           }} src={theme =='agent' ? require('../../assets/agent-web-1.png') : require('../../assets/helpa-web-1.png')}></img>
+          <h3 style={{
+                fontWeight: 'bold',
+                fontSize: '20px',
+                color: '#34475D',
+                position: 'relative',
+                textAlign: 'center',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)'
+              }}>Create Agency Profile</h3>
           </Grid>
           <Grid item xs={3} style={{
             padding: '0% 0% 5% 5%',
@@ -317,10 +367,10 @@ export class Landing extends Component {
     const {theme} = this.state;
     return(
       <div>
-        <img style={{
-          width: '100%',
-          height: 'auto',
-        }} src={theme =='agent' ? require('../../assets/agent-bg.png') : require('../../assets/helpa-bg.png')}></img>
+        <img className={theme === 'agent' ? 'widthAgent' : 'widthFreelance'} style={{
+          marginTop: '5%'
+        }}
+        src={theme =='agent' ? require('../../assets/agent-bg.png') : require('../../assets/helpa-bg.png')}></img>
         <div className={theme === 'agent' ? 'btnLeft' : 'btnRight'}>
           <h1>{theme === 'agent' ? 'Freelancer' : 'Agents'}</h1>
         </div>
