@@ -431,10 +431,24 @@ export class Landing extends Component {
     const {theme} = this.state;
     return(
       <div>
-        <img className={theme === 'agent' ? 'widthAgent' : 'widthFreelance'} style={{
-          marginTop: '5%'
-        }}
-        src={theme =='agent' ? require('../../assets/agent-bg.png') : require('../../assets/helpa-bg.png')}></img>
+        <img  className={theme=='agent' ? 'agentRobyn' : 'Helpa'}
+        src={theme =='agent' ? require('../../assets/Robyn.png') : require('../../assets/Helpa.png')}></img>
+
+        <img className={theme=='agent' ? 'agentPaul' : 'freelanceSarah'}
+        src={theme =='agent' ? require('../../assets/Paul.png') : require('../../assets/Sarah.png')}></img>
+
+        <img  className={theme=='agent' ? 'agentTrevor' : 'freelanceAlan'}
+        src={theme =='agent' ? require('../../assets/Trevor.png') : require('../../assets/Alan.png')}></img>
+
+        <img  className={theme=='agent' ? 'agentJohn' : 'freelanceLana'}
+        src={theme =='agent' ? require('../../assets/JohnAgent.png') : require('../../assets/Lana.png')}></img>
+
+        <img  className={theme=='agent' ? 'Agent' : 'freelanceTracey'}
+        src={theme =='agent' ? require('../../assets/Agent.png') : require('../../assets/Tracey.png')}></img>
+        
+        <img  className={theme=='helpa' ? 'freelanceJohn' : ''}
+        src={theme =='helpa' ? require('../../assets/JohnHelpa.png') : ''}></img>
+        
         <div className={theme === 'agent' ? 'btnLeft' : 'btnRight'}>
           <h1>{theme === 'agent' ? 'Freelancer' : 'Agents'}</h1>
         </div>
