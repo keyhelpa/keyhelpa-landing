@@ -12,51 +12,84 @@ export class Landing extends Component {
     super(props)
     this.state={
       theme: 'freelance',
-      data: [
+      freelance: [
         {
-          type: 'agent',
+          type: 'freelance',
           actor: 'Sarah',
-          story: "Sarah is a mother of two, a licensed agent with years of experience; due to her family commitments, she is limited by the number of hours she can work each week. However, Sarah's lifestyle dynamics prompted her to find a new way of earning extra money and to be her own boss."
+          story: "Sarah is a mother of two, a licensed agent with years of experience; due to her family commitments, she is limited by the number of hours she can work each week. However, Sarah's lifestyle dynamics prompted her to find a new way of earning extra money and to be her own boss.",
+          image: '',
+          class: ''
         },
         {
-          type: 'agent',
+          type: 'freelance',
           actor: 'Lana',
-          story: "Lana is a talented real estate agent with years of experience; due to the epidemic, she works remotely. This has changed the dynamics of her lifestyle and prompted her to find a new way of earning money and become her own boss."
+          story: "Lana is a talented real estate agent with years of experience; due to the epidemic, she works remotely. This has changed the dynamics of her lifestyle and prompted her to find a new way of earning money and become her own boss.",
+          image: '',
+          class: ''
         },
         {
-          type: 'agent',
+          type: 'freelance',
           actor: 'John ',
-          story: "John is a licensed real estate agent working in a busy real estate office. John needs additional assistance with his open homes and general marketing work."
+          story: "John is a licensed real estate agent working in a busy real estate office. John needs additional assistance with his open homes and general marketing work.",
+          image: '',
+          class: ''
         },
         {
-          type: 'agent',
+          type: 'freelance',
           actor: 'Tracey',
-          story: "Tracey is a property manager at a busy real estate office. The agency manages properties, and she has a lot going on dealing with landlords and tenants. She needs additional assistance to manage the overload of work."
+          story: "Tracey is a property manager at a busy real estate office. The agency manages properties, and she has a lot going on dealing with landlords and tenants. She needs additional assistance to manage the overload of work.",
+          image: '',
+          class: ''
         },
         {
-          type: 'agent',
+          type: 'freelance',
           actor: 'Alan',
-          story: "Alan turns to the KeyHelpa platform. It is free to join. He creates his unique business freelancer profile page, selects strata managers category, the days and times he is available to work, and within 2 minutes his profile is live and ready to search for work opportunities in his local area."
+          story: "Alan turns to the KeyHelpa platform. It is free to join. He creates his unique business freelancer profile page, selects strata managers category, the days and times he is available to work, and within 2 minutes his profile is live and ready to search for work opportunities in his local area.",
+          image: '',
+          class: ''
         },
         {
-          type: 'agent',
+          type: 'freelance',
           actor: 'John',
-          story: ''
+          story: 'John is a licensed real estate agent working in a busy real estate office. John needs additional assistance with his open homes and general marketing work.',
+          image: '',
+          class: ''
         },
+      ],
+      agent: [
         {
           type: 'agent',
           actor: 'Robyn',
-          story: 'Robyn is a licence  Real Estate Agent. She just signed four new clients who have all put their properties on the market, and she needs help at the open houses.'
+          story: 'Robyn is a licence  Real Estate Agent. She just signed four new clients who have all put their properties on the market, and she needs help at the open houses.',
+          image: '../../assets/Robyn.png',
+          class: 'agentRobyn'
         },
         {
           type: 'agent',
           actor: 'Paul',
-          story: 'Paul is a senior property manager at a busy real estate office. The agency manages properties, and he has a lot going on dealing with landlords and tenants.'
+          story: 'Paul is a senior property manager at a busy real estate office. The agency manages properties, and he has a lot going on dealing with landlords and tenants.',
+          image: '../../assets/Paul.png',
+          class: 'agentPaul'
         },
         {
           type: 'agent',
           actor: 'Trevor',
-          story: "Trevor is a Strata Manager at a busy Strata Agents' office. He has a lot going on dealing with annual general meetings, building repairs, tradespeople and budgets."
+          story: "Trevor is a Strata Manager at a busy Strata Agents' office. He has a lot going on dealing with annual general meetings, building repairs, tradespeople and budgets.",
+          image: '../../assets/Trevor.png',
+          class: 'agentTrevor'
+        }
+        ,
+        {
+          type: 'agent',
+          actor: 'John',
+          story: 'John is a licenced real estate agent working in a busy real estate office. John needs additional assistance with his open homes and general marketing work.',
+          image: '../../assets/JohnAgent.png',
+          class: 'agentJohn'
+        },
+        {
+          type: 'agent',
+          image: '../../assets/Agent.png',
+          class: 'Agent'
         }
       ]
 
@@ -145,7 +178,7 @@ export class Landing extends Component {
             <h3 style={{
                 color: '#34475DA3'
               }}>A one-off setup that includes payment details for future work engagements and is editable anytime.</h3>
-              
+          <div>
             <img style={{
             width: '100%',
             height: 'auto',
@@ -160,6 +193,7 @@ export class Landing extends Component {
                 left: '50%',
                 transform: 'translate(-50%, -50%)'
               }}>Create Agency Profile</h3>
+            </div>
           </Grid>
           <Grid item xs={3} style={{
             padding: '0% 0% 5% 5%',
@@ -428,26 +462,136 @@ export class Landing extends Component {
     )
   }
   renderBanner(){
-    const {theme} = this.state;
+    const {theme, agent, freelance} = this.state;
     return(
       <div>
+        {/* { 
+          agent.map((item, index) => {
+            <div key={index} className='tooltip'>
+              {console.log('item', item.class)}
+            <img  className={item.class}
+            src={item.image}></img>
+                <div className='right'>
+                  <h3>{item.actor}</h3>
+                  <p>{item.story}</p>
+                  <i></i>
+                </div>
+            
+            </div>
+          }) 
+        } */}
+        <div className='tooltip' aria-disabled={theme === 'freelance' ? true : false}>
+        
         <img  className={theme=='agent' ? 'agentRobyn' : 'Helpa'}
         src={theme =='agent' ? require('../../assets/Robyn.png') : require('../../assets/Helpa.png')}></img>
+            <div className='right'>
+              <h3>{theme ==='agent' ? 'Robyn': ''}</h3>
+              <p >{
+              theme ==='agent' ?
+              'Robyn is a licence  Real Estate Agent. She just signed four new clients who have all put their properties on the market, and she needs help at the open houses.'
+              :
+              ''
+            }
+            </p>
+              <i></i>
+            </div>
+        
+        </div>
 
+        <div className='tooltip'>
+        
         <img className={theme=='agent' ? 'agentPaul' : 'freelanceSarah'}
         src={theme =='agent' ? require('../../assets/Paul.png') : require('../../assets/Sarah.png')}></img>
+            <div className='right'>
+              <h3>{theme ==='agent' ? 'Paul': 'Sarah'}</h3>
+              <p>{
+                theme ==='agent' ?
+                'Paul is a senior property manager at a busy real estate office. The agency manages properties, and he has a lot going on dealing with landlords and tenants.'
+                :
+                "Sarah is a mother of two, a licensed agent with years of experience; due to her family commitments, she is limited by the number of hours she can work each week. However, Sarah's lifestyle dynamics prompted her to find a new way of earning extra money and to be her own boss." 
+              }</p>
+              <i></i>
+            </div>
+        
+        </div>
 
+        <div className='tooltip'>
+        
         <img  className={theme=='agent' ? 'agentTrevor' : 'freelanceAlan'}
         src={theme =='agent' ? require('../../assets/Trevor.png') : require('../../assets/Alan.png')}></img>
+            <div className='right'>
+              <h3>{theme ==='agent' ? 'Trevor': 'Alan'}</h3>
+              <p>
+              {
+                theme ==='agent' ?
+                "Trevor is a Strata Manager at a busy Strata Agents' office. He has a lot going on dealing with annual general meetings, building repairs, tradespeople and budgets."
+                :
+                "Alan turns to the KeyHelpa platform. It is free to join. He creates his unique business freelancer profile page, selects strata managers category, the days and times he is available to work, and within 2 minutes his profile is live and ready to search for work opportunities in his local area." 
+              }
+              </p>
+              <i></i>
+            </div>
+        
+        </div> 
 
+        <div className='tooltip'>
+        
         <img  className={theme=='agent' ? 'agentJohn' : 'freelanceLana'}
         src={theme =='agent' ? require('../../assets/JohnAgent.png') : require('../../assets/Lana.png')}></img>
+            <div className='right'>
+              <h3>{theme ==='agent' ? 'John': 'Lana'}</h3>
+              <p>
+              {
+                theme ==='agent' ?
+                "John is a licensed real estate agent working in a busy real estate office. John needs additional assistance with his open homes and general marketing work."
+                :
+                "Lana is a talented real estate agent with years of experience; due to the epidemic, she works remotely. This has changed the dynamics of her lifestyle and prompted her to find a new way of earning money and become her own boss." 
+              }
+              </p>
+              <i></i>
+            </div>
+        
+        </div> 
 
+        <div className='tooltip'>
+        
         <img  className={theme=='agent' ? 'Agent' : 'freelanceTracey'}
         src={theme =='agent' ? require('../../assets/Agent.png') : require('../../assets/Tracey.png')}></img>
+            <div className='right'>
+              <h3>{theme ==='agent' ? '': 'Tracey'}</h3>
+              <p>
+              {
+                theme ==='agent' ?
+                ""
+                :
+                "Tracey is a property manager at a busy real estate office. The agency manages properties, and she has a lot going on dealing with landlords and tenants. She needs additional assistance to manage the overload of work." 
+              }
+              </p>
+              <i></i>
+            </div>
+        
+        </div> 
+
+        <div className='tooltip'>
         
         <img  className={theme=='helpa' ? 'freelanceJohn' : ''}
         src={theme =='helpa' ? require('../../assets/JohnHelpa.png') : ''}></img>
+            <div className='right'>
+              <h3>{theme =='helpa' ? 'John': ''}</h3>
+              <p>
+              {
+                theme ==='helpa' ?
+                "John is a licensed real estate agent working in a busy real estate office. John needs additional assistance with his open homes and general marketing work."
+                :
+                "" 
+              }
+              </p>
+              <i></i>
+            </div>
+        
+        </div> 
+        
+        
         
         <div className={theme === 'agent' ? 'btnLeft' : 'btnRight'}>
           <h1>{theme === 'agent' ? 'Freelancer' : 'Agents'}</h1>

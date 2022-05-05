@@ -44,7 +44,9 @@
 .agentRobyn{
   margin-top: 5%;
   width: 20%;
+  cursor: pointer;
 }
+
 .agentPaul{
   margin-top: 5%;
   width: 14.24%;
@@ -97,20 +99,14 @@
   font-size: 24px;
   width: 10%;
 }
+
 /* Tooltip */
 .tooltip {
-  display:inline-block;
-  position:relative;
-  border-bottom:1px dotted #666;
+  display:inline!important;
+  position:relative!important;
   text-align:left;
-  
-  width: 10%;
-  height: 60%;
-  background-color: transparent;
-  border: black 1px solid;
-  position: absolute;
-  bottom: 0;
-  left: 8%;
+  opacity: 1!important;
+  z-index: 0!important;
 }
 
 .tooltip .right {
@@ -120,20 +116,19 @@
   margin-left:20px;
   transform:translate(0, -50%);
   padding:10px 20px;
-  color:#34475D;
-  background-color:#E5E5E5;
+  color:#444444;
+  background-color:#EEEEEE;
   font-weight:normal;
   font-size:13px;
   border-radius:8px;
   position:absolute;
-  z-index:99999999;
   box-sizing:border-box;
   box-shadow:0 1px 8px rgba(0,0,0,0.5);
   display:none;
 }
-
 .tooltip:hover .right {
   display:block;
+  z-index: 9999;
 }
 
 .tooltip .right i {
@@ -154,6 +149,9 @@
   left:0;
   top:50%;
   transform:translate(50%,-50%) rotate(-45deg);
-  background-color:#E5E5E5;
+  background-color:#EEEEEE;
   box-shadow:0 1px 8px rgba(0,0,0,0.5);
+}
+img{
+  z-index: -1;
 }
