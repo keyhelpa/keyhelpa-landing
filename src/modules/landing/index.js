@@ -480,13 +480,13 @@ export class Landing extends Component {
             </div>
           }) 
         } */}
-        <div className='tooltip' aria-disabled={theme === 'freelance' ? true : false}>
+        <div className='tooltip' >
         
         <img  className={theme=='agent' ? 'agentRobyn' : 'Helpa'}
         src={theme =='agent' ? require('../../assets/Robyn.png') : require('../../assets/Helpa.png')}></img>
             <div className='right'>
               <h3>{theme ==='agent' ? 'Robyn': ''}</h3>
-              <p >{
+              <p className={theme === 'helpa' ? 'hidden' : ''}>{
               theme ==='agent' ?
               'Robyn is a licence  Real Estate Agent. She just signed four new clients who have all put their properties on the market, and she needs help at the open houses.'
               :

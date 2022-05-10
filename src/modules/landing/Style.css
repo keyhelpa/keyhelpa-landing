@@ -128,7 +128,6 @@
 }
 .tooltip:hover .right {
   display:block;
-  z-index: 9999;
 }
 
 .tooltip .right i {
@@ -139,6 +138,8 @@
   width:12px;
   height:24px;
   overflow:hidden;
+  z-index: 9999;
+
 }
 
 .tooltip .right i::after {
@@ -154,4 +155,10 @@
 }
 img{
   z-index: -1;
+}
+.hidden{
+  display: none;
+}
+.show{
+  display: block;
 }
