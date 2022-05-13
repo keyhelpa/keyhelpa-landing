@@ -56,18 +56,22 @@
 .agentPaul{
   margin-top: 5%;
   width: 14.24%;
+  cursor: pointer;
 }
 .agentTrevor{
   margin-top: 5%;
   width: 15.74%;
+  cursor: pointer;
 }
 .agentJohn{
   margin-top: 5%;
   width: 20.6%;
+  cursor: pointer;
 }
 .Agent{
   margin-top: 5%;
   width: 29.4%;
+  
 }
 .Helpa{
   margin-top: 5%;
@@ -76,22 +80,27 @@
 .freelanceSarah{
   margin-top: 5%;
   width: 12.25%;
+  cursor: pointer;
 }
 .freelanceAlan{
   margin-top: 5%;
   width: 12.25%;
+  cursor: pointer;
 }
 .freelanceLana{
   margin-top: 5%;
   width: 9.8%;
+  cursor: pointer;
 }
 .freelanceTracey{
   margin-top: 5%;
   width: 9.8%;
+  cursor: pointer;
 }
 .freelanceJohn{
   margin-top: 5%;
   width: 11.85%;
+  cursor: pointer;
 }
 .agentBtn{
   background-color: #34475D;
