@@ -4,6 +4,11 @@ import { Container, Box, Grid } from '@mui/material';
 import Button from 'modules/generic/button'
 import bgAgent from 'assets/lighterGray.png'
 import bgHelpa from 'assets/lighterPink.png'
+import Robyn from 'assets/Robyn.png'
+import Paul from 'assets/Paul.png'
+import Trevor from 'assets/Trevor.png'
+import JohnAgent from 'assets/JohnAgent.png'
+import Agent from 'assets/Agent.png'
 import './Style.css'
 
 
@@ -61,21 +66,21 @@ export class Landing extends Component {
           type: 'agent',
           actor: 'Robyn',
           story: 'Robyn is a licence  Real Estate Agent. She just signed four new clients who have all put their properties on the market, and she needs help at the open houses.',
-          image: '../../assets/Robyn.png',
+          image: 'Robyn',
           class: 'agentRobyn'
         },
         {
           type: 'agent',
           actor: 'Paul',
           story: 'Paul is a senior property manager at a busy real estate office. The agency manages properties, and he has a lot going on dealing with landlords and tenants.',
-          image: '../../assets/Paul.png',
+          image: 'Paul',
           class: 'agentPaul'
         },
         {
           type: 'agent',
           actor: 'Trevor',
           story: "Trevor is a Strata Manager at a busy Strata Agents' office. He has a lot going on dealing with annual general meetings, building repairs, tradespeople and budgets.",
-          image: '../../assets/Trevor.png',
+          image: 'Trevor',
           class: 'agentTrevor'
         }
         ,
@@ -83,12 +88,12 @@ export class Landing extends Component {
           type: 'agent',
           actor: 'John',
           story: 'John is a licenced real estate agent working in a busy real estate office. John needs additional assistance with his open homes and general marketing work.',
-          image: '../../assets/JohnAgent.png',
+          image: 'JohnAgent',
           class: 'agentJohn'
         },
         {
           type: 'agent',
-          image: '../../assets/Agent.png',
+          image: 'Agent',
           class: 'Agent'
         }
       ]
@@ -480,13 +485,17 @@ export class Landing extends Component {
             </div>
           }) 
         } */}
+        <div className={theme === 'helpa' ? 'show' : 'hidden'}>
+        <img  className={theme=='helpa' ? 'Helpa' : ''}
+        src={require('../../assets/Helpa.png')}></img>
+        </div>
         <div className='tooltip' >
         
-        <img  className={theme=='agent' ? 'agentRobyn' : 'Helpa'}
-        src={theme =='agent' ? require('../../assets/Robyn.png') : require('../../assets/Helpa.png')}></img>
+        <img  className={theme=='agent' ? 'agentRobyn' : ''}
+        src={theme =='agent' ? require('../../assets/Robyn.png') : ''}></img>
             <div className='right'>
               <h3>{theme ==='agent' ? 'Robyn': ''}</h3>
-              <p className={theme === 'helpa' ? 'hidden' : ''}>{
+              <p >{
               theme ==='agent' ?
               'Robyn is a licence  Real Estate Agent. She just signed four new clients who have all put their properties on the market, and she needs help at the open houses.'
               :

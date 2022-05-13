@@ -31,6 +31,12 @@
   border-bottom-right-radius: 0;
 }
 
+.banner-agent{
+  z-index: 10!important;
+}
+
+
+
 .widthAgent{
   width: 100%;
   height: 'auto';
@@ -106,7 +112,6 @@
   position:relative!important;
   text-align:left;
   opacity: 1!important;
-  z-index: 0!important;
 }
 
 .tooltip .right {
@@ -125,11 +130,15 @@
   box-sizing:border-box;
   box-shadow:0 1px 8px rgba(0,0,0,0.5);
   display:none;
+
+  z-index: 10!important;
 }
 .tooltip:hover .right {
   display:block;
 }
-
+.tooltip{
+  z-index: auto!important;
+}
 .tooltip .right i {
   position:absolute;
   top:50%;
@@ -138,8 +147,7 @@
   width:12px;
   height:24px;
   overflow:hidden;
-  z-index: 9999;
-
+  z-index: 10!important;
 }
 
 .tooltip .right i::after {
@@ -152,13 +160,15 @@
   transform:translate(50%,-50%) rotate(-45deg);
   background-color:#EEEEEE;
   box-shadow:0 1px 8px rgba(0,0,0,0.5);
+  z-index: 10!important;
 }
 img{
-  z-index: -1;
+  z-index: -1!important;
 }
 .hidden{
   display: none;
 }
 .show{
   display: block;
+  display: inline;
 }
