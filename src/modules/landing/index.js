@@ -4,6 +4,11 @@ import { Container, Box, Grid } from '@mui/material';
 import Button from 'modules/generic/button'
 import bgAgent from 'assets/lighterGray.png'
 import bgHelpa from 'assets/lighterPink.png'
+import Robyn from 'assets/Robyn.png'
+import Paul from 'assets/Paul.png'
+import Trevor from 'assets/Trevor.png'
+import JohnAgent from 'assets/JohnAgent.png'
+import Agent from 'assets/Agent.png'
 import './Style.css'
 
 
@@ -12,87 +17,6 @@ export class Landing extends Component {
     super(props)
     this.state={
       theme: 'freelance',
-      freelance: [
-        {
-          type: 'freelance',
-          actor: 'Sarah',
-          story: "Sarah is a mother of two, a licensed agent with years of experience; due to her family commitments, she is limited by the number of hours she can work each week. However, Sarah's lifestyle dynamics prompted her to find a new way of earning extra money and to be her own boss.",
-          image: '',
-          class: ''
-        },
-        {
-          type: 'freelance',
-          actor: 'Lana',
-          story: "Lana is a talented real estate agent with years of experience; due to the epidemic, she works remotely. This has changed the dynamics of her lifestyle and prompted her to find a new way of earning money and become her own boss.",
-          image: '',
-          class: ''
-        },
-        {
-          type: 'freelance',
-          actor: 'John ',
-          story: "John is a licensed real estate agent working in a busy real estate office. John needs additional assistance with his open homes and general marketing work.",
-          image: '',
-          class: ''
-        },
-        {
-          type: 'freelance',
-          actor: 'Tracey',
-          story: "Tracey is a property manager at a busy real estate office. The agency manages properties, and she has a lot going on dealing with landlords and tenants. She needs additional assistance to manage the overload of work.",
-          image: '',
-          class: ''
-        },
-        {
-          type: 'freelance',
-          actor: 'Alan',
-          story: "Alan turns to the KeyHelpa platform. It is free to join. He creates his unique business freelancer profile page, selects strata managers category, the days and times he is available to work, and within 2 minutes his profile is live and ready to search for work opportunities in his local area.",
-          image: '',
-          class: ''
-        },
-        {
-          type: 'freelance',
-          actor: 'John',
-          story: 'John is a licensed real estate agent working in a busy real estate office. John needs additional assistance with his open homes and general marketing work.',
-          image: '',
-          class: ''
-        },
-      ],
-      agent: [
-        {
-          type: 'agent',
-          actor: 'Robyn',
-          story: 'Robyn is a licence  Real Estate Agent. She just signed four new clients who have all put their properties on the market, and she needs help at the open houses.',
-          image: '../../assets/Robyn.png',
-          class: 'agentRobyn'
-        },
-        {
-          type: 'agent',
-          actor: 'Paul',
-          story: 'Paul is a senior property manager at a busy real estate office. The agency manages properties, and he has a lot going on dealing with landlords and tenants.',
-          image: '../../assets/Paul.png',
-          class: 'agentPaul'
-        },
-        {
-          type: 'agent',
-          actor: 'Trevor',
-          story: "Trevor is a Strata Manager at a busy Strata Agents' office. He has a lot going on dealing with annual general meetings, building repairs, tradespeople and budgets.",
-          image: '../../assets/Trevor.png',
-          class: 'agentTrevor'
-        }
-        ,
-        {
-          type: 'agent',
-          actor: 'John',
-          story: 'John is a licenced real estate agent working in a busy real estate office. John needs additional assistance with his open homes and general marketing work.',
-          image: '../../assets/JohnAgent.png',
-          class: 'agentJohn'
-        },
-        {
-          type: 'agent',
-          image: '../../assets/Agent.png',
-          class: 'Agent'
-        }
-      ]
-
     }
   }
   componentDidMount() {
@@ -480,10 +404,14 @@ export class Landing extends Component {
             </div>
           }) 
         } */}
-        <div className='tooltip' aria-disabled={theme === 'freelance' ? true : false}>
+        <div className={theme === 'helpa' ? 'show' : 'hidden'}>
+        <img  className={theme=='helpa' ? 'Helpa' : ''}
+        src={require('../../assets/Helpa.png')}></img>
+        </div>
+        <div className='tooltip' >
         
-        <img  className={theme=='agent' ? 'agentRobyn' : 'Helpa'}
-        src={theme =='agent' ? require('../../assets/Robyn.png') : require('../../assets/Helpa.png')}></img>
+        <img  className={theme=='agent' ? 'agentRobyn' : ''}
+        src={theme =='agent' ? require('../../assets/Robyn.png') : ''}></img>
             <div className='right'>
               <h3>{theme ==='agent' ? 'Robyn': ''}</h3>
               <p >{
