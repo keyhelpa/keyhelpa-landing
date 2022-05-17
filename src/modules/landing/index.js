@@ -4,11 +4,6 @@ import { Container, Box, Grid } from '@mui/material';
 import Button from 'modules/generic/button'
 import bgAgent from 'assets/lighterGray.png'
 import bgHelpa from 'assets/lighterPink.png'
-import Robyn from 'assets/Robyn.png'
-import Paul from 'assets/Paul.png'
-import Trevor from 'assets/Trevor.png'
-import JohnAgent from 'assets/JohnAgent.png'
-import Agent from 'assets/Agent.png'
 import './Style.css'
 
 
@@ -17,6 +12,24 @@ export class Landing extends Component {
     super(props)
     this.state={
       theme: 'freelance',
+      details: [
+        {
+          title: 'Create Agency Profile',
+          desc: 'A one-off setup that includes payment details for future work engagements and is editable anytime.',
+        },
+        {
+          title: "Post a job, it's free",
+          desc: "Draft and upload your job requirements then automatically receive proposals from qualified freelancers. Or, browse through profiles."
+        },
+        {
+          title: "Choose a Helpa",
+          desc: "Review Helpa profiles, message in real-time, compare offers and accept what's right for you.          "
+        },
+        {
+          title: "Pay securely & on time",
+          desc: "KeyHelpa's payment system releases payment once job milestones have been completed to satisfaction and authorization to release funds confirmed.          "
+        }
+      ]
     }
   }
   componentDidMount() {
@@ -95,43 +108,60 @@ export class Landing extends Component {
         backgroundPosition: 'center',
         width: '100%'
       }} container alignItems={'center'} justifyContent={'center'}>
+
         <Grid item xs={3} style={{
             padding: '5% 0% 5% 5%',
             textAlign: 'center'
           }}>
-            <h3 style={{
-                color: '#34475DA3'
-              }}>A one-off setup that includes payment details for future work engagements and is editable anytime.</h3>
-          <div>
-            <img style={{
-            width: '100%',
-            height: 'auto',
-          }} src={theme =='agent' ? require('../../assets/agent-web-1.png') : require('../../assets/helpa-web-1.png')}></img>
+
           <h3 style={{
-                fontWeight: 'bold',
-                fontSize: '20px',
-                color: '#34475D',
-                position: 'relative',
-                textAlign: 'center',
-                top: '50%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)'
-              }}>Create Agency Profile</h3>
+                color: '#34475DA3',
+                paddingTop: '10%'
+              }}>A one-off setup that includes payment details for future work engagements and is editable anytime.</h3>
+          <div style={{
+            position: 'relative'
+          }}>
+            <img style={{
+              display: 'flex',
+              width: '100%',
+              height: 'auto',
+            }} src={theme =='agent' ? require('../../assets/agent-web-1.png') : require('../../assets/helpa-web-1.png')}></img>
+            <h3 style={{
+              position: 'absolute',
+              left: '50%',
+              top: '50%',
+              transform: 'translate(-50%, -50%)',
+              color: '#34475D'
+            }}>Create Agency Profile</h3>
             </div>
           </Grid>
+
           <Grid item xs={3} style={{
             padding: '0% 0% 5% 5%',
             textAlign: 'center'
+          }}>
+          <div style={{
+            position: 'relative'
           }}>
             <img style={{
             width: '100%',
             height: 'auto',
           }} src={theme =='agent' ? require('../../assets/agent-web-2.png') : require('../../assets/helpa-web-2.png')}></img>
+          <h3 style={{
+              position: 'absolute',
+              left: '50%',
+              top: '50%',
+              transform: 'translate(-50%, -50%)',
+              color: '#34475D'
+            }}>Post a job, it's free</h3>
+          </div>
+            
             <h3 style={{
                 color: '#34475DA3'
               }}>Draft and upload your job requirements then automatically receive proposals from qualified freelancers. Or, browse through profiles.</h3>
             
           </Grid>
+
           <Grid item xs={3} style={{
             padding: '5% 0% 0% 5%',
             textAlign: 'center'
@@ -139,19 +169,42 @@ export class Landing extends Component {
             <h3 style={{
                 color: '#34475DA3'
               }}>Review Helpa profiles, message in real-time, compare offers and accept what's right for you.</h3>
-            <img style={{
+          <div style={{
+            position: 'relative'
+          }}>
+          <img style={{
             width: '100%',
             height: 'auto',
           }} src={theme =='agent' ? require('../../assets/agent-web-3.png') : require('../../assets/helpa-web-3.png')}></img>
+          <h3 style={{
+              position: 'absolute',
+              left: '50%',
+              top: '50%',
+              transform: 'translate(-50%, -50%)',
+              color: '#34475D'
+            }}>Choose a Helpa</h3>
+          </div>
           </Grid>
+
           <Grid item xs={3} style={{
             padding: '0% 5% 5% 5%',
             textAlign: 'center'
           }}>
+            <div style={{
+              position: 'relative'
+            }}>
             <img style={{
             width: '100%',
             height: 'auto',
           }} src={theme =='agent' ? require('../../assets/agent-web-4.png') : require('../../assets/helpa-web-4.png')}></img>
+            <h3 style={{
+              position: 'absolute',
+              left: '50%',
+              top: '50%',
+              transform: 'translate(-50%, -50%)',
+              color: '#34475D'
+            }}>Pay securely & on time</h3>
+            </div>
             <h3 style={{
                 color: '#34475DA3'
               }}>KeyHelpa's payment system releases payment once job milestones have been completed to satisfaction and authorization to release funds confirmed.</h3>
@@ -285,15 +338,22 @@ export class Landing extends Component {
     const {theme} = this.state;
     return(
       <div>
-      <h1 style={{
+        <div style={{
+          display: 'flex',
+          justifyContent: 'center',
+          backgroundColor: '#E5E5E5'
+        }}>
+        <h1 style={{
         backgroundColor: '#E5E5E5',
         marginBottom: 0
-      }}>Lifestyle. Choose your days, hours. </h1>
-      <h1 style={{
-          color: "#E62D7E",
-          backgroundColor: '#E5E5E5',
-          marginBottom: 0
-        }}>Be your own boss</h1>
+        }}>Lifestyle. Choose your days, hours. </h1>
+        <h1 style={{
+            color: "#E62D7E",
+            backgroundColor: '#E5E5E5',
+            marginBottom: 0
+          }}>Be your own boss</h1>
+        </div>
+      
       <Grid style={{
         backgroundColor: '#E5E5E5',
         backgroundImage: `url(${bgAgent})`,
