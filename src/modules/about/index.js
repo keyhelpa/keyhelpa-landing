@@ -29,6 +29,7 @@ export class About extends Component {
 
   retrieve(){
     const {user} = this.props.state
+    const {aboutUs} = this.state
     let params = {
       condition:[
         {
@@ -42,6 +43,8 @@ export class About extends Component {
     API.request(Routes.payloadsRetrieve, params, response => {
       if(response.data.length > 0){
         this.setState({aboutUs: response.data[0]})
+        console.log('response', aboutUs)
+
       }
     })
   }

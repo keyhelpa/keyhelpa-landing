@@ -5,6 +5,8 @@ import Button from 'modules/generic/button'
 import bgAgent from 'assets/lighterGray.png'
 import bgHelpa from 'assets/lighterPink.png'
 import './Style.css'
+import API from 'services/Api'
+import Routes from 'common/Routes'
 
 
 export class Landing extends Component {
@@ -12,28 +14,12 @@ export class Landing extends Component {
     super(props)
     this.state={
       theme: 'freelance',
-      details: [
-        {
-          title: 'Create Agency Profile',
-          desc: 'A one-off setup that includes payment details for future work engagements and is editable anytime.',
-        },
-        {
-          title: "Post a job, it's free",
-          desc: "Draft and upload your job requirements then automatically receive proposals from qualified freelancers. Or, browse through profiles."
-        },
-        {
-          title: "Choose a Helpa",
-          desc: "Review Helpa profiles, message in real-time, compare offers and accept what's right for you.          "
-        },
-        {
-          title: "Pay securely & on time",
-          desc: "KeyHelpa's payment system releases payment once job milestones have been completed to satisfaction and authorization to release funds confirmed.          "
-        }
-      ]
+      data: null
     }
   }
   componentDidMount() {
     const {history} = this.props
+    this.retrieve()
     if(history.location.pathname.includes('agent')) {
       console.log('agent')
       this.setState({theme: 'agent'})
@@ -41,7 +27,29 @@ export class Landing extends Component {
       console.log('helpa')
       this.setState({theme: 'helpa'})
     }
-  } 
+  }
+  retrieve(){
+    const {data} = this.state;
+    let params = {
+      condition:[
+        {
+          column: 'payload',
+          clause: '=',
+          value: 'agent'
+        }
+      ]
+    }
+
+    API.request(Routes.payloadsRetrieve, params, response => {
+      if(response.data.length > 0){
+        this.setState({
+          data: response.data
+        })
+        this.forceUpdate()
+        console.log('response', data)
+      }
+    })
+  }
   renderVideo(){
     return(
       <Grid style={{
@@ -222,8 +230,53 @@ export class Landing extends Component {
         </Grid>
     )
   }
+  renderBenefits(){
+    const {theme, data} = this.state;
+    return(
+      <div>
+        <Grid style={{
+        backgroundColor: '#E5E5E5',
+        backgroundImage: `url(${bgAgent})`,
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
+        width: '100%'
+        }} container alignItems={'left'} justifyContent={'left'}>
+        {
+            data.map((item,index)=>{
+              <div key={index}>
+                <Grid item xs={6} style={{
+                padding: '5%',
+                textAlign: 'center'
+                }}>
+                  <img style={{
+                  width: '80%',
+                  height: 'auto',
+                }} src={require('../../assets/agent-i-1.png')}></img>
+                </Grid>
+                <Grid item xs={6} style={{
+                  padding: '5% 5% 5% 5%',
+                  textAlign: 'left'
+                }}>
+                  <h2 style={{
+                    color: ' #34475D'
+                  }}>Find the right help.</h2>
+                  <h2 style={{
+                    color: ' #34475D'
+                  }}>Right Now.</h2>
+                  <p style={{
+                    color: '#34475DA3',
+                    fontSize: '18px'
+                  }}>Quickly and easily access a pool of available and freelancers who are familiar with the real estate and property management industry, the suburbs where you need work done and the job that needs doing. Search profiles for a freelance or browse by skills, years of experience, area, service and more. Then select the type of help and price that's right for you and your agency. No more full-time wages that you don't need to pay - and more money saved.</p>
+                </Grid> 
+              </div>
+            })
+          }
+        </Grid>
+      </div>
+    )
+  }
   renderBenefitsA(){
-    const {theme} = this.state;
+    const {theme, data} = this.state;
     return(
       <div>
       <Grid style={{
@@ -233,7 +286,6 @@ export class Landing extends Component {
         backgroundPosition: 'center',
         width: '100%'
       }} container alignItems={'left'} justifyContent={'left'}>
-
           <Grid item xs={6} style={{
             padding: '5%',
             textAlign: 'center'
@@ -449,21 +501,6 @@ export class Landing extends Component {
     const {theme, agent, freelance} = this.state;
     return(
       <div>
-        {/* { 
-          agent.map((item, index) => {
-            <div key={index} className='tooltip'>
-              {console.log('item', item.class)}
-            <img  className={item.class}
-            src={item.image}></img>
-                <div className='right'>
-                  <h3>{item.actor}</h3>
-                  <p>{item.story}</p>
-                  <i></i>
-                </div>
-            
-            </div>
-          }) 
-        } */}
         <div className={theme === 'helpa' ? 'show' : 'hidden'}>
         <img  className={theme=='helpa' ? 'Helpa' : ''}
         src={require('../../assets/Helpa.png')}></img>
@@ -603,6 +640,9 @@ export class Landing extends Component {
         {
           theme === 'agent' ? this.renderBenefitsA() : this.renderBenefitsF()
         }
+        {
+          // this.renderBenefits()
+        }
         
          
         <Footer/>
@@ -611,11 +651,4 @@ export class Landing extends Component {
   }
 }
 
-// const mapStateToProps = (state) => ({state: state});
-// const mapDispatchToProps = (dispatch) =>{
-//   const { actions } = require('reduxhandler');
-//   return {
-//   }
-// }
-// export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Landing));
 export default Landing
