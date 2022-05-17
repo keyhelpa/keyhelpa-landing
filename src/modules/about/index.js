@@ -11,6 +11,7 @@ export class About extends Component {
     super(props)
     this.state={
       theme: 'agent',
+      
       data: null,
       isLoading: false,
       aboutUs: null

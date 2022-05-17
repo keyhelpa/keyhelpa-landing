@@ -31,6 +31,12 @@
   border-bottom-right-radius: 0;
 }
 
+.banner-agent{
+  z-index: 10!important;
+}
+
+
+
 .widthAgent{
   width: 100%;
   height: 'auto';
@@ -44,22 +50,28 @@
 .agentRobyn{
   margin-top: 5%;
   width: 20%;
+  cursor: pointer;
 }
+
 .agentPaul{
   margin-top: 5%;
   width: 14.24%;
+  cursor: pointer;
 }
 .agentTrevor{
   margin-top: 5%;
   width: 15.74%;
+  cursor: pointer;
 }
 .agentJohn{
   margin-top: 5%;
   width: 20.6%;
+  cursor: pointer;
 }
 .Agent{
   margin-top: 5%;
   width: 29.4%;
+  
 }
 .Helpa{
   margin-top: 5%;
@@ -68,22 +80,27 @@
 .freelanceSarah{
   margin-top: 5%;
   width: 12.25%;
+  cursor: pointer;
 }
 .freelanceAlan{
   margin-top: 5%;
   width: 12.25%;
+  cursor: pointer;
 }
 .freelanceLana{
   margin-top: 5%;
   width: 9.8%;
+  cursor: pointer;
 }
 .freelanceTracey{
   margin-top: 5%;
   width: 9.8%;
+  cursor: pointer;
 }
 .freelanceJohn{
   margin-top: 5%;
   width: 11.85%;
+  cursor: pointer;
 }
 .agentBtn{
   background-color: #34475D;
@@ -97,20 +114,13 @@
   font-size: 24px;
   width: 10%;
 }
+
 /* Tooltip */
 .tooltip {
-  display:inline-block;
-  position:relative;
-  border-bottom:1px dotted #666;
+  display:inline!important;
+  position:relative!important;
   text-align:left;
-  
-  width: 10%;
-  height: 60%;
-  background-color: transparent;
-  border: black 1px solid;
-  position: absolute;
-  bottom: 0;
-  left: 8%;
+  opacity: 1!important;
 }
 
 .tooltip .right {
@@ -120,22 +130,24 @@
   margin-left:20px;
   transform:translate(0, -50%);
   padding:10px 20px;
-  color:#34475D;
-  background-color:#E5E5E5;
+  color:#444444;
+  background-color:#EEEEEE;
   font-weight:normal;
   font-size:13px;
   border-radius:8px;
   position:absolute;
-  z-index:99999999;
   box-sizing:border-box;
   box-shadow:0 1px 8px rgba(0,0,0,0.5);
   display:none;
-}
 
+  z-index: 10!important;
+}
 .tooltip:hover .right {
   display:block;
 }
-
+.tooltip{
+  z-index: auto!important;
+}
 .tooltip .right i {
   position:absolute;
   top:50%;
@@ -144,6 +156,7 @@
   width:12px;
   height:24px;
   overflow:hidden;
+  z-index: 10!important;
 }
 
 .tooltip .right i::after {
@@ -154,6 +167,17 @@
   left:0;
   top:50%;
   transform:translate(50%,-50%) rotate(-45deg);
-  background-color:#E5E5E5;
+  background-color:#EEEEEE;
   box-shadow:0 1px 8px rgba(0,0,0,0.5);
+  z-index: 10!important;
+}
+img{
+  z-index: -1!important;
+}
+.hidden{
+  display: none;
+}
+.show{
+  display: block;
+  display: inline;
 }
