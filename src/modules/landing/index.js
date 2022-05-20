@@ -15,6 +15,7 @@ export class Landing extends Component {
     this.state={
       theme: 'freelance',
       data: null,
+      features: [],
       hasFetched: false
     }
   }
@@ -127,19 +128,20 @@ export class Landing extends Component {
               }
              
             </Grid>
-            {/* <Grid item xs={3} textAlign={'center'} padding={'5%'} >
-              <div style={{marginTop: '25px'}}>
-                <iframe  width="300" height="250" src="https://www.youtube.com/embed/iqlH4okiQqg?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-              </div>
-  
-            <iframe width="300" height="250" src="https://www.youtube.com/embed/iqlH4okiQqg?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </Grid> */}
         </Grid>
      </div>
       );
   }
   renderFeatures(){
-    const {theme} =  this.state;
+    const {theme, data, features} =  this.state;
+    {
+      data.map((item, index) => {
+        if(item.payload_value.features != null || item.payload_value.features != undefined){
+          features.push(item.payload_value.features)
+        }
+      })
+    }
+    if(features.length > 0){
     return(
       <Grid style={{
         backgroundColor: '#E5E5E5',
@@ -148,107 +150,100 @@ export class Landing extends Component {
         backgroundPosition: 'center',
         width: '100%'
       }} container alignItems={'center'} justifyContent={'center'}>
+        {
+          features.map((item, index) => {
+            console.log('features', item);
+            if(index != 3){
+              // circle with arrows
+              if(index % 2 === 0){
+                return(
+                  // pointing up
+                    <Grid item xs={3} style={{
+                      padding: '5% 0% 5% 5%',
+                      textAlign: 'center'
+                    }}>
 
-        <Grid item xs={3} style={{
-            padding: '5% 0% 5% 5%',
-            textAlign: 'center'
-          }}>
-
-          <h3 style={{
-                color: '#34475DA3',
-                paddingTop: '10%'
-              }}>A one-off setup that includes payment details for future work engagements and is editable anytime.</h3>
-          <div style={{
-            position: 'relative'
-          }}>
-            <img style={{
-              display: 'flex',
-              width: '100%',
-              height: 'auto',
-            }} src={theme =='agent' ? require('../../assets/agent-web-1.png') : require('../../assets/helpa-web-1.png')}></img>
-            <h3 style={{
-              position: 'absolute',
-              left: '50%',
-              top: '50%',
-              transform: 'translate(-50%, -50%)',
-              color: '#34475D'
-            }}>Create Agency Profile</h3>
-            </div>
-          </Grid>
-
-          <Grid item xs={3} style={{
-            padding: '0% 0% 5% 5%',
-            textAlign: 'center'
-          }}>
-          <div style={{
-            position: 'relative'
-          }}>
-            <img style={{
-            width: '100%',
-            height: 'auto',
-          }} src={theme =='agent' ? require('../../assets/agent-web-2.png') : require('../../assets/helpa-web-2.png')}></img>
-          <h3 style={{
-              position: 'absolute',
-              left: '50%',
-              top: '50%',
-              transform: 'translate(-50%, -50%)',
-              color: '#34475D'
-            }}>Post a job, it's free</h3>
-          </div>
-            
-            <h3 style={{
-                color: '#34475DA3'
-              }}>Draft and upload your job requirements then automatically receive proposals from qualified freelancers. Or, browse through profiles.</h3>
-            
-          </Grid>
-
-          <Grid item xs={3} style={{
-            padding: '5% 0% 0% 5%',
-            textAlign: 'center'
-          }}>
-            <h3 style={{
-                color: '#34475DA3'
-              }}>Review Helpa profiles, message in real-time, compare offers and accept what's right for you.</h3>
-          <div style={{
-            position: 'relative'
-          }}>
-          <img style={{
-            width: '100%',
-            height: 'auto',
-          }} src={theme =='agent' ? require('../../assets/agent-web-3.png') : require('../../assets/helpa-web-3.png')}></img>
-          <h3 style={{
-              position: 'absolute',
-              left: '50%',
-              top: '50%',
-              transform: 'translate(-50%, -50%)',
-              color: '#34475D'
-            }}>Choose a Helpa</h3>
-          </div>
-          </Grid>
-
-          <Grid item xs={3} style={{
-            padding: '0% 5% 5% 5%',
-            textAlign: 'center'
-          }}>
-            <div style={{
-              position: 'relative'
-            }}>
-            <img style={{
-            width: '100%',
-            height: 'auto',
-          }} src={theme =='agent' ? require('../../assets/agent-web-4.png') : require('../../assets/helpa-web-4.png')}></img>
-            <h3 style={{
-              position: 'absolute',
-              left: '50%',
-              top: '50%',
-              transform: 'translate(-50%, -50%)',
-              color: '#34475D'
-            }}>Pay securely & on time</h3>
-            </div>
-            <h3 style={{
-                color: '#34475DA3'
-              }}>KeyHelpa's payment system releases payment once job milestones have been completed to satisfaction and authorization to release funds confirmed.</h3>
-          </Grid>
+                    <h3 style={{
+                          color: '#34475DA3',
+                          paddingTop: '10%'
+                        }}>{item.description}</h3>
+                    <div style={{
+                      position: 'relative'
+                    }}>
+                      <img style={{
+                        display: 'flex',
+                        height: 'auto',
+                      }} src={theme =='agent' ? require('../../assets/uniform_images/agent-circle.png') : require('../../assets/uniform_images/helpa-circle.png')}></img>
+                      <h3 style={{
+                        position: 'absolute',
+                        left: '50%',
+                        top: '50%',
+                        transform: 'translate(-50%, -50%)',
+                        color: '#34475D'
+                      }}>{item.title}</h3>
+                      </div>
+                    </Grid>
+                );
+              }else{
+                // pointing down
+                return(
+                  <Grid item xs={3} style={{
+                    padding: '0% 0% 5% 5%',
+                    textAlign: 'center'
+                  }}>
+                  <div style={{
+                    position: 'relative'
+                  }}>
+                    <img style={{
+                    width: '100%',
+                    height: 'auto',
+                  }} src={theme =='agent' ? require('../../assets/uniform_images/agent-circle-1.png') : require('../../assets/uniform_images/helpa-circle-1.png')}></img>
+                  <h3 style={{
+                      position: 'absolute',
+                      left: '50%',
+                      top: '50%',
+                      transform: 'translate(-50%, -50%)',
+                      color: '#34475D'
+                    }}>{item.title}</h3>
+                  </div>
+                    
+                    <h3 style={{
+                        color: '#34475DA3'
+                      }}>{item.description}</h3>
+                    
+                  </Grid>
+                )
+              }
+            }else{
+              return(
+                // last circle
+                <Grid item xs={3} style={{
+                  padding: '0% 5% 5% 5%',
+                  textAlign: 'center'
+                }}>
+                  <div style={{
+                    position: 'relative'
+                  }}>
+                  <img style={{
+                  width: '100%',
+                  height: 'auto',
+                }} src={theme =='agent' ? require('../../assets/uniform_images/agent-circle-2.png') : require('../../assets/uniform_images/helpa-circle-2.png')}></img>
+                  <h3 style={{
+                    position: 'absolute',
+                    left: '50%',
+                    top: '50%',
+                    transform: 'translate(-50%, -50%)',
+                    color: '#34475D'
+                  }}>{item.title}</h3>
+                  </div>
+                  <h3 style={{
+                      color: '#34475DA3'
+                    }}>{item.description}</h3>
+                </Grid>
+              );
+            }
+          })
+        }
           <Button
           title={'Get Started'}
           style={theme==='agent' ? {
@@ -260,7 +255,7 @@ export class Landing extends Component {
           width: '10%'}}
           ></Button>
         </Grid>
-    )
+    )}
   }
   renderBenefits(){
     const {theme, data} = this.state;
