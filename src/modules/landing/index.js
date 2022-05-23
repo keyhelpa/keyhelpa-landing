@@ -21,7 +21,6 @@ export class Landing extends Component {
   }
   componentDidMount() {
     const {history} = this.props
-
     this.retrieve()
     if(history.location.pathname.includes('agent')) {
       console.log('agent')
@@ -32,26 +31,29 @@ export class Landing extends Component {
     }
   }
   retrieve(){
-    const {data} = this.state;
-    let params = {
+    const {theme} = this.state
+    let param = {
       condition:[
         {
           column: 'payload',
           clause: '=',
-          value: 'agent'
+          value: theme === 'agent' ? 'agent' : 'freelance'
         }
       ]
     }
-    API.request(Routes.payloadsRetrieve, params, response => {
+    API.request(Routes.payloadsRetrieve, param, response => {
       if(response.data.length > 0){
         this.setState({
           ...this.state,
           data: response.data,
           hasFetched: true
         })
+      console.log('here', response.data)
+
       }
     })
   }
+  // modify based on theme with database values
   componentWillUnmount(){
     this._isFetching = false;
   }
@@ -302,6 +304,9 @@ export class Landing extends Component {
       </div>
     )
   }
+  renderBenefits(){
+
+  }
   renderBenefitsA(){
     const {theme, data} = this.state;
     return(
@@ -525,7 +530,7 @@ export class Landing extends Component {
     )
   }
   renderBanner(){
-    const {theme, agent, freelance} = this.state;
+    const {theme} = this.state;
     return(
       <div>
         <div className={theme === 'helpa' ? 'show' : 'hidden'}>
@@ -665,13 +670,13 @@ export class Landing extends Component {
             this.renderBanner()
           }
           {
-            this.renderVideo()
+            // this.renderVideo()
           }
           {
-            this.renderFeatures()
+            // this.renderFeatures()
           }
           {
-            theme === 'agent' ? this.renderBenefitsA() : this.renderBenefitsF()
+            // theme === 'agent' ? this.renderBenefitsA() : this.renderBenefitsF()
           }
           {
             // console.log(data)
