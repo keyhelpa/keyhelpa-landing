@@ -32,3 +32,14 @@
   color: #34475D !important;
   border-radius: 20px !important;
 }
+
+@media (max-width: 991px){
+  .contents.helpa, .contents.agent{
+    display:block;
+  }
+  .form-helpa{
+    padding-bottom: 15%;
+    margin-bottom: 10%;
+    margin-top: 10%;
+  }
+}
