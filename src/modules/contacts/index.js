@@ -175,7 +175,7 @@ export class Contacts extends Component {
           </Form.Group>
         </Form>
         <div>
-          <p>Captcha</p>
+          {/* <p>Captcha</p> */}
           <Button style={{float: 'right'}} className="btn-submit" onClick={() => this.handleSubmit()}>Submit</Button>
         </div>
       </div>

@@ -2,14 +2,14 @@ import logo from './logo.svg';
 import './App.css';
 import Header from './modules/generic/frames/loginHeader'
 import RouteList from './modules/routes';
+import Sidebar from './modules/generic/frames/sidebar';
 import React, { useState } from 'react';
 import { Paper } from '@mui/material';
 import { connect } from 'react-redux'
 
 function App(props) {
-  const {loginRightMenu} = props.state
+  const {loginRightMenu, loginLeftMenu} = props.state
   const [showMenu, setShowMenu] = useState(false)
-  console.log('===', loginRightMenu);
   return (
     <div className="App">
       <React.Fragment>
@@ -22,6 +22,23 @@ function App(props) {
           }}
           userType = {localStorage.getItem('user_type')}
         />
+        {
+              showMenu && (
+                <div style={{
+                  float: 'left',
+                  width: '100vh'
+                }}
+                className={"navigation-mobile " + (showMenu ? 'show-menu' : '')}
+                >
+                  <Sidebar {...props}
+                    loginRightMenu = {[...loginLeftMenu, ...loginRightMenu]}
+                    onClick={() => {
+                      setShowMenu(false)
+                    }}
+                  />
+                </div>
+              )
+            }
           <RouteList/>
       </React.Fragment>
     </div>

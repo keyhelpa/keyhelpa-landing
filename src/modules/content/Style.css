@@ -121,3 +121,24 @@
 .textRight:active h1{
   display: none;
 }
+
+@media (max-width: 991px){
+  .textLeft, .textRight{
+    width: 15%;
+  }
+  .landing-image{
+    width: 70%;
+    height: auto;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    top: 40%;
+    z-index: 500;
+    transition: transform .2s
+  }
+  
+  .landing-image:hover{
+     transform:scale(1.5)
+  }
+}
