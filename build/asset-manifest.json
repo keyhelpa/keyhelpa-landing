@@ -1,0 +1,39 @@
+{
+  "files": {
+    "main.css": "/static/css/main.b3588b64.css",
+    "main.js": "/static/js/main.c6e0782d.js",
+    "static/media/landing_banner.png": "/static/media/landing_banner.ffaf29cbd163a05cd80e.png",
+    "static/media/image_pink.png": "/static/media/image_pink.712e800d704aa7dc829b.png",
+    "static/media/image_gray.png": "/static/media/image_gray.41e64f479c916554aef2.png",
+    "static/media/helpa-circle.png": "/static/media/helpa-circle.34e54f687e5689b1b591.png",
+    "static/media/helpa-circle-1.png": "/static/media/helpa-circle-1.06a8ecffa40d4cf9fca9.png",
+    "static/media/agent-circle.png": "/static/media/agent-circle.e8ba079ae3738499107a.png",
+    "static/media/agent-circle-1.png": "/static/media/agent-circle-1.466d293b030a9a3feb57.png",
+    "static/media/helpa-circle-2.png": "/static/media/helpa-circle-2.2f3878be6a9a6bf9dfe7.png",
+    "static/media/agent-circle-2.png": "/static/media/agent-circle-2.2d5b602014adda360077.png",
+    "static/media/Helpa.png": "/static/media/Helpa.339d8b834037e9f1abf7.png",
+    "static/media/Agent.png": "/static/media/Agent.1a36e1d25e28768e4653.png",
+    "static/media/man-gray.png": "/static/media/man-gray.80d4f1f5e14d5f8bb2df.png",
+    "static/media/man-pink.png": "/static/media/man-pink.dddf9e16e706a18e5630.png",
+    "static/media/JohnAgent.png": "/static/media/JohnAgent.c986cf749734500d2b05.png",
+    "static/media/Sarah.png": "/static/media/Sarah.cb7414ecf284f3ab5023.png",
+    "static/media/Alan.png": "/static/media/Alan.18ad5b97c231eafd72f6.png",
+    "static/media/Paul.png": "/static/media/Paul.cddebee66fce8c5af6eb.png",
+    "static/media/Trevor.png": "/static/media/Trevor.a4fccbf917586c65cded.png",
+    "static/media/Robyn.png": "/static/media/Robyn.19560f30fa152906fafa.png",
+    "static/media/Tracey.png": "/static/media/Tracey.58534de36c0ae3016462.png",
+    "static/media/agent-i-3.png": "/static/media/agent-i-3.37614b434da5b8e38dd8.png",
+    "static/media/JohnHelpa.png": "/static/media/JohnHelpa.24ddae04bb43434d54df.png",
+    "static/media/Illustration investment.png": "/static/media/Illustration investment.e8649e5f3bb0c7b7173b.png",
+    "static/media/agent-i-1.png": "/static/media/agent-i-1.0c92aac9517c78df9ff0.png",
+    "static/media/Lana.png": "/static/media/Lana.f3390d1e0308599d6327.png",
+    "static/media/logo.svg": "/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/index.html",
+    "main.b3588b64.css.map": "/static/css/main.b3588b64.css.map",
+    "main.c6e0782d.js.map": "/static/js/main.c6e0782d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b3588b64.css",
+    "static/js/main.c6e0782d.js"
+  ]
+}

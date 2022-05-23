@@ -2,17 +2,26 @@ import logo from './logo.svg';
 import './App.css';
 import Header from './modules/generic/frames/loginHeader'
 import RouteList from './modules/routes';
-import React from 'react';
+import React, { useState } from 'react';
 import { Paper } from '@mui/material';
 import { connect } from 'react-redux'
 
 function App(props) {
   const {loginRightMenu} = props.state
+  const [showMenu, setShowMenu] = useState(false)
   console.log('===', loginRightMenu);
   return (
     <div className="App">
       <React.Fragment>
-        <Header {...props}/>
+        <Header {...props}
+          toggleMenu={() => {
+            setShowMenu(!showMenu)
+          }}
+          showDropdownMenu={() => {
+            setIsDropdownMenu(!isDropdownMenu)
+          }}
+          userType = {localStorage.getItem('user_type')}
+        />
           <RouteList/>
       </React.Fragment>
     </div>

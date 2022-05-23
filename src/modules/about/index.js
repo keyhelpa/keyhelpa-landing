@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Footer from 'modules/generic/frames/footer.js'
 import Routes from 'common/Routes'
-import API from 'services/Api'
+import API from 'services/api'
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
 export class About extends Component {
   constructor(props){

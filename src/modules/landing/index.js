@@ -5,7 +5,7 @@ import Button from 'modules/generic/button'
 import bgAgent from 'assets/lighterGray.png'
 import bgHelpa from 'assets/lighterPink.png'
 import './Style.css'
-import API from 'services/Api'
+import API from 'services/api'
 import Routes from 'common/Routes'
 
 

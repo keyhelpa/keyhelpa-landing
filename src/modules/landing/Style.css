@@ -171,9 +171,7 @@
   box-shadow:0 1px 8px rgba(0,0,0,0.5);
   z-index: 10!important;
 }
-img{
-  z-index: -1!important;
-}
+
 .hidden{
   display: none;
 }

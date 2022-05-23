@@ -5,7 +5,7 @@ import Strings from 'modules/generic/helper/String'
 import TextField from '@mui/material/TextField';
 import './Style.css'
 import Routes from 'common/Routes'
-import API from 'services/Api'
+import API from 'services/api'
 import Footer from 'modules/generic/frames/footer.js'
 import { Button, Form } from 'react-bootstrap';
 import countryCodes from 'country-codes-list'
