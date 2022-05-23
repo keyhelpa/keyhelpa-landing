@@ -96,7 +96,15 @@ const reducer = (state = initialState, action) => {
       }else if(state.selectedUser === 'helpa'){
         color = '#f290bb'
       }else{
-        color = null
+        if(userTypes){
+          if(userTypes === 'helpa'){
+            color = '#f290bb'
+          }else if(userTypes === 'agent'){
+            color = '#59687A'
+          }else{
+            color = null
+          }
+        }
       }
       return {
         ...state,
