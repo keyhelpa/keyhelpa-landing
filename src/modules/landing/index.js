@@ -13,9 +13,10 @@ export class Landing extends Component {
   constructor(props) {
     super(props)
     this.state={
-      theme: 'freelance',
+      theme: 'agent',
       data: null,
       features: [],
+      others: [],
       hasFetched: false
     }
   }
@@ -32,12 +33,14 @@ export class Landing extends Component {
   }
   retrieve(){
     const {theme} = this.state
+    let status = theme
     let param = {
       condition:[
         {
           column: 'payload',
           clause: '=',
-          value: theme === 'agent' ? 'agent' : 'freelance'
+          value: status
+          // value: 'agent'
         }
       ]
     }
@@ -91,14 +94,13 @@ export class Landing extends Component {
                   return(
                   <div key={index} style={{
                     display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center', 
+                    justifyContent: 'right',
                     flexBasis: '100%',
                   }}>
                     <Box sx={{
                       display: 'flex',
                       justifyContent: 'center',
-                      alignItems: 'center', 
+                      textAlign: 'right',
                       flexDirection: 'column',
                       marginRight: '25px'
                     }}>
@@ -120,7 +122,7 @@ export class Landing extends Component {
                       <div style={{
                           marginTop: '25px',
                         }}>
-                          <iframe  width="300" height="250" src={item.payload_value.helps.url} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                          <iframe  width="400" height="300" src={`${item.payload_value.helps.url}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
                     </Box> 
                   </div>
@@ -260,9 +262,16 @@ export class Landing extends Component {
     )}
   }
   renderBenefits(){
-    const {theme, data} = this.state;
-    return(
-      <div>
+    const {theme, data, others} = this.state;
+    data.map((item, index)=> {
+      if(item.payload_value.others != null || item.payload_value.others != undefined){
+        others.push(item)
+        console.log('others', others)
+      }
+    })
+    if(others.length > 0){
+      return(
+        <div>
         <Grid style={{
         backgroundColor: '#E5E5E5',
         backgroundImage: `url(${bgAgent})`,
@@ -271,41 +280,68 @@ export class Landing extends Component {
         width: '100%'
         }} container alignItems={'left'} justifyContent={'left'}>
         {
-            data.map((item,index)=>{
-              <div key={index}>
-                <Grid item xs={6} style={{
-                padding: '5%',
-                textAlign: 'center'
-                }}>
-                  <img style={{
-                  width: '80%',
-                  height: 'auto',
-                }} src={require('../../assets/agent-i-1.png')}></img>
-                </Grid>
-                <Grid item xs={6} style={{
-                  padding: '5% 5% 5% 5%',
-                  textAlign: 'left'
-                }}>
-                  <h2 style={{
-                    color: ' #34475D'
-                  }}>Find the right help.</h2>
-                  <h2 style={{
-                    color: ' #34475D'
-                  }}>Right Now.</h2>
-                  <p style={{
-                    color: '#34475DA3',
-                    fontSize: '18px'
-                  }}>Quickly and easily access a pool of available and freelancers who are familiar with the real estate and property management industry, the suburbs where you need work done and the job that needs doing. Search profiles for a freelance or browse by skills, years of experience, area, service and more. Then select the type of help and price that's right for you and your agency. No more full-time wages that you don't need to pay - and more money saved.</p>
-                </Grid> 
-              </div>
+            others.map((item,index)=>{
+              if(index % 2 === 0){
+                return(
+                  // img left
+                  <div key={index}>
+                    <Grid item xs={6} style={{
+                    padding: '5%',
+                    textAlign: 'center'
+                    }}>
+                      <img style={{
+                      width: '80%',
+                      height: 'auto',
+                    }} src={require('../../assets/agent-i-1.png')}></img>
+                    </Grid>
+                    <Grid item xs={6} style={{
+                      padding: '5% 5% 5% 5%',
+                      textAlign: 'left'
+                    }}>
+                      <h2 style={{
+                        color: ' #34475D'
+                      }}>{item.payload_value.others.title}</h2>
+                      <p style={{
+                        color: '#34475DA3',
+                        fontSize: '18px'
+                      }}>{item.payload_value.others.description}</p>
+                    </Grid> 
+                  </div>
+                )
+              }else{
+                return(
+                  // img right
+                  <div>
+                    <Grid item xs={6} style={{
+                        padding: '5% 5% 5% 5%',
+                        textAlign: 'left'
+                      }}>
+                        <h2 style={{
+                          color: ' #34475D'
+                        }}>{item.payload_value.others.title}</h2>
+                        <p style={{
+                          color: '#34475DA3',
+                          fontSize: '18px'
+                        }}>{item.payload_value.others.description}</p>
+                      </Grid>
+                      <Grid item xs={6} style={{
+                        padding: '5%',
+                        textAlign: 'center'
+                      }}>
+                        <img style={{
+                        width: '80%',
+                        height: 'auto',
+                      }} src={require('../../assets/agent-i-2.png')}></img>
+                      </Grid>
+                  </div>
+                )
+              }
             })
           }
         </Grid>
       </div>
-    )
-  }
-  renderBenefits(){
-
+      )
+    }
   }
   renderBenefitsA(){
     const {theme, data} = this.state;
@@ -660,7 +696,11 @@ export class Landing extends Component {
     const {theme, hasFetched} = this.state
     if(!hasFetched){
       return (
-        <h3>Loading...</h3>
+        <h3 style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}>Loading...</h3>
       )
     }else{
       return (
@@ -670,13 +710,16 @@ export class Landing extends Component {
             this.renderBanner()
           }
           {
-            // this.renderVideo()
+            this.renderVideo()
           }
           {
-            // this.renderFeatures()
+            this.renderFeatures()
           }
           {
-            // theme === 'agent' ? this.renderBenefitsA() : this.renderBenefitsF()
+            // this.renderBenefits()
+          }
+          {
+            theme === 'agent' ? this.renderBenefitsA() : this.renderBenefitsF()
           }
           {
             // console.log(data)
