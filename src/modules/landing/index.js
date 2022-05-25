@@ -284,17 +284,19 @@ export class Landing extends Component {
               if(index % 2 === 0){
                 return(
                   // img left
-                  <div key={index}>
+                  <div key={index} style={{
+                    display: 'flex'
+                  }}>
                     <Grid item xs={6} style={{
                     padding: '5%',
-                    textAlign: 'center'
+                    textAlign: 'center',
                     }}>
                       <img style={{
                       width: '80%',
                       height: 'auto',
                     }} src={require('../../assets/agent-i-1.png')}></img>
                     </Grid>
-                    <Grid item xs={6} style={{
+                    <Grid item xs={4} style={{
                       padding: '5% 5% 5% 5%',
                       textAlign: 'left'
                     }}>
@@ -311,7 +313,9 @@ export class Landing extends Component {
               }else{
                 return(
                   // img right
-                  <div>
+                  <div style={{
+                    display: 'flex'
+                  }}>
                     <Grid item xs={6} style={{
                         padding: '5% 5% 5% 5%',
                         textAlign: 'left'
@@ -716,10 +720,10 @@ export class Landing extends Component {
             this.renderFeatures()
           }
           {
-            // this.renderBenefits()
+            this.renderBenefits()
           }
           {
-            theme === 'agent' ? this.renderBenefitsA() : this.renderBenefitsF()
+            // theme === 'agent' ? this.renderBenefitsA() : this.renderBenefitsF()
           }
           {
             // console.log(data)
