@@ -13,7 +13,7 @@ export class Landing extends Component {
   constructor(props) {
     super(props)
     this.state={
-      theme: 'agent',
+      theme: '',
       data: null,
       features: [],
       others: [],
@@ -51,7 +51,7 @@ export class Landing extends Component {
           data: response.data,
           hasFetched: true
         })
-      console.log('here', response.data)
+      console.log('here', status)
 
       }
     })
@@ -284,17 +284,19 @@ export class Landing extends Component {
               if(index % 2 === 0){
                 return(
                   // img left
-                  <div key={index}>
+                  <div key={index} style={{
+                    display: 'flex'
+                  }}>
                     <Grid item xs={6} style={{
                     padding: '5%',
-                    textAlign: 'center'
+                    textAlign: 'center',
                     }}>
                       <img style={{
                       width: '80%',
                       height: 'auto',
-                    }} src={require('../../assets/agent-i-1.png')}></img>
+                    }} src={`${item.payload_value.others.url}`}></img>
                     </Grid>
-                    <Grid item xs={6} style={{
+                    <Grid item xs={4} style={{
                       padding: '5% 5% 5% 5%',
                       textAlign: 'left'
                     }}>
@@ -311,7 +313,9 @@ export class Landing extends Component {
               }else{
                 return(
                   // img right
-                  <div>
+                  <div style={{
+                    display: 'flex'
+                  }}>
                     <Grid item xs={6} style={{
                         padding: '5% 5% 5% 5%',
                         textAlign: 'left'
@@ -331,7 +335,7 @@ export class Landing extends Component {
                         <img style={{
                         width: '80%',
                         height: 'auto',
-                      }} src={require('../../assets/agent-i-2.png')}></img>
+                      }} src={`${item.payload_value.others.url}`}></img>
                       </Grid>
                   </div>
                 )
@@ -342,228 +346,6 @@ export class Landing extends Component {
       </div>
       )
     }
-  }
-  renderBenefitsA(){
-    const {theme, data} = this.state;
-    return(
-      <div>
-      <Grid style={{
-        backgroundColor: '#E5E5E5',
-        backgroundImage: `url(${bgAgent})`,
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'center',
-        width: '100%'
-      }} container alignItems={'left'} justifyContent={'left'}>
-          <Grid item xs={6} style={{
-            padding: '5%',
-            textAlign: 'center'
-          }}>
-            <img style={{
-            width: '80%',
-            height: 'auto',
-          }} src={require('../../assets/agent-i-1.png')}></img>
-          </Grid>
-          <Grid item xs={6} style={{
-            padding: '5% 5% 5% 5%',
-            textAlign: 'left'
-          }}>
-            <h2 style={{
-              color: ' #34475D'
-            }}>Find the right help.</h2>
-            <h2 style={{
-              color: ' #34475D'
-            }}>Right Now.</h2>
-            <p style={{
-              color: '#34475DA3',
-              fontSize: '18px'
-            }}>Quickly and easily access a pool of available and freelancers who are familiar with the real estate and property management industry, the suburbs where you need work done and the job that needs doing. Search profiles for a freelance or browse by skills, years of experience, area, service and more. Then select the type of help and price that's right for you and your agency. No more full-time wages that you don't need to pay - and more money saved.</p>
-          </Grid>
-          
-          
-          <Grid item xs={6} style={{
-            padding: '5% 5% 5% 5%',
-            textAlign: 'left'
-          }}>
-            <h2 style={{
-              color: ' #34475D'
-            }}>Total Control.</h2>
-            <h2 style={{
-              color: ' #34475D'
-            }}>Cosntant Contact.</h2>
-            <p style={{
-              color: '#34475DA3',
-              fontSize: '18px'
-            }}>Send instant messages to the person you choose as your Helpa. Once a job has been offered and accepted, you can automatically privately message one another so you’re in constant contact throughout. You’re in total control to communicate as and when you need to.</p>
-          </Grid>
-          <Grid item xs={6} style={{
-            padding: '5%',
-            textAlign: 'center'
-          }}>
-            <img style={{
-            width: '80%',
-            height: 'auto',
-          }} src={require('../../assets/agent-i-2.png')}></img>
-          </Grid>
-
-          <Grid item xs={6} style={{
-            padding: '5%',
-            textAlign: 'center'
-          }}>
-            <img style={{
-            width: '80%',
-            height: 'auto',
-          }} src={require('../../assets/agent-i-3.png')}></img>
-          </Grid>
-          <Grid item xs={6} style={{
-            padding: '5%',
-            textAlign: 'left'
-          }}>
-            <h2 style={{
-              color: ' #34475D'
-            }}>Your investment.</h2>
-            <h2 style={{
-              color: ' #34475D'
-            }}>Protected.</h2>
-            <p style={{
-              color: '#34475DA3',
-              fontSize: '18px'
-            }}>Once your job has been accepted by a Helpa, the agreed payment is securely held by Key Helpas' payment system. Only once the job has been completed to your satisfaction, do you authorise for your Helpa's funds to be released. With the touch of a button, you can approve for a payment to be automatically distributed in the next payment run. So you can get the help you need knowing that your investment is protected.</p>
-          </Grid>
-            
-      </Grid>
-      <Box sx={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center', 
-        backgroundColor: '#E5E5E5',
-        backgroundPosition: 'center',
-        width: '100%',
-        height: '30vh',}}>
-      <Button
-          title={'Get Started'}
-          style={theme==='agent' ? {
-          backgroundColor: '#34475D',color: 'white',
-          fontSize: '24px',
-          width: '10%',
-          } : {
-          backgroundColor: '#E62D7E',color: 'white',
-          fontSize: '24px',
-          width: '10%'}}
-          ></Button>
-      </Box>
-      </div>
-    )
-  }
-  renderBenefitsF(){
-    const {theme} = this.state;
-    return(
-      <div>
-        <div style={{
-          display: 'flex',
-          justifyContent: 'center',
-          backgroundColor: '#E5E5E5'
-        }}>
-        <h1 style={{
-        backgroundColor: '#E5E5E5',
-        marginBottom: 0
-        }}>Lifestyle. Choose your days, hours. </h1>
-        <h1 style={{
-            color: "#E62D7E",
-            backgroundColor: '#E5E5E5',
-            marginBottom: 0
-          }}>Be your own boss</h1>
-        </div>
-      
-      <Grid style={{
-        backgroundColor: '#E5E5E5',
-        backgroundImage: `url(${bgAgent})`,
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'center',
-        width: '100%'
-      }} container alignItems={'left'} justifyContent={'left'}>
-        
-          <Grid item xs={6} style={{
-            padding: '5%',
-            textAlign: 'center'
-          }}>
-            <img style={{
-            width: '80%',
-            height: 'auto',
-          }} src={require('../../assets/Illustration contact.png')}></img>
-          </Grid>
-          <Grid item xs={6} style={{
-            padding: '5% 5% 5% 5%',
-            textAlign: 'left'
-          }}>
-            <h2 style={{
-              color: ' #34475D'
-            }}>Total Control.</h2>
-            <h2 style={{
-              color: ' #34475D'
-            }}>Constant Contact.</h2>
-            <p style={{
-              color: '#34475DA3',
-              fontSize: '18px'
-            }}>Send instant messages to the person you choose as your Helpa. Once a job has been offered and accepted, you can automatically privately message one another so you’re in constant contact throughout. You’re in total control to communicate as and when you need to.</p>
-          </Grid>
-          
-          
-          <Grid item xs={6} style={{
-            padding: '5%',
-            textAlign: 'left'
-          }}>
-            <h2 style={{
-              color: ' #34475D'
-            }}>Your investment.</h2>
-            <h2 style={{
-              color: ' #34475D'
-            }}>Protected.</h2>
-            <p style={{
-              color: '#34475DA3',
-              fontSize: '18px'
-            }}>Once your job has been accepted by a Helpa, the agreed payment is securely held by Key Helpas' payment system. Only once the job has been completed to your satisfaction, do you authorise for your Helpa's funds to be released. With the touch of a button, you can approve for a payment to be automatically distributed in the next payment run. So you can get the help you need knowing that your investment is protected.</p>
-          </Grid>
-          <Grid item xs={6} style={{
-            padding: '5%',
-            textAlign: 'center'
-          }}>
-            <img style={{
-            width: '80%',
-            height: 'auto',
-          }} src={require('../../assets/Illustration investment.png')}></img>
-          </Grid>
-      </Grid>
-      <Grid style={{
-        backgroundColor: '#E5E5E5',
-        backgroundImage: `url(${bgAgent})`,
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'center',
-        width: '100%'
-      }} alignItems={'center'} justifyContent={'center'}>
-      </Grid>
-      <Box sx={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center', 
-        backgroundColor: '#E5E5E5',
-        backgroundPosition: 'center',
-        width: '100%',
-        height: '30vh',}}>
-      <Button
-          title={'Get Started'}
-          style={theme==='agent' ? {
-          backgroundColor: '#34475D',color: 'white',
-          fontSize: '24px',
-          width: '10%',
-          } : {
-          backgroundColor: '#E62D7E',color: 'white',
-          fontSize: '24px',
-          width: '10%'}}
-          ></Button>
-      </Box>
-      </div>
-      
-    )
   }
   renderBanner(){
     const {theme} = this.state;
@@ -716,10 +498,10 @@ export class Landing extends Component {
             this.renderFeatures()
           }
           {
-            // this.renderBenefits()
+            this.renderBenefits()
           }
           {
-            theme === 'agent' ? this.renderBenefitsA() : this.renderBenefitsF()
+            // theme === 'agent' ? this.renderBenefitsA() : this.renderBenefitsF()
           }
           {
             // console.log(data)
