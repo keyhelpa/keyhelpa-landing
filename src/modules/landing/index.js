@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import Footer from 'modules/generic/frames/footer.js'
+import Features from 'modules/landing/features.js'
+import Video from 'modules/landing/video.js'
+import Others from 'modules/landing/others.js'
 import { Container, Box, Grid } from '@mui/material';
 import Button from 'modules/generic/button'
 import bgAgent from 'assets/lighterGray.png'
@@ -13,7 +16,7 @@ export class Landing extends Component {
   constructor(props) {
     super(props)
     this.state={
-      theme: '',
+      theme: 'agent',
       data: null,
       features: [],
       others: [],
@@ -40,7 +43,6 @@ export class Landing extends Component {
           column: 'payload',
           clause: '=',
           value: status
-          // value: 'agent'
         }
       ]
     }
@@ -52,214 +54,12 @@ export class Landing extends Component {
           hasFetched: true
         })
       console.log('here', status)
-
       }
     })
   }
   // modify based on theme with database values
   componentWillUnmount(){
     this._isFetching = false;
-  }
-  renderVideo(){
-    const {data} = this.state;
-    return(
-      <div>
-        <Grid style={{
-          backgroundColor: '#E5E5E5',
-          backgroundImage: `url(${bgAgent})`,
-          backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'center',
-          width: '100%'
-        }} container alignItems={'center'} justifyContent={'center'} >
-            <Grid item xs={6} style={{
-              padding: '5%',
-              textAlign: 'left'
-            }}>
-                <h1 className='h1-lg' style={{
-                  fontSize: '80px',
-                  fontWeight: 'bold',
-                  color: '#34475D',
-                }}>What do you need a Helpa for?</h1>
-                <h3 style={{
-                  color: '#34475DA3'
-                }}>Do you need help with your property opens this weekend? Need more manpower to complete your inspection reports? Let KeyHelpa find the freelance help you need.</h3>
-            </Grid>
-            <Grid item style={{
-              display: 'flex',
-              flexWrap: 'wrap',
-            }} xs={6} textAlign={'right'} padding={'5%'} direction={'row'}>
-              {
-                data.map((item, index) => {
-                if(item.payload_value.helps != undefined){
-                  return(
-                  <div key={index} style={{
-                    display: 'flex',
-                    justifyContent: 'right',
-                    flexBasis: '100%',
-                  }}>
-                    <Box sx={{
-                      display: 'flex',
-                      justifyContent: 'center',
-                      textAlign: 'right',
-                      flexDirection: 'column',
-                      marginRight: '25px'
-                    }}>
-                      <h3 style={{
-                        fontWeight: 'bold',
-                        fontSize: '20px',
-                        color: '#34475D'
-                      }} >{item.payload_value.helps.title}</h3>
-                      {(item.payload_value.helps.description).map((val, ctr)=>{
-                        return(<p key={ctr}>{val}</p>)
-                      })}
-                    </Box>
-                    <Box sx={{
-                      display: 'flex',
-                      justifyContent: 'center',
-                      alignItems: 'center', 
-                      flexDirection: 'row'
-                    }}>
-                      <div style={{
-                          marginTop: '25px',
-                        }}>
-                          <iframe  width="400" height="300" src={`${item.payload_value.helps.url}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        </div>
-                    </Box> 
-                  </div>
-                  )
-                }
-              })
-              }
-             
-            </Grid>
-        </Grid>
-     </div>
-      );
-  }
-  renderFeatures(){
-    const {theme, data, features} =  this.state;
-    {
-      data.map((item, index) => {
-        if(item.payload_value.features != null || item.payload_value.features != undefined){
-          features.push(item.payload_value.features)
-        }
-      })
-    }
-    if(features.length > 0){
-    return(
-      <Grid style={{
-        backgroundColor: '#E5E5E5',
-        backgroundImage: `url(${bgAgent})`,
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'center',
-        width: '100%'
-      }} container alignItems={'center'} justifyContent={'center'}>
-        {
-          features.map((item, index) => {
-            console.log('features', item);
-            if(index != 3){
-              // circle with arrows
-              if(index % 2 === 0){
-                return(
-                  // pointing up
-                    <Grid item xs={3} style={{
-                      padding: '5% 0% 5% 5%',
-                      textAlign: 'center'
-                    }}>
-
-                    <h3 style={{
-                          color: '#34475DA3',
-                          paddingTop: '10%'
-                        }}>{item.description}</h3>
-                    <div style={{
-                      position: 'relative'
-                    }}>
-                      <img style={{
-                        display: 'flex',
-                        height: 'auto',
-                      }} src={theme =='agent' ? require('../../assets/uniform_images/agent-circle.png') : require('../../assets/uniform_images/helpa-circle.png')}></img>
-                      <h3 style={{
-                        position: 'absolute',
-                        left: '50%',
-                        top: '50%',
-                        transform: 'translate(-50%, -50%)',
-                        color: '#34475D'
-                      }}>{item.title}</h3>
-                      </div>
-                    </Grid>
-                );
-              }else{
-                // pointing down
-                return(
-                  <Grid item xs={3} style={{
-                    padding: '0% 0% 5% 5%',
-                    textAlign: 'center'
-                  }}>
-                  <div style={{
-                    position: 'relative'
-                  }}>
-                    <img style={{
-                    width: '100%',
-                    height: 'auto',
-                  }} src={theme =='agent' ? require('../../assets/uniform_images/agent-circle-1.png') : require('../../assets/uniform_images/helpa-circle-1.png')}></img>
-                  <h3 style={{
-                      position: 'absolute',
-                      left: '50%',
-                      top: '50%',
-                      transform: 'translate(-50%, -50%)',
-                      color: '#34475D'
-                    }}>{item.title}</h3>
-                  </div>
-                    
-                    <h3 style={{
-                        color: '#34475DA3'
-                      }}>{item.description}</h3>
-                    
-                  </Grid>
-                )
-              }
-            }else{
-              return(
-                // last circle
-                <Grid item xs={3} style={{
-                  padding: '0% 5% 5% 5%',
-                  textAlign: 'center'
-                }}>
-                  <div style={{
-                    position: 'relative'
-                  }}>
-                  <img style={{
-                  width: '100%',
-                  height: 'auto',
-                }} src={theme =='agent' ? require('../../assets/uniform_images/agent-circle-2.png') : require('../../assets/uniform_images/helpa-circle-2.png')}></img>
-                  <h3 style={{
-                    position: 'absolute',
-                    left: '50%',
-                    top: '50%',
-                    transform: 'translate(-50%, -50%)',
-                    color: '#34475D'
-                  }}>{item.title}</h3>
-                  </div>
-                  <h3 style={{
-                      color: '#34475DA3'
-                    }}>{item.description}</h3>
-                </Grid>
-              );
-            }
-          })
-        }
-          <Button
-          title={'Get Started'}
-          style={theme==='agent' ? {
-          backgroundColor: '#34475D',color: 'white',
-          fontSize: '24px',
-          width: '10%'} : {
-          backgroundColor: '#E62D7E',color: 'white',
-          fontSize: '24px',
-          width: '10%'}}
-          ></Button>
-        </Grid>
-    )}
   }
   renderBenefits(){
     const {theme, data, others} = this.state;
@@ -475,7 +275,7 @@ export class Landing extends Component {
     )
   }
   render() {
-    const {theme, hasFetched} = this.state
+    const {theme, hasFetched, data} = this.state
     if(!hasFetched){
       return (
         <h3 style={{
@@ -492,16 +292,25 @@ export class Landing extends Component {
             this.renderBanner()
           }
           {
-            this.renderVideo()
+            <Video
+            theme={theme}
+            data={data}
+            />
+            // this.renderVideo()
           }
           {
-            this.renderFeatures()
+            <Features 
+            theme={theme}
+            data={data}
+            />
+            // this.renderFeatures()
           }
           {
-            this.renderBenefits()
-          }
-          {
-            // theme === 'agent' ? this.renderBenefitsA() : this.renderBenefitsF()
+            // <Others
+            // theme={theme}
+            // data={data}
+            // />
+            // this.renderBenefits()
           }
           {
             // console.log(data)
