@@ -18,20 +18,21 @@ export class Landing extends Component {
     this.state={
       theme: 'agent',
       data: null,
-      features: [],
-      others: [],
       hasFetched: false
     }
   }
   componentDidMount() {
     const {history} = this.props
-    this.retrieve()
+    const {data} = this.state
     if(history.location.pathname.includes('agent')) {
       console.log('agent')
       this.setState({theme: 'agent'})
     }else{
       console.log('helpa')
       this.setState({theme: 'helpa'})
+    }
+    if(data === null ){
+      this.retrieve()
     }
   }
   retrieve(){
@@ -46,6 +47,12 @@ export class Landing extends Component {
         }
       ]
     }
+    this.setState(
+      {
+        ...this.state,
+        data: null
+      }
+    )
     API.request(Routes.payloadsRetrieve, param, response => {
       if(response.data.length > 0){
         this.setState({
@@ -308,7 +315,6 @@ export class Landing extends Component {
             theme={theme}
             data={data}
             />
-            // this.renderBenefits()
           }
           <Footer/>
         </div>

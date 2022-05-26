@@ -37,7 +37,7 @@ export class Others extends Component {
         }} container alignItems={'left'} justifyContent={'left'}>
         {
             others.map((item,index)=>{
-              console.log('others', others)
+              // console.log('others', others)
               if(index % 2 === 0){
                 return(
                   // img left
