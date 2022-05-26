@@ -296,24 +296,19 @@ export class Landing extends Component {
             theme={theme}
             data={data}
             />
-            // this.renderVideo()
           }
           {
             <Features 
             theme={theme}
             data={data}
             />
-            // this.renderFeatures()
           }
           {
-            // <Others
-            // theme={theme}
-            // data={data}
-            // />
+            <Others
+            theme={theme}
+            data={data}
+            />
             // this.renderBenefits()
-          }
-          {
-            // console.log(data)
           }
           <Footer/>
         </div>
