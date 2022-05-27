@@ -20,11 +20,13 @@ export class Others extends Component {
     }
     render(){
     const {theme, data, others} = this.state;
-    data.map((item, index)=> {
-    if(item.payload_value.others != null || item.payload_value.others != undefined){
-    others.push(item.payload_value.others)
+    if(!(others.length > 0)){
+        data.map((item, index)=> {
+          if(item.payload_value.others != null || item.payload_value.others != undefined){
+          others.push(item.payload_value.others)
+        }
+      })
     }
-    })
     if(others.length > 0){
       return(
         <div>

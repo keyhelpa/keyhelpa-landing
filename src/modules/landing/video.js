@@ -45,7 +45,7 @@ export class Video extends Component {
             <Grid item style={{
               display: 'flex',
               flexWrap: 'wrap',
-            }} xs={6} textAlign={'right'} padding={'5%'} direction={'row'}>
+            }} xs={6} textAlign={'right'} padding={'5%'} >
               {
                 data.map((item, index) => {
                 if(item.payload_value.helps != undefined){
@@ -80,7 +80,7 @@ export class Video extends Component {
                       <div style={{
                           marginTop: '25px',
                         }}>
-                          <iframe  width="400" height="300" src={`${item.payload_value.helps.url}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                          <iframe  width="400" height="300" src={`${item.payload_value.helps.url}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                         </div>
                     </Box> 
                   </div>

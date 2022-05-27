@@ -18,7 +18,8 @@ export class Landing extends Component {
     this.state={
       theme: 'agent',
       data: null,
-      hasFetched: false
+      hasFetched: false,
+      hasRendered: false
     }
   }
   componentDidMount() {
@@ -31,9 +32,7 @@ export class Landing extends Component {
       console.log('helpa')
       this.setState({theme: 'helpa'})
     }
-    if(data === null ){
-      this.retrieve()
-    }
+    this.retrieve()
   }
   retrieve(){
     const {theme} = this.state
@@ -60,99 +59,12 @@ export class Landing extends Component {
           data: response.data,
           hasFetched: true
         })
-      console.log('here', status)
       }
     })
   }
   // modify based on theme with database values
   componentWillUnmount(){
     this._isFetching = false;
-  }
-  renderBenefits(){
-    const {theme, data, others} = this.state;
-    data.map((item, index)=> {
-      if(item.payload_value.others != null || item.payload_value.others != undefined){
-        others.push(item)
-        console.log('others', others)
-      }
-    })
-    if(others.length > 0){
-      return(
-        <div>
-        <Grid style={{
-        backgroundColor: '#E5E5E5',
-        backgroundImage: `url(${bgAgent})`,
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'center',
-        width: '100%'
-        }} container alignItems={'left'} justifyContent={'left'}>
-        {
-            others.map((item,index)=>{
-              if(index % 2 === 0){
-                return(
-                  // img left
-                  <div key={index} style={{
-                    display: 'flex'
-                  }}>
-                    <Grid item xs={6} style={{
-                    padding: '5%',
-                    textAlign: 'center',
-                    }}>
-                      <img style={{
-                      width: '80%',
-                      height: 'auto',
-                    }} src={`${item.payload_value.others.url}`}></img>
-                    </Grid>
-                    <Grid item xs={4} style={{
-                      padding: '5% 5% 5% 5%',
-                      textAlign: 'left'
-                    }}>
-                      <h2 style={{
-                        color: ' #34475D'
-                      }}>{item.payload_value.others.title}</h2>
-                      <p style={{
-                        color: '#34475DA3',
-                        fontSize: '18px'
-                      }}>{item.payload_value.others.description}</p>
-                    </Grid> 
-                  </div>
-                )
-              }else{
-                return(
-                  // img right
-                  <div style={{
-                    display: 'flex'
-                  }}>
-                    <Grid item xs={6} style={{
-                        padding: '5% 5% 5% 5%',
-                        textAlign: 'left'
-                      }}>
-                        <h2 style={{
-                          color: ' #34475D'
-                        }}>{item.payload_value.others.title}</h2>
-                        <p style={{
-                          color: '#34475DA3',
-                          fontSize: '18px'
-                        }}>{item.payload_value.others.description}</p>
-                      </Grid>
-                      <Grid item xs={6} style={{
-                        padding: '5%',
-                        textAlign: 'center'
-                      }}>
-                        <img style={{
-                        width: '80%',
-                        height: 'auto',
-                      }} src={`${item.payload_value.others.url}`}></img>
-                      </Grid>
-                  </div>
-                )
-              }
-            })
-          }
-        </Grid>
-      </div>
-      )
-    }
   }
   renderBanner(){
     const {theme} = this.state;
@@ -282,7 +194,7 @@ export class Landing extends Component {
     )
   }
   render() {
-    const {theme, hasFetched, data} = this.state
+    const {theme, hasFetched, hasRendered, data} = this.state
     if(!hasFetched){
       return (
         <h3 style={{
@@ -292,33 +204,36 @@ export class Landing extends Component {
         }}>Loading...</h3>
       )
     }else{
-      return (
-        <div className={theme === 'agent' ? ' banner-agent' : 'banner-helpa'}>
-          
-          {
-            this.renderBanner()
-          }
-          {
-            <Video
-            theme={theme}
-            data={data}
-            />
-          }
-          {
-            <Features 
-            theme={theme}
-            data={data}
-            />
-          }
-          {
-            <Others
-            theme={theme}
-            data={data}
-            />
-          }
-          <Footer/>
-        </div>
-      )
+      if(!hasRendered){
+        return (
+          <div className={theme === 'agent' ? ' banner-agent' : 'banner-helpa'}>
+            
+            {
+              this.renderBanner()
+            }
+            {
+              <Video
+              theme={theme}
+              data={data}
+              />
+            }
+            {
+              <Features 
+              theme={theme}
+              data={data}
+              />
+            }
+            {
+              <Others
+              theme={theme}
+              data={data}
+              />
+            }
+            <Footer/>
+          </div>
+        )
+      }
+      
     }  
   }
 }
