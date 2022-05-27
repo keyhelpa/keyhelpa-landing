@@ -38,7 +38,7 @@ export class Features extends Component {
       }} container alignItems={'center'} justifyContent={'center'}>
         {
           features.map((item, index) => {
-            console.log('features', item);
+            // console.log('features', item);
             if(index != 3){
               // circle with arrows
               if(index % 2 === 0){
