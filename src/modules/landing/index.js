@@ -35,8 +35,8 @@ export class Landing extends Component {
     this.retrieve()
   }
   retrieve(){
-    const {theme} = this.state
-    let status = theme
+    const {history} = this.props
+    let status = history.location.pathname.includes('agent') ? 'agent' : 'helpa'
     let param = {
       condition:[
         {
@@ -46,12 +46,6 @@ export class Landing extends Component {
         }
       ]
     }
-    this.setState(
-      {
-        ...this.state,
-        data: null
-      }
-    )
     API.request(Routes.payloadsRetrieve, param, response => {
       if(response.data.length > 0){
         this.setState({
@@ -204,7 +198,6 @@ export class Landing extends Component {
         }}>Loading...</h3>
       )
     }else{
-      if(!hasRendered){
         return (
           <div className={theme === 'agent' ? ' banner-agent' : 'banner-helpa'}>
             
@@ -232,8 +225,6 @@ export class Landing extends Component {
             <Footer/>
           </div>
         )
-      }
-      
     }  
   }
 }
