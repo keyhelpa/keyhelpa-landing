@@ -21,14 +21,16 @@ export class Features extends Component {
     render(){
         const {theme, data, features} =  this.state;
     {
+      if(features.length === 0){
       data.map((item, index) => {
-        if(item.payload_value.features != null || item.payload_value.features != undefined){
-          features.push(item.payload_value.features)
-        }
-      })
+          if(item.payload_value.features != null || item.payload_value.features != undefined){
+            features.push(item.payload_value.features)
+          }
+        })
+      }
     }
     if(features.length > 0){
-    return(
+      return(
       <Grid style={{
         backgroundColor: '#E5E5E5',
         backgroundImage: `url(${bgAgent})`,
