@@ -22,15 +22,21 @@ export class Landing extends Component {
       hasRendered: false
     }
   }
+  handleStateChange = () => {
+    console.log('fired')
+    this.setState({})
+  }
   componentDidMount() {
     const {history} = this.props
     const {data} = this.state
     if(history.location.pathname.includes('agent')) {
       console.log('agent')
       this.setState({theme: 'agent'})
+      this.handleStateChange
     }else{
       console.log('helpa')
       this.setState({theme: 'helpa'})
+      this.handleStateChange
     }
     this.retrieve()
   }
