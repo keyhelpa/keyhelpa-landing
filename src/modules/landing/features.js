@@ -60,6 +60,7 @@ export class Features extends Component {
                     }}>
                       <img style={{
                         display: 'flex',
+                        width: '100%',
                         height: 'auto',
                       }} src={theme =='agent' ? require('../../assets/uniform_images/agent-circle.png') : require('../../assets/uniform_images/helpa-circle.png')}></img>
                       <h3 style={{
