@@ -1,15 +1,19 @@
 import logo from './logo.svg';
 import './App.css';
 import Header from './modules/generic/frames/loginHeader'
+import Footer from 'modules/generic/frames/footer.js'
 import RouteList from './modules/routes';
 import Sidebar from './modules/generic/frames/sidebar';
 import React, { useState } from 'react';
 import { Paper } from '@mui/material';
 import { connect } from 'react-redux'
+import Colors from 'common/Colors';
+import { useLocation } from 'react-router-dom';
 
 function App(props) {
   const {loginRightMenu, loginLeftMenu} = props.state
   const [showMenu, setShowMenu] = useState(false)
+  const location  = useLocation();
   return (
     <div className="App">
       <React.Fragment>
@@ -21,6 +25,7 @@ function App(props) {
             setIsDropdownMenu(!isDropdownMenu)
           }}
           userType = {localStorage.getItem('user_type')}
+          textColor={location.pathname !== '/' ?  Colors.agentGray : Colors.white}
         />
         {
               showMenu && (
@@ -40,6 +45,11 @@ function App(props) {
               )
             }
           <RouteList/>
+          {
+            location.pathname !== '/' && (
+              <Footer  userType = {localStorage.getItem('user_type')}/>
+            )
+          }
       </React.Fragment>
     </div>
   );

@@ -133,8 +133,7 @@ export class Features extends Component {
             }
           })
         }
-        
-        <Button
+          <Button
           title={'Get Started'}
           style={theme==='agent' ? {
           backgroundColor: '#34475D',color: 'white',
@@ -144,7 +143,6 @@ export class Features extends Component {
           fontSize: '24px',
           width: '10%'}}
           ></Button>
-         
         </Grid>
     )}
     }

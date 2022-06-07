@@ -6,6 +6,7 @@ import About from 'modules/about/index.js'
 import Contacts from 'modules/contacts/index.js'
 import Stack from 'modules/generic/page/TermsAndConditions'
 import PrivacyPolicy from 'modules/generic/page/PrivacyPolicy'
+import PageNotFound from 'modules/generic/page/404'
 import Route from './route'
 function RouteList() {
   return (
@@ -19,6 +20,13 @@ function RouteList() {
       <Route path="/helpa/contact" exact component={Contacts}></Route>
       <Route path="/terms_and_conditions" exact component={Stack}></Route>
       <Route path="/privacy_policy" exact component={PrivacyPolicy}></Route>
+      {
+        localStorage.getItem('user_type') === 'helpa' ? (
+          <Route path="/*" exact component={PageNotFound}></Route>
+        ) : (
+          <Route path="/*" exact component={PageNotFound}></Route>
+        )
+      }
     </Switch>
   )
 }
