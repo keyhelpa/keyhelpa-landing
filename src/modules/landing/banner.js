@@ -13,8 +13,6 @@ export class Banner extends Component {
       super(props)
       this.state={
         theme: this.props.theme,
-        data: this.props.data,
-        features: [],
         hasFetched: false
       }
     }
@@ -145,9 +143,14 @@ export class Banner extends Component {
                 <h1>{theme === 'agent' ? 'Freelancer' : 'Agents'}</h1>
                 </div>
               </div>
+
               {/* Mobile View */}
             <div className='mobile'>
-
+            <img style={{
+                width: '100%',
+                marginTop: '50%'
+            }}  className={theme=='helpa' ? 'Helpa' : ''}
+                src={theme == 'agent'? require('../../assets/agent-mobile-bg.png') : require('../../assets/helpa-mobile-bg.png')}></img>
             </div>
           </div>
         )
