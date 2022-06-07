@@ -269,7 +269,7 @@ export class Landing extends Component {
                   :
                   ""
                 }
-                <Footer/>
+                {/* <Footer/> */}
               </div>
             </div>
             <div className='mobile'>
