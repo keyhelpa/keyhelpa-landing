@@ -19,79 +19,116 @@ export class Video extends Component {
       }
     }
     render(){
-        const {data} = this.state;
+        const {data, theme} = this.state;
     return(
       <div>
-        <Grid style={{
-          backgroundColor: '#E5E5E5',
-          backgroundImage: `url(${bgAgent})`,
-          backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'center',
-          width: '100%'
-        }} container alignItems={'center'} justifyContent={'center'} >
-            <Grid item xs={6} style={{
-              padding: '5%',
-              textAlign: 'left'
-            }}>
-                <h1 className='h1-lg' style={{
-                  fontSize: '80px',
-                  fontWeight: 'bold',
-                  color: '#34475D',
-                }}>What do you need a Helpa for?</h1>
-                <h3 style={{
-                  color: '#34475DA3'
-                }}>Do you need help with your property opens this weekend? Need more manpower to complete your inspection reports? Let KeyHelpa find the freelance help you need.</h3>
-            </Grid>
-            <Grid item style={{
-              display: 'flex',
-              flexWrap: 'wrap',
-            }} xs={6} textAlign={'right'} padding={'5%'} >
-              {
-                data.map((item, index) => {
-                if(item.payload_value.helps != undefined){
-                  return(
-                  <div key={index} style={{
-                    display: 'flex',
-                    justifyContent: 'right',
-                    flexBasis: '100%',
+        {/* Web */}
+        <div className='web'>
+          <div>
+          <Grid style={{
+            backgroundColor: '#E5E5E5',
+            backgroundImage: `url(${bgAgent})`,
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center',
+            width: '100%'
+          }} container alignItems={'center'} justifyContent={'center'} >
+              <Grid item xs={6} style={{
+                padding: '5%',
+                textAlign: 'left'
+              }}>
+                  <h1 className='h1-lg' style={{
+                    fontWeight: 'bold',
+                    color: '#34475D',
                   }}>
-                    <Box sx={{
+                  {
+                    theme == 'agent' ? 
+                    'What do you need a Helpa for?' 
+                    :
+                    'What kind of work can I help with?'
+                  }
+                  </h1>
+                  <h3 style={{
+                    color: '#34475DA3'
+                  }}>
+                    {
+                      theme == 'agent' ? 
+                      'Do you need help with your property opens this weekend? Need more manpower to complete your inspection reports? Let KeyHelpa find the freelance help you need.'
+                      :
+                      'We’ve got real estate agencies, agents and property managers looking for help from experienced people just like you. You’ll find a range of real estate industry - related jobs right here.'
+                    }
+                  </h3>
+              </Grid>
+              <Grid item style={{
+                display: 'flex',
+                flexWrap: 'wrap',
+              }} xs={6} textAlign={'right'} padding={'5%'} >
+                {
+                  data.map((item, index) => {
+                  if(item.payload_value.helps != undefined){
+                    return(
+                    <div key={index} style={{
                       display: 'flex',
-                      justifyContent: 'center',
-                      textAlign: 'right',
-                      flexDirection: 'column',
-                      marginRight: '25px'
+                      justifyContent: 'right',
+                      flexBasis: '100%',
                     }}>
-                      <h3 style={{
-                        fontWeight: 'bold',
-                        fontSize: '20px',
-                        color: '#34475D'
-                      }} >{item.payload_value.helps.title}</h3>
-                      {(item.payload_value.helps.description).map((val, ctr)=>{
-                        return(<p key={ctr}>{val}</p>)
-                      })}
-                    </Box>
-                    <Box sx={{
-                      display: 'flex',
-                      justifyContent: 'center',
-                      alignItems: 'center', 
-                      flexDirection: 'row'
-                    }}>
-                      <div style={{
-                          marginTop: '25px',
-                        }}>
-                          <iframe  width="400" height="300" src={`${item.payload_value.helps.url}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-                        </div>
-                    </Box> 
-                  </div>
-                  )
+                      <Box sx={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        textAlign: 'right',
+                        flexDirection: 'column',
+                        marginRight: '25px'
+                      }}>
+                        <h3 style={{
+                          fontWeight: 'bold',
+                          fontSize: '20px',
+                          color: '#34475D'
+                        }} >{item.payload_value.helps.title}</h3>
+                        {(item.payload_value.helps.description).map((val, ctr)=>{
+                          return(<p key={ctr}>{val}</p>)
+                        })}
+                      </Box>
+                      <Box sx={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center', 
+                        flexDirection: 'row'
+                      }}>
+                        <div style={{
+                            marginTop: '25px',
+                          }}>
+                            <iframe  width="400" height="300" src={`${item.payload_value.helps.url}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                          </div>
+                      </Box> 
+                    </div>
+                    )
+                  }
+                })
                 }
-              })
-              }
-             
-            </Grid>
-        </Grid>
-     </div>
+              
+              </Grid>
+          </Grid>
+        </div>
+        </div>
+        {/* Mobile */}
+        <div className='mobile'>
+        <Grid style={{
+            backgroundColor: '#E5E5E5',
+            backgroundImage: `url(${bgAgent})`,
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center',
+            width: '100%'
+          }} container alignItems={'center'} justifyContent={'center'} >
+          <Grid item xs={6} style={{
+                padding: '5%',
+                textAlign: 'left'
+              }}>
+                <h2>What do you need Helpa </h2>
+                <h3></h3>
+              </Grid>
+          </Grid>
+        </div>
+      </div>
+      
       );
     }
 }
