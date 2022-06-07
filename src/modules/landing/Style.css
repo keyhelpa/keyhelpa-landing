@@ -183,3 +183,8 @@
   justify-content: center!important;
   align-items: center!important;
 }
+@media screen and (min-width:992px) {
+  h3{
+    font-size: 65px!important;
+  }
+}
