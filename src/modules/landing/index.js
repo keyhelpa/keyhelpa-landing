@@ -234,7 +234,6 @@ export class Landing extends Component {
     }else{
         return (
           <div>
-            <div className='web'>
                 <div className={theme === 'agent' ? ' banner-agent' : 'banner-helpa'}>
                 
                 {
@@ -272,11 +271,6 @@ export class Landing extends Component {
                 {/* <Footer/> */}
               </div>
             </div>
-            <div className='mobile'>
-
-            </div>
-          </div>
-          
         )
     }  
   }
