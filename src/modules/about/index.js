@@ -88,7 +88,6 @@ export class About extends Component {
         {
           this.renderContent()
         }
-        <Footer/>
       </div>
     )
   }

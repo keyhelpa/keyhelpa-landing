@@ -55,7 +55,7 @@ export class Others extends Component {
                       height: 'auto',
                     }} src={`${item.url}`}></img>
                     </Grid>
-                    <Grid item xs={6} style={{
+                    <Grid item xs={4} style={{
                       padding: '5% 5% 5% 5%',
                       textAlign: 'left'
                     }}>

@@ -19,9 +19,7 @@ export class Landing extends Component {
       theme: 'agent',
       data: null,
       hasFetched: false,
-      hasHelps: false,
-      hasFeatures: false,
-      hasOthers: false
+      hasRendered: false
     }
   }
   handleStateChange = () => {
@@ -61,35 +59,10 @@ export class Landing extends Component {
           data: response.data,
           hasFetched: true
         })
-        this.runChecks()
       }
     })
   }
-  runChecks(){
-    const {data} = this.state;
-    return(
-      data.map((item, index)=> {
-        if(item.payload_value.helps != null || item.payload_value.helps != undefined){
-          this.setState({
-            ...this.state,
-            hasHelps: true
-          })
-        }
-        if(item.payload_value.features != null || item.payload_value.features != undefined){
-          this.setState({
-            ...this.state,
-            hasFeatures: true
-          })
-        }
-        if(item.payload_value.others != null || item.payload_value.others != undefined){
-          this.setState({
-            ...this.state,
-            hasOthers: true
-          })
-        }
-      })
-    )
-  }
+  // modify based on theme with database values
   componentWillUnmount(){
     this._isFetching = false;
   }
@@ -221,7 +194,7 @@ export class Landing extends Component {
     )
   }
   render() {
-    const {theme, hasFetched, hasFeatures, hasHelps, hasOthers, data} = this.state
+    const {theme, hasFetched, hasRendered, data} = this.state
     if(!hasFetched){
       return (
         <h3 style={{
@@ -238,31 +211,22 @@ export class Landing extends Component {
               this.renderBanner()
             }
             {
-              hasHelps ? 
               <Video
               theme={theme}
               data={data}
               />
-              :
-              ""
             }
             {
-              hasFeatures ? 
               <Features 
               theme={theme}
               data={data}
-              /> 
-              : 
-              ""
+              />
             }
             {
-              hasOthers ? 
               <Others
               theme={theme}
               data={data}
               />
-              :
-              ""
             }
             <Footer/>
           </div>
