@@ -183,8 +183,26 @@
   justify-content: center!important;
   align-items: center!important;
 }
+@media screen and (max-width:1920px) {
+  h3{
+    /* font-size: 26px!important; */
+  }
+}
+@media screen and (max-width:1600px) {
+  h3{
+    font-size: 26px!important;
+  }
+}
+@media screen and (max-width:1366px) {
+  h3{
+    font-size: 19px!important;
+  }
+  .h1-lg{
+    font-size: 60px!important;
+  }
+}
 @media screen and (min-width:992px) {
   h3{
-    font-size: 65px!important;
+    /* font-size: 26px!important; */
   }
 }
