@@ -203,7 +203,6 @@ export class Contacts extends Component {
         {this.state.submitted && (
           this.renderAlert()
         )}
-        <Footer/>
       </div>
     )
   }
