@@ -3,6 +3,7 @@ import Footer from 'modules/generic/frames/footer.js'
 import Features from 'modules/landing/features.js'
 import Video from 'modules/landing/video.js'
 import Others from 'modules/landing/others.js'
+import Banner from 'modules/landing/banner.js'
 import { Container, Box, Grid } from '@mui/material';
 import Button from 'modules/generic/button'
 import bgAgent from 'assets/lighterGray.png'
@@ -232,40 +233,50 @@ export class Landing extends Component {
       )
     }else{
         return (
-          <div className={theme === 'agent' ? ' banner-agent' : 'banner-helpa'}>
-            
-            {
-              this.renderBanner()
-            }
-            {
-              hasHelps ? 
-              <Video
-              theme={theme}
-              data={data}
-              />
-              :
-              ""
-            }
-            {
-              hasFeatures ? 
-              <Features 
-              theme={theme}
-              data={data}
-              /> 
-              : 
-              ""
-            }
-            {
-              hasOthers ? 
-              <Others
-              theme={theme}
-              data={data}
-              />
-              :
-              ""
-            }
-            <Footer/>
+          <div>
+            <div className='web'>
+                <div className={theme === 'agent' ? ' banner-agent' : 'banner-helpa'}>
+                
+                {
+                  <Banner 
+                  theme={theme}
+                  />
+                }
+                {
+                  hasHelps ? 
+                  <Video
+                  theme={theme}
+                  data={data}
+                  />
+                  :
+                  ""
+                }
+                {
+                  hasFeatures ? 
+                  <Features 
+                  theme={theme}
+                  data={data}
+                  /> 
+                  : 
+                  ""
+                }
+                {
+                  hasOthers ? 
+                  <Others
+                  theme={theme}
+                  data={data}
+                  />
+                  :
+                  ""
+                }
+                <Footer/>
+              </div>
+            </div>
+            <div className='mobile'>
+
+            </div>
           </div>
+          
         )
     }  
   }
