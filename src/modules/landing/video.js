@@ -118,12 +118,55 @@ export class Video extends Component {
             backgroundPosition: 'center',
             width: '100%'
           }} container alignItems={'center'} justifyContent={'center'} >
-          <Grid item xs={6} style={{
+          <Grid item xs={10} style={{
                 padding: '5%',
                 textAlign: 'left'
               }}>
-                <h2>What do you need Helpa </h2>
-                <h3></h3>
+                <h1 className='videoHeader'>{theme == 'agent' ? 
+                'What do you need a Helpa for?' 
+                :
+                'What kind of work can I help with?'}</h1>
+                <h3 className='videoSubHeader'>{theme == 'agent' ? 
+                'Do you need help with your property opens this weekend? Need more manpower to complete your inspection reports? Let KeyHelpa find the freelance help you need.'
+                :
+                'We’ve got real estate agencies, agents and property managers looking for help from experienced people just like you. You’ll find a range of real estate industry-related jobs right here.'}</h3>
+                {
+                  data.map((item, index) => {
+                    if(item.payload_value.helps != undefined){
+                      return(
+                      <div>
+                        <Box sx={{
+                        justifyContent: 'center',
+                        textAlign: 'center',
+                        flexDirection: 'column',
+                        marginTop: '25px',
+                        marginBottom: '25px'
+                        }}>
+                          <iframe  width="100%" height="300" src={`${item.payload_value.helps.url}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                        </Box>
+                        <Box sx={{
+                          display: 'flex',
+                          justifyContent: 'center',
+                          textAlign: 'center',
+                          flexDirection: 'column',
+                          marginRight: '25px'
+                        }}>
+                        <h3 style={{
+                          fontWeight: 'bold',
+                          fontSize: '20px',
+                          color: '#34475D',
+                          marginTop: '25px'
+                        }} >{item.payload_value.helps.title}</h3>
+                        {(item.payload_value.helps.description).map((val, ctr)=>{
+                          return(<p key={ctr}>{val}</p>)
+                        })}
+                      </Box>
+                      </div>
+                    )}
+                  })
+                }
+                
+                  
               </Grid>
           </Grid>
         </div>
