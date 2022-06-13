@@ -275,12 +275,23 @@ export class Features extends Component {
                       }}>{item.title}</h3>
                     </div>
                     </Grid>
+                    
                     </div>
                   )
                 }
               })
             }
             </Box>
+            <Button
+              title={'Get Started'}
+              style={theme==='agent' ? {
+              backgroundColor: '#34475D',color: 'white',
+              fontSize: '24px',
+              width: '10%'} : {
+              backgroundColor: '#E62D7E',color: 'white',
+              fontSize: '24px',
+              width: '10%'}}
+              ></Button>
             </Grid>
           </div>
         </div>
