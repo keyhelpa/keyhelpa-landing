@@ -158,7 +158,7 @@ export class Others extends Component {
               width: '10%', marginBottom: '25px'} : {
               backgroundColor: '#E62D7E',color: 'white',
               fontSize: '24px',
-              width: '10%'}}
+              width: '10%', marginBottom: '25px'}}
             ></Button>
           </Grid>
           </div>
