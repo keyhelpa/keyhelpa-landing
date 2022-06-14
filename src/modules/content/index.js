@@ -124,13 +124,13 @@ class Homepage extends Component {
     const { showLeft, showRight, startAlt } = this.state
     console.log(showLeft, showRight);
     return (
-      <div id="container" onClick={(event) => this.handleClick(event)}>
+      <div id="container">
         <div className="subContainer">
           <div className="containerLeft" id="containerLeft">
             <div id="textLeft" className="textLeft hidden" style={{float: 'left', marginTop: '50%'}}>
               <h1>AGENT</h1>
             </div>
-            <div>
+            <div onClick={() => this.handleSelect('agent')}>
               <img 
                 src={require('../../assets/img/agentLeft.png')} 
                 onMouseEnter={() => this.handleHover('containerRight', 'enter', 'helpaRight', 'agentRight', 'imageRight')} 
@@ -143,7 +143,7 @@ class Homepage extends Component {
             </div>
           </div>
           <div className="containerRight" id="containerRight">
-              <div>
+              <div onClick={() => this.handleSelect('helpa')}>
                 <img 
                     src={require('../../assets/img/helpaLeft.png')} 
                     className="helpaLeft hidden" id="helpaLeft"></img>
