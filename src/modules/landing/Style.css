@@ -193,7 +193,17 @@
   margin-bottom: 25px!important;
   color: #1a2838;
 }
-
+.gridBg{
+  background-repeat: no-repeat!important;
+  background-position: center!important;
+  width: 100%!important;
+}
+.flex-center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 25px 0px 25px 0px;
+}
 @media screen and (max-width:1920px) {
   h3{
     /* font-size: 26px!important; */
