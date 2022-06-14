@@ -26,17 +26,6 @@
   height: 100vh;
 }
 
-.container-50.left{
-  /* background-color: #59687A; */
-  width: 100%;
-}
-
-.container-50.right{
-  /* background-color: #f290bb; */
-  width: 100%;
-}
-
-
 .landing-image.display{
   display: block;
   width: 55%;
@@ -52,14 +41,14 @@
 
 .imageLeft{
   position: absolute;
-  left: 13%;
+  left: 12.5%;
   padding: 4%;
 }
 
 .imageRight{
   position: absolute;
   padding: 4%;
-  left: 43%;
+  left: 42.5%;
 }
 
 .helpaLeft{
@@ -67,26 +56,6 @@
   left: 28%;
   padding: 4%;
 }
-
-
-
-/* .textRight{
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  background-color: #f290bb;
-  width: 5%;
-  height: 100vh;
-}
-
-.textLeft{
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  background-color: #59687A;
-  width: 5%;
-  height: 100vh;
-} */
 
 .textLeft h1, .textRight h1{
   writing-mode: vertical-rl;
@@ -134,19 +103,27 @@
   .textLeft, .textRight{
     width: 15%;
   }
-  .landing-image{
-    width: 70%;
-    height: auto;
-    position: relative;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    top: 40%;
-    z-index: 500;
-    transition: transform .2s
+  
+  .imageLeft, .imageRight, .helpaLeft{
+    padding: 2;
+    width: 45%;
+    padding-top: 30%;
+  }
+
+  .helpaLeft, #agentRight{
+    width: 30%;
+  }
+
+  .textRight{
+    float: left !important;
   }
   
-  .landing-image:hover{
-     transform:scale(1.5)
+  .animate{
+    width: 18%;
+    transition: width 2s;
+  }
+  
+  .container{
+    display: flex;
   }
 }

@@ -96,21 +96,21 @@ const reducer = (state = initialState, action) => {
       }else{
         color = '#f290bb'
       }
-      if(state.selectedUser === 'agent'){
-        color = '#59687A'
-      }else if(state.selectedUser === 'helpa'){
-        color = '#f290bb'
-      }else{
-        if(userTypes){
-          if(userTypes === 'helpa'){
-            color = '#f290bb'
-          }else if(userTypes === 'agent'){
-            color = '#59687A'
-          }else{
-            color = null
-          }
-        }
-      }
+      // if(state.selectedUser === 'agent'){
+      //   color = '#59687A'
+      // }else if(state.selectedUser === 'helpa'){
+      //   color = '#f290bb'
+      // }else{
+      //   if(userTypes){
+      //     if(userTypes === 'helpa'){
+      //       color = '#f290bb'
+      //     }else if(userTypes === 'agent'){
+      //       color = '#59687A'
+      //     }else{
+      //       color = null
+      //     }
+      //   }
+      // }
       return {
         ...state,
         color: color
