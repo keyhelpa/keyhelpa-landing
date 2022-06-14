@@ -90,7 +90,12 @@ const reducer = (state = initialState, action) => {
       }
     case types.SET_COLOR:
       let color = null
-      console.log('<<<<<', action);
+      console.log('<<<<<', userType);
+      if(userType === 'agent'){
+        color = '#59687A'
+      }else{
+        color = '#f290bb'
+      }
       if(state.selectedUser === 'agent'){
         color = '#59687A'
       }else if(state.selectedUser === 'helpa'){

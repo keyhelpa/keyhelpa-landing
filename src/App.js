@@ -25,7 +25,7 @@ function App(props) {
             setIsDropdownMenu(!isDropdownMenu)
           }}
           userType = {localStorage.getItem('user_type')}
-          textColor={location.pathname !== '/' ?  Colors.agentGray : Colors.white}
+          textColor={location.pathname !== '/' ? location.pathname === '/agent' ? Colors.white : Colors.agentGray : Colors.white}
         />
         {
               showMenu && (
@@ -40,6 +40,7 @@ function App(props) {
                     onClick={() => {
                       setShowMenu(false)
                     }}
+                    currentUser={location.pathname !== '/' ? location.pathname.includes('/agent') ? 'agent' : 'helpa' : 'agent'}
                   />
                 </div>
               )
