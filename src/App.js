@@ -40,6 +40,7 @@ function App(props) {
                     onClick={() => {
                       setShowMenu(false)
                     }}
+                    currentUser={location.pathname !== '/' ? location.pathname.includes('/agent') ? 'agent' : 'helpa' : 'agent'}
                   />
                 </div>
               )
