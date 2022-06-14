@@ -11,9 +11,10 @@ import bgHelpa from 'assets/lighterPink.png'
 import './Style.css'
 import API from 'services/api'
 import Routes from 'common/Routes'
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
-
-export class Landing extends Component {
+class Landing extends Component {
   constructor(props) {
     super(props)
     this.state={
@@ -223,6 +224,7 @@ export class Landing extends Component {
   }
   render() {
     const {theme, hasFetched, hasFeatures, hasHelps, hasOthers, data} = this.state
+    console.log('KKKKKKKKKKKKKKKK', this.props.state);
     if(!hasFetched){
       return (
         <h3 style={{
@@ -276,4 +278,10 @@ export class Landing extends Component {
   }
 }
 
-export default Landing
+const mapStateToProps = (state) => ({state: state});
+const mapDispatchToProps = (dispatch) =>{
+  const { actions } = require('reduxhandler');
+  return {
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Landing))
