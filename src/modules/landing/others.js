@@ -28,6 +28,7 @@ export class Others extends Component {
       })
     }
     if(others.length > 0){
+      console.log('props', this.props)
       return(
         <div>
           {/* Web */}

@@ -11,7 +11,7 @@ import bgHelpa from 'assets/lighterPink.png'
 import './Style.css'
 import API from 'services/api'
 import Routes from 'common/Routes'
-
+import Loading from 'components/increment/generic/loading/spinner.js'
 
 export class Landing extends Component {
   constructor(props) {
@@ -225,11 +225,8 @@ export class Landing extends Component {
     const {theme, hasFetched, hasFeatures, hasHelps, hasOthers, data} = this.state
     if(!hasFetched){
       return (
-        <h3 style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center'
-        }}>Loading...</h3>
+        
+        <Loading></Loading>
       )
     }else{
         return (
@@ -268,7 +265,6 @@ export class Landing extends Component {
                   :
                   ""
                 }
-                {/* <Footer/> */}
               </div>
             </div>
         )
