@@ -32,13 +32,9 @@ export class Others extends Component {
         <div>
           {/* Web */}
           <div className='web'>
-          <Grid style={{
-          backgroundColor: '#E5E5E5',
-          backgroundImage: `url(${bgAgent})`,
-          backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'center',
-          width: '100%'
-          }} container alignItems={'left'} justifyContent={'left'}>
+          <Grid className='gridBg' style={
+            theme == 'agent' ? {backgroundImage: `url(${bgAgent})`, backgroundColor: '#F1F5FB'} : {backgroundImage: `url(${bgHelpa})`, backgroundColor: '#FFFAFC'}
+        } container alignItems={'left'} justifyContent={'left'}>
             {
               others.map((item,index)=>{
                 // console.log('others', others)
@@ -98,22 +94,32 @@ export class Others extends Component {
                           height: 'auto',
                         }} src={`${item.url}`}></img>
                         </Grid>
+                        
                     </div>
                   )
                 }
               })
             }
           </Grid>
+          <div className='flex-center' style={
+          theme == 'agent' ? {backgroundColor: '#F1F5FB'} : {backgroundColor: '#FFFAFC'}}>
+          <Button
+              title={'Get Started'}
+              style={theme==='agent' ? {
+              backgroundColor: '#34475D',color: 'white',
+              fontSize: '24px',
+              width: '10%'} : {
+              backgroundColor: '#E62D7E',color: 'white',
+              fontSize: '24px',
+              width: '10%'}}
+              ></Button>
+          </div>
           </div>
           {/* Mobile */}
           <div className='mobile'>
-          <Grid style={{
-          backgroundColor: '#E5E5E5',
-          backgroundImage: `url(${bgAgent})`,
-          backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'center',
-          width: '100%'
-          }} container alignItems={'center'} justifyContent={'center'}>
+          <Grid className='gridBg' style={
+            theme == 'agent' ? {backgroundImage: `url(${bgAgent})`, backgroundColor: '#F1F5FB'} : {backgroundImage: `url(${bgHelpa})`, backgroundColor: '#FFFAFC'}
+        } container alignItems={'center'} justifyContent={'center'}>
             {
               others.map((item,index)=>{
                 return(
