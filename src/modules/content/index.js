@@ -85,13 +85,84 @@ class Homepage extends Component {
     }
   }
 
+  handleHover(id, mouseEvent, hidden, show, classes){
+    let temp = document.getElementById(id)
+    let toBeHidden = document.getElementById(hidden)
+    let toBeShow = document.getElementById(show)
+    let textLeft = document.getElementById('textLeft')
+    let textRight = document.getElementById('textRight')
+
+    if(mouseEvent === 'enter'){
+      temp.classList.add("animate");
+      temp.classList.remove("reverse");
+      console.log('=======', id);
+      if(show === 'agentRight'){
+        toBeHidden.className = classes + " hidden"
+        toBeShow.className = classes + " display"
+        textRight.className = 'textRight display'
+      }else{
+        toBeHidden.className = 'imageLeft hidden'
+        toBeShow.className = 'helpaLeft display'
+        textLeft.className = 'textLeft display'
+      }
+    }else{
+      temp.classList.add("reverse");
+      temp.classList.remove("animate");
+      if(show === 'agentRight'){
+        toBeHidden.className = classes + " display"
+        toBeShow.className = classes + " hidden"
+        textRight.className = 'textRight hidden'
+      }else{
+        toBeHidden.className = 'imageLeft display'
+        toBeShow.className = 'helpaLeft hidden'
+        textLeft.className = 'textLeft hidden'
+      }
+    }
+  }
+
   render() {
     const { showLeft, showRight, startAlt } = this.state
     console.log(showLeft, showRight);
     return (
       <div id="container" onClick={(event) => this.handleClick(event)}>
-        <div className={`${!showLeft && !showRight ? 'containers' : showLeft ? 'leftBg' : 'rightBg'}`}>
-          <img src={require('../../assets/landing_banner.png')} className={`landing-image ${showLeft || showRight ? 'hide' : ''}`} id="first"></img>
+        <div className="subContainer">
+          <div className="containerLeft" id="containerLeft">
+            <div id="textLeft" className="textLeft hidden" style={{float: 'left', marginTop: '50%'}}>
+              <h1>AGENT</h1>
+            </div>
+            <div>
+              <img 
+                src={require('../../assets/img/agentLeft.png')} 
+                onMouseEnter={() => this.handleHover('containerRight', 'enter', 'helpaRight', 'agentRight', 'imageRight')} 
+                onMouseLeave={() => this.handleHover('containerRight', 'leave', 'helpaRight', 'agentRight', 'imageRight')} 
+                className="imageLeft display" id="agentLeft"></img>
+
+              <img 
+                  src={require('../../assets/img/agentRight.png')} 
+                  className="imageRight hidden" id="agentRight"></img>
+            </div>
+          </div>
+          <div className="containerRight" id="containerRight">
+              <div>
+                <img 
+                    src={require('../../assets/img/helpaLeft.png')} 
+                    className="helpaLeft hidden" id="helpaLeft"></img>
+                  <img 
+                    src={require('../../assets/img/helpaRight.png')} 
+                    onMouseEnter={() => this.handleHover('containerLeft', 'enter',  'agentLeft', 'helpaLeft', 'helpaLeft')} 
+                    onMouseLeave={() => this.handleHover('containerLeft', 'leave',  'agentLeft', 'helpaLeft', 'helpaLeft')} 
+                    className="imageRight display" id="helpaRight"></img>
+              </div>
+              <div id="textRight" className="textRight hidden" style={{float: 'right', marginTop: '50%'}}>
+                <h1>HELPA</h1>
+              </div>
+          </div>
+        </div>
+        {/* <div className={`${!showLeft && !showRight ? 'containers' : showLeft ? 'leftBg' : 'rightBg'}`}>
+          <div className="landing-image">
+            <img src={require('../../assets/img/agentLeft.png')} className="imageLeft" id="first"></img>
+            
+          </div>
           {
             startAlt && (
               <div style={{display: 'flex'}}>
@@ -116,9 +187,7 @@ class Homepage extends Component {
               </div>
             )
           }
-          {/* <div className="container-50 left">{this.renderLeft()}</div>
-          <div className="container-50 right">{this.renderRight()}</div> */}
-        </div>
+        </div> */}
       </div>
     )
   }

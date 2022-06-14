@@ -5,9 +5,25 @@
   height: 100vh;
 }
 
+.containerLeft{
+  background-color: #59687A;
+  width: 100%;
+}
+
+.containerRight{
+  background-color: #f290bb;
+  width: 100%;
+}
+
 .container-50{
   width: 50%;
   float: left;
+}
+
+.subContainer{
+  width: 100%;
+  display: flex;
+  height: 100vh;
 }
 
 .container-50.left{
@@ -33,56 +49,34 @@
 #pink{
   left: 6%;
 }
-.landing-image.hide{
-  display: none;
+
+.imageLeft{
+  position: absolute;
+  left: 13%;
+  padding: 4%;
 }
 
-.leftBg{
-  background-color: #59687A;
-  width: 100%;
-  height: 100vh;
-}
-.rightBg{
-  background-color: #f290bb;
-  width: 100%;
-  height: 100vh;
+.imageRight{
+  position: absolute;
+  padding: 4%;
+  left: 43%;
 }
 
-.landing-image{
-  width: 70%;
-  height: auto;
-  position: relative;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-  top: 50px;
-  z-index: 500;
-  transition: transform .2s
-}
-
-.landing-image:hover{
-   transform:scale(1.5)
+.helpaLeft{
+  position: absolute;
+  left: 28%;
+  padding: 4%;
 }
 
 
-.textRight{
+
+/* .textRight{
   justify-content: center;
   align-items: center;
   display: flex;
   background-color: #f290bb;
   width: 5%;
   height: 100vh;
-  transition: width 2s;
-}
-
-.textRight:hover, .textLeft:hover{
-  width: 180px;
-  transition: width 2s;
-}
-
-.textRight h1:hover, .textLeft h1:hover{
-  font-size: 60px;
-  transition: font-size 2s;
 }
 
 .textLeft{
@@ -92,8 +86,7 @@
   background-color: #59687A;
   width: 5%;
   height: 100vh;
-  transition: width 2s
-}
+} */
 
 .textLeft h1, .textRight h1{
   writing-mode: vertical-rl;
@@ -108,19 +101,34 @@
   color: #E62D7E8A;
 }
 
-.textLeft:active{
-  width: 100%;
+.textLeft.display, .textRight.display{
+  display: block;
 }
-.textLeft:active h1{
+
+.textLeft.hidden, .textRight.hidden{
   display: none;
 }
 
-.textRight:active{
+.imageRight.display .helpaLeft.display{
+  opacity: 1;
+  transition: opacity 40s ease-out;
+}
+
+.imageRight.hidden .helpaLeft.hidden{
+  opacity: 0.2;
+  transition: opacity 40s ease-out;
+}
+
+.animate{
+  width: 5%;
+  transition: width 2s;
+}
+
+.reverse{
   width: 100%;
+  transition: width 2s;
 }
-.textRight:active h1{
-  display: none;
-}
+
 
 @media (max-width: 991px){
   .textLeft, .textRight{
