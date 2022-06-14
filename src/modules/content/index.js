@@ -127,7 +127,7 @@ class Homepage extends Component {
       <div id="container">
         <div className="subContainer">
           <div className="containerLeft" id="containerLeft">
-            <div id="textLeft" className="textLeft hidden" style={{float: 'left', marginTop: '50%'}}>
+            <div id="textLeft" className="textLeft hidden" style={{float: 'left', marginTop: '100%'}}>
               <h1>AGENT</h1>
             </div>
             <div onClick={() => this.handleSelect('agent')}>
@@ -153,7 +153,7 @@ class Homepage extends Component {
                     onMouseLeave={() => this.handleHover('containerLeft', 'leave',  'agentLeft', 'helpaLeft', 'helpaLeft')} 
                     className="imageRight display" id="helpaRight"></img>
               </div>
-              <div id="textRight" className="textRight hidden" style={{float: 'right', marginTop: '50%'}}>
+              <div id="textRight" className="textRight hidden" style={{float: 'right', marginTop: '100%'}}>
                 <h1>HELPA</h1>
               </div>
           </div>
