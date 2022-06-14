@@ -25,13 +25,9 @@ export class Video extends Component {
         {/* Web */}
         <div className='web'>
           <div>
-          <Grid style={{
-            backgroundColor: '#E5E5E5',
-            backgroundImage: `url(${bgAgent})`,
-            backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'center',
-            width: '100%'
-          }} container alignItems={'center'} justifyContent={'center'} >
+          <Grid className='gridBg' style={
+            theme == 'agent' ? {backgroundImage: `url(${bgAgent})`, backgroundColor: '#F1F5FB'} : {backgroundImage: `url(${bgHelpa})`, backgroundColor: '#FFFAFC'}
+        } container alignItems={'center'} justifyContent={'center'} >
               <Grid item xs={6} style={{
                 padding: '5%',
                 textAlign: 'left'
@@ -111,13 +107,9 @@ export class Video extends Component {
         </div>
         {/* Mobile */}
         <div className='mobile'>
-        <Grid style={{
-            backgroundColor: '#E5E5E5',
-            backgroundImage: `url(${bgAgent})`,
-            backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'center',
-            width: '100%'
-          }} container alignItems={'center'} justifyContent={'center'} >
+        <Grid className='gridBg' style={
+            theme == 'agent' ? {backgroundImage: `url(${bgAgent})`, backgroundColor: '#F1F5FB'} : {backgroundImage: `url(${bgHelpa})`, backgroundColor: '#FFFAFC'}
+        } container alignItems={'center'} justifyContent={'center'} >
           <Grid item xs={10} style={{
                 padding: '5%',
                 textAlign: 'left'

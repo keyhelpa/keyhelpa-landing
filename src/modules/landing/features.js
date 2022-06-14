@@ -34,13 +34,9 @@ export class Features extends Component {
         <div>
           {/* Web */}
           <div className='web'>
-          <Grid style={{
-            backgroundColor: '#E5E5E5',
-            backgroundImage: `url(${bgAgent})`,
-            backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'center',
-            width: '100%'
-          }} container alignItems={'center'} justifyContent={'center'}>
+          <Grid className='gridBg' style={
+            theme == 'agent' ? {backgroundImage: `url(${bgAgent})`, backgroundColor: '#F1F5FB'} : {backgroundImage: `url(${bgHelpa})`, backgroundColor: '#FFFAFC'}
+        } container alignItems={'center'} justifyContent={'center'}>
             {
               features.map((item, index) => {
                 // console.log('features', item);
@@ -150,13 +146,9 @@ export class Features extends Component {
           </div>
           {/* Mobile */}
           <div className='mobile'>
-          <Grid style={{
-            backgroundColor: '#E5E5E5',
-            backgroundImage: `url(${bgAgent})`,
-            backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'center',
-            width: '100%',
-          }} container alignItems={'center'} justifyContent={'center'}>
+          <Grid className='gridBg' style={
+            theme == 'agent' ? {backgroundImage: `url(${bgAgent})`, backgroundColor: '#F1F5FB'} : {backgroundImage: `url(${bgHelpa})`, backgroundColor: '#FFFAFC'}
+        } container alignItems={'center'} justifyContent={'center'}>
             <Box sx={{
               width: '100%',
               margin: '10px'
