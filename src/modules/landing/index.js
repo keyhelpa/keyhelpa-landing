@@ -1,18 +1,16 @@
 import React, { Component } from 'react'
-import Footer from 'modules/generic/frames/footer.js'
 import Features from 'modules/landing/features.js'
 import Video from 'modules/landing/video.js'
 import Others from 'modules/landing/others.js'
 import Banner from 'modules/landing/banner.js'
 import { Container, Box, Grid } from '@mui/material';
-import Button from 'modules/generic/button'
-import bgAgent from 'assets/lighterGray.png'
-import bgHelpa from 'assets/lighterPink.png'
+import CircularProgress from '@mui/material/CircularProgress';
 import './Style.css'
 import API from 'services/api'
 import Routes from 'common/Routes'
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { Color } from 'common'
 
 class Landing extends Component {
   constructor(props) {
@@ -132,11 +130,16 @@ class Landing extends Component {
       <div>
         {
           isLoading && data.length <= 0 && (
-            <h3 style={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center'
-            }}>Loading...</h3>
+            <Box sx={{
+              margin: 0,
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              marginRight: '-50%',
+              transform: 'translate(-50%, -50%)'
+            }}>
+              <CircularProgress style={{color: Color.helpaDarkPink}}/>
+            </Box>
           )
         } 
         {
@@ -144,8 +147,8 @@ class Landing extends Component {
             <div className={selectedUser === 'agent' ? ' banner-agent' : 'banner-helpa'}>
                 {
                   <Banner 
-                  {...this.props}
-                  theme={selectedUser}
+                    {...this.props}
+                    theme={selectedUser}
                   />
                 }
                 {

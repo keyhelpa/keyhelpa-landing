@@ -44,7 +44,7 @@ function App(props) {
                 </div>
               )
             }
-          <RouteList/>
+          <RouteList {...props} location={location}/>
           {
             location.pathname !== '/' && (
               <Footer  userType = {localStorage.getItem('user_type')}/>
