@@ -7,14 +7,27 @@ import bgHelpa from 'assets/lighterPink.png'
 import './Style.css'
 import API from 'services/api'
 import Routes from 'common/Routes'
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
-export class Banner extends Component {
+class Banner extends Component {
     constructor(props) {
       super(props)
       this.state={
         theme: this.props.theme,
         hasFetched: false
       }
+    }
+    handleClick(){
+        const {history, setColor, setSelectedUser} = this.props;
+        const {theme} = this.state
+        if(theme === 'helpa'){
+            setSelectedUser('agent')
+            history.push('/agent')
+        }else{
+            setSelectedUser('helpa')
+            history.push('/helpa')
+        }
     }
     render(){
         const {theme} = this.state;
@@ -139,8 +152,8 @@ export class Banner extends Component {
                 
                 
                 
-                <div className={theme === 'agent' ? 'btnLeft' : 'btnRight'}>
-                <h1>{theme === 'agent' ? 'Freelancer' : 'Agents'}</h1>
+                <div className={theme === 'agent' ? 'btnLeft' : 'btnRight'} style={{cursor: 'pointer'}} onClick={() => this.handleClick()}>
+                    <h1>{theme === 'agent' ? 'Freelancer' : 'Agents'}</h1>
                 </div>
               </div>
 
@@ -158,4 +171,12 @@ export class Banner extends Component {
     }
 }
 
-export default Banner
+const mapStateToProps = (state) => ({state: state});
+const mapDispatchToProps = (dispatch) =>{
+  const { actions } = require('reduxhandler');
+  return {
+    setColor: (type) => dispatch(actions.setColor(type)),
+    setSelectedUser: (user) => {dispatch(actions.setSelectedUser(user))},
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Banner))
