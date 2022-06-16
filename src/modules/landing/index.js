@@ -19,11 +19,13 @@ class Landing extends Component {
     super(props)
     this.state={
       theme: 'agent',
-      data: null,
-      hasFetched: false,
+      data: [],
+      isLoading: false,
       hasHelps: false,
       hasFeatures: false,
-      hasOthers: false
+      hasOthers: false,
+      othersData: [],
+      featuresData: []
     }
   }
   handleStateChange = () => {
@@ -31,22 +33,35 @@ class Landing extends Component {
     this.setState({})
   }
   componentDidMount() {
-    const {history} = this.props
+    console.log('>>><><><>', this.props);
+    const {setColor, setSelectedUser, history} = this.props
     const {data} = this.state
     if(history.location.pathname.includes('agent')) {
       console.log('agent')
       this.setState({theme: 'agent'})
       this.handleStateChange
+      setColor('agent')
+      setSelectedUser('agent')
     }else{
       console.log('helpa')
       this.setState({theme: 'helpa'})
+      setColor('helpa')
+      setSelectedUser('helpa')
       this.handleStateChange
     }
     this.retrieve()
   }
+  componentDidUpdate (nextProps){
+    if(this.props.location !== nextProps.location){
+      console.log('<><><>>))))))))');
+      this.retrieve()
+    }
+  }
   retrieve(){
     const {history} = this.props
+    const {othersData, featuresData} = this.state;
     let status = history.location.pathname.includes('agent') ? 'agent' : 'helpa'
+    this.setState({data: []})
     let param = {
       condition:[
         {
@@ -56,12 +71,27 @@ class Landing extends Component {
         }
       ]
     }
+    this.setState({isLoading: true})
     API.request(Routes.payloadsRetrieve, param, response => {
+      let tempFeatures = [];
+      let tempOthers = [];
       if(response.data.length > 0){
         this.setState({
-          ...this.state,
           data: response.data,
-          hasFetched: true
+          isLoading: false
+        })
+        for (let i = 0; i <= response.data.length-1; i++) {
+          const item = response.data[i];
+          if(item.payload_value.others){
+            tempOthers.push(item.payload_value.others)
+          }
+          if(item.payload_value.features){
+            tempFeatures.push( item.payload_value.features)
+          }
+        }
+        this.setState({
+          othersData: tempOthers,
+          featuresData: tempFeatures
         })
         this.runChecks()
       }
@@ -92,137 +122,11 @@ class Landing extends Component {
       })
     )
   }
-  componentWillUnmount(){
-    this._isFetching = false;
-  }
-  renderBanner(){
-    const {theme} = this.state;
-    return(
-      <div>
-        <div className={theme === 'helpa' ? 'show' : 'hidden'}>
-        <img  className={theme=='helpa' ? 'Helpa' : ''}
-        src={require('../../assets/Helpa.png')}></img>
-        </div>
-        <div className='tooltip' >
-        
-        <img  className={theme=='agent' ? 'agentRobyn' : ''}
-        src={theme =='agent' ? require('../../assets/Robyn.png') : ''}></img>
-            <div className='right'>
-              <h3>{theme ==='agent' ? 'Robyn': ''}</h3>
-              <p >{
-              theme ==='agent' ?
-              'Robyn is a licence  Real Estate Agent. She just signed four new clients who have all put their properties on the market, and she needs help at the open houses.'
-              :
-              ''
-            }
-            </p>
-              <i></i>
-            </div>
-        
-        </div>
-
-        <div className='tooltip'>
-        
-        <img className={theme=='agent' ? 'agentPaul' : 'freelanceSarah'}
-        src={theme =='agent' ? require('../../assets/Paul.png') : require('../../assets/Sarah.png')}></img>
-            <div className='right'>
-              <h3>{theme ==='agent' ? 'Paul': 'Sarah'}</h3>
-              <p>{
-                theme ==='agent' ?
-                'Paul is a senior property manager at a busy real estate office. The agency manages properties, and he has a lot going on dealing with landlords and tenants.'
-                :
-                "Sarah is a mother of two, a licensed agent with years of experience; due to her family commitments, she is limited by the number of hours she can work each week. However, Sarah's lifestyle dynamics prompted her to find a new way of earning extra money and to be her own boss." 
-              }</p>
-              <i></i>
-            </div>
-        
-        </div>
-
-        <div className='tooltip'>
-        
-        <img  className={theme=='agent' ? 'agentTrevor' : 'freelanceAlan'}
-        src={theme =='agent' ? require('../../assets/Trevor.png') : require('../../assets/Alan.png')}></img>
-            <div className='right'>
-              <h3>{theme ==='agent' ? 'Trevor': 'Alan'}</h3>
-              <p>
-              {
-                theme ==='agent' ?
-                "Trevor is a Strata Manager at a busy Strata Agents' office. He has a lot going on dealing with annual general meetings, building repairs, tradespeople and budgets."
-                :
-                "Alan turns to the KeyHelpa platform. It is free to join. He creates his unique business freelancer profile page, selects strata managers category, the days and times he is available to work, and within 2 minutes his profile is live and ready to search for work opportunities in his local area." 
-              }
-              </p>
-              <i></i>
-            </div>
-        
-        </div> 
-
-        <div className='tooltip'>
-        
-        <img  className={theme=='agent' ? 'agentJohn' : 'freelanceLana'}
-        src={theme =='agent' ? require('../../assets/JohnAgent.png') : require('../../assets/Lana.png')}></img>
-            <div className='right'>
-              <h3>{theme ==='agent' ? 'John': 'Lana'}</h3>
-              <p>
-              {
-                theme ==='agent' ?
-                "John is a licensed real estate agent working in a busy real estate office. John needs additional assistance with his open homes and general marketing work."
-                :
-                "Lana is a talented real estate agent with years of experience; due to the epidemic, she works remotely. This has changed the dynamics of her lifestyle and prompted her to find a new way of earning money and become her own boss." 
-              }
-              </p>
-              <i></i>
-            </div>
-        
-        </div> 
-
-        <div className='tooltip'>
-        
-        <img  className={theme=='agent' ? 'Agent' : 'freelanceTracey'}
-        src={theme =='agent' ? require('../../assets/Agent.png') : require('../../assets/Tracey.png')}></img>
-            <div className='right'>
-              <h3>{theme ==='agent' ? '': 'Tracey'}</h3>
-              <p>
-              {
-                theme ==='agent' ?
-                ""
-                :
-                "Tracey is a property manager at a busy real estate office. The agency manages properties, and she has a lot going on dealing with landlords and tenants. She needs additional assistance to manage the overload of work." 
-              }
-              </p>
-              <i></i>
-            </div>
-        
-        </div> 
-
-        <div className='tooltip'>
-        
-        <img  className={theme=='helpa' ? 'freelanceJohn' : ''}
-        src={theme =='helpa' ? require('../../assets/JohnHelpa.png') : ''}></img>
-            <div className='right'>
-              <h3>{theme =='helpa' ? 'John': ''}</h3>
-              <p>
-              {
-                theme ==='helpa' ?
-                "John is a licensed real estate agent working in a busy real estate office. John needs additional assistance with his open homes and general marketing work."
-                :
-                "" 
-              }
-              </p>
-              <i></i>
-            </div>
-        
-        </div> 
-        
-        
-        
-        <div className={theme === 'agent' ? 'btnLeft' : 'btnRight'}>
-          <h1>{theme === 'agent' ? 'Freelancer' : 'Agents'}</h1>
-        </div>
-      </div>
-    )
-  }
+  // componentWillUnmount(){
+  //   this._isFetching = false;
+  // }
   render() {
+<<<<<<< HEAD
     const {theme, hasFetched, hasFeatures, hasHelps, hasOthers, data} = this.state
     console.log('KKKKKKKKKKKKKKKK', this.props.state);
     if(!hasFetched){
@@ -235,42 +139,66 @@ class Landing extends Component {
           <div>
                 <div className={theme === 'agent' ? ' banner-agent' : 'banner-helpa'}>
                 
+=======
+    const {theme, isLoading, hasFeatures, hasHelps, hasOthers, data, featuresData, othersData} = this.state
+    const {selectedUser} = this.props.state;
+    return (
+      <div>
+        {
+          isLoading && data.length <= 0 && (
+            <h3 style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center'
+            }}>Loading...</h3>
+          )
+        } 
+        {
+          data.length > 0 && !isLoading && (
+            <div className={selectedUser === 'agent' ? ' banner-agent' : 'banner-helpa'}>
+>>>>>>> c01069210a318f5cf9909494683539b9603b7227
                 {
                   <Banner 
-                  theme={theme}
+                  {...this.props}
+                  theme={selectedUser}
                   />
                 }
                 {
                   hasHelps ? 
                   <Video
-                  theme={theme}
+                  theme={selectedUser}
                   data={data}
                   />
                   :
                   ""
                 }
                 {
-                  hasFeatures ? 
+                  featuresData.length > 0 ? 
                   <Features 
-                  theme={theme}
-                  data={data}
+                  theme={selectedUser}
+                  data={featuresData}
                   /> 
                   : 
                   ""
                 }
                 {
-                  hasOthers ? 
+                  othersData.length > 0 ? 
                   <Others
-                  theme={theme}
-                  data={data}
+                  theme={selectedUser}
+                  data={othersData}
                   />
                   :
                   ""
                 }
+<<<<<<< HEAD
               </div>
+=======
+>>>>>>> c01069210a318f5cf9909494683539b9603b7227
             </div>
-        )
-    }  
+          )
+        }
+      </div>
+    )
   }
 }
 
@@ -278,6 +206,8 @@ const mapStateToProps = (state) => ({state: state});
 const mapDispatchToProps = (dispatch) =>{
   const { actions } = require('reduxhandler');
   return {
+    setColor: (type) => dispatch(actions.setColor(type)),
+    setSelectedUser: (user) => {dispatch(actions.setSelectedUser(user))},
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Landing))
