@@ -17,52 +17,12 @@ export class Others extends Component {
         hasFetched: false
       }
     }
-<<<<<<< HEAD
-    render(){
-    const {theme, data, others} = this.state;
-    if(others.length === 0){
-        data.map((item, index)=> {
-          if(item.payload_value.others != null || item.payload_value.others != undefined){
-          others.push(item.payload_value.others)
-        }
-      })
-    }
-    if(others.length > 0){
-      console.log('props', this.props)
-      return(
-=======
     renderContent(others){
       const {theme} = this.state;
       return (
->>>>>>> c01069210a318f5cf9909494683539b9603b7227
         <div>
             {/* Web */}
           <div className='web'>
-<<<<<<< HEAD
-          <Grid className='gridBg' style={
-            theme == 'agent' ? {backgroundImage: `url(${bgAgent})`, backgroundColor: '#F1F5FB'} : {backgroundImage: `url(${bgHelpa})`, backgroundColor: '#FFFAFC'}
-        } container alignItems={'left'} justifyContent={'left'}>
-            {
-              others.map((item,index)=>{
-                if(index % 2 === 0){
-                  return(
-                    // img left
-                    <div key={index} style={{
-                      display: 'flex'
-                    }}>
-                      <Grid item xs={6} style={{
-                      padding: '5%',
-                      textAlign: 'center',
-                      }}>
-                        <img style={{
-                        width: '80%',
-                        height: 'auto',
-                      }} src={`${item.url}`}></img>
-                      </Grid>
-                      <Grid item xs={6} style={{
-                        padding: '5% 5% 5% 5%',
-                        textAlign: 'left'
-=======
             <Grid className='gridBg' style={
               theme == 'agent' ? {backgroundImage: `url(${bgAgent})`, backgroundColor: '#F1F5FB'} : {backgroundImage: `url(${bgHelpa})`, backgroundColor: '#FFFAFC'}}
               container alignItems={'left'} justifyContent={'left'}>
@@ -74,7 +34,6 @@ export class Others extends Component {
                       // img left
                       <div key={index} style={{
                         display: 'flex'
->>>>>>> c01069210a318f5cf9909494683539b9603b7227
                       }}>
                         <Grid item xs={6} style={{
                         padding: '5%',

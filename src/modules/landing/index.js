@@ -126,20 +126,6 @@ class Landing extends Component {
   //   this._isFetching = false;
   // }
   render() {
-<<<<<<< HEAD
-    const {theme, hasFetched, hasFeatures, hasHelps, hasOthers, data} = this.state
-    console.log('KKKKKKKKKKKKKKKK', this.props.state);
-    if(!hasFetched){
-      return (
-        
-        <Loading></Loading>
-      )
-    }else{
-        return (
-          <div>
-                <div className={theme === 'agent' ? ' banner-agent' : 'banner-helpa'}>
-                
-=======
     const {theme, isLoading, hasFeatures, hasHelps, hasOthers, data, featuresData, othersData} = this.state
     const {selectedUser} = this.props.state;
     return (
@@ -156,7 +142,6 @@ class Landing extends Component {
         {
           data.length > 0 && !isLoading && (
             <div className={selectedUser === 'agent' ? ' banner-agent' : 'banner-helpa'}>
->>>>>>> c01069210a318f5cf9909494683539b9603b7227
                 {
                   <Banner 
                   {...this.props}
@@ -190,10 +175,6 @@ class Landing extends Component {
                   :
                   ""
                 }
-<<<<<<< HEAD
-              </div>
-=======
->>>>>>> c01069210a318f5cf9909494683539b9603b7227
             </div>
           )
         }
