@@ -128,6 +128,7 @@ class Landing extends Component {
     const {selectedUser} = this.props.state;
     return (
       <div>
+        
         {
           isLoading && data.length <= 0 && (
             <Box sx={{
