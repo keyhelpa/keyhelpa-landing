@@ -42,7 +42,7 @@ export class Others extends Component {
                           <img style={{
                           width: '80%',
                           height: 'auto',
-                        }} src={`${item.url}`}></img>
+                        }} src={`${Config.BACKEND_URL}${item.url}`}></img>
                         </Grid>
                         <Grid item xs={6} style={{
                           padding: '5% 5% 5% 5%',
@@ -83,7 +83,7 @@ export class Others extends Component {
                             <img style={{
                             width: '80%',
                             height: 'auto',
-                          }} src={`${item.url}`}></img>
+                          }} src={`${Config.BACKEND_URL}${item.url}`}></img>
                           </Grid>
                           
                       </div>
@@ -128,7 +128,7 @@ export class Others extends Component {
                         height: 'auto',
                         marginTop: '25px',
                         marginBottom: '25px',
-                      }} src={`${item.url}`}></img>
+                      }} src={`${Config.BACKEND_URL}${item.url}`}></img>
                       <div style={{
                         textAlign: 'left',
                       }}>
