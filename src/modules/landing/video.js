@@ -135,7 +135,7 @@ export class Video extends Component {
                         marginTop: '25px',
                         marginBottom: '25px'
                         }}>
-                          <iframe  width="100%" height="300" src={`${item.payload_value.helps.url}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                          <div  dangerouslySetInnerHTML={{__html: item.payload_value.helps.url}}></div>
                         </Box>
                         <Box sx={{
                           display: 'flex',
