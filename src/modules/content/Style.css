@@ -105,9 +105,8 @@
   }
   
   .imageLeft, .imageRight, .helpaLeft{
-    padding: 2;
     width: 45%;
-    padding-top: 30%;
+    padding-top: 50% !important;
   }
 
   .helpaLeft, #agentRight{
