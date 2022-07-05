@@ -66,3 +66,17 @@ iframe{
     transform: rotate(360deg);
   }
 }
+
+
+/* jumping image logo */
+
+@keyframes jump {
+  0%   {transform: translate3d(0,0,0) scale3d(0,0);}
+  40%  {transform: translate3d(0,0) scale3d(0,0);}
+  100% {transform: translate3d(0,20%,0) scale3d(1,1,1);}
+}
+
+.header-logo:hover{
+  transform-origin: 50% 50% !important;
+  animation: jump .5s linear alternate infinite !important;
+}

@@ -71,6 +71,7 @@ class Landing extends Component {
     }
     this.setState({isLoading: true})
     API.request(Routes.payloadsRetrieve, param, response => {
+      console.log('response', response.data);
       let tempFeatures = [];
       let tempOthers = [];
       if(response.data.length > 0){
@@ -126,6 +127,7 @@ class Landing extends Component {
   render() {
     const {theme, isLoading, hasFeatures, hasHelps, hasOthers, data, featuresData, othersData} = this.state
     const {selectedUser} = this.props.state;
+    console.log('<><><><>><><<<<<<<', featuresData);
     return (
       <div>
         
