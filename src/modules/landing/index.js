@@ -11,6 +11,7 @@ import Routes from 'common/Routes'
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Color } from 'common'
+import {agent, helpa} from './data'
 
 class Landing extends Component {
   constructor(props) {
@@ -26,18 +27,13 @@ class Landing extends Component {
       featuresData: []
     }
   }
-  handleStateChange = () => {
-    console.log('fired')
-    this.setState({})
-  }
+
   componentDidMount() {
-    console.log('>>><><><>', this.props);
     const {setColor, setSelectedUser, history} = this.props
     const {data} = this.state
+    console.log('agent>>>>>>>>>>>>>>>', history.location.pathname.includes('agent'))
     if(history.location.pathname.includes('agent')) {
-      console.log('agent')
       this.setState({theme: 'agent'})
-      this.handleStateChange
       setColor('agent')
       setSelectedUser('agent')
     }else{
@@ -45,15 +41,50 @@ class Landing extends Component {
       this.setState({theme: 'helpa'})
       setColor('helpa')
       setSelectedUser('helpa')
-      this.handleStateChange
     }
-    this.retrieve()
+    this.retrieveLocal()
+    // this.retrieve()
   }
   componentDidUpdate (nextProps){
+    const {setColor, setSelectedUser, history} = this.props
     if(this.props.location !== nextProps.location){
       console.log('<><><>>))))))))');
-      this.retrieve()
+      if(history.location.pathname.includes('agent')) {
+        this.setState({theme: 'agent'})
+        setColor('agent')
+        setSelectedUser('agent')
+      }else{
+        console.log('helpa')
+        this.setState({theme: 'helpa'})
+        setColor('helpa')
+        setSelectedUser('helpa')
+      }
+      this.retrieveLocal()
+      // this.retrieve()
     }
+  }
+  async retrieveLocal(){
+    const {history} = this.props
+    let status = history.location.pathname.includes('agent') ? 'agent' : 'helpa'
+    let tempFeatures = [];
+    let tempOthers = [];
+    let response = status == 'agent' ? agent : helpa
+    await this.setState({data: response.data, isLoading: true})
+    for (let i = 0; i <= response.data.length-1; i++) {
+      const item = response.data[i];
+      if(item.payload_value.others){
+        tempOthers.push(item.payload_value.others)
+      }
+      if(item.payload_value.features){
+        tempFeatures.push( item.payload_value.features)
+      }
+    }
+    this.setState({
+      othersData: tempOthers,
+      featuresData: tempFeatures,
+      isLoading: false
+    })
+    this.runChecks()
   }
   retrieve(){
     const {history} = this.props
@@ -71,6 +102,7 @@ class Landing extends Component {
     }
     this.setState({isLoading: true})
     API.request(Routes.payloadsRetrieve, param, response => {
+      console.log('response', response.data);
       let tempFeatures = [];
       let tempOthers = [];
       if(response.data.length > 0){
@@ -95,8 +127,10 @@ class Landing extends Component {
       }
     })
   }
+
   runChecks(){
     const {data} = this.state;
+    console.log('>>>>>>>>>>>>', data);
     return(
       data.map((item, index)=> {
         if(item.payload_value.helps != null || item.payload_value.helps != undefined){
@@ -125,7 +159,9 @@ class Landing extends Component {
   // }
   render() {
     const {theme, isLoading, hasFeatures, hasHelps, hasOthers, data, featuresData, othersData} = this.state
-    const {selectedUser} = this.props.state;
+    // const {selectedUser} = this.props.state;
+    let selectedUser = this.props.history.location.pathname.includes('agent') ? 'agent' : 'helpa'
+    console.log('<><><><>><><<<<<<<', this.props.history.location.pathname);
     return (
       <div>
         
