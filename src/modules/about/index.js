@@ -11,15 +11,17 @@ export class About extends Component {
     super(props)
     this.state={
       theme: 'agent',
-      
       data: null,
       isLoading: false,
-      aboutUs: null
+      aboutUs:{
+        payload_value:  `<p>KeyHelpa originated from the question of how to improve the profitability of real estate agencies given the high cost of labour and overhead expenses, employment regulations and the competitive nature of the real estate industry.</p><br/>
+        <p>The founders bring to the table their knowledge of accountancy, law and real estate practice to provide agency principals with the flexibility and versatility to deal with their high-volume activities without the need to undertake expensive employment and recruitment expenses. It allows  experienced real estate personnel the flexibility to choose their working times to suit their own individual lifestyles.</p>`
+      }
     }
   }
   componentDidMount() {
     const {history} = this.props
-    this.retrieve()
+    // this.retrieve()
     if(history.location.pathname.includes('agent')) {
       this.setState({theme: 'agent'})
     }else{
