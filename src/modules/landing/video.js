@@ -34,7 +34,9 @@ export class Video extends Component {
               }}>
                   <h1 className='h1-lg' style={{
                     fontWeight: 'bold',
+                    fontSize: "64px",
                     color: '#34475D',
+                    marginBottom: "10%"
                   }}>
                   {
                     theme == 'agent' ? 
@@ -43,8 +45,9 @@ export class Video extends Component {
                     'What kind of work can I help with?'
                   }
                   </h1>
-                  <h3 style={{
-                    color: '#34475DA3'
+                  <p style={{
+                    fontSize: "18px",
+                    color: '#34475DA3',
                   }}>
                     {
                       theme == 'agent' ? 
@@ -52,7 +55,7 @@ export class Video extends Component {
                       :
                       'We’ve got real estate agencies, agents and property managers looking for help from experienced people just like you. You’ll find a range of real estate industry - related jobs right here.'
                     }
-                  </h3>
+                  </p>
               </Grid>
               <Grid item style={{
                 display: 'flex',
@@ -92,7 +95,7 @@ export class Video extends Component {
                         <div style={{
                             marginTop: '25px',
                           }}>
-                            <div  dangerouslySetInnerHTML={{__html: item.payload_value.helps.url}}></div>
+                            <div className='video'  dangerouslySetInnerHTML={{__html: item.payload_value.helps.url}}></div>
                             {/* <iframe  width="400" height="300" src={`${item.payload_value.helps.url}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe> */}
                           </div>
                       </Box> 
