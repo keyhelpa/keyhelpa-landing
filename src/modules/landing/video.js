@@ -17,6 +17,7 @@ export class Video extends Component {
         features: [],
         hasFetched: false
       }
+      this.iframe = React.createRef();
     }
     render(){
         const {data, theme} = this.state;
@@ -95,8 +96,13 @@ export class Video extends Component {
                         <div style={{
                             marginTop: '25px',
                           }}>
-                            <div className='video'  dangerouslySetInnerHTML={{__html: item.payload_value.helps.url}}></div>
-                            {/* <iframe  width="400" height="300" src={`${item.payload_value.helps.url}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe> */}
+                            <div style={{
+                              borderRadius: 10,
+                              width: 400,
+                              height: 300,
+                            }}>
+                              <div ref={"iframe"} dangerouslySetInnerHTML={{__html: item.payload_value.helps.url}}></div>
+                            </div>
                           </div>
                       </Box> 
                     </div>
