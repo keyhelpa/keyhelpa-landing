@@ -42,7 +42,7 @@ class Landing extends Component {
         {
           accountType != null && (
             <div className={accountType === 'agent' ? ' banner-agent' : 'banner-helpa'}>
-              
+
               {
                 <Banner
                   {...this.props}
@@ -57,28 +57,46 @@ class Landing extends Component {
                 background: accountType == 'agent' ? Colors.agentBackgroundColor : Colors.helpeBackgroundColor
               }}>
 
-              <div style={{
-                backgroundImage: `url(${accountType == 'agent' ? AgentLogoBackground : HelpaLogoBackground})`,
-                backgroundPosition: 'center',
-                backgroundSize: 'auto 60%',
-                backgroundRepeat: 'no-repeat',
-                width: '100%',
-                float: 'left'
-              }}>
-              <Video
-                theme={accountType}
-                data={Helper.data[accountType].helps}
-              />
-              </div>
-              <Features
-                theme={accountType}
-                data={Helper.data[accountType].features}
-              />
+                <div style={{
+                  backgroundImage: `url(${accountType == 'agent' ? AgentLogoBackground : HelpaLogoBackground})`,
+                  backgroundPosition: 'center',
+                  backgroundSize: 'auto 60%',
+                  backgroundRepeat: 'no-repeat',
+                  width: '100%',
+                  float: 'left'
+                }}>
+                  <Video
+                    theme={accountType}
+                    data={Helper.data[accountType].helps}
+                  />
+                </div>
+                <div style={{
+                  backgroundImage: `url(${accountType == 'agent' ? AgentLogoBackground : HelpaLogoBackground})`,
+                  backgroundPosition: 'center',
+                  backgroundSize: 'auto 60%',
+                  backgroundRepeat: 'no-repeat',
+                  width: '100%',
+                  float: 'left'
+                }}>
+                  <Features
+                    theme={accountType}
+                    data={Helper.data[accountType].features}
+                  />
+                </div>
+                <div style={{
+                  backgroundImage: `url(${accountType == 'agent' ? AgentLogoBackground : HelpaLogoBackground})`,
+                  backgroundPosition: 'center',
+                  backgroundSize: 'auto 60%',
+                  backgroundRepeat: 'no-repeat',
+                  width: '100%',
+                  float: 'left'
+                }}>
 
-              <Others
-                theme={accountType}
-                data={Helper.data[accountType].others}
-              />
+                  <Others
+                    theme={accountType}
+                    data={Helper.data[accountType].others}
+                  />
+                </div>
               </div>
             </div>
           )
