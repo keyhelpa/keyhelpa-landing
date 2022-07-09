@@ -10,8 +10,8 @@ import API from 'services/api'
 import Routes from 'common/Routes'
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { Color } from 'common'
 import Helper from './helper'
+import Colors from 'common/Colors'
 
 class Landing extends Component {
   constructor(props) {
@@ -48,10 +48,11 @@ class Landing extends Component {
                 />
               }
               <div style={{
-                width: '90%',
+                width: '100%',
                 float: 'left',
-                marginLeft: '5%',
-                marginRight: '5%'
+                paddingLeft: '5%',
+                paddingRight: '5%',
+                background: accountType == 'agent' ? Colors.agentBackgroundColor : Colors.helpeBackgroundColor
               }}>
 
               <Video

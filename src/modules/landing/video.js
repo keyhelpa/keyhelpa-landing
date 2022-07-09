@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Footer from 'modules/generic/frames/footer.js'
-import { Container, Box, Grid } from '@mui/material';
+import { Container, Box, Grid, SvgIcon } from '@mui/material';
 import Button from 'modules/generic/button'
 import bgAgent from 'assets/lighterGray.png'
 import bgHelpa from 'assets/lighterPink.png'
@@ -8,7 +8,9 @@ import './Style.css'
 import API from 'services/api'
 import Routes from 'common/Routes'
 import Colors from 'common/Colors';
-
+import AgentVideoThumbnail from 'assets/agent-video-thumbnail.png'
+import HelpaVideoThumbnail from 'assets/helpa-video-thumbnail.png'
+import { PlayArrow, PlayCircleFilled } from '@mui/icons-material';
 export class Video extends Component {
   constructor(props) {
     super(props)
@@ -61,11 +63,35 @@ export class Video extends Component {
                 <div style={{
                   width: '60%',
                   float: 'left',
-                  height: '250px',
-                  background: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle,
-                  borderRadius: 25
-
+                  height: '350px',
+                  // background: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle,
+                  backgroundImage: `url(${theme == 'agent' ? AgentVideoThumbnail : HelpaVideoThumbnail})`,
+                  alignItems: 'center',
+                  backgroundRepeat: 'no-repeat',
+                  backgroundSize: '100% 100%',
+                  display: 'flex',
+                  alignContent: 'center',
+                  justifyContent: 'center'
                 }}>
+                  <div style={{
+                    width: '100px',
+                    height: '100px',
+                    borderRadius: '50px',
+                    float: 'left',
+                    background: theme == 'agent' ? Colors.agentGray : Colors.helpaPink,
+                    alignItems: 'center',
+                    alignContent: 'center',
+                    display: 'flex',
+                    justifyContent: 'center'
+                  }}>
+                    <SvgIcon
+                      component={PlayArrow}
+                      style={{
+                        color: Colors.white,
+                        fontSize: 60
+                      }}
+                    />
+                  </div>
                 </div>
                 <div style={{
                   float: 'left',
@@ -100,12 +126,13 @@ export class Video extends Component {
       <div style={{
         width: '100%',
         float: 'left',
-        minHeight: '100vh',
-        background: theme == 'agent' ? Colors.agentBackgroundColor : Colors.helpeBackgroundColor
+        minHeight: '100vh'
       }}>
         <div style={{
           float: 'left',
-          width: '40%'
+          width: '40%',
+          paddingLeft: 20,
+          paddingRight: 20
         }}>
           {
             this.renderLeft(theme == 'agent' ? {
