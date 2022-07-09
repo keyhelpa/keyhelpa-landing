@@ -54,8 +54,13 @@
 }
 
 iframe{
-  width:100%;
-  height: auto
+  width: 100% !important;
+  height: 60vh !important;
+  border-radius: 25px !important;
+}
+
+.modal-content{
+  border-radius: 25px !important;
 }
 
 @keyframes App-logo-spin {
@@ -86,6 +91,7 @@ iframe{
   cursor: pointer !important;
   opacity: 0.5;
 }
+
 
 @media (max-width: 991px) {
 

@@ -195,6 +195,7 @@ export class Video extends Component {
           video && (
             <VideoModal
               show={true}
+              data={video}
               onCancel={() => {
                 this.setState({
                   video: null

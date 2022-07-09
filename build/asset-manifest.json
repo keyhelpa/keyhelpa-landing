@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.5a651d5a.css",
-    "main.js": "/static/js/main.b01d15a6.js",
+    "main.css": "/static/css/main.b0ea588d.css",
+    "main.js": "/static/js/main.54b7006a.js",
     "static/media/helpaRight.png": "/static/media/helpaRight.72af74feda5a77b30fd7.png",
     "static/media/agentLeft.png": "/static/media/agentLeft.5baf66453a322368a2b8.png",
     "static/media/helpa-circle.png": "/static/media/helpa-circle.34e54f687e5689b1b591.png",
@@ -41,11 +41,11 @@
     "static/media/Lana.png": "/static/media/Lana.f3390d1e0308599d6327.png",
     "static/media/logo.svg": "/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/index.html",
-    "main.5a651d5a.css.map": "/static/css/main.5a651d5a.css.map",
-    "main.b01d15a6.js.map": "/static/js/main.b01d15a6.js.map"
+    "main.b0ea588d.css.map": "/static/css/main.b0ea588d.css.map",
+    "main.54b7006a.js.map": "/static/js/main.54b7006a.js.map"
   },
   "entrypoints": [
-    "static/css/main.5a651d5a.css",
-    "static/js/main.b01d15a6.js"
+    "static/css/main.b0ea588d.css",
+    "static/js/main.54b7006a.js"
   ]
 }
