@@ -3,11 +3,31 @@ export default {
         agent: {
             helps: [{
                 title: "Property Management help",
-                description: ["Open for inspections", "Condition reports", "Account"],
+                description: () => {
+                    return(
+                        <p>
+                            Open for inspections
+                            <br />
+                            Condition reports
+                            <br />
+                            Marketing
+                        </p>
+                    )
+                },
                 url: "<iframe width=\"420\" height=\"315\" src=\"https://www.youtube.com/embed/tgbNymZ7vqY\"> </iframe>"
             }, {
                 title: "Sales Assistance help",
-                description: ["Open for inspections", "Admin support", "Marketing"],
+                description: () => {
+                    return(
+                        <p>
+                            Open for inspections
+                            <br />
+                            Admin support
+                            <br />
+                            Marketing
+                        </p>
+                    )
+                },
                 url: "<iframe width=\"420\" height=\"315\" src=\"https://www.youtube.com/embed/tgbNymZ7vqY\"> </iframe>"
             }],
             features: [{
@@ -40,11 +60,31 @@ export default {
         helpa: {
             helps: [{
                 title: "Property Management help",
-                description: ["Open for inspections", "Condition reports", "Accounts"],
+                description: () => {
+                    return(
+                        <p>
+                            Open for inspections
+                            <br />
+                            Condition reports
+                            <br />
+                            Accounts
+                        </p>
+                    )
+                },
                 url: "<iframe width=\"1280\" height=\"720\" src=\"https://www.youtube.com/embed/p-eS-_olx9M\" title=\"ZAYN & Sia - Dusk Till Dawn (Lyrics)\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>"
             }, {
                 title: "Sales Assistance help",
-                description: ["Open for inspections", "Admin support", "Marketing"],
+                description: () => {
+                    return(
+                        <p>
+                            Open for inspections
+                            <br />
+                            Admin support
+                            <br />
+                            Marketing
+                        </p>
+                    )
+                },
                 url: "<iframe width=\"1280\" height=\"720\" src=\"https://www.youtube.com/embed/p-eS-_olx9M\" title=\"ZAYN & Sia - Dusk Till Dawn (Lyrics)\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>"
             }],
             features: [{

@@ -34,8 +34,8 @@ export default{
 	agentTextTitle: '#34475D',
 	agentText: '#34475D',
 	helpeBackgroundColor: '#fffafc',
-	helpaTextTitle: '#34475D',
-	helpaText: '#34475D',
+	helpaTextTitle: '#686868',
+	helpaText: '#686868',
 	helpaPink: '#f290bb',
 	helpaDarkPink: '#E62D7E',
 }

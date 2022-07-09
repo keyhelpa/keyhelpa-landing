@@ -86,3 +86,23 @@ iframe{
   cursor: pointer !important;
   opacity: 0.5;
 }
+
+@media (max-width: 991px) {
+
+  /* 
+    video css
+  */
+  .video-text-mobile{
+    height: 25vh !important;
+    padding-right: unset !important;
+    margin-top: 50px !important;
+  }
+
+  .video-player-holder{
+    height: 200px !important;
+  }
+
+  .video-player-text-holder{
+    margin-top: 25px !important;
+  }
+}

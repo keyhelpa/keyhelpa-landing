@@ -24,11 +24,15 @@ export class Video extends Component {
         float: 'left',
         height: '100vh',
         display: 'flex',
-        alignItems: 'center'
-      }}>
+        alignItems: 'center',
+        paddingRight: '40%'
+      }}
+      className="video-text-mobile"
+      >
         <div>
           <h1 style={{
-            color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle
+            color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle,
+            marginBottom: 25
           }}>
             {
               data.title
@@ -73,6 +77,7 @@ export class Video extends Component {
                   alignContent: 'center',
                   justifyContent: 'center'
                 }}
+                className="active-color-hover full-width-mobile video-player-holder"
                 >
                   <div style={{
                     width: '100px',
@@ -85,7 +90,6 @@ export class Video extends Component {
                     display: 'flex',
                     justifyContent: 'center'
                   }}
-                    className="active-color-hover"
                   >
                     <SvgIcon
                       component={PlayArrow}
@@ -100,7 +104,9 @@ export class Video extends Component {
                   float: 'left',
                   width: '40%',
                   paddingLeft: 20
-                }}>
+                }}
+                className="full-width-mobile video-player-text-holder"
+                >
                   <h2 style={{
                     color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle
                   }}>
@@ -112,7 +118,7 @@ export class Video extends Component {
                     color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle
                   }}>
                     {
-                      item.description
+                      item.description()
                     }
                   </p>
                 </div>
@@ -133,10 +139,12 @@ export class Video extends Component {
       }}>
         <div style={{
           float: 'left',
-          width: '40%',
+          width: '50%',
           paddingLeft: 20,
           paddingRight: 20
-        }}>
+        }}
+        className="full-width-mobile"
+        >
           {
             this.renderLeft(theme == 'agent' ? {
               title: 'What do you need a Helpa for?',
@@ -169,8 +177,10 @@ export class Video extends Component {
         </div>
         <div style={{
           float: 'left',
-          width: '60%'
-        }}>
+          width: '50%'
+        }}
+        className="full-width-mobile"
+        >
           {
             this.renderRight(data)
           }
