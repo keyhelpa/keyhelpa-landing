@@ -194,7 +194,7 @@ export class Features extends Component {
       <div style={{
         width: '100%',
         float: 'left',
-        height: '100vh',
+        minHeight: '100vh',
       }}>
         <div style={{
           width: '100%',
