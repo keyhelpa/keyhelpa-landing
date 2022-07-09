@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import './Style.css'
 import Colors from 'common/Colors';
-
+import Button from 'modules/generic/button'
 export class Others extends Component {
   constructor(props) {
     super(props)
   }
 
   renderContent(item) {
-    const { theme } = this.props; 
+    const { theme } = this.props;
     return (
       <div style={{
         float: 'left',
@@ -21,11 +21,11 @@ export class Others extends Component {
               float: 'left',
               width: '50%'
             }}
-            className="full-width-mobile"
+              className="full-width-mobile"
             >
               <img style={{
                 height: 'auto',
-                width: '100%'
+                width: 'auto'
               }} src={item.url}></img>
             </div>
           )
@@ -36,7 +36,7 @@ export class Others extends Component {
           paddingLeft: item.template == 'right' ? 0 : '5%',
           paddingRight: item.template == 'right' ? '5%' : 0,
         }}
-        className="full-width-mobile others-mobile-reset"
+          className="full-width-mobile others-mobile-reset"
         >
           <h1 style={{
             color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle,
@@ -64,10 +64,11 @@ export class Others extends Component {
               width: '50%',
               paddingLeft: '5%'
             }}
-            className="full-width-mobile others-mobile-reset"
+              className="full-width-mobile others-mobile-reset"
             >
               <img style={{
                 height: 'auto',
+                width: 'auto'
               }} src={item.url}></img>
             </div>
           )
@@ -77,7 +78,7 @@ export class Others extends Component {
   }
 
   renderContentMobile(item) {
-    const { theme } = this.props; 
+    const { theme } = this.props;
     return (
       <div style={{
         float: 'left',
@@ -88,7 +89,7 @@ export class Others extends Component {
           float: 'left',
           width: '50%'
         }}
-        className="full-width-mobile"
+          className="full-width-mobile"
         >
           <img style={{
             height: 'auto',
@@ -103,7 +104,7 @@ export class Others extends Component {
           paddingRight: item.template == 'right' ? '5%' : 0,
           marginTop: 50
         }}
-        className="full-width-mobile others-mobile-reset"
+          className="full-width-mobile others-mobile-reset"
         >
           <h1 style={{
             color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle,
@@ -126,7 +127,7 @@ export class Others extends Component {
       </div>
     )
   }
-  
+
 
   render() {
     const { data, theme } = this.props
@@ -150,7 +151,7 @@ export class Others extends Component {
             ))
           }
         </div>
-        
+
         <div className="hide-on-desktop">
           {
             data && data.length > 0 && data.map((item) => (
@@ -165,6 +166,25 @@ export class Others extends Component {
             ))
           }
         </div>
+        <div style={{
+          textAlign: 'center',
+          width: '100%',
+          float: 'left',
+          marginBottom: 100
+        }}>
+          <Button
+            title={'Get Started'}
+            style={{
+              backgroundColor: theme == 'agent' ? Colors.agentGray : Colors.helpaPink,
+              color: 'white',
+              fontSize: '24px',
+              width: '10%'
+            }}
+            onChange={() => window.location.href = Config.HELPA}
+          ></Button>
+        </div>
+
+
       </div>
     )
   }
