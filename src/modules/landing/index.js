@@ -40,12 +40,19 @@ class Landing extends Component {
         {
           accountType != null && (
             <div className={accountType === 'agent' ? ' banner-agent' : 'banner-helpa'}>
+              
               {
                 <Banner
                   {...this.props}
                   theme={accountType}
                 />
               }
+              <div style={{
+                width: '90%',
+                float: 'left',
+                marginLeft: '5%',
+                marginRight: '5%'
+              }}>
 
               <Video
                 theme={accountType}
@@ -60,6 +67,7 @@ class Landing extends Component {
                 theme={accountType}
                 data={Helper.data[accountType].others}
               />
+              </div>
             </div>
           )
         }

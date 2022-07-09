@@ -30,6 +30,12 @@ export default{
 	},
 	agentGray: '#59687A',
 	agentDarkGray: '#34475D',
+	agentBackgroundColor: '#f1f5fb',
+	agentTextTitle: '#34475D',
+	agentText: '#34475D',
+	helpeBackgroundColor: '#fffafc',
+	helpaTextTitle: '#34475D',
+	helpaText: '#34475D',
 	helpaPink: '#f290bb',
-	helpaDarkPink: '#E62D7E'
+	helpaDarkPink: '#E62D7E',
 }
