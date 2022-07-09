@@ -14,7 +14,7 @@ export default {
                         </p>
                     )
                 },
-                url: "<iframe width=\"420\" height=\"315\" src=\"https://www.youtube.com/embed/tgbNymZ7vqY\"> </iframe>"
+                url: "k6M5C-oKw9k"
             }, {
                 title: "Sales Assistance help",
                 description: () => {
@@ -28,7 +28,7 @@ export default {
                         </p>
                     )
                 },
-                url: "<iframe width=\"420\" height=\"315\" src=\"https://www.youtube.com/embed/tgbNymZ7vqY\"> </iframe>"
+                url: "vIaH35-MLs"
             }],
             features: [{
                 title: "Create agency profile.",
@@ -100,7 +100,7 @@ export default {
                         </p>
                     )
                 },
-                url: "<iframe width=\"1280\" height=\"720\" src=\"https://www.youtube.com/embed/p-eS-_olx9M\" title=\"ZAYN & Sia - Dusk Till Dawn (Lyrics)\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>"
+                url: "k6M5C-oKw9k"    
             }, {
                 title: "Sales Assistance help",
                 description: () => {
@@ -114,7 +114,7 @@ export default {
                         </p>
                     )
                 },
-                url: "<iframe width=\"1280\" height=\"720\" src=\"https://www.youtube.com/embed/p-eS-_olx9M\" title=\"ZAYN & Sia - Dusk Till Dawn (Lyrics)\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>"
+                url: "vIaH35-MLs"
             }],
             features: [{
                 title: "Create your personal profile.",

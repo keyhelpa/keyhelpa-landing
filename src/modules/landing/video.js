@@ -1,18 +1,19 @@
 import React, { Component } from 'react'
-import Footer from 'modules/generic/frames/footer.js'
-import { Container, Box, Grid, SvgIcon } from '@mui/material';
-import Button from 'modules/generic/button'
-import './Style.css'
-import API from 'services/api'
-import Routes from 'common/Routes'
 import Colors from 'common/Colors';
 import AgentVideoThumbnail from 'assets/agent-video-thumbnail.png'
 import HelpaVideoThumbnail from 'assets/helpa-video-thumbnail.png'
 import { PlayArrow, PlayCircleFilled } from '@mui/icons-material';
+import VideoModal from 'modules/generic/modal/video'
+import { SvgIcon } from '@mui/material';
 export class Video extends Component {
   constructor(props) {
     super(props)
+    this.state = {
+      video: null
+    }
   }
+
+
 
   renderLeft(data) {
     const { theme } = this.props;
@@ -76,6 +77,11 @@ export class Video extends Component {
                   justifyContent: 'center'
                 }}
                 className="active-color-hover full-width-mobile video-player-holder"
+                onClick={() => {
+                  this.setState({
+                    video: item
+                  })
+                }}
                 >
                   <div style={{
                     width: '100px',
@@ -129,6 +135,7 @@ export class Video extends Component {
   }
   render() {
     const { data, theme } = this.props;
+    const { video } = this.state;
     return (
       <div style={{
         width: '100%',
@@ -182,8 +189,20 @@ export class Video extends Component {
           {
             this.renderRight(data)
           }
-
         </div>
+
+        {
+          video && (
+            <VideoModal
+              show={true}
+              onCancel={() => {
+                this.setState({
+                  video: null
+                })
+              }}
+            />
+          )
+        }
       </div>
 
     );
