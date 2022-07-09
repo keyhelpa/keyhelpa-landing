@@ -89,6 +89,7 @@ iframe{
 
 @media (max-width: 991px) {
 
+  
   /* 
     video css
   */
@@ -104,5 +105,15 @@ iframe{
 
   .video-player-text-holder{
     margin-top: 25px !important;
+  }
+
+
+  /* 
+    others css
+  */
+
+  .others-mobile-reset{
+    padding-left: unset !important;
+    padding-right: unset !important;
   }
 }

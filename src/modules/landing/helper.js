@@ -4,7 +4,7 @@ export default {
             helps: [{
                 title: "Property Management help",
                 description: () => {
-                    return(
+                    return (
                         <p>
                             Open for inspections
                             <br />
@@ -18,7 +18,7 @@ export default {
             }, {
                 title: "Sales Assistance help",
                 description: () => {
-                    return(
+                    return (
                         <p>
                             Open for inspections
                             <br />
@@ -50,9 +50,11 @@ export default {
             others: [{
                 title: 'Find the right help. Right now!',
                 description: () => {
-                    return(
+                    return (
                         <p>
                             Quickly and easily access a pool of available freelancers who are familiar with the real estate and property management industry, the suburbs where you need work done and the job that needs doing.
+                            <br />
+                            <br />
                             <br />
                             Search profiles for a freelancer, or browse by skills, years of experience, area, service and more. Then select the type of help and price that’s right for you and your agency. No more full-time wages that you don’t need to pay - and more money saved.
                         </p>
@@ -74,9 +76,11 @@ export default {
             }, {
                 title: "Your investment. Protected.",
                 description: () => {
-                    <p>
-                        Once your job has been accepted by a Helpa, the agreed payment is securely held by KeyHelpa's payment system. Only once the job has been completed to your satisfaction, do you authorise for your Helpa's funds to be released. With the touch of a button, you can approve the automatic distribution of a payment in the next payment run. So you can get the help you need knowing that your investment is protected.
-                    </p>
+                    return (
+                        <p>
+                            Once your job has been accepted by a Helpa, the agreed payment is securely held by KeyHelpa's payment system. Only once the job has been completed to your satisfaction, do you authorise for your Helpa's funds to be released. With the touch of a button, you can approve the automatic distribution of a payment in the next payment run. So you can get the help you need knowing that your investment is protected.
+                        </p>
+                    )
                 },
                 url: require('assets/money-hold-gray.png'),
                 template: 'left'
@@ -86,7 +90,7 @@ export default {
             helps: [{
                 title: "Property Management help",
                 description: () => {
-                    return(
+                    return (
                         <p>
                             Open for inspections
                             <br />
@@ -100,7 +104,7 @@ export default {
             }, {
                 title: "Sales Assistance help",
                 description: () => {
-                    return(
+                    return (
                         <p>
                             Open for inspections
                             <br />
@@ -132,7 +136,7 @@ export default {
             others: [{
                 title: "Total control. Constant contact.",
                 description: () => {
-                    return(
+                    return (
                         <p>
                             Send instant messages to the client/employer who chose you as a Helpa. Once a job has been offered and accepted, you can automatically privately message one another so you’re in constant contact throughout. You’re in total control to communicate as and when you need to.
                         </p>
@@ -143,7 +147,7 @@ export default {
             }, {
                 title: "Your investment. Protected.",
                 description: () => {
-                    return(
+                    return (
                         <p>
                             Once you have accepted a job, the agreed payment is securely held by KeyHelpa's payment system. Once the job has been completed to the client's satisfaction, they authorise for your funds to be released. With the touch of a button, they can approve your payment to be automatically distributed in the next payment run. So you can do your work knowing that your payment is secured and ready for transfer.
                         </p>

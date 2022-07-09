@@ -52,8 +52,6 @@ class Landing extends Component {
               <div style={{
                 width: '100%',
                 float: 'left',
-                paddingLeft: '5%',
-                paddingRight: '5%',
                 background: accountType == 'agent' ? Colors.agentBackgroundColor : Colors.helpeBackgroundColor
               }}>
 
@@ -63,7 +61,9 @@ class Landing extends Component {
                   backgroundSize: 'auto 60%',
                   backgroundRepeat: 'no-repeat',
                   width: '100%',
-                  float: 'left'
+                  float: 'left',
+                  paddingLeft: '5%',
+                  paddingRight: '5%',
                 }}>
                   <Video
                     theme={accountType}
@@ -76,7 +76,9 @@ class Landing extends Component {
                   backgroundSize: 'auto 60%',
                   backgroundRepeat: 'no-repeat',
                   width: '100%',
-                  float: 'left'
+                  float: 'left',
+                  paddingLeft: '5%',
+                  paddingRight: '5%',
                 }}>
                   <Features
                     theme={accountType}
@@ -84,12 +86,14 @@ class Landing extends Component {
                   />
                 </div>
                 <div style={{
-                  backgroundImage: `url(${accountType == 'agent' ? AgentLogoBackground : HelpaLogoBackground})`,
-                  backgroundPosition: 'center',
-                  backgroundSize: 'auto 60%',
-                  backgroundRepeat: 'no-repeat',
+                  // backgroundImage: `url(${accountType == 'agent' ? AgentLogoBackground : HelpaLogoBackground})`,
+                  // backgroundPosition: 'center',
+                  // backgroundSize: 'auto 60%',
+                  // backgroundRepeat: 'no-repeat',
                   width: '100%',
-                  float: 'left'
+                  float: 'left',
+                  paddingLeft: '5%',
+                  paddingRight: '5%',
                 }}>
 
                   <Others
