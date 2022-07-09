@@ -11,90 +11,55 @@ import Routes from 'common/Routes'
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Color } from 'common'
-import {agent, helpa} from './data'
+import Helper from './helper'
 
 class Landing extends Component {
   constructor(props) {
     super(props)
-    this.state={
+    this.state = {
       theme: 'agent',
-      data: [],
-      isLoading: false,
-      hasHelps: false,
-      hasFeatures: false,
-      hasOthers: false,
-      othersData: [],
-      featuresData: [],
       accountType: null
     }
   }
 
   componentDidMount() {
-    const {setColor, setSelectedUser, history} = this.props
-    const {data} = this.state
+    const { setColor, setSelectedUser, history } = this.props
+    let user = history.location.pathname.includes('agent') ? 'agent' : 'helpa'
     this.setState({
-      accountType: history.location.pathname.includes('agent') ? 'agent' : 'helpa'
+      accountType: user
     })
-    setColor(history.location.pathname.includes('agent') ? 'agent' : 'helpa')
-    setSelectedUser(history.location.pathname.includes('agent') ? 'agent' : 'helpa')
+    setColor(user)
+    setSelectedUser(user)
   }
-  
+
   render() {
-    const {theme, isLoading, hasFeatures, hasHelps, hasOthers, data, featuresData, othersData} = this.state
-    
+    const { accountType } = this.state
+
     return (
       <div>
-        
-        {
-          isLoading && data.length <= 0 && (
-            <Box sx={{
-              margin: 0,
-              position: 'absolute',
-              top: '50%',
-              left: '50%',
-              marginRight: '-50%',
-              transform: 'translate(-50%, -50%)'
-            }}>
-              <CircularProgress style={{color: Color.helpaDarkPink}}/>
-            </Box>
-          )
-        } 
         {
           accountType != null && (
-            <div className={selectedUser === 'agent' ? ' banner-agent' : 'banner-helpa'}>
-                {
-                  <Banner 
-                    {...this.props}
-                    theme={selectedUser}
-                  />
-                }
-                {
-                  hasHelps ? 
-                  <Video
-                  theme={selectedUser}
-                  data={data}
-                  />
-                  :
-                  ""
-                }
-                {
-                  featuresData.length > 0 ? 
-                  <Features 
-                  theme={selectedUser}
-                  data={featuresData}
-                  /> 
-                  : 
-                  ""
-                }
-                {
-                  othersData.length > 0 ? 
-                  <Others
-                  theme={selectedUser}
-                  data={othersData}
-                  />
-                  :
-                  ""
-                }
+            <div className={accountType === 'agent' ? ' banner-agent' : 'banner-helpa'}>
+              {
+                <Banner
+                  {...this.props}
+                  theme={accountType}
+                />
+              }
+
+              <Video
+                theme={accountType}
+                data={Helper.data[accountType].helps}
+              />
+              <Features
+                theme={accountType}
+                data={Helper.data[accountType].features}
+              />
+
+              <Others
+                theme={accountType}
+                data={Helper.data[accountType].others}
+              />
             </div>
           )
         }
@@ -103,12 +68,12 @@ class Landing extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({state: state});
-const mapDispatchToProps = (dispatch) =>{
+const mapStateToProps = (state) => ({ state: state });
+const mapDispatchToProps = (dispatch) => {
   const { actions } = require('reduxhandler');
   return {
     setColor: (type) => dispatch(actions.setColor(type)),
-    setSelectedUser: (user) => {dispatch(actions.setSelectedUser(user))},
+    setSelectedUser: (user) => { dispatch(actions.setSelectedUser(user)) },
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Landing))
