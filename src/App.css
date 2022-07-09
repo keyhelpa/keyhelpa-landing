@@ -95,7 +95,14 @@ iframe{
 
 @media (max-width: 991px) {
 
+  /* 
+    Homepage
+  */
   
+  /* .imageRight, .imageLeft{
+    height: 50vh !important;
+    width: auto !important;
+  } */
   /* 
     video css
   */

@@ -33,19 +33,19 @@ export default {
             features: [{
                 title: "Create agency profile.",
                 description: "A one-off setup that includes payment details for future work engagements and is editable anytime.",
-                url: ""
+                template: 'up'
             }, {
                 title: "Post a job.  It’s free!",
                 description: "Draft and upload your job requirements then automatically receive proposals from qualified freelancers. Or, browse through profiles.",
-                url: ""
+                template: 'down'
             }, {
                 title: "Choose a Helpa.",
                 description: "Review Helpa profiles, message in real-time, compare offers and accept what’s right for you.",
-                url: ""
+                template: 'up'
             }, {
                 title: "Pay securely &  on time.",
                 description: "KeyHelpa’s payment system releases payment once job milestones have been completed to satisfaction and authorisation to release funds confirmed.",
-                url: ""
+                template: 'circle'
             }],
             others: [{
                 title: 'Find the right help. Right now!',
@@ -119,19 +119,19 @@ export default {
             features: [{
                 title: "Create your personal profile.",
                 description: "Create your profile and upload a photo. Choose the days, times, locations and hours you’re willing to work.",
-                url: ""
+                template: 'up-pink'
             }, {
                 title: "Browse jobs.",
                 description: "View suitable jobs using filters. Save your search for automatic job alerts when work becomes available.",
-                url: ""
+                template: 'down-pink'
             }, {
                 title: "Prepare your offer.",
                 description: "Put your best foot forward and submit a work proposal with the total cost or your hourly rate.",
-                url: ""
+                template: 'up-pink'
             }, {
                 title: "Get the job and earn.",
                 description: "Once your offer is accepted, deliver high -quality help, earn the agreed amount and shoot for that 5-star raiting.",
-                url: ""
+                template: 'circle-pink'
             }],
             others: [{
                 title: "Total control. Constant contact.",
