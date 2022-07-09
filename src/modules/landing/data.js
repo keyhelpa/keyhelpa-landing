@@ -154,7 +154,7 @@ const helpa = {
                 others: {
                     title: "Your investment. Protected.",
                     description: "Once your job have accepted a job the agreed payment is securely held by Key Helpas’ payment system. Only once the job has been completed to the client satisfaction, they   approve for a payment to be automatically distributed in the next payment run. So you can do the work knowing that your payment is protected.",
-                    url: "/storage/image/2_2022-07-06_06_06_43_hand_hold mobile pink.png"
+                    url: "/storage/image/2_2022-07-06_06_06_43_hand_hold mobile pink.png",
                 }
             }
         }
