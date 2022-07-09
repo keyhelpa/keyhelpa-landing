@@ -231,7 +231,7 @@ export class Features extends Component {
           <Button
             title={'Get Started'}
             style={{
-              backgroundColor: theme == 'agent' ? Colors.agentDarkGray : Colors.helpaPink,
+              backgroundColor: theme == 'agent' ? Colors.agentDarkGray : Colors.helpaDarkPink,
               color: 'white',
               fontSize: '24px',
               width: '10%'
