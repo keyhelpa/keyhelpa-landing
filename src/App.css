@@ -101,10 +101,11 @@ iframe{
   */
   .video-text-mobile{
     height: unset !important;
-    min-height: 25vh !important;
+    min-height: 10vh !important;
     overflow-y: hidden;
     padding-right: unset !important;
     margin-top: 50px !important;
+    margin-bottom: 25px !important;
   }
 
   .video-player-holder{
