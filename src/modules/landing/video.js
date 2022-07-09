@@ -72,7 +72,8 @@ export class Video extends Component {
                   display: 'flex',
                   alignContent: 'center',
                   justifyContent: 'center'
-                }}>
+                }}
+                >
                   <div style={{
                     width: '100px',
                     height: '100px',
@@ -83,7 +84,9 @@ export class Video extends Component {
                     alignContent: 'center',
                     display: 'flex',
                     justifyContent: 'center'
-                  }}>
+                  }}
+                    className="active-color-hover"
+                  >
                     <SvgIcon
                       component={PlayArrow}
                       style={{

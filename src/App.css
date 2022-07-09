@@ -80,3 +80,9 @@ iframe{
   transform-origin: 50% 50% !important;
   animation: jump .5s linear alternate infinite !important;
 }
+
+
+.active-color-hover:hover{
+  cursor: pointer !important;
+  opacity: 0.5;
+}
