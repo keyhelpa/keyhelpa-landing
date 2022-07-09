@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import Footer from 'modules/generic/frames/footer.js'
 import { Container, Box, Grid, SvgIcon } from '@mui/material';
 import Button from 'modules/generic/button'
-import bgAgent from 'assets/lighterGray.png'
-import bgHelpa from 'assets/lighterPink.png'
 import './Style.css'
 import API from 'services/api'
 import Routes from 'common/Routes'
@@ -67,7 +65,7 @@ export class Video extends Component {
                 <div style={{
                   width: '60%',
                   float: 'left',
-                  height: '350px',
+                  height: '300px',
                   // background: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle,
                   backgroundImage: `url(${theme == 'agent' ? AgentVideoThumbnail : HelpaVideoThumbnail})`,
                   alignItems: 'center',

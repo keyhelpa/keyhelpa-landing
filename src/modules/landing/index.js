@@ -12,6 +12,8 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Helper from './helper'
 import Colors from 'common/Colors'
+import AgentLogoBackground from 'assets/lighterGray.png'
+import HelpaLogoBackground from 'assets/lighterPink.png'
 
 class Landing extends Component {
   constructor(props) {
@@ -55,10 +57,19 @@ class Landing extends Component {
                 background: accountType == 'agent' ? Colors.agentBackgroundColor : Colors.helpeBackgroundColor
               }}>
 
+              <div style={{
+                backgroundImage: `url(${accountType == 'agent' ? AgentLogoBackground : HelpaLogoBackground})`,
+                backgroundPosition: 'center',
+                backgroundSize: 'auto 60%',
+                backgroundRepeat: 'no-repeat',
+                width: '100%',
+                float: 'left'
+              }}>
               <Video
                 theme={accountType}
                 data={Helper.data[accountType].helps}
               />
+              </div>
               <Features
                 theme={accountType}
                 data={Helper.data[accountType].features}
