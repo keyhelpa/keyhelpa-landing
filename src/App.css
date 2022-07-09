@@ -100,7 +100,9 @@ iframe{
     video css
   */
   .video-text-mobile{
-    height: 25vh !important;
+    height: unset !important;
+    min-height: 25vh !important;
+    overflow-y: hidden;
     padding-right: unset !important;
     margin-top: 50px !important;
   }
