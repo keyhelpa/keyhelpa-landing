@@ -3,7 +3,8 @@ const types = {
   SET_SELECTED_USER: 'SET_SELECTED_USER',
   SET_RIGHT_MENU: 'SET_RIGHT_MENU',
   SET_LEFT_MENU: 'SET_LEFT_MENU',
-  SET_COLOR: 'SET_COLOR'
+  SET_COLOR: 'SET_COLOR',
+  SET_ACCOUNT_TYPE: 'SET_ACCOUNT_TYPE'
 };
 
 export const actions = {
@@ -18,6 +19,9 @@ export const actions = {
   },
   setColor: (userType) => {
     return {type: types.SET_COLOR, userType}
+  },
+  setAccountType: (accountType) => {
+    return {type: types.SET_ACCOUNT_TYPE, accountType}
   }
 }
 
@@ -41,12 +45,13 @@ const initialState = {
     title: 'Login',
     type: 'external',
     route:  Config.HELPA
-  }]
+  }],
+  accountType: null
 }
 
 const reducer = (state = initialState, action) => {
   const {selectedUser, type} = action
-  const {rightMenu, userType} = action
+  const {rightMenu, userType, accountType} = action
   let userTypes = localStorage.getItem('user_type');
   switch (type) {
     case types.SET_SELECTED_USER:
@@ -114,6 +119,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         color: color
+      }
+    case types.SET_ACCOUNT_TYPE:
+      return {
+        ...state,
+        accountType
       }
     default:
       return {...state}
