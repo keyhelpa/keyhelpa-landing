@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect, useCallback } from "react";
 import Button from 'modules/generic/button'
 import './Style.css'
 import AgentCircleUp from 'assets/uniform_images/agent-circle-up.png';
@@ -14,13 +14,15 @@ import HelpaMobileCircleLeft from 'assets/uniform_images/helpa-mobile-circle-lef
 import HelpaMobileCircleRight from 'assets/uniform_images/helpa-mobile-circle-right.png';
 import HelpaMobileCircle from 'assets/uniform_images/helpa-mobile-circle.png';
 import Colors from 'common/Colors'
+import './featureStyle.css'
 
-export class Features extends Component {
-  constructor(props) {
-    super(props)
-  }
+function Features(props) {
+  const [features, setFeatures] = useState([]);
+  const { data, theme } = props;
 
-  getImage(template, device) {
+
+
+  const getImage = (template, device) => {
     if (device == 'desktop') {
       switch (template) {
         case 'up': return AgentCircleUp
@@ -42,13 +44,12 @@ export class Features extends Component {
     }
 
   }
-  renderCircle(title, template, device = 'desktop') {
-    const { theme } = this.props;
+  const renderCircle = (title, template, device = 'desktop') => {
     return (
       <div style={{
         width: '300px',
         height: '300px',
-        backgroundImage: `url(${this.getImage(template, device)})`,
+        backgroundImage: `url(${getImage(template, device)})`,
         backgroundPosition: 'center',
         backgroundSize: '300px 300px',
         backgroundRepeat: 'no-repeat',
@@ -72,10 +73,9 @@ export class Features extends Component {
     )
   }
 
-  
 
-  renderDesktop(data) {
-    const { theme } = this.props;
+
+  const renderDesktop = (data) => {
     return (
       <div style={{
         width: '100%',
@@ -84,12 +84,14 @@ export class Features extends Component {
         justifyContent: 'space-between'
       }}>
         {
-          data && data.map((item) => (
+          data && data.map((item, index) => (
             <div style={{
               width: '300px',
-            }}>
+            }}
+              className={"desktop-feature-card-" + index}
+            >
               {
-                (item.template.includes('down') || item.template.includes('circle')) && this.renderCircle(item.title, item.template)
+                (item.template.includes('down') || item.template.includes('circle')) && renderCircle(item.title, item.template)
               }
               <div style={{
                 float: 'left',
@@ -105,7 +107,7 @@ export class Features extends Component {
                 </p>
               </div>
               {
-                (item.template.includes('up')) && this.renderCircle(item.title, item.template)
+                (item.template.includes('up')) && renderCircle(item.title, item.template)
               }
             </div>
           ))
@@ -115,13 +117,12 @@ export class Features extends Component {
     )
   }
 
-  renderCircleMobile(title, template, device = 'desktop') {
-    const { theme } = this.props;
+  const renderCircleMobile = (title, template, device = 'desktop') => {
     return (
       <div style={{
         width: '50%',
         height: '200px',
-        backgroundImage: `url(${this.getImage(template, device)})`,
+        backgroundImage: `url(${getImage(template, device)})`,
         backgroundPosition: 'center',
         backgroundSize: '100% auto',
         backgroundRepeat: 'no-repeat',
@@ -146,20 +147,21 @@ export class Features extends Component {
     )
   }
 
-  renderMobile(data) {
-    const { theme } = this.props;
+  const renderMobile = (data) => {
     return (
       <div style={{
         width: '100%',
         float: 'left',
       }}>
         {
-          data && data.map((item) => (
+          data && data.map((item, index) => (
             <div style={{
               width: '100%',
-            }}>
+            }}
+              className={"mobile-feature-card-" + index}
+            >
               {
-                (item.template.includes('up')) && this.renderCircleMobile(item.title, item.template, 'mobile')
+                (item.template.includes('up')) && renderCircleMobile(item.title, item.template, 'mobile')
               }
               <div style={{
                 float: 'left',
@@ -178,7 +180,7 @@ export class Features extends Component {
                 </p>
               </div>
               {
-                (item.template.includes('down') || item.template.includes('circle')) && this.renderCircleMobile(item.title, item.template, 'mobile')
+                (item.template.includes('down') || item.template.includes('circle')) && renderCircleMobile(item.title, item.template, 'mobile')
               }
             </div>
           ))
@@ -188,60 +190,57 @@ export class Features extends Component {
     )
   }
 
-  render() {
-    const { theme, data } = this.props;
-    return (
+  return (
+    <div style={{
+      width: '100%',
+      float: 'left',
+      minHeight: '100vh',
+    }}>
       <div style={{
         width: '100%',
         float: 'left',
-        minHeight: '100vh',
+        minHeight: '80vh',
+        display: 'flex',
+        alignItems: 'center',
+        alignContent: 'center'
       }}>
-        <div style={{
-          width: '100%',
-          float: 'left',
-          minHeight: '80vh',
-          display: 'flex',
-          alignItems: 'center',
-          alignContent: 'center'
-        }}>
-          <div
-            className="hide-on-mobile"
-            style={{
-              width: '100%',
-              float: 'left'
-            }}
-          >
-            {
-              this.renderDesktop(data)
-            }
-          </div>
-          <div className="hide-on-desktop">
-            {
-              this.renderMobile(data)
-            }
-          </div>
+        <div
+          className="hide-on-mobile"
+          style={{
+            width: '100%',
+            float: 'left'
+          }}
+        >
+          {
+            renderDesktop(data)
+          }
         </div>
-
-        <div style={{
-          textAlign: 'center',
-          width: '100%',
-          float: 'left',
-          marginBottom: 100
-        }}>
-          <Button
-            title={'Get Started'}
-            style={{
-              backgroundColor: theme == 'agent' ? Colors.agentDarkGray : Colors.helpaDarkPink,
-              color: 'white',
-              fontSize: '24px',
-              width: '10%'
-            }}
-            onChange={() => window.location.href = Config.HELPA}
-          ></Button>
+        <div className="hide-on-desktop">
+          {
+            renderMobile(data)
+          }
         </div>
       </div>
-    )
-  }
+
+      <div style={{
+        textAlign: 'center',
+        width: '100%',
+        float: 'left',
+        marginBottom: 100
+      }}>
+        <Button
+          title={'Get Started'}
+          style={{
+            backgroundColor: theme == 'agent' ? Colors.agentDarkGray : Colors.helpaDarkPink,
+            color: 'white',
+            fontSize: '24px',
+            width: '10%'
+          }}
+          onChange={() => window.location.href = Config.HELPA}
+        ></Button>
+      </div>
+    </div>
+  )
 }
 
-export default Features
+export default Features;
