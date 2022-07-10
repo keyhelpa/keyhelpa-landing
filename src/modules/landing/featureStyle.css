@@ -1,0 +1,101 @@
+
+/* 
+  transition rendering
+
+*/
+.desktop-feature-card-0, .desktop-feature-card-1, .desktop-feature-card-2, .desktop-feature-card-3 {
+    animation-name: bounce;
+    animation-duration: 4s;
+  }
+  
+  @keyframes bounce {
+  
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+      transform: translateY(0);
+    }
+  
+    40% {
+      transform: translateY(-200px);
+    }
+  
+    60% {
+      transform: translateY(-100px);
+    }
+  }
+  
+  @keyframes bounce-hover {
+  
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+      transform: translateY(0);
+    }
+  
+    40% {
+      transform: translateY(-200px);
+    }
+  
+    60% {
+      transform: translateY(-100px);
+    }
+  }
+  .desktop-feature-card-0:hover, .desktop-feature-card-1:hover, .desktop-feature-card-2:hover, .desktop-feature-card-3:hover{
+    animation-name: bounce-hover;
+    animation-duration: 2s;
+    cursor: pointer;
+  }
+  
+  
+  
+  .mobile-feature-card-0, .mobile-feature-card-1, .mobile-feature-card-2, .mobile-feature-card-3 {
+    animation-name: bounce;
+    animation-duration: 4s;
+  }
+  
+  @keyframes mobile-bounce {
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+      transform: translateX(0);
+    }
+  
+    40% {
+      transform: translateX(-200px);
+    }
+  
+    60% {
+      transform: translateX(-100px);
+    }
+  }
+  
+  @keyframes mobile-bounce-hover {
+  
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+      transform: translateX(0);
+    }
+  
+    40% {
+      transform: translateX(-200px);
+    }
+  
+    60% {
+      transform: translateX(-100px);
+    }
+  }
+  .mobile-feature-card-0:hover, .mobile-feature-card-1:hover, .mobile-feature-card-2:hover, .mobile-feature-card-3:hover{
+    animation-name: mobile-bounce-hover;
+    animation-duration: 2s;
+    cursor: pointer;
+  }
