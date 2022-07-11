@@ -1,9 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
 import Header from './modules/generic/frames/loginHeader'
-import Footer from 'modules/generic/frames/footer.js'
+import Footer from 'modules/generic/frames/footerLanding.js'
 import RouteList from './modules/routes';
-import Sidebar from './modules/generic/frames/sidebar';
+import Sidebar from './modules/generic/frames/sidebarLanding';
 import React, { useState } from 'react';
 import { Paper } from '@mui/material';
 import { connect } from 'react-redux'

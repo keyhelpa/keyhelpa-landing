@@ -1,180 +1,193 @@
 import React, { Component } from 'react'
-import Footer from 'modules/generic/frames/footer.js'
-import { Container, Box, Grid } from '@mui/material';
-import Button from 'modules/generic/button'
-import bgAgent from 'assets/lighterGray.png'
-import bgHelpa from 'assets/lighterPink.png'
 import './Style.css'
-import API from 'services/api'
-import Routes from 'common/Routes'
-import Config from "config";
-
+import Colors from 'common/Colors';
+import Button from 'modules/generic/button'
 export class Others extends Component {
-    constructor(props) {
-      super(props)
-      this.state={
-        theme: this.props.theme,
-        hasFetched: false
-      }
-    }
-    renderContent(others){
-      const {theme} = this.state;
-      return (
-        <div>
-            {/* Web */}
-          <div className='web'>
-            <Grid className='gridBg' style={
-              theme == 'agent' ? {backgroundImage: `url(${bgAgent})`, backgroundColor: '#F1F5FB'} : {backgroundImage: `url(${bgHelpa})`, backgroundColor: '#FFFAFC'}}
-              container alignItems={'left'} justifyContent={'left'}>
-              {
-                others.map((item,index)=>{
-                  // console.log('others', others)
-                  if(index % 2 === 0){
-                    return(
-                      // img left
-                      <div key={index} style={{
-                        display: 'flex'
-                      }}>
-                        <Grid item xs={6} style={{
-                        padding: '5%',
-                        textAlign: 'center',
-                        }}>
-                          <img style={{
-                          width: '80%',
-                          height: 'auto',
-                        }} src={`${Config.BACKEND_URL}${item.url}`}></img>
-                        </Grid>
-                        <Grid item xs={6} style={{
-                          padding: '5% 5% 5% 5%',
-                          textAlign: 'left'
-                        }}>
-                          <h2 style={{
-                            color: ' #34475D'
-                          }}>{item.title}</h2>
-                          <p style={{
-                            color: '#34475DA3',
-                            fontSize: '18px'
-                          }}>{item.description}</p>
-                        </Grid> 
-                      </div>
-                    )
-                  }else{
-                    return(
-                      // img right
-                      <div style={{
-                        display: 'flex'
-                      }}>
-                        <Grid item xs={6} style={{
-                            padding: '5% 5% 5% 5%',
-                            textAlign: 'left'
-                          }}>
-                            <h2 style={{
-                              color: ' #34475D'
-                            }}>{item.title}</h2>
-                            <p style={{
-                              color: '#34475DA3',
-                              fontSize: '18px'
-                            }}>{item.description}</p>
-                          </Grid>
-                          <Grid item xs={6} style={{
-                            padding: '5%',
-                            textAlign: 'center'
-                          }}>
-                            <img style={{
-                            width: '80%',
-                            height: 'auto',
-                          }} src={`${Config.BACKEND_URL}${item.url}`}></img>
-                          </Grid>
-                          
-                      </div>
-                    )
-                  }
-                })
-              }
-            </Grid>
-          <div className='flex-center' style={
-          theme == 'agent' ? {backgroundColor: '#F1F5FB'} : {backgroundColor: '#FFFAFC'}}>
-          <Button
-              title={'Get Started'}
-              style={theme==='agent' ? {
-                backgroundColor: '#34475D',color: 'white',
-                fontSize: '24px',
-                width: '10%'} : {
-                backgroundColor: '#E62D7E',color: 'white',
-                fontSize: '24px',
-                width: '10%'
-              }}
-              onChange={() => window.location.href = Config.HELPA}
-              ></Button>
-          </div>
-          </div>
-          {/* Mobile */}
-          <div className='mobile'>
-            <Grid className='gridBg' style={
-              theme == 'agent' ? {backgroundImage: `url(${bgAgent})`, backgroundColor: '#F1F5FB'} : {backgroundImage: `url(${bgHelpa})`, backgroundColor: '#FFFAFC'}}
-              container alignItems={'center'} justifyContent={'center'}>
-              {
-                others.map((item,index)=>{
-                  return(
-                    <div key={index} style={{
-                      display: 'flex',
-                    }}>
-                      <Grid item xs={12} style={{
-                      padding: '5%',
-                      justifyContent: 'center'
-                      }}>
-                        <img style={{
-                        width: '100%',
-                        height: 'auto',
-                        marginTop: '25px',
-                        marginBottom: '25px',
-                      }} src={`${Config.BACKEND_URL}${item.url}`}></img>
-                      <div style={{
-                        textAlign: 'left',
-                      }}>
-                        <h2 style={{
-                          color: ' #34475D',
-                          marginTop: '25px',
-                          marginBottom: '25px',
-                        }}>{item.title}</h2>
-                        <p style={{
-                          color: '#34475DA3',
-                          fontSize: '18px'
-                        }}>{item.description}</p>
-                      </div>
-                      
-                      </Grid>
-                      
-                    </div>
-                  )
-                })
-              }
-              <Button
-                title={'Get Started'}
-                style={theme==='agent' ? {
-                  backgroundColor: '#34475D',color: 'white',
-                  fontSize: '24px',
-                  width: '10%', marginBottom: '25px'} : {
-                  backgroundColor: '#E62D7E',color: 'white',
-                  fontSize: '24px',
-                  width: '10%', marginBottom: '25px'
-                }}
-                onChange={() => window.location.href = Config.HELPA}
-              ></Button>
-            </Grid>
-          </div>
+  constructor(props) {
+    super(props)
+  }
+
+  renderContent(item) {
+    const { theme } = this.props;
+    return (
+      <div style={{
+        float: 'left',
+        width: '100%',
+        marginBottom: 100
+      }}>
+        {
+          item.template == 'left' && (
+            <div style={{
+              float: 'left',
+              width: '50%'
+            }}
+              className="full-width-mobile"
+            >
+              <img style={{
+                height: 'auto',
+                width: 'auto'
+              }} src={item.url}></img>
+            </div>
+          )
+        }
+        <div style={{
+          float: 'left',
+          width: '50%',
+          paddingLeft: item.template == 'right' ? 0 : '5%',
+          paddingRight: item.template == 'right' ? '5%' : 0,
+        }}
+          className="full-width-mobile others-mobile-reset"
+        >
+          <h1 style={{
+            color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle,
+            marginBottom: 25
+          }}>
+            {
+              item.title
+            }
+          </h1>
+          <p style={{
+            color: theme == 'agent' ? Colors.agentText : Colors.helpaText,
+            marginBottom: 25
+          }}  >
+            {
+              item.description()
+            }
+          </p>
+
         </div>
-      )
-    }
-    render(){
-    const {theme, others} = this.state;
-    const {data} = this.props
-    return(
-        <div>
-          {data && (this.renderContent(data))}
+
+        {
+          item.template == 'right' && (
+            <div style={{
+              float: 'left',
+              width: '50%',
+              paddingLeft: '5%'
+            }}
+              className="full-width-mobile others-mobile-reset"
+            >
+              <img style={{
+                height: 'auto',
+                width: 'auto'
+              }} src={item.url}></img>
+            </div>
+          )
+        }
       </div>
-      )
-    }
+    )
+  }
+
+  renderContentMobile(item) {
+    const { theme } = this.props;
+    return (
+      <div style={{
+        float: 'left',
+        width: '100%',
+        marginBottom: 50
+      }}>
+        <div style={{
+          float: 'left',
+          width: '50%'
+        }}
+          className="full-width-mobile"
+        >
+          <img style={{
+            height: 'auto',
+            width: '100%'
+          }} src={item.url}></img>
+        </div>
+
+        <div style={{
+          float: 'left',
+          width: '50%',
+          paddingLeft: item.template == 'right' ? 0 : '5%',
+          paddingRight: item.template == 'right' ? '5%' : 0,
+          marginTop: 50
+        }}
+          className="full-width-mobile others-mobile-reset"
+        >
+          <h1 style={{
+            color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle,
+            marginBottom: 25
+          }}>
+            {
+              item.title
+            }
+          </h1>
+          <p style={{
+            color: theme == 'agent' ? Colors.agentText : Colors.helpaText,
+            marginBottom: 25
+          }}  >
+            {
+              item.description()
+            }
+          </p>
+
+        </div>
+      </div>
+    )
+  }
+
+
+  render() {
+    const { data, theme } = this.props
+    return (
+      <div style={{
+        width: '100%',
+        float: 'left',
+        marginTop: 100
+      }}>
+        <div className="hide-on-mobile">
+          {
+            data && data.length > 0 && data.map((item) => (
+              <div style={{
+                width: '100%',
+                float: 'left'
+              }}>
+                {
+                  this.renderContent(item)
+                }
+              </div>
+            ))
+          }
+        </div>
+
+        <div className="hide-on-desktop">
+          {
+            data && data.length > 0 && data.map((item) => (
+              <div style={{
+                width: '100%',
+                float: 'left'
+              }}>
+                {
+                  this.renderContentMobile(item)
+                }
+              </div>
+            ))
+          }
+        </div>
+        <div style={{
+          textAlign: 'center',
+          width: '100%',
+          float: 'left',
+          marginBottom: 100
+        }}>
+          <Button
+            title={'Get Started'}
+            style={{
+              backgroundColor: theme == 'agent' ? Colors.agentDarkGray : Colors.helpaDarkPink,
+              color: 'white',
+              fontSize: '24px',
+              width: '10%'
+            }}
+            onChange={() => window.location.href = Config.HELPA}
+          ></Button>
+        </div>
+
+
+      </div>
+    )
+  }
 }
 
 export default Others

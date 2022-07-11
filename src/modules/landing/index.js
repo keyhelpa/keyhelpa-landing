@@ -10,211 +10,98 @@ import API from 'services/api'
 import Routes from 'common/Routes'
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { Color } from 'common'
-import {agent, helpa} from './data'
+import Helper from './helper'
+import Colors from 'common/Colors'
+import AgentLogoBackground from 'assets/lighterGray.png'
+import HelpaLogoBackground from 'assets/lighterPink.png'
 
 class Landing extends Component {
   constructor(props) {
     super(props)
-    this.state={
+    this.state = {
       theme: 'agent',
-      data: [],
-      isLoading: false,
-      hasHelps: false,
-      hasFeatures: false,
-      hasOthers: false,
-      othersData: [],
-      featuresData: []
+      accountType: null
     }
   }
 
   componentDidMount() {
-    const {setColor, setSelectedUser, history} = this.props
-    const {data} = this.state
-    console.log('agent>>>>>>>>>>>>>>>', history.location.pathname.includes('agent'))
-    if(history.location.pathname.includes('agent')) {
-      this.setState({theme: 'agent'})
-      setColor('agent')
-      setSelectedUser('agent')
-    }else{
-      console.log('helpa')
-      this.setState({theme: 'helpa'})
-      setColor('helpa')
-      setSelectedUser('helpa')
-    }
-    this.retrieveLocal()
-    // this.retrieve()
-  }
-  componentDidUpdate (nextProps){
-    const {setColor, setSelectedUser, history} = this.props
-    if(this.props.location !== nextProps.location){
-      console.log('<><><>>))))))))');
-      if(history.location.pathname.includes('agent')) {
-        this.setState({theme: 'agent'})
-        setColor('agent')
-        setSelectedUser('agent')
-      }else{
-        console.log('helpa')
-        this.setState({theme: 'helpa'})
-        setColor('helpa')
-        setSelectedUser('helpa')
-      }
-      this.retrieveLocal()
-      // this.retrieve()
-    }
-  }
-  async retrieveLocal(){
-    const {history} = this.props
-    let status = history.location.pathname.includes('agent') ? 'agent' : 'helpa'
-    let tempFeatures = [];
-    let tempOthers = [];
-    let response = status == 'agent' ? agent : helpa
-    await this.setState({data: response.data, isLoading: true})
-    for (let i = 0; i <= response.data.length-1; i++) {
-      const item = response.data[i];
-      if(item.payload_value.others){
-        tempOthers.push(item.payload_value.others)
-      }
-      if(item.payload_value.features){
-        tempFeatures.push( item.payload_value.features)
-      }
-    }
+    const { setColor, setSelectedUser, history } = this.props
+    let user = history.location.pathname.includes('agent') ? 'agent' : 'helpa'
     this.setState({
-      othersData: tempOthers,
-      featuresData: tempFeatures,
-      isLoading: false
+      accountType: user
     })
-    this.runChecks()
-  }
-  retrieve(){
-    const {history} = this.props
-    const {othersData, featuresData} = this.state;
-    let status = history.location.pathname.includes('agent') ? 'agent' : 'helpa'
-    this.setState({data: []})
-    let param = {
-      condition:[
-        {
-          column: 'payload',
-          clause: '=',
-          value: status
-        }
-      ]
-    }
-    this.setState({isLoading: true})
-    API.request(Routes.payloadsRetrieve, param, response => {
-      console.log('response', response.data);
-      let tempFeatures = [];
-      let tempOthers = [];
-      if(response.data.length > 0){
-        this.setState({
-          data: response.data,
-          isLoading: false
-        })
-        for (let i = 0; i <= response.data.length-1; i++) {
-          const item = response.data[i];
-          if(item.payload_value.others){
-            tempOthers.push(item.payload_value.others)
-          }
-          if(item.payload_value.features){
-            tempFeatures.push( item.payload_value.features)
-          }
-        }
-        this.setState({
-          othersData: tempOthers,
-          featuresData: tempFeatures
-        })
-        this.runChecks()
-      }
-    })
+    setColor(user)
+    setSelectedUser(user)
   }
 
-  runChecks(){
-    const {data} = this.state;
-    console.log('>>>>>>>>>>>>', data);
-    return(
-      data.map((item, index)=> {
-        if(item.payload_value.helps != null || item.payload_value.helps != undefined){
-          this.setState({
-            ...this.state,
-            hasHelps: true
-          })
-        }
-        if(item.payload_value.features != null || item.payload_value.features != undefined){
-          this.setState({
-            ...this.state,
-            hasFeatures: true
-          })
-        }
-        if(item.payload_value.others != null || item.payload_value.others != undefined){
-          this.setState({
-            ...this.state,
-            hasOthers: true
-          })
-        }
-      })
-    )
-  }
-  // componentWillUnmount(){
-  //   this._isFetching = false;
-  // }
   render() {
-    const {theme, isLoading, hasFeatures, hasHelps, hasOthers, data, featuresData, othersData} = this.state
-    // const {selectedUser} = this.props.state;
-    let selectedUser = this.props.history.location.pathname.includes('agent') ? 'agent' : 'helpa'
-    console.log('<><><><>><><<<<<<<', this.props.history.location.pathname);
+    const { accountType } = this.state
+
     return (
       <div>
-        
         {
-          isLoading && data.length <= 0 && (
-            <Box sx={{
-              margin: 0,
-              position: 'absolute',
-              top: '50%',
-              left: '50%',
-              marginRight: '-50%',
-              transform: 'translate(-50%, -50%)'
-            }}>
-              <CircularProgress style={{color: Color.helpaDarkPink}}/>
-            </Box>
-          )
-        } 
-        {
-          data.length > 0 && !isLoading && (
-            <div className={selectedUser === 'agent' ? ' banner-agent' : 'banner-helpa'}>
-                {
-                  <Banner 
-                    {...this.props}
-                    theme={selectedUser}
-                  />
-                }
-                {
-                  hasHelps ? 
+          accountType != null && (
+            <div className={accountType === 'agent' ? ' banner-agent' : 'banner-helpa'}>
+
+              {
+                <Banner
+                  {...this.props}
+                  theme={accountType}
+                />
+              }
+              <div style={{
+                width: '100%',
+                float: 'left',
+                background: accountType == 'agent' ? Colors.agentBackgroundColor : Colors.helpeBackgroundColor
+              }}>
+
+                <div style={{
+                  backgroundImage: `url(${accountType == 'agent' ? AgentLogoBackground : HelpaLogoBackground})`,
+                  backgroundPosition: 'center',
+                  backgroundSize: 'auto 60%',
+                  backgroundRepeat: 'no-repeat',
+                  width: '100%',
+                  float: 'left',
+                  paddingLeft: '5%',
+                  paddingRight: '5%',
+                }}>
                   <Video
-                  theme={selectedUser}
-                  data={data}
+                    theme={accountType}
+                    data={Helper.data[accountType].helps}
                   />
-                  :
-                  ""
-                }
-                {
-                  featuresData.length > 0 ? 
-                  <Features 
-                  theme={selectedUser}
-                  data={featuresData}
-                  /> 
-                  : 
-                  ""
-                }
-                {
-                  othersData.length > 0 ? 
+                </div>
+                <div style={{
+                  backgroundImage: `url(${accountType == 'agent' ? AgentLogoBackground : HelpaLogoBackground})`,
+                  backgroundPosition: 'center',
+                  backgroundSize: 'auto 60%',
+                  backgroundRepeat: 'no-repeat',
+                  width: '100%',
+                  float: 'left',
+                  paddingLeft: '5%',
+                  paddingRight: '5%',
+                }}>
+                  <Features
+                    theme={accountType}
+                    data={Helper.data[accountType].features}
+                  />
+                </div>
+                <div style={{
+                  // backgroundImage: `url(${accountType == 'agent' ? AgentLogoBackground : HelpaLogoBackground})`,
+                  // backgroundPosition: 'center',
+                  // backgroundSize: 'auto 60%',
+                  // backgroundRepeat: 'no-repeat',
+                  width: '100%',
+                  float: 'left',
+                  paddingLeft: '5%',
+                  paddingRight: '5%',
+                }}>
+
                   <Others
-                  theme={selectedUser}
-                  data={othersData}
+                    theme={accountType}
+                    data={Helper.data[accountType].others}
                   />
-                  :
-                  ""
-                }
+                </div>
+              </div>
             </div>
           )
         }
@@ -223,12 +110,12 @@ class Landing extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({state: state});
-const mapDispatchToProps = (dispatch) =>{
+const mapStateToProps = (state) => ({ state: state });
+const mapDispatchToProps = (dispatch) => {
   const { actions } = require('reduxhandler');
   return {
     setColor: (type) => dispatch(actions.setColor(type)),
-    setSelectedUser: (user) => {dispatch(actions.setSelectedUser(user))},
+    setSelectedUser: (user) => { dispatch(actions.setSelectedUser(user)) },
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Landing))

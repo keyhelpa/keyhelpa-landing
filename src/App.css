@@ -30,7 +30,7 @@
   color: #61dafb;
 }
 
-.form-control{
+.form-control {
   background-color: transparent !important;
   border: none !important;
   border-bottom: 1px solid white !important;
@@ -38,30 +38,38 @@
   color: white !important;
 }
 
-.form-control:focus, .form-select:focus{
+.form-control:focus,
+.form-select:focus {
   box-shadow: none !important;
 }
 
-.form-select{
+.form-select {
   background-color: transparent !important;
   border: none !important;
   border-bottom: 1px solid white !important;
   margin-bottom: 20px;
   color: white !important;
 }
-.form-select option{
+
+.form-select option {
   color: black !important;
 }
 
-iframe{
-  width:100%;
-  height: auto
+iframe {
+  width: 100% !important;
+  height: 60vh !important;
+  border-radius: 25px !important;
+}
+
+.modal-content {
+  border-radius: 25px !important;
 }
 
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -71,12 +79,73 @@ iframe{
 /* jumping image logo */
 
 @keyframes jump {
-  0%   {transform: translate3d(0,0,0) scale3d(0,0);}
-  40%  {transform: translate3d(0,0) scale3d(0,0);}
-  100% {transform: translate3d(0,20%,0) scale3d(1,1,1);}
+  0% {
+    transform: translate3d(0, 0, 0) scale3d(0, 0);
+  }
+
+  40% {
+    transform: translate3d(0, 0) scale3d(0, 0);
+  }
+
+  100% {
+    transform: translate3d(0, 20%, 0) scale3d(1, 1, 1);
+  }
 }
 
-.header-logo:hover{
+.header-logo:hover {
   transform-origin: 50% 50% !important;
   animation: jump .5s linear alternate infinite !important;
+}
+
+
+.active-color-hover:hover {
+  cursor: pointer !important;
+  opacity: 0.5;
+}
+
+
+
+.href-link:hover{
+  cursor: pointer !important;
+  /* text-decoration: underline !important; */
+}
+@media (max-width: 991px) {
+
+  /* 
+    Homepage
+  */
+
+  /* .imageRight, .imageLeft{
+    height: 50vh !important;
+    width: auto !important;
+  } */
+  /* 
+    video css
+  */
+  .video-text-mobile {
+    height: unset !important;
+    min-height: 10vh !important;
+    overflow-y: hidden;
+    padding-right: unset !important;
+    margin-top: 50px !important;
+    margin-bottom: 25px !important;
+  }
+
+  .video-player-holder {
+    height: 200px !important;
+  }
+
+  .video-player-text-holder {
+    margin-top: 25px !important;
+  }
+
+
+  /* 
+    others css
+  */
+
+  .others-mobile-reset {
+    padding-left: unset !important;
+    padding-right: unset !important;
+  }
 }

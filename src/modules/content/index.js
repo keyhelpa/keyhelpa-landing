@@ -130,25 +130,31 @@ class Homepage extends Component {
             <div id="textLeft" className="textLeft hidden" style={{float: 'left', marginTop: '100%'}}>
               <h1>AGENT</h1>
             </div>
-            <div onClick={() => this.handleSelect('agent')}>
+            <div onClick={() => {
+              this.handleSelect('agent')
+              this.props.history.push('/agent')
+            }}>
               <img 
-                src={require('../../assets/img/agentLeft.png')} 
+                src={require('assets/img/agentLeft.png')} 
                 onMouseEnter={() => this.handleHover('containerRight', 'enter', 'helpaRight', 'agentRight', 'imageRight')} 
                 onMouseLeave={() => this.handleHover('containerRight', 'leave', 'helpaRight', 'agentRight', 'imageRight')} 
                 className="imageLeft display" id="agentLeft"></img>
 
               <img 
-                  src={require('../../assets/img/agentRight.png')} 
+                  src={require('assets/img/agentRight.png')} 
                   className="imageRight hidden" id="agentRight"></img>
             </div>
           </div>
           <div className="containerRight" id="containerRight">
-              <div onClick={() => this.handleSelect('helpa')}>
+              <div onClick={() => {
+                this.handleSelect('helpa')
+                this.props.history.push('/helpa')
+              }}>
                 <img 
-                    src={require('../../assets/img/helpaLeft.png')} 
+                    src={require('assets/img/helpaLeft.png')} 
                     className="helpaLeft hidden" id="helpaLeft"></img>
                   <img 
-                    src={require('../../assets/img/helpaRight.png')} 
+                    src={require('assets/img/helpaRight.png')} 
                     onMouseEnter={() => this.handleHover('containerLeft', 'enter',  'agentLeft', 'helpaLeft', 'helpaLeft')} 
                     onMouseLeave={() => this.handleHover('containerLeft', 'leave',  'agentLeft', 'helpaLeft', 'helpaLeft')} 
                     className="imageRight display" id="helpaRight"></img>
