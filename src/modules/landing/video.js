@@ -6,10 +6,22 @@ import { PlayArrow, PlayCircleFilled } from '@mui/icons-material';
 import VideoModal from 'modules/generic/modal/video'
 import { SvgIcon } from '@mui/material';
 export class Video extends Component {
+<<<<<<< HEAD
   constructor(props) {
     super(props)
     this.state = {
       video: null
+=======
+    constructor(props) {
+      super(props)
+      this.state={
+        theme: this.props.theme,
+        data: this.props.data,
+        features: [],
+        hasFetched: false
+      }
+      this.iframe = React.createRef();
+>>>>>>> 60744eda2cebc3404fb28908e75a1c47ab3f5522
     }
   }
 
@@ -125,10 +137,69 @@ export class Video extends Component {
                       item.description()
                     }
                   </p>
+<<<<<<< HEAD
                 </div>
               </div>
             ))
           }
+=======
+              </Grid>
+              <Grid item style={{
+                display: 'flex',
+                flexWrap: 'wrap',
+              }} xs={6} textAlign={'right'} padding={'5%'} >
+                {
+                  data.map((item, index) => {
+                  if(item.payload_value.helps != undefined){
+                    return(
+                    <div key={index} style={{
+                      display: 'flex',
+                      justifyContent: 'right',
+                      flexBasis: '100%',
+                    }}>
+                      <Box sx={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        textAlign: 'right',
+                        flexDirection: 'column',
+                        marginRight: '25px'
+                      }}>
+                        <h3 style={{
+                          fontWeight: 'bold',
+                          fontSize: '20px',
+                          color: '#34475D'
+                        }} >{item.payload_value.helps.title}</h3>
+                        {(item.payload_value.helps.description).map((val, ctr)=>{
+                          return(<p key={ctr}>{val}</p>)
+                        })}
+                      </Box>
+                      <Box sx={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center', 
+                        flexDirection: 'row'
+                      }}>
+                        <div style={{
+                            marginTop: '25px',
+                          }}>
+                            <div style={{
+                              borderRadius: 10,
+                              width: 400,
+                              height: 300,
+                            }}>
+                              <div ref={"iframe"} dangerouslySetInnerHTML={{__html: item.payload_value.helps.url}}></div>
+                            </div>
+                          </div>
+                      </Box> 
+                    </div>
+                    )
+                  }
+                })
+                }
+              
+              </Grid>
+          </Grid>
+>>>>>>> 60744eda2cebc3404fb28908e75a1c47ab3f5522
         </div>
       </div>
     )
