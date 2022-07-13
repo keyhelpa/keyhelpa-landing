@@ -2,12 +2,13 @@ import React, { Component } from 'react'
 import './Style.css'
 import Colors from 'common/Colors';
 import Button from 'modules/generic/button'
+import './others.css'
 export class Others extends Component {
   constructor(props) {
     super(props)
   }
 
-  renderContent(item) {
+  renderContent(item, index) {
     const { theme } = this.props;
     return (
       <div style={{
@@ -21,12 +22,12 @@ export class Others extends Component {
               float: 'left',
               width: '50%'
             }}
-              className="full-width-mobile"
+              className={"full-width-mobile desktop-other-card-" + index}
             >
-              <img style={{
-                height: 'auto',
-                width: 'auto'
-              }} src={item.url}></img>
+                <img style={{
+                  height: 'auto',
+                  width: 'auto'
+                }}  src={item.url}></img>
             </div>
           )
         }
@@ -64,7 +65,7 @@ export class Others extends Component {
               width: '50%',
               paddingLeft: '5%'
             }}
-              className="full-width-mobile others-mobile-reset"
+              className={"full-width-mobile others-mobile-reset desktop-other-card-" + index}
             >
               <img style={{
                 height: 'auto',
@@ -77,7 +78,7 @@ export class Others extends Component {
     )
   }
 
-  renderContentMobile(item) {
+  renderContentMobile(item, index) {
     const { theme } = this.props;
     return (
       <div style={{
@@ -89,7 +90,7 @@ export class Others extends Component {
           float: 'left',
           width: '50%'
         }}
-          className="full-width-mobile"
+          className={"full-width-mobile mobile-other-card-" + index}
         >
           <img style={{
             height: 'auto',
@@ -139,13 +140,13 @@ export class Others extends Component {
       }}>
         <div className="hide-on-mobile">
           {
-            data && data.length > 0 && data.map((item) => (
+            data && data.length > 0 && data.map((item, index) => (
               <div style={{
                 width: '100%',
                 float: 'left'
               }}>
                 {
-                  this.renderContent(item)
+                  this.renderContent(item, index)
                 }
               </div>
             ))
@@ -154,13 +155,13 @@ export class Others extends Component {
 
         <div className="hide-on-desktop">
           {
-            data && data.length > 0 && data.map((item) => (
+            data && data.length > 0 && data.map((item, index) => (
               <div style={{
                 width: '100%',
                 float: 'left'
               }}>
                 {
-                  this.renderContentMobile(item)
+                  this.renderContentMobile(item, index)
                 }
               </div>
             ))
