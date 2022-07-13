@@ -105,10 +105,11 @@ iframe {
 
 
 
-.href-link:hover{
+.href-link:hover {
   cursor: pointer !important;
   /* text-decoration: underline !important; */
 }
+
 @media (max-width: 991px) {
 
   /* 
@@ -147,5 +148,10 @@ iframe {
   .others-mobile-reset {
     padding-left: unset !important;
     padding-right: unset !important;
+  }
+
+  .unset-flex-mobile {
+    display: unset !important;
+    justify-content: unset !important;
   }
 }
