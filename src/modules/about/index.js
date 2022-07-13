@@ -63,16 +63,13 @@ export class About extends Component {
     return (
       <div
         style={{
-          float: 'left',
           width: '100%',
           minHeight: '100vh',
           display: 'flex',
           alignItems: 'center'
         }}
-        className="unset-flex-mobile"
       >
         <div style={{
-          float: 'left',
           width: '100%',
         }}>
           <div
