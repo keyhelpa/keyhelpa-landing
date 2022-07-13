@@ -64,40 +64,49 @@ export class About extends Component {
       <div
         style={{
           float: 'left',
-          width: '100%'
+          width: '100%',
+          minHeight: '100vh',
+          display: 'flex',
+          alignItems: 'center'
         }}
+        className="unset-flex-mobile"
       >
-        <div
-          style={{
-            width: '40%',
-            float: 'left'
-          }}
-          className="full-width-mobile">
-          <h1
+        <div style={{
+          float: 'left',
+          width: '100%',
+        }}>
+          <div
             style={{
-              color: accountType == 'agent' ? Colors.agentText : Colors.helpaText,
-              textAlign: 'center',
-              marginTop: 150
+              width: '40%',
+              float: 'left'
             }}
-            className="hide-on-desktop"
-          >About Us</h1>
-          <img src={accountType === 'agent' ? require('assets/man-gray.png') : require('assets/man-pink.png')} className="image-left"></img>
-        </div>
-        <div
-          style={{
-            width: '60%',
-            float: 'left'
-          }}
-          className="full-width-mobile mt-mobile-25">
-          <h1
+            className="full-width-mobile">
+            <h1
+              style={{
+                color: accountType == 'agent' ? Colors.agentText : Colors.helpaText,
+                textAlign: 'center',
+                marginTop: 150
+              }}
+              className="hide-on-desktop"
+            >About Us</h1>
+            <img src={accountType === 'agent' ? require('assets/man-gray.png') : require('assets/man-pink.png')} className="image-left"></img>
+          </div>
+          <div
             style={{
-              color: accountType == 'agent' ? Colors.agentText : Colors.helpaText
+              width: '60%',
+              float: 'left'
             }}
-            className="hide-on-mobile"
-          >About Us</h1>
-          {
-            content()
-          }
+            className="full-width-mobile mt-mobile-25">
+            <h1
+              style={{
+                color: accountType == 'agent' ? Colors.agentText : Colors.helpaText
+              }}
+              className="hide-on-mobile"
+            >About Us</h1>
+            {
+              content()
+            }
+          </div>
         </div>
       </div>
     )
@@ -107,7 +116,8 @@ export class About extends Component {
     return (
       <div style={{
         float: 'left',
-        width: '100%'
+        width: '100%',
+        minHeight: '100vh'
       }}>
         {
           this.renderContent()
