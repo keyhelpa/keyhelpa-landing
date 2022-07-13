@@ -13,7 +13,6 @@ import { Alert } from '@mui/material';
 import { Check } from '@mui/icons-material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Colors from 'common/Colors'
-import './mobile.css'
 
 const style = {
   iconAgent: {
@@ -96,13 +95,7 @@ export class Contacts extends Component {
     const { theme } = this.state
     const { accountType } = this.props.state;
     return (
-      <div style={{
-        width: '60%',
-        float: 'left',
-        marginLeft: '40%',
-      }}
-      className="full-width-mobile mt-mobile-50 contact-left-side-content"
-      >
+      <div className="main-content">
         <h1 style={{
           color: accountType == 'agent' ? Colors.agentText : Colors.helpaText
         }}>Contact Us</h1>
@@ -111,27 +104,25 @@ export class Contacts extends Component {
         }}>We love questions and feedback - and we’re always happy to help! Here are some ways to contact us.</p>
         <br /><br />
         <div>
-          <p style={{
-            color: accountType == 'agent' ? Colors.agentText : Colors.helpaText
-          }}>support@keyhelpa.com</p>
+          <p  style={{
+              color: accountType == 'agent' ? Colors.agentText : Colors.helpaText
+            }}>Connect With Us On</p>
           <div style={{
             width: '100%',
-            float: 'left'
+            display: 'flex',
+            textAlign: 'center',
+            justifyContent: 'center'
           }}>
             {
               Strings.socialMedias.map((item) => (
-                <div style={{
-                  float: 'left'
-                }}>
-                  <span
-                    style={theme === 'agent' ? style.iconAgent : style.iconHelpa} className="cursor-hover"
-                    onClick={() => {
-                      window.location.href = item.route
-                    }}
-                  >
-                    <FontAwesomeIcon icon={item.icon} size="1x" />
-                  </span>
-                </div>
+                <span
+                  style={theme === 'agent' ? style.iconAgent : style.iconHelpa} className="cursor-hover"
+                  onClick={() => {
+                    window.location.href = item.route
+                  }}
+                >
+                  <FontAwesomeIcon icon={item.icon} size="1x" />
+                </span>
               ))
             }
           </div>
@@ -156,22 +147,8 @@ export class Contacts extends Component {
 
   renderRight() {
     const { theme, mobilePrefixes } = this.state
-    const { accountType } = this.props.state;
     return (
-      <div 
-      style={{
-        width: '60%',
-        float: 'left',
-        background: accountType == 'agent' ? Colors.agentDarkGray : Colors.helpaDarkPink,
-        borderTopLeftRadius: 20,
-        borderBottomLeftRadius: 20,
-        padding: 30,
-        color: Colors.white,
-        marginLeft: '40%',
-        minHeight: '70vh'
-      }}
-      className="full-width-mobile text-field-container"
-      >
+      <div className={theme && theme === 'agent' ? "form-helpa agent-dark-bg" : "form-helpa helpa-dark-bg"}>
         <Form>
           <Form.Group>
             <Form.Label>Full Name</Form.Label>
@@ -212,33 +189,16 @@ export class Contacts extends Component {
       </div>
     )
   }
-
-
   renderContent() {
-    const { accountType } = this.props.state
+    const { theme } = this.state
     return (
-      <div style={{
-        width: '100%',
-        float: 'left',
-        minHeight: '100vh',
-        display: 'flex',
-        alignItems: 'center'
-      }}
-      className="full-width-mobile unset-flex-mobile"
-      >
-        <div style={{
-          width: '30%',
-          float: 'left'
-        }}
-        className="full-width-mobile"
-        >
+      <div className={theme === 'agent' ? 'contents agent' : 'contents helpa'}>
+        <div className="container-40-full-mobile" style={{
+          marginTop: 50
+        }}>
           {this.renderLeft()}
         </div>
-        <div style={{
-          width: '70%',
-          float: 'left'
-        }}
-        className="full-width-mobile">
+        <div className="container-60-full-mobile">
           {this.renderRight()}
         </div>
       </div>
@@ -246,11 +206,7 @@ export class Contacts extends Component {
   }
   render() {
     return (
-      <div style={{
-        width: '100%',
-        float: 'left',
-        minHeight: '100vh'
-      }}>
+      <div>
         {this.renderContent()}
         {this.state.submitted && (
           this.renderAlert()
