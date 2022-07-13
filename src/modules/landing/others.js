@@ -78,7 +78,7 @@ export class Others extends Component {
     )
   }
 
-  renderContentMobile(item) {
+  renderContentMobile(item, index) {
     const { theme } = this.props;
     return (
       <div style={{
@@ -90,7 +90,7 @@ export class Others extends Component {
           float: 'left',
           width: '50%'
         }}
-          className="full-width-mobile"
+          className={"full-width-mobile mobile-other-card-" + index}
         >
           <img style={{
             height: 'auto',
@@ -155,13 +155,13 @@ export class Others extends Component {
 
         <div className="hide-on-desktop">
           {
-            data && data.length > 0 && data.map((item) => (
+            data && data.length > 0 && data.map((item, index) => (
               <div style={{
                 width: '100%',
                 float: 'left'
               }}>
                 {
-                  this.renderContentMobile(item)
+                  this.renderContentMobile(item, index)
                 }
               </div>
             ))
