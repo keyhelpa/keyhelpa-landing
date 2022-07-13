@@ -163,11 +163,10 @@ export class Contacts extends Component {
         width: '60%',
         float: 'left',
         background: accountType == 'agent' ? Colors.agentDarkGray : Colors.helpaDarkPink,
-        borderTopLeftRadius: 20,
-        borderBottomLeftRadius: 20,
+        borderRadius: 20,
         padding: 30,
         color: Colors.white,
-        marginLeft: '40%',
+        marginLeft: '30%',
         minHeight: '70vh'
       }}
       className="full-width-mobile text-field-container"
