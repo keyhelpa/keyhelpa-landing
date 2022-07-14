@@ -14,7 +14,7 @@ import { Check } from '@mui/icons-material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Colors from 'common/Colors'
 import './mobile.css'
-
+import Modal from 'modules/generic/modal/textButton'
 const style = {
   iconAgent: {
     width: 40,
@@ -167,7 +167,7 @@ export class Contacts extends Component {
         padding: 30,
         color: Colors.white,
         marginLeft: '30%',
-        minHeight: '70vh'
+        minHeight: '45vh'
       }}
       className="full-width-mobile text-field-container"
       >
