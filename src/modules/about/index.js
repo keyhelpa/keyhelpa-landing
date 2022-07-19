@@ -16,12 +16,12 @@ export class About extends Component {
       isLoading: false,
       content: () => {
         return (
-          <span>
+          <div className='contentContainer'>
             <p>KeyHelpa originated from the question of how to improve the profitability of real estate agencies given the high cost of labour and overhead expenses, employment regulations and the competitive nature of the real estate industry.</p>
             <p>
               The founders bring to the table their knowledge of accountancy, law and real estate practice to provide agency principals with the flexibility and versatility to deal with their high-volume activities without the need to undertake expensive employment and recruitment expenses. It allows  experienced real estate personnel the flexibility to choose their working times to suit their own individual lifestyles
             </p>
-          </span>
+          </div>
         )
       }
     }
@@ -64,7 +64,6 @@ export class About extends Component {
       <div
         style={{
           width: '100%',
-          minHeight: '100vh',
           display: 'flex',
           alignItems: 'center'
         }}
@@ -86,7 +85,9 @@ export class About extends Component {
               }}
               className="hide-on-desktop"
             >About Us</h1>
-            <img src={accountType === 'agent' ? require('assets/man-gray.png') : require('assets/man-pink.png')} className="image-left"></img>
+            <div className='imageContainer'>
+              <img src={accountType === 'agent' ? require('assets/man-gray.png') : require('assets/man-pink.png')} className="image-left"></img>
+            </div>
           </div>
           <div
             style={{
@@ -96,7 +97,8 @@ export class About extends Component {
             className="full-width-mobile mt-mobile-25">
             <h1
               style={{
-                color: accountType == 'agent' ? Colors.agentText : Colors.helpaText
+                color: accountType == 'agent' ? Colors.agentText : Colors.helpaText,
+                marginTop: '10%'
               }}
               className="hide-on-mobile"
             >About Us</h1>
@@ -114,11 +116,14 @@ export class About extends Component {
       <div style={{
         float: 'left',
         width: '100%',
-        minHeight: '100vh'
+        marginTop: '10%'
       }}>
+        <div>
         {
           this.renderContent()
         }
+        </div>
+        
       </div>
     )
   }
