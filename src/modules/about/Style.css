@@ -1,6 +1,6 @@
 .image-left{
   width: 90%;
-  height:auto;
+  height: auto;
 }
 
 .content-left{
@@ -29,5 +29,12 @@
   }
   .about-banner{
     display: flex
+  }
+  .imageContainer{
+    display: flex;
+    justify-content: center;
+  }
+  .contentContainer{
+    padding: 10%;
   }
 }

@@ -53,7 +53,8 @@ export class Contacts extends Component {
       organization: null,
       message: null,
       mobilePrefixes: countryCodes.customList('countryCode', '+{countryCallingCode}'),
-      submitted: false
+      submitted: false,
+      error: null
     }
   }
 
@@ -84,7 +85,8 @@ export class Contacts extends Component {
         email: null,
         organization: null,
         message: null,
-        contactNumber: null
+        contactNumber: null,
+        error: true
       })
       setTimeout(() => {
         this.setState({ submitted: false })
@@ -143,19 +145,19 @@ export class Contacts extends Component {
   renderAlert() {
     const { theme } = this.state
     return (
-      <div style={{
-        position: 'absolute',
-        bottom: 0
-      }}>
-        <Alert icon={<Check fontSize='inherit' />} severity="success">
-          {theme === 'agent' ? 'Your message was sent to the agent' : 'Your message was sent to the helpa'}
-        </Alert>
+      <div>
+        <Modal
+        show={true}
+        title={'Thank  you!'}
+        description={'Your message has been sent. Our support team will respond within 24 hours'}
+        withCancel={true}
+        />
       </div>
     )
   }
 
   renderRight() {
-    const { theme, mobilePrefixes } = this.state
+    const { theme, mobilePrefixes, error } = this.state
     const { accountType } = this.props.state;
     return (
       <div 
@@ -171,6 +173,15 @@ export class Contacts extends Component {
       }}
       className="full-width-mobile text-field-container"
       >
+        {
+          this.error ? () => {
+            <div>
+              <p style={{
+                color: 'red'
+              }}>A network error has occurred. Please try again.</p>
+            </div>
+          } : ""
+        }
         <Form>
           <Form.Group>
             <Form.Label>Full Name</Form.Label>
