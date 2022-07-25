@@ -29,11 +29,11 @@ const initialState = {
   selectedUser: null,
   color: null,
   loginLeftMenu: [{
-    title: 'Agent Looking for Helpa',
+    title: 'Agents Looking for Helpas',
     type: 'internal',
     route: '/agent'
   }, {
-    title: 'Helpa Looking to Earn',
+    title: 'Helpas Looking to Earn',
     type: 'internal',
     route: '/helpa'
   }],
@@ -42,7 +42,7 @@ const initialState = {
     type: 'external',
     route:  Config.HELPA
   }, {
-    title: 'Login',
+    title: 'Join Us',
     type: 'external',
     route:  Config.HELPA
   }],
