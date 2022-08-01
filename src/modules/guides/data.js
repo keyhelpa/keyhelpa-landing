@@ -6,49 +6,49 @@ export default {
         icon: Person,
         description: "Get started  with KeyHelpa and hire Helpa when you need help."
     }, {
-        title: 'Create account',
+        title: 'Set up profile',
         icon: Person,
-        description: "Get started  with KeyHelpa and hire Helpa when you need help."
+        description: "Complete your profile setup to access all features of KeyHelpa."
     }, {
-        title: 'Create account',
+        title: 'Search helpa',
         icon: Person,
-        description: "Get started  with KeyHelpa and hire Helpa when you need help."
+        description: "Look for the specific Helpa that match with job you’re hiring."
     }, {
-        title: 'Create account',
+        title: 'Create job posting',
         icon: Person,
-        description: "Get started  with KeyHelpa and hire Helpa when you need help."
+        description: "Start your job posting to attract, to invite and to hire Helpa."
     }, {
-        title: 'Create account',
+        title: 'Send invite',
         icon: Person,
-        description: "Get started  with KeyHelpa and hire Helpa when you need help."
+        description: "Invite any  Helpa you like to check on your job post."
     }, {
-        title: 'Create account',
+        title: 'Accept proposal',
         icon: Person,
-        description: "Get started  with KeyHelpa and hire Helpa when you need help."
+        description: "Approve job proposals sent to you by Helpa"
     }, {
-        title: 'Create account',
+        title: 'Interview helpa',
         icon: Person,
-        description: "Get started  with KeyHelpa and hire Helpa when you need help."
+        description: "Schedule and invite a helpa over an interview to discuss the job."
     }, {
-        title: 'Create account',
+        title: 'Hire helpa',
         icon: Person,
-        description: "Get started  with KeyHelpa and hire Helpa when you need help."
+        description: "Let Helpa work on your projects by hiring them."
     }, {
-        title: 'Create account',
+        title: 'End contract',
         icon: Person,
-        description: "Get started  with KeyHelpa and hire Helpa when you need help."
+        description: "Be guided on how to end the job contract between you and Helpa."
     }, {
-        title: 'Create account',
+        title: 'Pause contract',
         icon: Person,
-        description: "Get started  with KeyHelpa and hire Helpa when you need help."
+        description: "Be guided on how to pause the job contract between you and Helpa."
     }, {
-        title: 'Create account',
+        title: 'Dispute contract',
         icon: Person,
-        description: "Get started  with KeyHelpa and hire Helpa when you need help."
+        description: "Learn how to open dispute on the contract between you and Helpa."
     }, {
-        title: 'Create account',
+        title: 'Edit basic info',
         icon: Person,
-        description: "Get started  with KeyHelpa and hire Helpa when you need help."
+        description: "Be guided on how to update your basic information."
     }],
     helpa: [{
         title: 'Create account',
