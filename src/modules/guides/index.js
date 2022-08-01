@@ -102,7 +102,7 @@ class Guide extends Component {
                                 paddingRight: 20,
                                 marginBottom: 25
                             }}
-                            className="cursor-hover"
+                            className="cursor-hover full-width-mobile"
                             >
                                 <SvgIcon
                                     component={item.icon}
