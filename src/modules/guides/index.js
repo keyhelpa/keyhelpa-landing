@@ -128,13 +128,6 @@ class Guide extends Component {
             </div>
         )
     }
-<<<<<<< HEAD
-    render(){
-        const {theme} = this.state
-        return(
-            <div>
-                <p>here</p>
-=======
 
     render() {
         const { theme } = this.state;
@@ -181,7 +174,6 @@ class Guide extends Component {
                     </div>
 
                 </div>
->>>>>>> ae9d0350a14746b7365903a473a083f3709d27d9
             </div>
         )
     }
