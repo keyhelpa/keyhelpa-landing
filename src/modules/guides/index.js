@@ -4,15 +4,17 @@ import { withRouter } from 'react-router-dom';
 class Guide extends Component{
     constructor(props) {
         super(props)
-        this.state = {
-            theme: 'agent'
-        }
     }
-    componentDidMount(){
 
-    }
     render(){
-        const {theme} = this.state
+        return(
+            <div style={{
+                width: '100%',
+                float: 'left'
+            }}>
+
+            </div>
+        )
     }
 }
 const mapStateToProps = (state) => ({ state: state });
