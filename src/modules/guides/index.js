@@ -35,7 +35,6 @@ class Guide extends Component {
                 width: '100%',
                 float: 'left',
                 height: 500,
-                // background: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle,
                 backgroundImage: `url(${theme == 'agent' ? AgentVideoThumbnail : HelpaVideoThumbnail})`,
                 alignItems: 'center',
                 backgroundRepeat: 'no-repeat',
