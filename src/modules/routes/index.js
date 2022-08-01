@@ -7,7 +7,6 @@ import Contacts from 'modules/contacts/index.js'
 import Stack from 'modules/generic/page/TermsAndConditions'
 import PrivacyPolicy from 'modules/generic/page/PrivacyPolicy'
 import PageNotFound from 'modules/generic/page/404'
-import Guides from 'modules/guides'
 import Route from './route'
 import './transition.scss'
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
@@ -61,17 +60,12 @@ class RouteList extends Component {
         </TransitionGroup>
         <Switch>
           <Route path="/" exact component={Homepage}></Route>
-          <Route path="/agent/guide" exact component={Guide}></Route>
-          <Route path="/helpa/guide" exact component={Guide}></Route>
           <Route path="/agent/about" exact component={About}></Route>
           <Route path="/helpa/about" exact component={About}></Route>
           <Route path="/agent/contact" exact component={Contacts}></Route>
           <Route path="/helpa/contact" exact component={Contacts}></Route>
           <Route path="/terms_and_conditions" exact component={Stack}></Route>
           <Route path="/privacy_policy" exact component={PrivacyPolicy}></Route>
-          <Route path="/helpa/guides" exact component={Guides}></Route>
-          <Route path="/agent/guides" exact component={Guides}></Route>
-          <Route path="/guides" exact component={Guides}></Route>
           {/* {
             localStorage.getItem('user_type') === 'helpa' ? (
               <Route path="/*" exact component={PageNotFound}></Route>
