@@ -18,6 +18,15 @@ class Guide extends Component {
         }
     }
 
+    componentDidMount() {
+        const { history } = this.props;
+        let user = history.location.pathname.includes('agent') ? 'agent' : 'helpa'
+        this.setState({
+            accountType: user,
+            theme: user
+        })
+    }
+
     renderVideo() {
         const { theme } = this.state;
 
@@ -102,7 +111,7 @@ class Guide extends Component {
                                 paddingRight: 20,
                                 marginBottom: 25
                             }}
-                            className="cursor-hover full-width-mobile"
+                                className="cursor-hover full-width-mobile"
                             >
                                 <SvgIcon
                                     component={item.icon}
@@ -139,9 +148,10 @@ class Guide extends Component {
 
                 <Banner
                     title="Welcome to KeyHelpa"
+                    theme={theme}
                 />
                 <div style={{
-                    backgroundColor: theme == 'agent' ? Colors.agentBackgroundColor : Colors.helpaHeaderBackground,
+                    backgroundColor: theme == 'agent' ? Colors.agentBackgroundColor : Colors.helpaBackgroundColor,
                     float: 'left',
                     width: '100%',
                     minHeight: '100vh',
@@ -155,7 +165,7 @@ class Guide extends Component {
                         paddingTop: 50,
                         paddingBottom: 50
                     }}
-                    className="full-width-mobile-with-margin"
+                        className="full-width-mobile-with-margin"
                     >
 
                         <p style={{

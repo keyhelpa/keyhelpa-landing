@@ -6,15 +6,11 @@ import GuideImage from 'assets/guide.png'
 class Guide extends Component {
     constructor(props) {
         super(props)
-        this.state = {
-            theme: 'agent',
-            accountType: null
-        }
     }
 
 
     render() {
-        const { theme } = this.state;
+        const { theme } = this.props;
         return (
             <div style={{
                 width: '100%',
