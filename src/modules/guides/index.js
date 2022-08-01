@@ -155,7 +155,7 @@ class Guide extends Component {
                         paddingTop: 50,
                         paddingBottom: 50
                     }}
-                    className="full-width-mobile unset-margin"
+                    className="full-width-mobile-with-margin"
                     >
 
                         <p style={{
