@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Switch} from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import Homepage from 'modules/content/index.js'
 import Landing from 'modules/landing/index.js'
 import About from 'modules/about/index.js'
@@ -23,7 +23,7 @@ class RouteList extends Component {
   componentWillReceiveProps() {
     this.setState({ prevDepth: this.getPathDepth(this.props.location) });
   }
-  
+
   getPathDepth(location) {
     let pathArr = location.pathname.split("/");
     pathArr = pathArr.filter(n => n !== "");
@@ -37,7 +37,7 @@ class RouteList extends Component {
     const timeout = { enter: 200, exit: 400 };
     return (
       <div>
-        <TransitionGroup component="div" className="App">
+        {/* <TransitionGroup component="div" className="App">
           <CSSTransition
             key={currentKey}
             timeout={timeout}
@@ -58,9 +58,11 @@ class RouteList extends Component {
               </Switch>
             </div>
           </CSSTransition>
-        </TransitionGroup>
+        </TransitionGroup> */}
         <Switch>
-          <Route path="/" exact component={Homepage}></Route>
+          <Route path="/" exact component={Landing}></Route>
+          <Route path="/agent" exact component={Landing}></Route>
+          <Route path="/helpa" exact component={Landing}></Route>
           <Route path="/agent/about" exact component={About}></Route>
           <Route path="/helpa/about" exact component={About}></Route>
           <Route path="/agent/contact" exact component={Contacts}></Route>
@@ -78,7 +80,7 @@ class RouteList extends Component {
             )
           } */}
         </Switch>
-    </div>
+      </div>
     )
   }
 }
