@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import Header from './modules/generic/frames/loginHeader'
+import Header from './modules/generic/frames/landingHeader'
 import Footer from 'modules/generic/frames/footerLanding.js'
 import RouteList from './modules/routes';
 import Sidebar from './modules/generic/frames/sidebarLanding';
