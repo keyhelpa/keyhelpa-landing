@@ -60,6 +60,8 @@ class RouteList extends Component {
         </TransitionGroup>
         <Switch>
           <Route path="/" exact component={Homepage}></Route>
+          <Route path="/agent/guide" exact component={Guide}></Route>
+          <Route path="/helpa/guide" exact component={Guide}></Route>
           <Route path="/agent/about" exact component={About}></Route>
           <Route path="/helpa/about" exact component={About}></Route>
           <Route path="/agent/contact" exact component={Contacts}></Route>

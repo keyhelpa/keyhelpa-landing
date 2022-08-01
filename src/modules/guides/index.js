@@ -27,6 +27,11 @@ class Guide extends Component{
     }
     render(){
         const {theme} = this.state
+        return(
+            <div>
+                <p>here</p>
+            </div>
+        )
     }
 }
 const mapStateToProps = (state) => ({ state: state });

@@ -38,6 +38,10 @@ const initialState = {
     route: '/helpa'
   }],
   loginRightMenu: [{
+    title: 'Guides',
+    type: 'external',
+    route:  '/guide'
+  },{
     title: 'Members Login',
     type: 'external',
     route:  Config.HELPA
@@ -89,6 +93,21 @@ const reducer = (state = initialState, action) => {
             route: '/' + rightMenu + '/contact'
           })
         }
+        exist = state.loginRightMenu.filter(items => {return items.title === 'Guide'})
+        if(exist.length > 0){
+          state.loginRightMenu[state.loginRightMenu.indexOf(exist[0])] = {
+            title: 'Guide',
+            type: 'internal',
+            route: '/' + rightMenu + '/guide'
+          }
+        }else{
+          state.loginRightMenu.unshift({
+            title: 'Guide',
+            type: 'internal',
+            route: '/' + rightMenu + '/guide'
+          })
+        }
+        
       }
       return {
         ...state,
