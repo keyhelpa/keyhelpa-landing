@@ -32,6 +32,18 @@ export default {
       route: '/helpa'
     }],
     rightMenu: [{
+      title: 'Guides',
+      type: 'internal',
+      route:  '/guides'
+    }, {
+      title: 'About',
+      type: 'internal',
+      route:  '/about'
+    }, {
+      title: 'Contact',
+      type: 'internal',
+      route: '/contact'
+    }, {
       title: 'Members Login',
       type: 'external',
       route:  Config.HELPA
@@ -51,17 +63,17 @@ export default {
   },
   async addHeaderItem(){
     let userType = await localStorage.getItem('user_type')
-    if(userType && this.login.rightMenu.length <= 2){
-      this.login.rightMenu.unshift({
-        title: 'About',
-        type: 'internal',
-        route:  '/' + userType + '/about'
-      })
-      this.login.rightMenu.unshift({
-        title: 'Contact',
-        type: 'internal',
-        route: '/' + userType + '/contact'
-      })
-    }
+    // if(userType && this.login.rightMenu.length <= 2){
+    //   this.login.rightMenu.unshift({
+    //     title: 'About',
+    //     type: 'internal',
+    //     route:  '/' + userType + '/about'
+    //   })
+    //   this.login.rightMenu.unshift({
+    //     title: 'Contact',
+    //     type: 'internal',
+    //     route: '/' + userType + '/contact'
+    //   })
+    // }
   }
 }
