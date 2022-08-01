@@ -154,7 +154,9 @@ class Guide extends Component {
                         marginRight: '25%',
                         paddingTop: 50,
                         paddingBottom: 50
-                    }}>
+                    }}
+                    className="full-width-mobile unset-margin"
+                    >
 
                         <p style={{
                             color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle
