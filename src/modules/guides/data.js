@@ -25,6 +25,30 @@ export default {
         title: 'Create account',
         icon: Person,
         description: "Get started  with KeyHelpa and hire Helpa when you need help."
+    }, {
+        title: 'Create account',
+        icon: Person,
+        description: "Get started  with KeyHelpa and hire Helpa when you need help."
+    }, {
+        title: 'Create account',
+        icon: Person,
+        description: "Get started  with KeyHelpa and hire Helpa when you need help."
+    }, {
+        title: 'Create account',
+        icon: Person,
+        description: "Get started  with KeyHelpa and hire Helpa when you need help."
+    }, {
+        title: 'Create account',
+        icon: Person,
+        description: "Get started  with KeyHelpa and hire Helpa when you need help."
+    }, {
+        title: 'Create account',
+        icon: Person,
+        description: "Get started  with KeyHelpa and hire Helpa when you need help."
+    }, {
+        title: 'Create account',
+        icon: Person,
+        description: "Get started  with KeyHelpa and hire Helpa when you need help."
     }],
     helpa: [{
         title: 'Create account',

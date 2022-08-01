@@ -76,7 +76,8 @@ class Guide extends Component {
                 <h1 style={{
                     textAlign: 'center',
                     marginTop: 25,
-                    marginBottom: 25
+                    marginBottom: 25,
+                    color: theme == 'agent' ? Colors.agentDarkGray : Colors.helpaDarkPink
                 }}>
                     Agent Guides
                 </h1>
@@ -141,7 +142,8 @@ class Guide extends Component {
                     backgroundColor: theme == 'agent' ? Colors.agentBackgroundColor : Colors.helpaHeaderBackground,
                     float: 'left',
                     width: '100%',
-                    minHeight: '100vh'
+                    minHeight: '100vh',
+                    marginBottom: 100
                 }}>
                     <div style={{
                         width: '50%',
