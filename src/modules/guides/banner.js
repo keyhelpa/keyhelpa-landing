@@ -39,7 +39,8 @@ class Guide extends Component {
                     />
                     <h1 style={{
                         color: Colors.white,
-                        textAlign: 'center'
+                        textAlign: 'center',
+                        marginTop: 25
                     }}>
                         Welcome to KeyHelpa
                     </h1>
