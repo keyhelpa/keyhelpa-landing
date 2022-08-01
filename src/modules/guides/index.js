@@ -137,7 +137,9 @@ class Guide extends Component {
                 float: 'left'
             }}>
 
-                <Banner />
+                <Banner
+                    title="Welcome to KeyHelpa"
+                />
                 <div style={{
                     backgroundColor: theme == 'agent' ? Colors.agentBackgroundColor : Colors.helpaHeaderBackground,
                     float: 'left',

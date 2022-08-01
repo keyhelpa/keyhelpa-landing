@@ -42,7 +42,9 @@ class Guide extends Component {
                         textAlign: 'center',
                         marginTop: 25
                     }}>
-                        Welcome to KeyHelpa
+                       {
+                        this.props.title
+                       }
                     </h1>
                 </div>
             </div>
