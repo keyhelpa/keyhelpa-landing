@@ -48,11 +48,6 @@ class Guide extends Component {
                 justifyContent: 'center'
             }}
                 className="active-color-hover full-width-mobile video-player-holder"
-                onClick={() => {
-                    this.setState({
-                        video: item
-                    })
-                }}
             >
                 <div style={{
                     width: '100px',
@@ -115,6 +110,9 @@ class Guide extends Component {
                                 marginBottom: 25
                             }}
                                 onClick={() => {
+                                    this.setState({
+                                        item
+                                    })
                                     this.props.history.push(item.route)
                                 }}
                                 className="cursor-hover full-width-mobile"
