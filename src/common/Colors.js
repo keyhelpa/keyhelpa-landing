@@ -36,6 +36,7 @@ export default{
 	agentText: '#34475D',
 	helpaHeaderBackground: '#f290bb',
 	helpeBackgroundColor: '#fffafc',
+	helpaBackgroundColor: '#fffafc',
 	helpaTextTitle: '#686868',
 	helpaText: '#686868',
 	helpaPink: '#f290bb',

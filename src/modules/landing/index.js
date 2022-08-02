@@ -19,7 +19,7 @@ class Landing extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      theme: 'agent',
+      theme: 'helpa',
       accountType: null
     }
   }
