@@ -110,6 +110,10 @@ iframe {
   /* text-decoration: underline !important; */
 }
 
+.cursor-hover:hover {
+  cursor: pointer !important;
+}
+
 @media (max-width: 991px) {
 
   /* 

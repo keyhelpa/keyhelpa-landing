@@ -110,6 +110,9 @@ class Guide extends Component {
                                 paddingRight: 20,
                                 marginBottom: 25
                             }}
+                                onClick={() => {
+                                    this.props.history.push(item.route)
+                                }}
                                 className="cursor-hover full-width-mobile"
                             >
                                 <SvgIcon
