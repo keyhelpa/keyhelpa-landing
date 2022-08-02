@@ -15,7 +15,7 @@ class Guide extends Component {
         this.state = {
             theme: 'agent',
             accountType: null,
-            menu: null
+            menu: []
         }
     }
 
@@ -147,7 +147,8 @@ class Guide extends Component {
         return (
             <div style={{
                 width: '100%',
-                float: 'left'
+                float: 'left',
+                backgroundColor: theme == 'agent' ? Colors.agentBackgroundColor : Colors.helpaBackgroundColor,
             }}>
 
                 <Banner
