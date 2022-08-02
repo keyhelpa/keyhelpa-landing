@@ -14,7 +14,8 @@ class Guide extends Component {
         super(props)
         this.state = {
             theme: 'agent',
-            accountType: null
+            accountType: null,
+            menu: null
         }
     }
 
@@ -23,7 +24,8 @@ class Guide extends Component {
         let user = history.location.pathname.includes('agent') ? 'agent' : 'helpa'
         this.setState({
             accountType: user,
-            theme: user
+            theme: user,
+            menu: user == 'agent' ? Data.agent : Data.helpa
         })
     }
 
@@ -75,7 +77,7 @@ class Guide extends Component {
     }
 
     renderMenu() {
-        const { theme } = this.state;
+        const { theme, menu } = this.state;
         return (
             <div style={{
                 float: 'left',
@@ -97,7 +99,7 @@ class Guide extends Component {
                     flexWrap: 'wrap'
                 }}>
                     {
-                        Data.agent.map((item) => (
+                        menu.map((item) => (
                             <div style={{
                                 width: '30%',
                                 float: 'left',
