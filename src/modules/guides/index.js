@@ -89,7 +89,7 @@ class Guide extends Component {
                     marginBottom: 25,
                     color: theme == 'agent' ? Colors.agentDarkGray : Colors.helpaDarkPink
                 }}>
-                    Agent Guides
+                    {theme == 'agent'? 'Agent Guides' : 'Helpa Guides'}
                 </h1>
                 <div style={{
                     float: 'left',
