@@ -1,4 +1,4 @@
-import { Person } from "@mui/icons-material";
+import { Badge, FileCopy, Person, Search, Security } from "@mui/icons-material";
 
 export default {
     agent: [{
@@ -89,12 +89,12 @@ export default {
     }],
     helpa: [{
         title: 'Set up profile',
-        icon: Person,
+        icon: Badge,
         description: "Get started  with KeyHelpa and hire Helpa when you need help.",
         route: '/helpa/guide/setup_profile'
     }, {
         title: 'Search job',
-        icon: Person,
+        icon: Search,
         description: "Get started  with KeyHelpa and hire Helpa when you need help.",
         route: '/helpa/guide/search_job'
     }, {
@@ -109,7 +109,7 @@ export default {
         route: '/helpa/guide/end_contract'
     }, {
         title: 'Pause contract',
-        icon: Person,
+        icon: FileCopy,
         description: "Be guided on how to pause the job contract between you and Agent.",
         route: '/helpa/guide/pause_contract'
     }, {
@@ -139,7 +139,7 @@ export default {
         route: '/helpa/guide/update_passwords'
     }, {
         title: 'Manage security',
-        icon: Person,
+        icon: Security,
         description: "Set securities to your KeyHelpa account for extra protection.",
         route: '/helpa/guide/manage_security'
     }, {
