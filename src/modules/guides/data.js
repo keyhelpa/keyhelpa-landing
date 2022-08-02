@@ -91,81 +91,94 @@ export default {
         title: 'Set up profile',
         icon: Badge,
         description: "Get started  with KeyHelpa and hire Helpa when you need help.",
-        route: '/helpa/guide/setup_profile'
+        route: '/helpa/guides/setup_profile'
     }, {
         title: 'Search job',
         icon: Search,
         description: "Get started  with KeyHelpa and hire Helpa when you need help.",
-        route: '/helpa/guide/search_job'
+        route: '/helpa/guides/search_job'
     }, {
         title: 'Submit proposal',
         icon: Person,
         description: "Send your proposal to the job you are interested to received by Agent.",
-        route: '/helpa/guide/submit_proposal'
+        route: '/helpa/guides/submit_proposal'
     }, {
         title: 'End contract',
         icon: Person,
         description: "Be guided on how to end the job contract between you and Agent.",
-        route: '/helpa/guide/end_contract'
+        route: '/helpa/guides/end_contract'
     }, {
         title: 'Pause contract',
         icon: FileCopy,
         description: "Be guided on how to pause the job contract between you and Agent.",
-        route: '/helpa/guide/pause_contract'
+        route: '/helpa/guides/pause_contract'
     }, {
         title: 'Dispute contract',
         icon: Person,
         description: "Learn how to open dispute on the contract between you and Agent.",
-        route: '/helpa/guide/dispute_contract'
+        route: '/helpa/guides/dispute_contract'
     }, {
         title: 'Edit basic info',
         icon: Person,
         description: "Be guided on how to update your basic information.",
-        route: '/helpa/guide/edit_basic_info'
+        route: '/helpa/guides/edit_basic_info'
     }, {
         title: 'Manage socials',
         icon: Person,
         description: "Add your social media profile links to your KeyHelpa account.",
-        route: '/helpa/guide/manage_socials'
+        route: '/helpa/guides/manage_socials'
     }, {
         title: 'Update bank details',
         icon: Person,
         description: "Managed authorized bank details you connected with KeyHelpa.",
-        route: '/helpa/guide/update_bank_details'
+        route: '/helpa/guides/update_bank_details'
     }, {
         title: 'Update password',
         icon: Person,
         description: "Make sure to keep your password private and secured.",
-        route: '/helpa/guide/update_passwords'
+        route: '/helpa/guides/update_passwords'
     }, {
         title: 'Manage security',
         icon: Security,
         description: "Set securities to your KeyHelpa account for extra protection.",
-        route: '/helpa/guide/manage_security'
+        route: '/helpa/guides/manage_security'
     }, {
         title: 'Update work experience',
         icon: Person,
         description: "Keep your work experiences updated to impress hiring Agents.",
-        route: '/helpa/guide/update_work_experience'
+        route: '/helpa/guides/update_work_experience'
     }, {
         title: 'Update work preferences',
         icon: Person,
         description: "Set your work perferences to allow Agent know your limits.",
-        route: '/helpa/guide/update_work_preferences'
+        route: '/helpa/guides/update_work_preferences'
     }, {
         title: 'Update work availabilty',
         icon: Person,
         description: "Set your work days and time  to allow Agent know your availability.",
-        route: '/helpa/guide/update_work_availability'
+        route: '/helpa/guides/update_work_availability'
     }, {
         title: 'Update other data',
         icon: Person,
         description: "Set your other data to add more credibility to your profile.",
-        route: '/helpa/guide/update_other_data'
+        route: '/helpa/guides/update_other_data'
     }, {
         title: 'Manage notifications',
         icon: Person,
         description: "Set your notifications to received any kind of updates you want.",
-        route: '/helpa/guide/manage_notifications'
+        route: '/helpa/guides/manage_notifications'
     }],
+    getMenu(menu, route){
+        if(route == '/helpa/guides' || route == '/agent/guides'){
+            return {
+                title: 'Welcome to KeyHelpa',
+                description: null,
+                route: route
+            }
+        }
+        let item = menu.filter(item => {
+            return item.route == route
+        })
+        return item ? item[0] : null
+    }
 }

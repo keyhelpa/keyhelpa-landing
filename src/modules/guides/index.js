@@ -15,7 +15,8 @@ class Guide extends Component {
         this.state = {
             theme: 'agent',
             accountType: null,
-            menu: []
+            menu: [],
+            item: null
         }
     }
 
@@ -25,7 +26,8 @@ class Guide extends Component {
         this.setState({
             accountType: user,
             theme: user,
-            menu: user == 'agent' ? Data.agent : Data.helpa
+            menu: user == 'agent' ? Data.agent : Data.helpa,
+            item: Data.getMenu(user == 'agent' ? Data.agent : Data.helpa, history.location.pathname)
         })
     }
 
@@ -89,7 +91,7 @@ class Guide extends Component {
                     marginBottom: 25,
                     color: theme == 'agent' ? Colors.agentDarkGray : Colors.helpaDarkPink
                 }}>
-                    {theme == 'agent'? 'Agent Guides' : 'Helpa Guides'}
+                    {theme == 'agent' ? 'Agent Guides' : 'Helpa Guides'}
                 </h1>
                 <div style={{
                     float: 'left',
@@ -143,7 +145,7 @@ class Guide extends Component {
     }
 
     render() {
-        const { theme } = this.state;
+        const { theme, item } = this.state;
         return (
             <div style={{
                 width: '100%',
@@ -151,10 +153,15 @@ class Guide extends Component {
                 backgroundColor: theme == 'agent' ? Colors.agentBackgroundColor : Colors.helpaBackgroundColor,
             }}>
 
-                <Banner
-                    title="Welcome to KeyHelpa"
-                    theme={theme}
-                />
+                {
+                    item && (
+                        <Banner
+                            title={item.title}
+                            theme={theme}
+                        />
+                    )
+                }
+
                 <div style={{
                     backgroundColor: theme == 'agent' ? Colors.agentBackgroundColor : Colors.helpaBackgroundColor,
                     float: 'left',
