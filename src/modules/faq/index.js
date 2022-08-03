@@ -97,11 +97,11 @@ class Stack extends Component {
                                 <span style={{
                                     color: Colors.agentTextTitle
                                 }}>
-                                {
-                                    item.open && (
-                                        item.description()
-                                    )
-                                }
+                                    {
+                                        item.open && (
+                                            item.description()
+                                        )
+                                    }
                                 </span>
                             </li>
                         ))
@@ -144,6 +144,19 @@ class Stack extends Component {
                         {
                             this.renderData()
                         }
+                        <div style={{
+                            float: 'left',
+                            width: '100%',
+                            marginTop: 25,
+                            color: Colors.agentTextTitle
+                        }}>
+                            <p>
+                                If you have any concerns or inquiries, please don’t hesitate to contact us at
+                                <b>
+                                    support@keyhelpa.com
+                                </b>
+                            </p>
+                        </div>
                     </div>
 
                 </div>
