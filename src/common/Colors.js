@@ -15,7 +15,7 @@ export default{
 	backgroundColor: '#fffafc',
 	footerBackground: '#f290bb',
 	menuActive: '#e62d7e',
-	copyright: '#F0CADB',
+	copyright: '#8E9CAD',
 	footerIcons: '#34475D',
 	barMenu: '#e62d7e',
 	headerGray: '#C4C4C4',
