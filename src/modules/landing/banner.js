@@ -20,7 +20,7 @@ class Banner extends Component {
     }
     handleClick(){
         const {history, setColor, setSelectedUser} = this.props;
-        const {theme} = this.state
+        const {theme} = this.props;
         if(theme === 'helpa'){
             setSelectedUser('agent')
             history.push('/agent')
@@ -30,7 +30,7 @@ class Banner extends Component {
         }
     }
     render(){
-        const {theme} = this.state;
+        const {theme} = this.props;
         return(
           <div>
               {/* Web View */}

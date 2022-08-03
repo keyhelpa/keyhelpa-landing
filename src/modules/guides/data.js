@@ -1,24 +1,24 @@
-import { Badge, FileCopy, Person, Search, Security } from "@mui/icons-material";
+import { Badge, FileCopy, Person, Search, Security, PersonAdd, PersonSearch, PostAddOutlined } from "@mui/icons-material";
 
 export default {
     agent: [{
         title: 'Create account',
-        icon: Person,
+        icon: PersonAdd,
         description: "Get started  with KeyHelpa and hire Helpa when you need help.",
         route: '/agent/guides/create_account'
     }, {
         title: 'Set up profile',
-        icon: Person,
+        icon: Badge,
         description: "Complete your profile setup to access all features of KeyHelpa.",
         route: '/agent/guides/setup_profile'
     }, {
         title: 'Search helpa',
-        icon: Person,
+        icon: PersonSearch,
         description: "Look for the specific Helpa that match with job you’re hiring.",
         route: '/agent/guides/search_helpa'
     }, {
         title: 'Create job posting',
-        icon: Person,
+        icon: PostAddOutlined,
         description: "Start your job posting to attract, to invite and to hire Helpa.",
         route: '/agent/guides/create_job_posting'
     }, {
@@ -87,6 +87,7 @@ export default {
         description: "Set your notifications to received any kind of updates you want.",
         route: '/agent/guides/manage_notifications'
     }],
+
     helpa: [{
         title: 'Set up profile',
         icon: Badge,
