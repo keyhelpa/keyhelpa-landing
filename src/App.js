@@ -45,11 +45,7 @@ function App(props) {
               )
             }
           <RouteList {...props} location={location}/>
-          {
-            location.pathname !== '/' && (
-              <Footer  userType = {localStorage.getItem('user_type')}/>
-            )
-          }
+          <Footer  userType = {localStorage.getItem('user_type')}/>
       </React.Fragment>
     </div>
   );
