@@ -84,6 +84,7 @@ class Stack extends Component {
                                     marginTop: 20
                                 }}>
                                     <b style={{
+                                        color: Colors.agentTextTitle
                                     }}>
                                         {
                                             item.title
@@ -93,11 +94,15 @@ class Stack extends Component {
                                         component={item.open ? KeyboardArrowUp : KeyboardArrowDown}
                                     />
                                 </span>
+                                <span style={{
+                                    color: Colors.agentTextTitle
+                                }}>
                                 {
                                     item.open && (
                                         item.description()
                                     )
                                 }
+                                </span>
                             </li>
                         ))
                     }
