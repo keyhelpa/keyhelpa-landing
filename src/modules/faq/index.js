@@ -113,19 +113,20 @@ class Stack extends Component {
 
     render() {
         const { theme } = this.state;
+        const { accountType } = this.props.state;
         return (
             <div style={{
                 width: '100%',
                 float: 'left',
-                backgroundColor: theme == 'agent' ? Colors.agentBackgroundColor : Colors.helpaBackgroundColor,
+                backgroundColor: accountType == 'agent' ? Colors.agentBackgroundColor : Colors.helpaBackgroundColor,
             }}>
                 <Banner
                     title={'FAQs'}
-                    theme={theme}
+                    theme={accountType}
                 />
 
                 <div style={{
-                    backgroundColor: theme == 'agent' ? Colors.agentBackgroundColor : Colors.helpaBackgroundColor,
+                    backgroundColor: accountType == 'agent' ? Colors.agentBackgroundColor : Colors.helpaBackgroundColor,
                     float: 'left',
                     width: '100%',
                     minHeight: '100vh',
