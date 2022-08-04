@@ -126,7 +126,7 @@ export class Contacts extends Component {
                   float: 'left'
                 }}>
                   <span
-                    style={theme === 'agent' ? style.iconAgent : style.iconHelpa} className="cursor-hover"
+                    style={accountType === 'agent' ? style.iconAgent : style.iconHelpa} className="cursor-hover"
                     onClick={() => {
                       window.location.href = item.route
                     }}
