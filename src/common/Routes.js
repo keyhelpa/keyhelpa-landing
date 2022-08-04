@@ -6,7 +6,7 @@ import CONFIG from 'config'
 
 export default{
   payloadsRetrieve: CONFIG.BACKEND_URL + '/payloads/retrieve_authorize',
-  createContact: CONFIG.BACKEND_URL + '/contact_us/create',
+  createContact: CONFIG.BACKEND_URL + '/contactus/create_with_email',
   freelancer: 'https://sandbox.keyhelpa.com',
   agent: 'https://agent.sandbox.keyhelpa.com',
 }
