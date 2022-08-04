@@ -1,5 +1,5 @@
 import { NotificationsActive, LockClock, AccountBalance, AddBusiness, BorderColor, SimCardAlert, FileOpen, NoSim, RecordVoiceOver, Badge, FileCopy, Person, Search, Security, PersonAdd, PersonSearch, PostAddOutlined, ContactMail, FactCheck, GroupAdd,   } from "@mui/icons-material";
-
+import { DesignServices, EventAvailable, BusinessCenter, Share, UploadFile, WorkHistory } from "@mui/icons-material";
 export default {
     agent: [{
         title: 'Create account',
@@ -105,42 +105,42 @@ export default {
         route: '/helpa/guides/search_job'
     }, {
         title: 'Submit proposal',
-        icon: Person,
+        icon: UploadFile,
         description: "Send your proposal to the job you are interested to received by Agent.",
         route: '/helpa/guides/submit_proposal'
     }, {
         title: 'End contract',
-        icon: Person,
+        icon: NoSim,
         description: "Be guided on how to end the job contract between you and Agent.",
         route: '/helpa/guides/end_contract'
     }, {
         title: 'Pause contract',
-        icon: FileCopy,
+        icon: FileOpen,
         description: "Be guided on how to pause the job contract between you and Agent.",
         route: '/helpa/guides/pause_contract'
     }, {
         title: 'Dispute contract',
-        icon: Person,
+        icon: SimCardAlert,
         description: "Learn how to open dispute on the contract between you and Agent.",
         route: '/helpa/guides/dispute_contract'
     }, {
         title: 'Edit basic info',
-        icon: Person,
+        icon: BorderColor,
         description: "Be guided on how to update your basic information.",
         route: '/helpa/guides/edit_basic_info'
     }, {
         title: 'Manage socials',
-        icon: Person,
+        icon: Share,
         description: "Add your social media profile links to your KeyHelpa account.",
         route: '/helpa/guides/manage_socials'
     }, {
         title: 'Update bank details',
-        icon: Person,
+        icon: AccountBalance,
         description: "Managed authorized bank details you connected with KeyHelpa.",
         route: '/helpa/guides/update_bank_details'
     }, {
         title: 'Update password',
-        icon: Person,
+        icon: LockClock,
         description: "Make sure to keep your password private and secured.",
         route: '/helpa/guides/update_passwords'
     }, {
@@ -150,27 +150,27 @@ export default {
         route: '/helpa/guides/manage_security'
     }, {
         title: 'Update work experience',
-        icon: Person,
+        icon: WorkHistory,
         description: "Keep your work experiences updated to impress hiring Agents.",
         route: '/helpa/guides/update_work_experience'
     }, {
         title: 'Update work preferences',
-        icon: Person,
+        icon: BusinessCenter,
         description: "Set your work perferences to allow Agent know your limits.",
         route: '/helpa/guides/update_work_preferences'
     }, {
         title: 'Update work availabilty',
-        icon: Person,
+        icon: EventAvailable,
         description: "Set your work days and time  to allow Agent know your availability.",
         route: '/helpa/guides/update_work_availability'
     }, {
         title: 'Update other data',
-        icon: Person,
+        icon: DesignServices,
         description: "Set your other data to add more credibility to your profile.",
         route: '/helpa/guides/update_other_data'
     }, {
         title: 'Manage notifications',
-        icon: Person,
+        icon: NotificationsActive,
         description: "Set your notifications to received any kind of updates you want.",
         route: '/helpa/guides/manage_notifications'
     }],
