@@ -15,7 +15,7 @@ import Colors from 'common/Colors'
 import AgentLogoBackground from 'assets/lighterGray.png'
 import HelpaLogoBackground from 'assets/lighterPink.png'
 
-class Guide extends Component{
+class Tiles extends Component{
     constructor(props) {
         super(props)
         this.state = {
@@ -29,7 +29,7 @@ class Guide extends Component{
         const {theme} = this.state
         return(
             <div>
-                <p>here</p>
+                <p>Lorem Ipsum dolor est</p>
             </div>
         )
     }
@@ -40,4 +40,4 @@ const mapDispatchToProps = (dispatch) => {
   return {
   }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Guide));
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Tiles));

@@ -1,4 +1,4 @@
-import { Badge, FileCopy, Person, Search, Security, PersonAdd, PersonSearch, PostAddOutlined } from "@mui/icons-material";
+import { NotificationsActive, LockClock, AccountBalance, AddBusiness, BorderColor, SimCardAlert, FileOpen, NoSim, RecordVoiceOver, Badge, FileCopy, Person, Search, Security, PersonAdd, PersonSearch, PostAddOutlined, ContactMail, FactCheck, GroupAdd,   } from "@mui/icons-material";
 
 export default {
     agent: [{
@@ -23,72 +23,77 @@ export default {
         route: '/agent/guides/create_job_posting'
     }, {
         title: 'Send invite',
-        icon: Person,
+        icon: GroupAdd,
         description: "Invite any  Helpa you like to check on your job post.",
         route: '/agent/guides/send_invite'
     }, {
         title: 'Accept proposal',
-        icon: Person,
+        icon: FactCheck,
         description: "Approve job proposals sent to you by Helpa",
         route: '/agent/guides/accept_proposal'
     }, {
         title: 'Interview helpa',
-        icon: Person,
+        icon: RecordVoiceOver,
         description: "Schedule and invite a helpa over an interview to discuss the job.",
         route: '/agent/guides/interview_helpa'
     }, {
         title: 'Hire helpa',
-        icon: Person,
+        icon: ContactMail,
         description: "Let Helpa work on your projects by hiring them.",
         route: '/agent/guides/hire_helpa'
     }, {
         title: 'End contract',
-        icon: Person,
+        icon: NoSim,
         description: "Be guided on how to end the job contract between you and Helpa.",
         route: '/agent/guides/end_contract'
     }, {
         title: 'Pause contract',
-        icon: Person,
+        icon: FileOpen,
         description: "Be guided on how to pause the job contract between you and Helpa.",
         route: '/agent/guides/pause_contract'
     }, {
         title: 'Dispute contract',
-        icon: Person,
+        icon: SimCardAlert,
         description: "Learn how to open dispute on the contract between you and Helpa.",
         route: '/agent/guides/dispute_contract'
     }, {
         title: 'Edit basic info',
-        icon: Person,
+        icon: BorderColor,
         description: "Be guided on how to update your basic information.",
         route: '/agent/guides/edit_basic_info'
     }, {
         title: 'Edit agency info',
-        icon: Person,
+        icon: AddBusiness,
         description: "Be guided on how to update your agency information.",
         route: '/agent/guides/edit_agency_info'
     }, {
         title: 'Update bank details',
-        icon: Person,
+        icon: AccountBalance,
         description: "Managed authorized bank details you connected with KeyHelpa.",
         route: '/agent/guides/update_bank_details'
     }, {
         title: 'Update password',
-        icon: Person,
+        icon: LockClock,
         description: "Make sure to keep your password private and secured.",
         route: '/agent/guides/update_password'
     }, {
         title: 'Manage security',
-        icon: Person,
+        icon: Security,
         description: "Set securities to your KeyHelpa account for extra protection.",
         route: '/agent/guides/manage_security'
     }, {
         title: 'Manage notifications',
-        icon: Person,
+        icon: NotificationsActive,
         description: "Set your notifications to received any kind of updates you want.",
         route: '/agent/guides/manage_notifications'
     }],
 
     helpa: [{
+        title: 'Create account',
+        icon: PersonAdd,
+        description: "Get started  with KeyHelpa and hire Helpa when you need help.",
+        route: '/helpa/guides/create_account'
+    },{
         title: 'Set up profile',
         icon: Badge,
         description: "Get started  with KeyHelpa and hire Helpa when you need help.",
