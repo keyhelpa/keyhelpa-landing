@@ -81,10 +81,11 @@ export class About extends Component {
               style={{
                 color: accountType == 'agent' ? Colors.agentText : Colors.helpaText,
                 textAlign: 'center',
-                marginTop: 150
+                marginTop: 100,
+                fontSize: '13vw'
               }}
               className="hide-on-desktop"
-            >About Us</h1>
+            >About us</h1>
             <div className='imageContainer'>
               <img src={accountType === 'agent' ? require('assets/man-gray.png') : require('assets/man-pink.png')} className="image-left"></img>
             </div>
@@ -101,7 +102,7 @@ export class About extends Component {
                 marginTop: '10%'
               }}
               className="hide-on-mobile"
-            >About Us</h1>
+            >About us</h1>
             {
               content()
             }

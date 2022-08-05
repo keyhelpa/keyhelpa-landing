@@ -21,6 +21,10 @@
   background-color: #FFFAFC;
   /* height: 100vh */
 }
+.contentContainer{
+  padding-right: 10%;
+  margin-top: 5%;
+}
 
 @media (max-width: 991px){
   .image-left{
