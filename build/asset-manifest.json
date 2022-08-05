@@ -1,7 +1,12 @@
 {
   "files": {
+<<<<<<< HEAD
+    "main.css": "/static/css/main.0e933bbd.css",
+    "main.js": "/static/js/main.78adc16d.js",
+=======
     "main.css": "/static/css/main.77b48d82.css",
     "main.js": "/static/js/main.28978a39.js",
+>>>>>>> bcab4a4e3fe3c966e769361d918f74cb5c7ad53e
     "static/media/helpaRight.png": "/static/media/helpaRight.72af74feda5a77b30fd7.png",
     "static/media/agentLeft.png": "/static/media/agentLeft.5baf66453a322368a2b8.png",
     "static/media/helpa-circle-up.png": "/static/media/helpa-circle-up.34e54f687e5689b1b591.png",
@@ -42,11 +47,20 @@
     "static/media/guide.png": "/static/media/guide.e0fcef3805e7929c1806.png",
     "static/media/logo.svg": "/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/index.html",
+<<<<<<< HEAD
+    "main.0e933bbd.css.map": "/static/css/main.0e933bbd.css.map",
+    "main.78adc16d.js.map": "/static/js/main.78adc16d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0e933bbd.css",
+    "static/js/main.78adc16d.js"
+=======
     "main.77b48d82.css.map": "/static/css/main.77b48d82.css.map",
     "main.28978a39.js.map": "/static/js/main.28978a39.js.map"
   },
   "entrypoints": [
     "static/css/main.77b48d82.css",
     "static/js/main.28978a39.js"
+>>>>>>> bcab4a4e3fe3c966e769361d918f74cb5c7ad53e
   ]
 }

@@ -57,8 +57,8 @@ class Guide extends Component {
                     float: 'left',
                     width: '100%',
                     display: 'flex',
-                    justifyContent: 'space-between',
-                    flexWrap: 'wrap'
+                    flexWrap: 'wrap',
+                    gap: '5%'
                 }}>
                     {
                         menu.map((item) => (

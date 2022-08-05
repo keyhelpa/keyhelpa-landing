@@ -38,6 +38,10 @@ const initialState = {
     route: '/helpa'
   }],
   loginRightMenu: [{
+    title: 'Guides',
+    type: 'external',
+    route:  '/guide'
+  },{
     title: 'Members Login',
     type: 'external',
     route:  Config.HELPA
