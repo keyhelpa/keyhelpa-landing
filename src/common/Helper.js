@@ -36,11 +36,11 @@ export default {
       type: 'internal',
       route:  '/guides'
     }, {
-      title: 'Members Login',
+      title: 'Members login',
       type: 'external',
       route:  Config.HELPA
     }, {
-      title: 'Join Us',
+      title: 'Join us',
       type: 'external',
       route:  Config.HELPA
     }]

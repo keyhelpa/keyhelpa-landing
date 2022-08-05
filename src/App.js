@@ -15,7 +15,7 @@ function App(props) {
   const [showMenu, setShowMenu] = useState(false)
   const location  = useLocation();
   return (
-    <div className="App">
+    <div className="App" style={{background: location.pathname === '/' || location.pathname.includes('/helpa') ? Colors.helpaBackgroundColor : Colors.agentBackgroundColor}}>
       <React.Fragment>
         <Header {...props}
           toggleMenu={() => {
@@ -25,7 +25,8 @@ function App(props) {
             setIsDropdownMenu(!isDropdownMenu)
           }}
           userType = {localStorage.getItem('user_type')}
-          textColor={location.pathname !== '/' ? location.pathname === '/agent' ? Colors.white : Colors.agentGray : Colors.white}
+          backgroundColor = {location.pathname === '/' || location.pathname === '/helpa' ? Colors.helpaHeaderBackground : location.pathname === '/agent' ? Colors.agentHeaderBackground : 'inherit'}
+          textColor={location.pathname === '/' || location.pathname === '/agent' || location.pathname === '/helpa' ? Colors.white : Colors.gray}
         />
         {
               showMenu && (
@@ -45,7 +46,9 @@ function App(props) {
               )
             }
           <RouteList {...props} location={location}/>
-          <Footer  userType = {localStorage.getItem('user_type')}/>
+          <Footer  
+            backgroundColor = {location.pathname === '/' || location.pathname.includes('/helpa') ? Colors.helpaHeaderBackground : Colors.agentHeaderBackground}
+            userType = {localStorage.getItem('user_type')}/>
       </React.Fragment>
     </div>
   );
