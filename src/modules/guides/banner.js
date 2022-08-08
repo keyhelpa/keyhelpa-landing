@@ -18,7 +18,8 @@ class Guide extends Component {
                 height: '50vh',
                 backgroundColor: theme == 'agent' ? Colors.agentGray : Colors.helpaPink,
                 display: 'flex',
-                alignItems: 'center'
+                alignItems: 'center',
+                marginTop: 30
             }}>
 
                 <div style={{

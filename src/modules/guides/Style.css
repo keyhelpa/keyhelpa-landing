@@ -1,0 +1,12 @@
+.cursor-hover:hover{
+    background-color: '#E62D7E'!important
+}
+.cursor-hover{
+    background-color: 'black'
+}
+.tile-title:hover{
+    color: white;
+}
+.tile-desc:hover{
+    color: white;
+}
