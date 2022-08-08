@@ -7,7 +7,6 @@ import { SvgIcon } from '@mui/material';
 import Data from './data'
 import Introduction from './pages/introduction'
 import './Style.css'
-import EndContract from 'modules/generic/modal/EndContract';
 
 class Guide extends Component {
     constructor(props) {
