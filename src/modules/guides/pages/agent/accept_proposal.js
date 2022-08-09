@@ -53,6 +53,28 @@ class AcceptProposal extends Component {
         )
     }
 
+    renderContent(){
+        return(
+            <div>
+                <p>There are two types of Helpa that will send you job proposals:</p>
+                <ul>
+                    <li>Invited Helpa - this are helpa you send a job invitation and have accept your invitation by sending you a proposal.</li>
+                    <li>Uninvited Helpa - this are helpa that send a job proposal even if you did not invite them.</li>
+                </ul>
+                <p>To check the proposals Helpa has sent you to your job postings, read the following instructions below:</p>
+                <ol type='1'>
+                    <li>Go to your Proposals page, where you will find all your candidates who sent you proposals and also candidates that you interviewed.</li>
+                    <li>On your proposals' page, you can check the proposals sent to you by Invited Helpa under your “Accepted Invites”  section and click the “View Proposal” on the action column to view their proposals. </li>
+                    <p>On the other hand, you may view the proposals sent to you by Uninvited Helpa under your “Pending Proposals' ' sections and click the “View” on the action column to view their proposals. </p>
+                    <li>To accept the proposal a Helpa has sent you, either invited or not, you just need to invite them into an interview by clicking the “Interview” button on the View Proposal page.  Click here to know how to interview Helpa.</li>
+                    <p>However, if you do not like the proposal of the Helpa, you may simply click the “Reject Proposal” button on the View Proposal page to let the Helpa know that you did not approve the proposal.</p>
+                    <p>By clicking the “Interview” button on the proposal page, it means that you accept the Helpa’s job proposal.</p>
+                    <li>When accepting or rejecting the proposal, the Helpa will receive an email notification about his job proposal.</li>
+                </ol>
+                <p>If you have any concerns or inquiries, please don’t hesitate to <a href='#'>contact us</a>. </p>
+            </div>
+        )
+    }
 
     render() {
         const { theme } = this.props;
@@ -64,12 +86,15 @@ class AcceptProposal extends Component {
                 <p style={{
                     color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle
                 }}>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                How is your job post going on? Have you received a lot of proposals from Helpas? Check your My Proposals page now to check proposals from Helpa you invited and those you did not send a job invitation who were interested to apply for your job hiring that they send you a proposal.    
                 </p>
 
 
                 {
                     this.renderVideo()
+                }
+                {
+                    this.renderContent()
                 }
             </div>
         )
