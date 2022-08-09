@@ -7,6 +7,12 @@ import { SvgIcon } from '@mui/material';
 import Data from './data'
 import Introduction from './pages/introduction'
 import './Style.css'
+import CreateAccountAgent from './pages/agent/create_account'
+import SetupAgent from './pages/agent/setup_profile'
+import SearchHelpa from './pages/agent/search_helpa'
+import JobPosting from './pages/agent/job_posting'
+import SendInvite from './pages/agent/send_invite'
+import AcceptProposal from './pages/agent/accept_proposal'
 
 class Guide extends Component {
     constructor(props) {

@@ -53,6 +53,20 @@ class SendInvite extends Component {
         )
     }
 
+    renderContent(){
+        return(
+            <div>
+                <p>To invite a candidate to view your job post just simply do the following:</p>
+                <ol type='1'>
+                    <li>On your Candidates page, click on the “View candidate” button on the card of the candidate you are interested in inviting  and you will be redirected to the Candidate details page.</li>
+                    <li>On the Candidate details page, click the “Invite” button and a “Send Invite” modal will pop up where you can select which job you would like this candidate to be invited to and also you can add a message to Helpa. </li>
+                    <p>Once you are done selecting the job and adding your message to Helpa, you can click the “Send” button to finally send the invitation.</p>
+                    <li>By sending a job invitation to Helpa, the Helpa will receive an email notification and will create a thread message on your app Messages' page.</li>
+                </ol>
+                <p>If you have any concerns or inquiries, please don’t hesitate to <a href='#'>contact us</a>. </p>
+            </div>
+        )
+    }
 
     render() {
         const { theme } = this.props;
@@ -64,12 +78,15 @@ class SendInvite extends Component {
                 <p style={{
                     color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle
                 }}>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                Have you searched for Helpa and find them applicable to the job you are hiring? Don’t hesitate to send them a job invitation now so that they can be notified and will check on your job post.
                 </p>
 
 
                 {
                     this.renderVideo()
+                }
+                {
+                    this.renderContent()
                 }
             </div>
         )
