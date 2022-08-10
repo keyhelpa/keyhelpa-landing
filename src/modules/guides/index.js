@@ -13,6 +13,36 @@ import SearchHelpa from './pages/agent/search_helpa'
 import JobPosting from './pages/agent/job_posting'
 import SendInvite from './pages/agent/send_invite'
 import AcceptProposal from './pages/agent/accept_proposal'
+import InterviewHelpa from './pages/agent/interview_helpa'
+import HireHelpa from './pages/agent/hire_helpa'
+import EndContractAgent from './pages/agent/end_contract'
+import PauseContractAgent from './pages/agent/pause_contract'
+import DisputeContractAgent from './pages/agent/dispute_contract'
+import EditBasicAgent from './pages/agent/edit_basic_info'
+import EditAgency from './pages/agent/edit_agency_info'
+import UpdateBankAgent from './pages/agent/update_bank_details'
+import UpdatePasswordAgent from './pages/agent/update_password'
+import ManageSecurityAgent from './pages/agent/manage_security'
+import ManageNotifAgent from './pages/agent/manage_notifications'
+
+import CreateAccountHelpa from './pages/helpa/create_account'
+import SetupHelpa from './pages/helpa/setup_profile'
+import SearchJob from './pages/helpa/search_job'
+import SubmitProposal from './pages/helpa/submit_proposal'
+import EndContractHelpa from './pages/helpa/end_contract'
+import PauseContractHelpa from './pages/helpa/pause_contract'
+import DisputeContractHelpa from './pages/helpa/dispute_contract'
+import EditBasicHelpa from './pages/helpa/edit_basic_info'
+import ManageSocials from './pages/helpa/manage_socials'
+import UpdateBankHelpa from './pages/helpa/update_bank_details'
+import UpdatePasswordHelpa from './pages/helpa/update_password'
+import ManageSecurityHelpa from './pages/helpa/manage_security'
+import WorkHistory from './pages/helpa/update_work_experience'
+import WorkPreference from './pages/helpa/update_work_preferences'
+import WorkAvailability from './pages/helpa/update_work_availability'
+import OtherData from './pages/helpa/update_other_data'
+import ManageNotifHelpa from './pages/helpa/manage_notifications'
+
 
 class Guide extends Component {
     constructor(props) {
@@ -70,8 +100,8 @@ class Guide extends Component {
             case '/helpa/guides/edit_basic_info': return <EditBasicHelpa theme={theme}/>
             case '/helpa/guides/manage_socials': return <ManageSocials theme={theme}/>
             case '/helpa/guides/update_bank_details': return <UpdateBankHelpa theme={theme}/>
-            case '/helpa/guides/update_passwords': return <UpdatePasswordHelpa theme={theme}/>
-            case '/helpa/guides/manage_security': return <ManageSecurityAgent theme={theme}/>
+            case '/helpa/guides/update_password': return <UpdatePasswordHelpa theme={theme}/>
+            case '/helpa/guides/manage_security': return <ManageSecurityHelpa theme={theme}/>
             case '/helpa/guides/update_work_experience': return <WorkHistory theme={theme}/>
             case '/helpa/guides/update_work_preferences': return <WorkPreference theme={theme}/>
             case '/helpa/guides/update_work_availability': return <WorkAvailability theme={theme}/>
