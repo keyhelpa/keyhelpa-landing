@@ -1,4 +1,4 @@
-import { NotificationsActive, LockClock, AccountBalance, AddBusiness, BorderColor, SimCardAlert, FileOpen, NoSim, RecordVoiceOver, Badge, FileCopy, Person, Search, Security, PersonAdd, PersonSearch, PostAddOutlined, ContactMail, FactCheck, GroupAdd,   } from "@mui/icons-material";
+import { DocumentScannerOutlined, NotificationsActive, LockClock, AccountBalance, AddBusiness, BorderColor, SimCardAlert, FileOpen, NoSim, RecordVoiceOver, Badge, FileCopy, Person, Search, Security, PersonAdd, PersonSearch, PostAddOutlined, ContactMail, FactCheck, GroupAdd,   } from "@mui/icons-material";
 import { DesignServices, EventAvailable, BusinessCenter, Share, UploadFile, WorkHistory } from "@mui/icons-material";
 export default {
     agent: [{
@@ -41,6 +41,11 @@ export default {
         icon: ContactMail,
         description: "Let Helpa work on your projects by hiring them.",
         route: '/agent/guides/hire_helpa'
+    },{
+        title: 'Create Contract',
+        icon: DocumentScannerOutlined,
+        description: "Send the final agreement to Helpa for them to start working.",
+        route: '/agent/guides/create_contract'
     }, {
         title: 'End contract',
         icon: NoSim,

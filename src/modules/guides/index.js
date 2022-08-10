@@ -15,6 +15,7 @@ import SendInvite from './pages/agent/send_invite'
 import AcceptProposal from './pages/agent/accept_proposal'
 import InterviewHelpa from './pages/agent/interview_helpa'
 import HireHelpa from './pages/agent/hire_helpa'
+import CreateContract from './pages/agent/create_contract'
 import EndContractAgent from './pages/agent/end_contract'
 import PauseContractAgent from './pages/agent/pause_contract'
 import DisputeContractAgent from './pages/agent/dispute_contract'
@@ -80,6 +81,7 @@ class Guide extends Component {
             case '/agent/guides/accept_proposal': return <AcceptProposal theme={theme}/>
             case '/agent/guides/interview_helpa': return <InterviewHelpa theme={theme}/>
             case '/agent/guides/hire_helpa': return <HireHelpa theme={theme}/>
+            case '/agent/guides/create_contract': return <CreateContract theme={theme}/>
             case '/agent/guides/end_contract': return <EndContractAgent theme={theme}/>
             case '/agent/guides/pause_contract': return <PauseContractAgent theme={theme}/>
             case '/agent/guides/dispute_contract': return <DisputeContractAgent theme={theme}/>
