@@ -2,58 +2,14 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Colors from 'common/Colors';
-import AgentVideoThumbnail from 'assets/agent-video-thumbnail.png'
-import HelpaVideoThumbnail from 'assets/helpa-video-thumbnail.png'
-import { PlayArrow, PlayCircleFilled } from '@mui/icons-material';
-import { SvgIcon } from '@mui/material';
+import VideoCard from 'modules/guides/videoCard'
 class InterviewHelpa extends Component {
     constructor(props) {
         super(props)
     }
-    
-    renderVideo() {
-        const { theme } = this.props;
 
+    renderContent() {
         return (
-            <div style={{
-                width: '100%',
-                float: 'left',
-                height: 500,
-                backgroundImage: `url(${theme == 'agent' ? AgentVideoThumbnail : HelpaVideoThumbnail})`,
-                alignItems: 'center',
-                backgroundRepeat: 'no-repeat',
-                backgroundSize: '100% auto',
-                display: 'flex',
-                alignContent: 'center',
-                justifyContent: 'center'
-            }}
-                className="active-color-hover full-width-mobile video-player-holder"
-            >
-                <div style={{
-                    width: '100px',
-                    height: '100px',
-                    borderRadius: '50px',
-                    float: 'left',
-                    background: theme == 'agent' ? Colors.agentGray : Colors.helpaPink,
-                    alignItems: 'center',
-                    alignContent: 'center',
-                    display: 'flex',
-                    justifyContent: 'center'
-                }}
-                >
-                    <SvgIcon
-                        component={PlayArrow}
-                        style={{
-                            color: Colors.white,
-                            fontSize: 60
-                        }}
-                    />
-                </div>
-            </div>
-        )
-    }
-    renderContent(){
-        return(
             <div>
                 <p>After you have clicked on the “Interview” button in  the View Proposal page, an Interview modal will pop-up where you need to fill up the following field:</p>
                 <ul >
@@ -68,21 +24,21 @@ class InterviewHelpa extends Component {
                 <p>On your “My proposals” page, you can see the “Interviews” section which is found at the bottom of the page. There are 3 types of interview which are the following:</p>
                 <ol type='1'>
                     <li><b>Upcoming</b> - these are literally the upcoming interviews, the actions you can make with the candidates in this section are:</li>
-                        <ol type='a'>
-                            <li>View - to view the interview details of the candidates such as time and date (by viewing the interview details, you may also resend or update the details such as interview date and time if you want to reschedule the Helpa’s interview).</li>
-                            <li>Done - when the interview is actually done, you need to make sure that you click it “Done” to mark the interview is successful but does not assure that the candidate will be hired.</li>
-                            <li>Archive - you must click the “Archive” action if the interview is not successful ( e.g., the candidate does not attend the interview or other reason)</li>
-                        </ol>
+                    <ol type='a'>
+                        <li>View - to view the interview details of the candidates such as time and date (by viewing the interview details, you may also resend or update the details such as interview date and time if you want to reschedule the Helpa’s interview).</li>
+                        <li>Done - when the interview is actually done, you need to make sure that you click it “Done” to mark the interview is successful but does not assure that the candidate will be hired.</li>
+                        <li>Archive - you must click the “Archive” action if the interview is not successful ( e.g., the candidate does not attend the interview or other reason)</li>
+                    </ol>
                     <li><b>Successful</b> - these are successful interviews or shall we say those candidates who have actually attended and finished the interview but are not assured to be hired, the actions you make here as an Agent is very important such as:</li>
-                        <ol type='a'>
-                            <li>View - to view the candidate details including the job terms and proposal, this is where the Agent can take action such as to reject the candidate or to hire the candidate. Click here to hire helpa.</li>
-                            <li>Remove - this action will delete the candidate details or row from the table of successful interviews.</li>
-                        </ol>
+                    <ol type='a'>
+                        <li>View - to view the candidate details including the job terms and proposal, this is where the Agent can take action such as to reject the candidate or to hire the candidate. Click here to hire helpa.</li>
+                        <li>Remove - this action will delete the candidate details or row from the table of successful interviews.</li>
+                    </ol>
                     <li><b>Unsuccessful</b> - these are candidates who did not show off during the schedule of the interview, the actions you can make in this section are:</li>
-                        <ol type='a'>
-                            <li>View - to view the interview details and can no longer update or resend as it is already marked as unsuccessful.</li>
-                            <li>Remove - this action will delete the candidate details or row from the table of unsuccessful interviews.</li>
-                        </ol>
+                    <ol type='a'>
+                        <li>View - to view the interview details and can no longer update or resend as it is already marked as unsuccessful.</li>
+                        <li>Remove - this action will delete the candidate details or row from the table of unsuccessful interviews.</li>
+                    </ol>
                 </ol>
                 <p>If you have any concerns or inquiries, please don’t hesitate to <a href='#'>contact us</a>. </p>
             </div>
@@ -99,12 +55,9 @@ class InterviewHelpa extends Component {
                 <p style={{
                     color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle
                 }}>
-Did you just accept a Helpa’s job proposal? It means you are inviting them over to an interview by sending them a message and schedule.                </p>
+                    Did you just accept a Helpa’s job proposal? It means you are inviting them over to an interview by sending them a message and schedule.                </p>
 
-
-                {
-                    this.renderVideo()
-                }
+                <VideoCard />
                 {
                     this.renderContent()
                 }

@@ -2,58 +2,14 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Colors from 'common/Colors';
-import AgentVideoThumbnail from 'assets/agent-video-thumbnail.png'
-import HelpaVideoThumbnail from 'assets/helpa-video-thumbnail.png'
-import { PlayArrow, PlayCircleFilled } from '@mui/icons-material';
-import { SvgIcon } from '@mui/material';
+import VideoCard from 'modules/guides/videoCard'
 class ManageSecurityAgent extends Component {
     constructor(props) {
         super(props)
     }
-    
-    renderVideo() {
-        const { theme } = this.props;
 
+    renderContent() {
         return (
-            <div style={{
-                width: '100%',
-                float: 'left',
-                height: 500,
-                backgroundImage: `url(${theme == 'agent' ? AgentVideoThumbnail : HelpaVideoThumbnail})`,
-                alignItems: 'center',
-                backgroundRepeat: 'no-repeat',
-                backgroundSize: '100% auto',
-                display: 'flex',
-                alignContent: 'center',
-                justifyContent: 'center'
-            }}
-                className="active-color-hover full-width-mobile video-player-holder"
-            >
-                <div style={{
-                    width: '100px',
-                    height: '100px',
-                    borderRadius: '50px',
-                    float: 'left',
-                    background: theme == 'agent' ? Colors.agentGray : Colors.helpaPink,
-                    alignItems: 'center',
-                    alignContent: 'center',
-                    display: 'flex',
-                    justifyContent: 'center'
-                }}
-                >
-                    <SvgIcon
-                        component={PlayArrow}
-                        style={{
-                            color: Colors.white,
-                            fontSize: 60
-                        }}
-                    />
-                </div>
-            </div>
-        )
-    }
-    renderContent(){
-        return(
             <div>
                 <p>To set securities to your KeyHelpa account for extra protection, read the following instructions below:</p>
                 <ol type='1'>
@@ -87,12 +43,10 @@ class ManageSecurityAgent extends Component {
                 <p style={{
                     color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle
                 }}>
-Security is very important within KeyHelpa, this is why we add a two-step verification on our platform for all our users' accounts. Add an extra layer of security, now, to block unauthorised access and to have an additional protection for your account.                </p>
+                    Security is very important within KeyHelpa, this is why we add a two-step verification on our platform for all our users' accounts. Add an extra layer of security, now, to block unauthorised access and to have an additional protection for your account.                </p>
 
 
-                {
-                    this.renderVideo()
-                }
+                <VideoCard />
                 {
                     this.renderContent()
                 }

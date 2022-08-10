@@ -2,59 +2,14 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Colors from 'common/Colors';
-import AgentVideoThumbnail from 'assets/agent-video-thumbnail.png'
-import HelpaVideoThumbnail from 'assets/helpa-video-thumbnail.png'
-import { PlayArrow, PlayCircleFilled } from '@mui/icons-material';
-import { SvgIcon } from '@mui/material';
+import VideoCard from 'modules/guides/videoCard'
 class HireHelpa extends Component {
     constructor(props) {
         super(props)
     }
-    
-    renderVideo() {
-        const { theme } = this.props;
 
+    renderContent() {
         return (
-            <div style={{
-                width: '100%',
-                float: 'left',
-                height: 500,
-                backgroundImage: `url(${theme == 'agent' ? AgentVideoThumbnail : HelpaVideoThumbnail})`,
-                alignItems: 'center',
-                backgroundRepeat: 'no-repeat',
-                backgroundSize: '100% auto',
-                display: 'flex',
-                alignContent: 'center',
-                justifyContent: 'center'
-            }}
-                className="active-color-hover full-width-mobile video-player-holder"
-            >
-                <div style={{
-                    width: '100px',
-                    height: '100px',
-                    borderRadius: '50px',
-                    float: 'left',
-                    background: theme == 'agent' ? Colors.agentGray : Colors.helpaPink,
-                    alignItems: 'center',
-                    alignContent: 'center',
-                    display: 'flex',
-                    justifyContent: 'center'
-                }}
-                >
-                    <SvgIcon
-                        component={PlayArrow}
-                        style={{
-                            color: Colors.white,
-                            fontSize: 60
-                        }}
-                    />
-                </div>
-            </div>
-        )
-    }
-
-    renderContent(){
-        return(
             <div>
                 <p>Go to your “Successful” Interviews section which can be found on your “My proposals” page. Click on the “View” action of the candidate you want to hire, and you will be redirected to a page where you can view the candidate details including the job terms and proposal. On this page you can see the “Reject” and “Hire” button.</p>
                 <p>To hire the candidate, you just need to click on the “Hire” button and you will be redirected to creating a contract or the final job offer and sending the job offer. Click here to know more about creating a contract.</p>
@@ -74,13 +29,11 @@ class HireHelpa extends Component {
                 <p style={{
                     color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle
                 }}>
-                Are you done with interviewing a Helpa? Have they met your expectations? Are you thinking of letting Helpa do the work on your project? If your answer to these questions is yes, then you have to hire Helpa now!
+                    Are you done with interviewing a Helpa? Have they met your expectations? Are you thinking of letting Helpa do the work on your project? If your answer to these questions is yes, then you have to hire Helpa now!
                 </p>
 
 
-                {
-                    this.renderVideo()
-                }
+                <VideoCard />
                 {
                     this.renderContent()
                 }

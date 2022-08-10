@@ -2,10 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Colors from 'common/Colors';
-import AgentVideoThumbnail from 'assets/agent-video-thumbnail.png'
-import HelpaVideoThumbnail from 'assets/helpa-video-thumbnail.png'
-import { PlayArrow, PlayCircleFilled } from '@mui/icons-material';
-import { SvgIcon } from '@mui/material';
+import VideoCard from 'modules/guides/videoCard'
 class AcceptProposal extends Component {
     constructor(props) {
         super(props)
@@ -90,9 +87,7 @@ class AcceptProposal extends Component {
                 </p>
 
 
-                {
-                    this.renderVideo()
-                }
+                <VideoCard />
                 {
                     this.renderContent()
                 }

@@ -67,48 +67,48 @@ class Guide extends Component {
         })
     }
 
-    managePage(item){
+    managePage(item) {
         const { theme } = this.state;
-        switch(item.route){
-            case '/agent/guides': return <Introduction theme={theme}/>
-            case '/helpa/guides': return <Introduction theme={theme}/>
+        switch (item.route) {
+            case '/agent/guides': return <Introduction theme={theme} />
+            case '/helpa/guides': return <Introduction theme={theme} />
             // agent
-            case '/agent/guides/create_account': return <CreateAccountAgent theme={theme}/>
-            case '/agent/guides/setup_profile': return <SetupAgent theme={theme}/>
-            case '/agent/guides/search_helpa': return <SearchHelpa theme={theme}/>
-            case '/agent/guides/create_job_posting': return <JobPosting theme={theme}/>
-            case '/agent/guides/send_invite': return <SendInvite theme={theme}/>
-            case '/agent/guides/accept_proposal': return <AcceptProposal theme={theme}/>
-            case '/agent/guides/interview_helpa': return <InterviewHelpa theme={theme}/>
-            case '/agent/guides/hire_helpa': return <HireHelpa theme={theme}/>
-            case '/agent/guides/create_contract': return <CreateContract theme={theme}/>
-            case '/agent/guides/end_contract': return <EndContractAgent theme={theme}/>
-            case '/agent/guides/pause_contract': return <PauseContractAgent theme={theme}/>
-            case '/agent/guides/dispute_contract': return <DisputeContractAgent theme={theme}/>
-            case '/agent/guides/edit_basic_info': return <EditBasicAgent theme={theme}/>
-            case '/agent/guides/edit_agency_info': return <EditAgency theme={theme}/>
-            case '/agent/guides/update_bank_details': return <UpdateBankAgent theme={theme}/>
-            case '/agent/guides/update_password': return <UpdatePasswordAgent theme={theme}/>
-            case '/agent/guides/manage_security': return <ManageSecurityAgent theme={theme}/>
-            case '/agent/guides/manage_notifications': return <ManageNotifAgent theme={theme}/>
+            case '/agent/guides/create_account': return <CreateAccountAgent theme={theme} />
+            case '/agent/guides/setup_profile': return <SetupAgent theme={theme} />
+            case '/agent/guides/search_helpa': return <SearchHelpa theme={theme} />
+            case '/agent/guides/create_job_posting': return <JobPosting theme={theme} />
+            case '/agent/guides/send_invite': return <SendInvite theme={theme} />
+            case '/agent/guides/accept_proposal': return <AcceptProposal theme={theme} />
+            case '/agent/guides/interview_helpa': return <InterviewHelpa theme={theme} />
+            case '/agent/guides/hire_helpa': return <HireHelpa theme={theme} />
+            case '/agent/guides/create_contract': return <CreateContract theme={theme} />
+            case '/agent/guides/end_contract': return <EndContractAgent theme={theme} />
+            case '/agent/guides/pause_contract': return <PauseContractAgent theme={theme} />
+            case '/agent/guides/dispute_contract': return <DisputeContractAgent theme={theme} />
+            case '/agent/guides/edit_basic_info': return <EditBasicAgent theme={theme} />
+            case '/agent/guides/edit_agency_info': return <EditAgency theme={theme} />
+            case '/agent/guides/update_bank_details': return <UpdateBankAgent theme={theme} />
+            case '/agent/guides/update_password': return <UpdatePasswordAgent theme={theme} />
+            case '/agent/guides/manage_security': return <ManageSecurityAgent theme={theme} />
+            case '/agent/guides/manage_notifications': return <ManageNotifAgent theme={theme} />
             // helpa
-            case '/helpa/guides/create_account': return <CreateAccountHelpa theme={theme}/>
-            case '/helpa/guides/setup_profile': return <SetupHelpa theme={theme}/>
-            case '/helpa/guides/search_job': return <SearchJob theme={theme}/>
-            case '/helpa/guides/submit_proposal': return <SubmitProposal theme={theme}/>
-            case '/helpa/guides/end_contract': return <EndContractHelpa theme={theme}/>
-            case '/helpa/guides/pause_contract': return <PauseContractHelpa theme={theme}/>
-            case '/helpa/guides/dispute_contract': return <DisputeContractHelpa theme={theme}/>
-            case '/helpa/guides/edit_basic_info': return <EditBasicHelpa theme={theme}/>
-            case '/helpa/guides/manage_socials': return <ManageSocials theme={theme}/>
-            case '/helpa/guides/update_bank_details': return <UpdateBankHelpa theme={theme}/>
-            case '/helpa/guides/update_password': return <UpdatePasswordHelpa theme={theme}/>
-            case '/helpa/guides/manage_security': return <ManageSecurityHelpa theme={theme}/>
-            case '/helpa/guides/update_work_experience': return <WorkHistory theme={theme}/>
-            case '/helpa/guides/update_work_preferences': return <WorkPreference theme={theme}/>
-            case '/helpa/guides/update_work_availability': return <WorkAvailability theme={theme}/>
-            case '/helpa/guides/update_other_data': return <OtherData theme={theme}/>
-            case '/helpa/guides/manage_notifications': return <ManageNotifHelpa theme={theme}/>
+            case '/helpa/guides/create_account': return <CreateAccountHelpa theme={theme} />
+            case '/helpa/guides/setup_profile': return <SetupHelpa theme={theme} />
+            case '/helpa/guides/search_job': return <SearchJob theme={theme} />
+            case '/helpa/guides/submit_proposal': return <SubmitProposal theme={theme} />
+            case '/helpa/guides/end_contract': return <EndContractHelpa theme={theme} />
+            case '/helpa/guides/pause_contract': return <PauseContractHelpa theme={theme} />
+            case '/helpa/guides/dispute_contract': return <DisputeContractHelpa theme={theme} />
+            case '/helpa/guides/edit_basic_info': return <EditBasicHelpa theme={theme} />
+            case '/helpa/guides/manage_socials': return <ManageSocials theme={theme} />
+            case '/helpa/guides/update_bank_details': return <UpdateBankHelpa theme={theme} />
+            case '/helpa/guides/update_password': return <UpdatePasswordHelpa theme={theme} />
+            case '/helpa/guides/manage_security': return <ManageSecurityHelpa theme={theme} />
+            case '/helpa/guides/update_work_experience': return <WorkHistory theme={theme} />
+            case '/helpa/guides/update_work_preferences': return <WorkPreference theme={theme} />
+            case '/helpa/guides/update_work_availability': return <WorkAvailability theme={theme} />
+            case '/helpa/guides/update_other_data': return <OtherData theme={theme} />
+            case '/helpa/guides/manage_notifications': return <ManageNotifHelpa theme={theme} />
         }
     }
 
@@ -153,7 +153,10 @@ class Guide extends Component {
                                         item
                                     })
                                     this.props.history.push(item.route)
-                                    
+                                    setTimeout(() => {
+                                        this.props.history.go(0)
+                                    }, 100)
+
                                 }}
                                 className="cursor-hover full-width-mobile"
                             >

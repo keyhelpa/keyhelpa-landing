@@ -2,59 +2,14 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Colors from 'common/Colors';
-import AgentVideoThumbnail from 'assets/agent-video-thumbnail.png'
-import HelpaVideoThumbnail from 'assets/helpa-video-thumbnail.png'
-import { PlayArrow, PlayCircleFilled } from '@mui/icons-material';
-import { SvgIcon } from '@mui/material';
+import VideoCard from 'modules/guides/videoCard'
 class ManageNotifAgent extends Component {
     constructor(props) {
         super(props)
     }
-    
-    renderVideo() {
-        const { theme } = this.props;
 
+    renderContent() {
         return (
-            <div style={{
-                width: '100%',
-                float: 'left',
-                height: 500,
-                backgroundImage: `url(${theme == 'agent' ? AgentVideoThumbnail : HelpaVideoThumbnail})`,
-                alignItems: 'center',
-                backgroundRepeat: 'no-repeat',
-                backgroundSize: '100% auto',
-                display: 'flex',
-                alignContent: 'center',
-                justifyContent: 'center'
-            }}
-                className="active-color-hover full-width-mobile video-player-holder"
-            >
-                <div style={{
-                    width: '100px',
-                    height: '100px',
-                    borderRadius: '50px',
-                    float: 'left',
-                    background: theme == 'agent' ? Colors.agentGray : Colors.helpaPink,
-                    alignItems: 'center',
-                    alignContent: 'center',
-                    display: 'flex',
-                    justifyContent: 'center'
-                }}
-                >
-                    <SvgIcon
-                        component={PlayArrow}
-                        style={{
-                            color: Colors.white,
-                            fontSize: 60
-                        }}
-                    />
-                </div>
-            </div>
-        )
-    }
-
-    renderContent(){
-        return(
             <div>
                 <p>On Agent’s web application, click your profile icon or photo then a dropdown menu will appear. Choose “Settings” and you will be taken to a new sidebar menu. Click the “Notifications” on your sidebar menu and you will be redirected to the “Notifications” page.</p>
                 <p>Agents can set where to receive notifications either via Email, Push, or SMS. The notifications that an Agent can received are categorized into two categories:</p>
@@ -93,12 +48,10 @@ class ManageNotifAgent extends Component {
                 <p style={{
                     color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle
                 }}>
- A notification email relays an important message to both Helpa and Agent. It is important for them to get notified what has been going on with their jobs, contracts, and any activities they do in KeyHelpa.                </p>
+                    A notification email relays an important message to both Helpa and Agent. It is important for them to get notified what has been going on with their jobs, contracts, and any activities they do in KeyHelpa.                </p>
 
 
-                {
-                    this.renderVideo()
-                }
+                <VideoCard />
                 {
                     this.renderContent()
                 }

@@ -2,59 +2,13 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Colors from 'common/Colors';
-import AgentVideoThumbnail from 'assets/agent-video-thumbnail.png'
-import HelpaVideoThumbnail from 'assets/helpa-video-thumbnail.png'
-import { PlayArrow, PlayCircleFilled } from '@mui/icons-material';
-import { SvgIcon } from '@mui/material';
+import VideoCard from 'modules/guides/videoCard'
 class SearchHelpa extends Component {
     constructor(props) {
         super(props)
     }
-    
-    renderVideo() {
-        const { theme } = this.props;
-
+    renderContent() {
         return (
-            <div style={{
-                width: '100%',
-                float: 'left',
-                height: 500,
-                backgroundImage: `url(${theme == 'agent' ? AgentVideoThumbnail : HelpaVideoThumbnail})`,
-                alignItems: 'center',
-                backgroundRepeat: 'no-repeat',
-                backgroundSize: '100% auto',
-                display: 'flex',
-                alignContent: 'center',
-                justifyContent: 'center'
-            }}
-                className="active-color-hover full-width-mobile video-player-holder"
-            >
-                <div style={{
-                    width: '100px',
-                    height: '100px',
-                    borderRadius: '50px',
-                    float: 'left',
-                    background: theme == 'agent' ? Colors.agentGray : Colors.helpaPink,
-                    alignItems: 'center',
-                    alignContent: 'center',
-                    display: 'flex',
-                    justifyContent: 'center'
-                }}
-                >
-                    <SvgIcon
-                        component={PlayArrow}
-                        style={{
-                            color: Colors.white,
-                            fontSize: 60
-                        }}
-                    />
-                </div>
-            </div>
-        )
-    }
-
-    renderContent(){
-        return(
             <div>
                 <p>Use KeyHelpa’s filter search to filter candidates based on your preferences.</p>
                 <ul>
@@ -66,14 +20,14 @@ class SearchHelpa extends Component {
                     <li>On your web app header, click the “<i class='fas fa-sliders-h'></i>” icon on the search field.  Then you will be prompted to “Filter candidates” modal or pop-up.</li>
                     <li>On the “Filter candidates” modal, you may set the following filters:</li>
                     <ul>
-                    <li><b>Region</b> - you may select from what regions you want your Helpa is/are from.</li>
-                    <li><b>Categories</b> - you can select as many categories you want a Helpa is inclined to such as residentials sales, sales marketing, accounts management, and many more.</li>
-                    <li><b>Hourly Rate </b>- you can select the hourly range of Helpa to match them with the cost of the job you are offering.</li>
-                    <li><b>Vaccination</b> - you can set the vaccination status of Helpa you are looking for such as fully vaccinated, not vaccinated or not negotiable.</li>
-                    <li><b>Experience</b>  - you can set the experience level you are looking for a Helpa.</li>
-                    <li><b>Payment</b> - you can select those Helpa with Payment Verified status or Not Verified.</li>
-                    <li><b>Certification</b> - you can set your certification requirements that a Helpa must have to be qualified to the job you are hiring.</li>
-                    <li><b>Popularity</b> - you can set the percentage of job success of Helpa</li>
+                        <li><b>Region</b> - you may select from what regions you want your Helpa is/are from.</li>
+                        <li><b>Categories</b> - you can select as many categories you want a Helpa is inclined to such as residentials sales, sales marketing, accounts management, and many more.</li>
+                        <li><b>Hourly Rate </b>- you can select the hourly range of Helpa to match them with the cost of the job you are offering.</li>
+                        <li><b>Vaccination</b> - you can set the vaccination status of Helpa you are looking for such as fully vaccinated, not vaccinated or not negotiable.</li>
+                        <li><b>Experience</b>  - you can set the experience level you are looking for a Helpa.</li>
+                        <li><b>Payment</b> - you can select those Helpa with Payment Verified status or Not Verified.</li>
+                        <li><b>Certification</b> - you can set your certification requirements that a Helpa must have to be qualified to the job you are hiring.</li>
+                        <li><b>Popularity</b> - you can set the percentage of job success of Helpa</li>
                     </ul>
                     <p>Once done with setting all the parameters you want to be filtered, just click the “Set Filter” button to save your filter settings. Otherwise, click the “Clear All” if you want to reset your filter settings. </p>
                     <li>After you click the “Set Filter” button, the “Filter candidates” modal will automatically close and on the candidates page will give you the matched candidates results of your filter. Otherwise, if the filter is reset, the matched candidates will be back into the default random results.</li>
@@ -96,9 +50,7 @@ class SearchHelpa extends Component {
                     Are you looking for someone who could work on your real estate projects at your preferred location, experience, or availability? Start searching among our freelancers or shall we say “Helpa”!
                 </p>
 
-                {
-                    this.renderVideo()
-                }
+                <VideoCard />
                 {
                     this.renderContent()
                 }
