@@ -34,26 +34,47 @@ export default {
     rightMenu: [{
       title: 'Guides',
       type: 'internal',
-      route:  '/guides'
+      route: '/guides'
     }, {
       title: 'Members login',
       type: 'external',
-      route:  Config.HELPA
+      route: Config.HELPA
     }, {
       title: 'Join us',
       type: 'external',
-      route:  Config.HELPA
+      route: Config.HELPA
     }]
   },
-  getFooterLogo(){
+  mobileMenu: [{
+    title: 'Agent Looking for Helpa',
+    type: 'internal',
+    route: '/agent'
+  }, {
+    title: 'Helpa Looking to Earn',
+    type: 'internal',
+    route: '/helpa'
+  }, {
+    title: 'Guides',
+    type: 'internal',
+    route: '/guides'
+  }, {
+    title: 'Members login',
+    type: 'external',
+    route: Config.HELPA
+  }, {
+    title: 'Join us',
+    type: 'external',
+    route: Config.HELPA
+  }],
+  getFooterLogo() {
     let curr_path = window.location.pathname
-    if(curr_path.includes('agent')){
-        return AgentLogo
-    }else{
-        return HelpaLogo
+    if (curr_path.includes('agent')) {
+      return AgentLogo
+    } else {
+      return HelpaLogo
     }
   },
-  async addHeaderItem(){
+  async addHeaderItem() {
     let userType = await localStorage.getItem('user_type')
     // if(userType && this.login.rightMenu.length <= 2){
     //   this.login.rightMenu.unshift({
