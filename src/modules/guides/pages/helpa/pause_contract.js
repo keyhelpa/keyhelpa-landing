@@ -7,7 +7,34 @@ class Stack extends Component {
     constructor(props) {
         super(props)
     }
-    
+    renderContent(){
+        return(
+            <div>
+                <p>You can view all your contracts on your “My Contracts” page. Here are the following guidelines for Helpa to pause a contract:</p>
+                <ol type='1'>
+                    <li>On your “My Contracts”, you can opt to pause contracts whose status are:</li>
+                    <ul>
+                        <li><b>Active</b> - these are contracts that are currently ongoing, which can be paused when you click the “View”  on the action column  of the job contract and you will be redirected to the “Contract Details” page where you can see three buttons at the upper right corner of the page. Click the “Pause” button, then a “Pause Contract” confirmation modal will pop up.</li>
+                        <li><b>Dispute</b> - these are contracts that are disputed, which can be paused when you click the “View”  on the action column  of the job contract and you will be redirected to the “Contract Details” page where you can see three buttons at the upper right corner of the page. Click the “Pause” button, then a “Pause Contract” confirmation modal will pop up.</li>
+                        <p>Please  “Cancel Dispute”  before  you are going to pause this contract.</p>
+                        <li><b>End</b> - these are contracts that are terminated. You can only pause this contract if the Agent is not yet confirmed to accept the termination of this contract. </li>
+                        <p>This unconfirmed end contract status can be paused when you click the “View”  on the action column  of the job contract and you will be redirected to the “Contract Details” page where you can see three buttons at the upper right corner of the page. Click the “Pause” button, then a “Pause Contract” confirmation modal will pop up.</p>
+                        <p>Please “Cancel” termination of contract before you are going to pause this contract.</p>
+                    </ul>
+                    <li>When the “Pause Contract” confirmation modal will pop up, you will then ask if you are sure to pause the contract and you will be prompted to provide the reason for pausing the job and give feedback. Please be reminded that by pausing the contract:</li>
+                    <ul>
+                        <li>Your funds held in the escrow account will be dealt with in accordance with the terms and conditions.</li>
+                        <li>You can dispute the payment if you have a legitimate reason.</li>
+                        <p>If you have understood the notice of this confirmation modal and authorize KeyHelpa, click the “Pause contract” button and the contract will be paused or put to on-hold.</p>
+                        <p>Once you pause the contract,, the Agent will receive an email notification and a notification card on his/her  My Contracts' page.</p>
+                    </ul>
+                    <li>All paused contracts can be seen on your “My Contracts” page Pause section. </li>
+                    <li>You can restart or put into active the status of the contract by clicking the “Resume”  on the action column  of the job contract and it will then be transferred back to the Active contracts section.</li>
+                </ol>
+                <p>If you have any concerns or inquiries, please don’t hesitate to <a href='#'>contact us</a>. </p>
+            </div>
+        )
+    }
     render() {
         const { theme } = this.props;
         return (
@@ -18,11 +45,14 @@ class Stack extends Component {
                 <p style={{
                     color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle
                 }}>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                    As a Helpa, you can also pause contracts any time you  want to put work on hold. You may need to do this for many reasons. This pause prevents you from rendering the time and effort on the job until you are ready to start again. In this cases, you must message your Agent and explain why you have paused the contract and when you are planning to restart it.
                 </p>
 
 
                 <VideoCard />
+                {
+                    this.renderContent()
+                }
             </div>
         )
     }

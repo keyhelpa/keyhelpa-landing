@@ -2,10 +2,40 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Colors from 'common/Colors';
+import AgentVideoThumbnail from 'assets/agent-video-thumbnail.png'
+import HelpaVideoThumbnail from 'assets/helpa-video-thumbnail.png'
+import { PlayArrow, PlayCircleFilled } from '@mui/icons-material';
+import { SvgIcon } from '@mui/material';
 import VideoCard from 'modules/guides/videoCard'
 class CreateAccountHelpa extends Component {
     constructor(props) {
         super(props)
+    }
+
+    renderContent(){
+        return(
+            <div>
+                <p>Follow the steps below to register as Helpa (Freelancer) in KeyHelpa:</p>
+                <ol type='1'>
+                    <li>Go to the Helpa Sign Up Page (Click <a href="#">here</a>).</li>
+                    <li>Start registering your credentials such as:</li>
+                        <ul>
+                            <li>First Name</li>
+                            <li>Last Name</li>
+                            <li>Trading Name</li>
+                            <li>Postcode</li>
+                            <li>Username - Username requires at least 8 characters.</li>
+                            <li>Email Address - Valid and existing email address.</li>
+                            <li>Password - Password requires at least 8 characters.</li>
+                            <li>Confirm Password - Should match the password.</li>
+                            <p>	***All fields are mandatory.</p>
+                        </ul>
+                    <li>Once providing all details, click the “Create Account” button. That’s it! You have successfully created your account and you will be redirected to your dashboard for <a href="#">profile setup</a> .</li>
+                    <li>You may also sign up by linking your social media account such as Facebook, Google and Linkedin.</li>
+                </ol>
+                <p>If you have any concerns or inquiries, please don’t hesitate to <a href='#'>contact us</a>. </p>
+            </div>
+        )
     }
 
     render() {
@@ -18,11 +48,14 @@ class CreateAccountHelpa extends Component {
                 <p style={{
                     color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle
                 }}>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                    Are you into the Real Estate Industry? If yes, get any freelance jobs you want with us.Get started  with KeyHelpa and be your own boss, get paid securely!
                 </p>
 
-
                 <VideoCard />
+
+                {
+                    this.renderContent()
+                }
             </div>
         )
     }
