@@ -3,11 +3,28 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Colors from 'common/Colors';
 import VideoCard from 'modules/guides/videoCard'
-class Stack extends Component {
+class ManageSocials extends Component {
     constructor(props) {
         super(props)
     }
-    
+    renderContent(){
+        return(
+            <div>
+                <p>To manage your socials, read the following instructions below:</p>
+                <ol type='1'>
+                    <li>On Helpa’s web application, click your profile icon or photo then a dropdown menu will appear.Choose “Settings” and you will be taken to a new sidebar menu. Click the “Social” on your sidebar menu and you will be redirected to the “Social media” page.</li>
+                    <li>On your “Social media” page, most of the information is automatically filled with data you have already entered during your registration and profile setup. These are the datas you can update and edit on your social info:</li>
+                    <ul>
+                        <li>Linkedin (url)</li>
+                        <li>Facebook (url)</li>
+                        <li>YouTube Channel (url)</li>
+                        <li>Profile photo</li>
+                    </ul>
+                    <li>Once you have made changes or updates on your social media, just click the “Save” button to save your changes.</li>
+                </ol>
+            </div>
+        )
+    }
     render() {
         const { theme } = this.props;
         return (
@@ -18,11 +35,15 @@ class Stack extends Component {
                 <p style={{
                     color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle
                 }}>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+Your profile is one of your most important tools as a freelancer on KeyHelpa. Adding your social media profile or information can be used to your full advantage as it may help you stand out to potential Agents and boost your chances of winning jobs. Agents may check on your social media profiles, and from there you can show off your skills and accomplishments.
                 </p>
 
 
                 <VideoCard />
+                {
+                    this.renderContent()
+                }
             </div>
         )
     }
@@ -33,4 +54,4 @@ const mapDispatchToProps = (dispatch) => {
     return {
     }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Stack));
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(ManageSocials));
