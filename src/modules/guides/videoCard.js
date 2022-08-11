@@ -10,19 +10,16 @@ import { SvgIcon } from '@mui/material';
 class Stack extends Component {
     constructor(props) {
         super(props)
-        this.state = {
-            theme: 'agent'
-        }
     }
 
     render() {
-        const { theme } = this.state
+        const { accountType } = this.props.state;
         return (
             <div style={{
                 width: '100%',
                 float: 'left',
                 height: '60vh',
-                backgroundImage: `url(${theme == 'agent' ? AgentVideoThumbnail : HelpaVideoThumbnail})`,
+                backgroundImage: `url(${accountType == 'agent' ? AgentVideoThumbnail : HelpaVideoThumbnail})`,
                 alignItems: 'center',
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: '100% 100%',
@@ -37,7 +34,7 @@ class Stack extends Component {
                     height: '100px',
                     borderRadius: '50px',
                     float: 'left',
-                    background: theme == 'agent' ? Colors.agentGray : Colors.helpaPink,
+                    background: accountType == 'agent' ? Colors.agentGray : Colors.helpaPink,
                     alignItems: 'center',
                     alignContent: 'center',
                     display: 'flex',
