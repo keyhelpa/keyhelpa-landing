@@ -21,11 +21,11 @@ class Stack extends Component {
             <div style={{
                 width: '100%',
                 float: 'left',
-                height: 500,
+                height: '60vh',
                 backgroundImage: `url(${theme == 'agent' ? AgentVideoThumbnail : HelpaVideoThumbnail})`,
                 alignItems: 'center',
                 backgroundRepeat: 'no-repeat',
-                backgroundSize: '100% auto',
+                backgroundSize: '100% 100%',
                 display: 'flex',
                 alignContent: 'center',
                 justifyContent: 'center'
