@@ -10,10 +10,14 @@ import { connect } from 'react-redux'
 import Colors from 'common/Colors';
 import { useLocation } from 'react-router-dom';
 
+const helpaRoutes = ['/', '/helpa', '/helpa/guides']
+const agentRoutes = ['/', '/agent', '/agent/guides']
+
 function App(props) {
   const {loginRightMenu, loginLeftMenu} = props.state
   const [showMenu, setShowMenu] = useState(false)
   const location  = useLocation();
+
   return (
     <div className="App" style={{background: location.pathname === '/' || location.pathname.includes('/helpa') ? Colors.helpaBackgroundColor : Colors.agentBackgroundColor}}>
       <React.Fragment>
@@ -25,8 +29,8 @@ function App(props) {
             setIsDropdownMenu(!isDropdownMenu)
           }}
           userType = {localStorage.getItem('user_type')}
-          backgroundColor = {location.pathname === '/' || location.pathname === '/helpa' ? Colors.helpaHeaderBackground : location.pathname === '/agent' ? Colors.agentHeaderBackground : 'inherit'}
-          textColor={location.pathname === '/' || location.pathname === '/agent' || location.pathname === '/helpa' ? Colors.white : Colors.gray}
+          backgroundColor = { helpaRoutes.includes(location.pathname) ? Colors.helpaHeaderBackground : agentRoutes.includes(location.pathname) ? Colors.agentHeaderBackground : 'inherit'}
+          textColor={helpaRoutes.includes(location.pathname) || agentRoutes.includes(location.pathname) ? Colors.white : Colors.gray}
         />
         {
               showMenu && (
