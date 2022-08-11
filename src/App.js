@@ -29,8 +29,8 @@ function App(props) {
             setIsDropdownMenu(!isDropdownMenu)
           }}
           userType = {localStorage.getItem('user_type')}
-          backgroundColor = { helpaRoutes.includes(location.pathname) ? Colors.helpaHeaderBackground : agentRoutes.includes(location.pathname) ? Colors.agentHeaderBackground : 'inherit'}
-          textColor={helpaRoutes.includes(location.pathname) || agentRoutes.includes(location.pathname) ? Colors.white : Colors.gray}
+          backgroundColor = { helpaRoutes.includes(location.pathname) || location.pathname.includes('/helpa/guides') ? Colors.helpaHeaderBackground : agentRoutes.includes(location.pathname) || location.pathname.includes('/agent/guides') ? Colors.agentHeaderBackground : 'inherit'}
+          textColor={helpaRoutes.includes(location.pathname) || agentRoutes.includes(location.pathname) || location.pathname.includes('/guides') ? Colors.white : Colors.gray}
         />
         {
               showMenu && (
