@@ -3,11 +3,30 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Colors from 'common/Colors';
 import VideoCard from 'modules/guides/videoCard'
-class Stack extends Component {
+class UpdatePasswordHelpa extends Component {
     constructor(props) {
         super(props)
     }
-    
+    renderContent(){
+        return(
+            <div>
+                <p>To update your password, read the following instructions below:</p>
+                <ol type='1'>
+                    <li>On Helpa’s web application, click your profile icon or photo then a dropdown menu will appear. Choose “Settings” and you will be taken to a new sidebar menu. Click the “Password” on your sidebar menu and you will be redirected to the “Password” page.</li>
+                    <li>On your “Password” page, please provide the following credentials  to update your passwords:</li>
+                    <ul>
+                        <li>Old Password</li>
+                        <li>New Password (*At least one symbol(?.,!_-~$%+=)</li>
+                        <li>Confirm New Password (Must match with New Password)</li>
+                    </ul>
+                    <p>Once you have made changes or updates on your password, just click the “Save” button to save your changes.</p>
+                </ol>
+                <p><b>Tips</b>:</p>
+                <p>When coming up with a new password, you want something that can be safe from guesswork and hacking attempts. You may be tempted to use a long password, but quality is much more important than quantity. Please avoid using any personal information such as dates, addresses or names. Also avoid using simple words and phrases; if you do, make them grammatically incorrect to avoid guessing. Use random combinations of numbers, letters and symbols that can still be easy to remember. </p>
+                <p>If you have any concerns or inquiries, please don’t hesitate to <a href='#'>contact us</a>. </p>
+            </div>
+        )
+    }
     render() {
         const { theme } = this.props;
         return (
@@ -18,11 +37,14 @@ class Stack extends Component {
                 <p style={{
                     color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle
                 }}>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                    If you lose or change computers, it is possible for someone else to gain access to your passwords. Regularly updating your passwords means that even if someone finds an old or saved password, it will no longer be useful, and your data will be secure.
                 </p>
 
 
                 <VideoCard />
+                {
+                    this.renderContent()
+                }
             </div>
         )
     }
@@ -33,4 +55,4 @@ const mapDispatchToProps = (dispatch) => {
     return {
     }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Stack));
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(UpdatePasswordHelpa));

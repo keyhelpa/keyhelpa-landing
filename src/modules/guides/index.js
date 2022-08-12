@@ -42,6 +42,7 @@ import WorkHistory from './pages/helpa/work_history'
 import WorkPreference from './pages/helpa/work_preference'
 import WorkAvailability from './pages/helpa/work_availability'
 import OtherData from './pages/helpa/other_data'
+import UpdateCert from './pages/helpa/update_certificates'
 import ManageNotifHelpa from './pages/helpa/manage_notif'
 
 
@@ -108,6 +109,7 @@ class Guide extends Component {
             case '/helpa/guides/update_work_preferences': return <WorkPreference theme={theme} />
             case '/helpa/guides/update_work_availability': return <WorkAvailability theme={theme} />
             case '/helpa/guides/update_other_data': return <OtherData theme={theme} />
+            case '/helpa/guides/update_certificates': return <UpdateCert theme={theme} />
             case '/helpa/guides/manage_notifications': return <ManageNotifHelpa theme={theme} />
         }
     }

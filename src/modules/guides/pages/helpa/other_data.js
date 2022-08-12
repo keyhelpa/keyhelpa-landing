@@ -3,11 +3,42 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Colors from 'common/Colors';
 import VideoCard from 'modules/guides/videoCard'
-class Stack extends Component {
+class OtherData extends Component {
     constructor(props) {
         super(props)
     }
-    
+    renderContent(){
+        return(
+            <div>
+                <p>To update your other data, read the following instructions below:</p>
+                <ol type='1'>
+                    <li>On Helpa’s web application, click your profile icon or photo then a dropdown menu will appear.Choose “Settings” and you will be taken to a new sidebar menu. Click the “Other data” on your sidebar menu and you will be redirected to the “I have” page.</li>
+                    <li>On your “I have” page, all of the information is automatically filled with data you have already entered during your profile setup. These are the datas you can update and edit on your additional other data:</li>
+                    <ul>
+                        <li>Job categories experience -  set your level of experiences for each job category you have selected on your Work preferences</li>
+                        <li>Motor vehicle - select from the 2 choices:</li>
+                            <ul>
+                                <li>I have my own</li>
+                                <li>I do not drive.</li>
+                            </ul>
+                        <li>Insurance policies - select from the 3 choices:</li>
+                            <ul>
+                                <li>I have a current Public Liability policy</li>
+                                <li>I have current Professional Indemnity insurance</li>
+                                <li>I have no insurance</li>
+                            </ul>
+                        <li>Vaccinations status - select from the 2 choices:</li>
+                            <ul>
+                                <li>Fully vaccinated</li>
+                                <li>Not vaccinated </li>
+                            </ul>
+                    </ul>
+                    <li>Once you have made changes or updates on your other data, just click the “Save” button to save your changes.</li>
+                </ol>
+                <p>If you have any concerns or inquiries, please don’t hesitate to <a href='#'>contact us</a>. </p>
+            </div>
+        )
+    }
     render() {
         const { theme } = this.props;
         return (
@@ -18,11 +49,13 @@ class Stack extends Component {
                 <p style={{
                     color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle
                 }}>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                </p>
+Your profile is one of your most important tools as a freelancer on KeyHelpa. Additional data is vital information that needs to be up-to-date within KeyHelpa platform, as it is important to agents who are looking for Helpas with good credibility to be fit for the job they are hiring. Your additional or other data plays  an important factor to attract hiring Agents.                </p>
 
 
                 <VideoCard />
+                {
+                    this.renderContent()
+                }
             </div>
         )
     }
@@ -33,4 +66,4 @@ const mapDispatchToProps = (dispatch) => {
     return {
     }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Stack));
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(OtherData));

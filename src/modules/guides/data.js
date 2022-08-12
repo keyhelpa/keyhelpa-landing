@@ -1,5 +1,5 @@
 import { DocumentScannerOutlined, NotificationsActive, LockClock, AccountBalance, AddBusiness, BorderColor, SimCardAlert, FileOpen, NoSim, RecordVoiceOver, Badge, FileCopy, Person, Search, Security, PersonAdd, PersonSearch, PostAddOutlined, ContactMail, FactCheck, GroupAdd,   } from "@mui/icons-material";
-import { DesignServices, EventAvailable, BusinessCenter, Share, UploadFile, WorkHistory } from "@mui/icons-material";
+import { HistoryEdu, DesignServices, EventAvailable, BusinessCenter, Share, UploadFile, WorkHistory } from "@mui/icons-material";
 export default {
     agent: [{
         title: 'Create account',
@@ -147,7 +147,7 @@ export default {
         title: 'Update password',
         icon: LockClock,
         description: "Make sure to keep your password private and secured.",
-        route: '/helpa/guides/update_passwords'
+        route: '/helpa/guides/update_password'
     }, {
         title: 'Manage security',
         icon: Security,
@@ -174,6 +174,11 @@ export default {
         description: "Set your other data to add more credibility to your profile.",
         route: '/helpa/guides/update_other_data'
     }, {
+        title: 'Update Certificates',
+        icon: HistoryEdu,
+        description: "Lorem Ipsum Dolor et estal",
+        route: '/helpa/guides/update_certificates'
+    },{
         title: 'Manage notifications',
         icon: NotificationsActive,
         description: "Set your notifications to received any kind of updates you want.",
