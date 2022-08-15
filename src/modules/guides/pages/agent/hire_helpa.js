@@ -27,7 +27,8 @@ class HireHelpa extends Component {
                 float: 'left'
             }}>
                 <p style={{
-                    color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle
+                    color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle,
+                    marginBottom: '5%'
                 }}>
                     Are you done with interviewing a Helpa? Have they met your expectations? Are you thinking of letting Helpa do the work on your project? If your answer to these questions is yes, then you have to hire Helpa now!
                 </p>

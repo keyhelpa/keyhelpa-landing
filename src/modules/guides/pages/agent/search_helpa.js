@@ -45,7 +45,8 @@ class SearchHelpa extends Component {
                 float: 'left'
             }}>
                 <p style={{
-                    color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle
+                    color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle,
+                    marginBottom: '5%'
                 }}>
                     Are you looking for someone who could work on your real estate projects at your preferred location, experience, or availability? Start searching among our freelancers or shall we say “Helpa”!
                 </p>

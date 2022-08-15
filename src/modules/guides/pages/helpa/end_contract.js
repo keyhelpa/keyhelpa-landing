@@ -43,7 +43,8 @@ class Stack extends Component {
                 float: 'left'
             }}>
                 <p style={{
-                    color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle
+                    color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle,
+                    marginBottom: '5%'
                 }}>
                     End of contract occurs when one of the parties of the contract ends the written agreement for various reasons. You, Helpa, also have the ability to end a contract on KeyHelpa any time. Though, it is important to confirm that all parties are aware and in agreement before a contract is terminated.
                 </p>

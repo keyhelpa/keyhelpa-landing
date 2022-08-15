@@ -36,7 +36,8 @@ class UpdateBankHelpa extends Component {
                 float: 'left'
             }}>
                 <p style={{
-                    color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle
+                    color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle,
+                    marginBottom: '5%'
                 }}>
                     Your choice of payment method will be used on payments when making transactions with KeyHelpa. It is important that you keep your account active as this is where you will receive your payments from the job you work for from an Agent.
                 </p>

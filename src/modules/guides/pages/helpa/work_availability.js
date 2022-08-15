@@ -33,7 +33,8 @@ class WorkAvailability extends Component {
                 float: 'left'
             }}>
                 <p style={{
-                    color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle
+                    color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle,
+                    marginBottom: '5%'
                 }}>
 Your profile is one of your most important tools as a freelancer on KeyHelpa. Your work availability is vital information that needs to be up-to-date within KeyHelpa platform, as it is important to agents who are looking for Helpas with good credibility to be fit for the job they are hiring. Your work availability  plays  an important factor to attract hiring Agents.                </p>
 

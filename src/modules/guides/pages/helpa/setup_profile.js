@@ -81,7 +81,8 @@ class SetupHelpa extends Component {
                 float: 'left'
             }}>
                 <p style={{
-                    color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle
+                    color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle,
+                    marginBottom: '5%'
                 }}>
                 Have you registered as a Freelancer or Helpa in KeyHelpa? If yes, it is time to complete your profile setup to access all features of KeyHelpa!
                 </p>

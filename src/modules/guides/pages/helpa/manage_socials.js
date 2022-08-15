@@ -33,7 +33,8 @@ class ManageSocials extends Component {
                 float: 'left'
             }}>
                 <p style={{
-                    color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle
+                    color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle,
+                    marginBottom: '5%'
                 }}>
 
 Your profile is one of your most important tools as a freelancer on KeyHelpa. Adding your social media profile or information can be used to your full advantage as it may help you stand out to potential Agents and boost your chances of winning jobs. Agents may check on your social media profiles, and from there you can show off your skills and accomplishments.

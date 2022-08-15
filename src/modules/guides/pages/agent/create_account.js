@@ -44,7 +44,8 @@ class CreateAccountAgent extends Component {
                 float: 'left'
             }}>
                 <p style={{
-                    color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle
+                    color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle,
+                    marginBottom: '5%'
                 }}>
                     Are you looking for Freelancers to work on your real estate business? Get started  with KeyHelpa and hire Helpa when you need help by creating an account.
                 </p>

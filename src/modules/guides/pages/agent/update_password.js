@@ -36,7 +36,8 @@ class UpdatePasswordAgent extends Component {
                 float: 'left'
             }}>
                 <p style={{
-                    color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle
+                    color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle,
+                    marginBottom: '5%'
                 }}>
                     If you lose or change computers, it is possible for someone else to gain access to your passwords. Regularly updating your passwords means that even if someone finds an old or saved password, it will no longer be useful, and your data will be secure.                </p>
 
