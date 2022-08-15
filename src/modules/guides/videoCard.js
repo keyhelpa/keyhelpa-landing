@@ -25,7 +25,8 @@ class Stack extends Component {
                 backgroundSize: '100% 100%',
                 display: 'flex',
                 alignContent: 'center',
-                justifyContent: 'center'
+                justifyContent: 'center',
+                marginBottom: '5%'
             }}
                 className="active-color-hover full-width-mobile video-player-holder"
             >

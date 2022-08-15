@@ -52,7 +52,8 @@ class WorkPreference extends Component {
                 float: 'left'
             }}>
                 <p style={{
-                    color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle
+                    color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle,
+                    marginBottom: '5%'
                 }}>
                     Your profile is one of your most important tools as a freelancer on KeyHelpa. Your work
 preferences is vital information that needs to be up-to-date within KeyHelpa platform, as it

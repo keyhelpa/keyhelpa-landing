@@ -41,7 +41,8 @@ class JobPosting extends Component {
                 float: 'left'
             }}>
                 <p style={{
-                    color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle
+                    color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle,
+                    marginBottom: '5%'
                 }}>
                     Are you an Agent in KeyHelpa who is looking for freelancers to work on your project? Now is the time to create your job posting to attract, to invite and to hire Helpa.
                 </p>

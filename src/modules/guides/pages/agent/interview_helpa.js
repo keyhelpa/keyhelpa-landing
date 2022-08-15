@@ -53,7 +53,8 @@ class InterviewHelpa extends Component {
                 float: 'left'
             }}>
                 <p style={{
-                    color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle
+                    color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle,
+                    marginBottom: '5%'
                 }}>
                     Did you just accept a Helpa’s job proposal? It means you are inviting them over to an interview by sending them a message and schedule.                </p>
 

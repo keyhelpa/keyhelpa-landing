@@ -31,7 +31,8 @@ class SendInvite extends Component {
                 float: 'left'
             }}>
                 <p style={{
-                    color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle
+                    color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle,
+                    marginBottom: '5%'
                 }}>
                     Have you searched for Helpa and find them applicable to the job you are hiring? Don’t hesitate to send them a job invitation now so that they can be notified and will check on your job post.
                 </p>

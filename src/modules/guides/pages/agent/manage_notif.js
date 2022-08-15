@@ -46,7 +46,8 @@ class ManageNotifAgent extends Component {
                 float: 'left'
             }}>
                 <p style={{
-                    color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle
+                    color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle,
+                    marginBottom: '5%'
                 }}>
                     A notification email relays an important message to both Helpa and Agent. It is important for them to get notified what has been going on with their jobs, contracts, and any activities they do in KeyHelpa.                </p>
 

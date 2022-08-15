@@ -38,7 +38,8 @@ class DisputeContractHelpa extends Component {
                 float: 'left'
             }}>
                 <p style={{
-                    color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle
+                    color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle,
+                    marginBottom: '5%'
                 }}>
                     Contract dispute may happen if there is a disagreement between Agent and Helpa concerning the job terms, payments or anything with the contract. Dispute contracts can be costly and time-consuming and may end up in court and damage to agencies connections and reputation if handled poorly.
                 </p>

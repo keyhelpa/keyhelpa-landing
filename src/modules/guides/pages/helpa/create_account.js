@@ -14,7 +14,9 @@ class CreateAccountHelpa extends Component {
 
     renderContent(){
         return(
-            <div>
+            <div style={{
+                marginTop: "50%"
+            }}>
                 <p>Follow the steps below to register as Helpa (Freelancer) in KeyHelpa:</p>
                 <ol type='1'>
                     <li>Go to the Helpa Sign Up Page (Click <a href="#">here</a>).</li>
@@ -46,7 +48,8 @@ class CreateAccountHelpa extends Component {
                 float: 'left'
             }}>
                 <p style={{
-                    color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle
+                    color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle,
+                    marginBottom: '5%'
                 }}>
                     Are you into the Real Estate Industry? If yes, get any freelance jobs you want with us.Get started  with KeyHelpa and be your own boss, get paid securely!
                 </p>

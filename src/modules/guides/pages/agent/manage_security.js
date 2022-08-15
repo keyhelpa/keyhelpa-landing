@@ -41,7 +41,8 @@ class ManageSecurityAgent extends Component {
                 float: 'left'
             }}>
                 <p style={{
-                    color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle
+                    color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle,
+                    marginBottom: '5%'
                 }}>
                     Security is very important within KeyHelpa, this is why we add a two-step verification on our platform for all our users' accounts. Add an extra layer of security, now, to block unauthorised access and to have an additional protection for your account.                </p>
 

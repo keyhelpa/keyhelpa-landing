@@ -44,7 +44,8 @@ class EndContractAgent extends Component {
                 float: 'left'
             }}>
                 <p style={{
-                    color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle
+                    color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle,
+                    marginBottom: '5%'
                 }}>
                 End of contract occurs when one of the parties of the contract ends the written agreement for various reasons. You, Agent, who creates the contract through KeyHelpa and has it accepted by the Helpa, can end the contract of the job he/she has with the Helpa.
                 </p>

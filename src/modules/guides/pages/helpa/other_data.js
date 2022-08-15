@@ -47,7 +47,8 @@ class OtherData extends Component {
                 float: 'left'
             }}>
                 <p style={{
-                    color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle
+                    color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle,
+                    marginBottom: '5%'
                 }}>
 Your profile is one of your most important tools as a freelancer on KeyHelpa. Additional data is vital information that needs to be up-to-date within KeyHelpa platform, as it is important to agents who are looking for Helpas with good credibility to be fit for the job they are hiring. Your additional or other data plays  an important factor to attract hiring Agents.                </p>
 

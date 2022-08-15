@@ -36,7 +36,8 @@ class CreateContract extends Component {
                 float: 'left'
             }}>
                 <p style={{
-                    color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle
+                    color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle,
+                    marginBottom: '5%'
                 }}>
                 In this guide you will see what are the guidelines for creating a job contract that you will be sending to Helpa upon hiring. Check how to hire helpa <a href='#'>here</a>.
                 </p>

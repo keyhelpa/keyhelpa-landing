@@ -39,7 +39,8 @@ class AcceptProposal extends Component {
                 float: 'left'
             }}>
                 <p style={{
-                    color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle
+                    color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle,
+                    marginBottom: '5%'
                 }}>
                 How is your job post going on? Have you received a lot of proposals from Helpas? Check your My Proposals page now to check proposals from Helpa you invited and those you did not send a job invitation who were interested to apply for your job hiring that they send you a proposal.    
                 </p>

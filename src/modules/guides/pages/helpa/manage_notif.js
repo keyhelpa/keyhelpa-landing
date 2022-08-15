@@ -9,8 +9,10 @@ class ManageNotifHelpa extends Component {
     }
     renderContent(){
         return(
-            <div>
-                <p>On Helpa’s web application, click your profile icon or photo then a dropdown menu will
+            <div style={{
+                marginTop: "50%"
+            }}>
+                <p >On Helpa’s web application, click your profile icon or photo then a dropdown menu will
                 appear. Choose “Settings” and you will be taken to a new sidebar menu. Click the
                 “Notifications” on your sidebar menu and you will be redirected to the “Notifications” page.</p>
                 <p>Helpa can set where to receive notifications either via Email, Push, or SMS. The notifications
@@ -49,7 +51,8 @@ class ManageNotifHelpa extends Component {
                 float: 'left'
             }}>
                 <p style={{
-                    color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle
+                    color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle,
+                    marginBottom: "25px"
                 }}>
                     A notification email relays an important message to both Helpa and Agent. It is important
                     for them to get notified what has been going on with their jobs, contracts, and any activities

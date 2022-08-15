@@ -44,7 +44,8 @@ class Stack extends Component {
                 float: 'left'
             }}>
                 <p style={{
-                    color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle
+                    color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle,
+                    marginBottom: '5%'
                 }}>
                 Are you looking for freelancer jobs where you could work on real estate projects at your preferred location, experience, or availability? Get the chance to work on the jobs that match your interests and skills. Start searching among the job postings published by our Agent now!
                 </p>

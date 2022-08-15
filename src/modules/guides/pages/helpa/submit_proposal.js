@@ -38,7 +38,8 @@ class Stack extends Component {
                 float: 'left'
             }}>
                 <p style={{
-                    color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle
+                    color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle,
+                    marginBottom: '5%'
                 }}>
                     How is your job hunting going on? Do you find interest in applying among the jobs you have searched? Let the Agent know your interest by sending them a job proposal.
                 </p>

@@ -44,7 +44,8 @@ class PauseContractAgent extends Component {
                 float: 'left'
             }}>
                 <p style={{
-                    color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle
+                    color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle,
+                    marginBottom: '5%'
                 }}>
                 As an Agent, you can pause contracts any time you  want to put work on hold. You may need to do this for many reasons. This pause prevents Helpa from rendering the time and effort on the job until you are ready to let them start again. In this cases, you must message your Helpa and explain why you have paused the contract and when you are planning to restart it.    
                 </p>

@@ -44,7 +44,8 @@ class EditBasicAgent extends Component {
                 float: 'left'
             }}>
                 <p style={{
-                    color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle
+                    color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle,
+                    marginBottom: '5%'
                 }}>
                     Basic information is vital data that needs to be up-to-date within KeyHelpa platform, not just for the systems identity verification but also important to Helpa who are looking for Agents with good credibility and fit to their choice of work location.                 </p>
 

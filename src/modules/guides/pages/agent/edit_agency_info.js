@@ -35,7 +35,8 @@ class EditAgency extends Component {
                 float: 'left'
             }}>
                 <p style={{
-                    color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle
+                    color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle,
+                    marginBottom: '5%'
                 }}>
                     Agency information is vital data that needs to be up-to-date within KeyHelpa platform, so that Helpas who are searching for jobs will know the kind of business your Agency is offering. It will help them correlate their interest to your Agency and may find interest in submitting job proposals.                </p>
 
