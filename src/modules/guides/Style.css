@@ -20,6 +20,14 @@
 .cursor-hover-agent:hover .card-icon {
     color: white!important; 
 }
+.b-agent{
+    color: #34475D!important;
+    font-size: 16px!important;
+}
+.b-helpa{
+    color: #E62D7E!important;
+    font-size: 16px!important;
+}
 p{
     font-size: 16px!important;
 }

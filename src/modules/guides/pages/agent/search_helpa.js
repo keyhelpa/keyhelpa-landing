@@ -20,14 +20,14 @@ class SearchHelpa extends Component {
                     <li>On your web app header, click the “<i class='fas fa-sliders-h'></i>” icon on the search field.  Then you will be prompted to “Filter candidates” modal or pop-up.</li>
                     <li>On the “Filter candidates” modal, you may set the following filters:</li>
                     <ul>
-                        <li><b>Region</b> - you may select from what regions you want your Helpa is/are from.</li>
-                        <li><b>Categories</b> - you can select as many categories you want a Helpa is inclined to such as residentials sales, sales marketing, accounts management, and many more.</li>
-                        <li><b>Hourly Rate </b>- you can select the hourly range of Helpa to match them with the cost of the job you are offering.</li>
-                        <li><b>Vaccination</b> - you can set the vaccination status of Helpa you are looking for such as fully vaccinated, not vaccinated or not negotiable.</li>
-                        <li><b>Experience</b>  - you can set the experience level you are looking for a Helpa.</li>
-                        <li><b>Payment</b> - you can select those Helpa with Payment Verified status or Not Verified.</li>
-                        <li><b>Certification</b> - you can set your certification requirements that a Helpa must have to be qualified to the job you are hiring.</li>
-                        <li><b>Popularity</b> - you can set the percentage of job success of Helpa</li>
+                        <li><b className='b-agent'>Region</b> - you may select from what regions you want your Helpa is/are from.</li>
+                        <li><b className='b-agent'>Categories</b> - you can select as many categories you want a Helpa is inclined to such as residentials sales, sales marketing, accounts management, and many more.</li>
+                        <li><b className='b-agent'>Hourly Rate </b>- you can select the hourly range of Helpa to match them with the cost of the job you are offering.</li>
+                        <li><b className='b-agent'>Vaccination</b> - you can set the vaccination status of Helpa you are looking for such as fully vaccinated, not vaccinated or not negotiable.</li>
+                        <li><b className='b-agent'>Experience</b>  - you can set the experience level you are looking for a Helpa.</li>
+                        <li><b className='b-agent'>Payment</b> - you can select those Helpa with Payment Verified status or Not Verified.</li>
+                        <li><b className='b-agent'>Certification</b> - you can set your certification requirements that a Helpa must have to be qualified to the job you are hiring.</li>
+                        <li><b className='b-agent'>Popularity</b> - you can set the percentage of job success of Helpa</li>
                     </ul>
                     <p>Once done with setting all the parameters you want to be filtered, just click the “Set Filter” button to save your filter settings. Otherwise, click the “Clear All” if you want to reset your filter settings. </p>
                     <li>After you click the “Set Filter” button, the “Filter candidates” modal will automatically close and on the candidates page will give you the matched candidates results of your filter. Otherwise, if the filter is reset, the matched candidates will be back into the default random results.</li>

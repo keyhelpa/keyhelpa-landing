@@ -22,7 +22,7 @@ class UpdateBankHelpa extends Component {
                     </ul>
                     <p>After completing the details of payment, just click the “Authorize” button to save the new payment method. New payment method will automatically be added and saved once it’s verified to be existing and active.</p>
                 </ol>
-                <p><b>Reminders</b>:</p>
+                <p><b className='b-helpa'>Reminders</b>:</p>
                 <p>You will require usual online banking details. KeyHelpa uses Stripe for secure payments and financial services.</p>
                 <p>If you have any concerns or inquiries, please don’t hesitate to <a href='#'>contact us</a>. </p>
             </div>

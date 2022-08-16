@@ -23,9 +23,9 @@ class WorkPreference extends Component {
                     can update and edit on your work preferences info:
                     </li>
                     <ul>
-                        <li><b>Region</b> - Select the regions that you wish to work in</li>
-                        <li><b>Job category</b> - Select all applicable categories that suit you.</li>
-                        <li><b>Hourly rate</b> - Set your hourly rate (In some jobs you may be required to use
+                        <li><b className='b-helpa'>Region</b> - Select the regions that you wish to work in</li>
+                        <li><b className='b-helpa'>Job category</b> - Select all applicable categories that suit you.</li>
+                        <li><b className='b-helpa'>Hourly rate</b> - Set your hourly rate (In some jobs you may be required to use
                             a car and travel between jobs - please factor this into your hourly rate. You
                             can also change your hourly rate when making an offer on a job.)
                         </li>

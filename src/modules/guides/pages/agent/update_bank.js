@@ -23,7 +23,7 @@ class UpdateBankAgent extends Component {
                     </ul>
                     <p>After completing the details of payment, just click the “Authorize” button to save the new payment method. New payment method will automatically be added and saved once it’s verified to be existing and active.</p>
                 </ol>
-                <p><b>Reminders</b>:</p>
+                <p><b className='b-agent'>Reminders</b>:</p>
                 <ul>
                     <li>Payment logic: Your credit card will be deducted for the amount equal to a one week payment, until the job contract is completed or cancelled.</li>
                     <li>Payments day: On Monday of each week for the duration of the term of the contract the freelancer submits a payment request. The payment is equal to "weekly payment''. Payer receives a notification email of payment due. The payer is not required to take any action unless he/she declines the payment by clicking the decline link.</li>
