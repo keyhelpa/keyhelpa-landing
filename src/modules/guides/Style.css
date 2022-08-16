@@ -1,12 +1,42 @@
-.cursor-hover:hover{
-    background-color: '#E62D7E'!important
+.cursor-hover-helpa:hover{
+    background-color: #E62D7E!important;
+    box-shadow: 0 0 11px rgba(33,33,33,.2); 
 }
-.cursor-hover{
-    background-color: 'black'
+
+.cursor-hover-helpa:hover .card-text {
+    color: white!important; 
 }
-.tile-title:hover{
-    color: white;
+.cursor-hover-helpa:hover .card-icon {
+    color: white!important; 
 }
-.tile-desc:hover{
-    color: white;
+
+.cursor-hover-agent:hover{
+    background-color: #34475D!important;
+    box-shadow: 0 0 11px rgba(33,33,33,.2); 
 }
+.cursor-hover-agent:hover .card-text {
+    color: white!important; 
+}
+.cursor-hover-agent:hover .card-icon {
+    color: white!important; 
+}
+p{
+    font-size: 16px!important;
+}
+li{
+    font-size: 16px!important;
+}
+.imageSize{
+    width: 30%!important;
+}
+@media (max-width: 991px) {
+.imageSize{
+    width: 40%!important;
+}
+}
+@media (max-width: 736px) {
+    .imageSize{
+        width: 50%!important;
+    }
+}
+    

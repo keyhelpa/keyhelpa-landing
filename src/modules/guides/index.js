@@ -138,6 +138,7 @@ class Guide extends Component {
                 }}>
                     {
                         menu.map((item) => (
+                            
                             <div style={{
                                 width: '30%',
                                 float: 'left',
@@ -155,12 +156,12 @@ class Guide extends Component {
                                         item
                                     })
                                     this.props.history.push(item.route)
-                                    setTimeout(() => {
-                                        this.props.history.go(0)
-                                    }, 100)
-
+                                    // setTimeout(() => {
+                                    //     this.props.history.go(0)
+                                    // }, 100)
+                                    window.scrollTo(0,0)
                                 }}
-                                className="cursor-hover full-width-mobile"
+                                className={theme === 'agent' ? "cursor-hover-agent full-width-mobile" : "cursor-hover-helpa full-width-mobile"}
                             >
                                 <SvgIcon
                                     component={item.icon}
@@ -168,13 +169,14 @@ class Guide extends Component {
                                         fontSize: 60,
                                         color: theme == 'agent' ? Colors.agentDarkGray : Colors.helpaDarkPink
                                     }}
+                                    className='card-icon'
                                 />
                                 <p style={{
                                     color: theme == 'agent' ? Colors.agentDarkGray : Colors.helpaDarkPink
-                                }} className="tile-title"><b>{item.title}</b></p>
+                                }} className="card-text"><b>{item.title}</b></p>
                                 <p style={{
                                     color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle
-                                }} className="tile-desc">
+                                }} className="card-text">
                                     {
                                         item.description
                                     }

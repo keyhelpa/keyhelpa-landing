@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Colors from 'common/Colors';
+import './Style.css'
 import GuideImage from 'assets/guide.png'
 class Guide extends Component {
     constructor(props) {
@@ -15,7 +16,7 @@ class Guide extends Component {
             <div style={{
                 width: '100%',
                 float: 'left',
-                height: '50vh',
+                height: '60vh',
                 backgroundColor: theme == 'agent' ? Colors.agentGray : Colors.helpaPink,
                 display: 'flex',
                 alignItems: 'center',
@@ -29,8 +30,8 @@ class Guide extends Component {
                 }}>
                     <img
                         src={GuideImage}
+                        className="imageSize"
                         style={{
-                            width: '20%',
                             height: 'auto'
                         }}
                     />
