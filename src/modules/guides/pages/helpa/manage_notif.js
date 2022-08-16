@@ -18,7 +18,7 @@ class ManageNotifHelpa extends Component {
                 <p>Helpa can set where to receive notifications either via Email, Push, or SMS. The notifications
                 that a Helpa can received are categorized into two categories:</p>
                 <ol type='1'>
-                    <li><b>Messages</b> - these are notifications that can be received by Helpa that are outside
+                    <li><b className='b-helpa'>Messages</b> - these are notifications that can be received by Helpa that are outside
                     contracts or non-contract related such as:</li>
                     <ul>
                         <li>A job invitation is received</li>
@@ -28,7 +28,7 @@ class ManageNotifHelpa extends Component {
                         <li>An offer is rejected</li>
                         <li>An offer is accepted</li>
                     </ul>
-                    <li><b>Contracts</b> - these are notifications that can be received by Helpa are contract-
+                    <li><b className='b-helpa'>Contracts</b> - these are notifications that can be received by Helpa are contract-
                     related such as:</li>
                     <ul>
                         <li>You are hired</li>

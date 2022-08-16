@@ -20,14 +20,14 @@ class Stack extends Component {
                     <li>On your web app header, click the “” icon on the search field.  Then you will be prompted to “Filter jobs” modal or pop-up.</li>
                     <li>On the “Filter jobs” modal, you may set the following filters:</li>
                         <ul>
-                            <li><b>Region</b> - you may select from what regions you want your preferred job is/are from.</li>
-                            <li><b>Categories</b> - you can select as many categories as you want depending on your interest in skills  such as residentials sales, sales marketing, accounts management, and many more.</li>
-                            <li><b>Hourly Rate</b> - you can select the hourly range of the job costs that you want to get paid.</li>
-                            <li><b>Vaccination</b> - you can set the vaccination status of the job requirements  you are looking for such as fully vaccinated, not vaccinated or not negotiable.</li>
-                            <li><b>Experience</b>  - you can set the experience level you are looking for a job hiring.</li>
-                            <li><b>Payment</b> - you can select those jobs whose Agent has Payment Verified status or Not Verified.</li>
-                            <li><b>Certification</b> - you can set your certification requirements status that an Agent has set for the job to be qualified to the job Agent is hiring.</li>
-                            <li><b>Popularity</b> - you can set the percentage of popularity of an Agent when doing job contracts with Helpas.</li>
+                            <li><b className='b-helpa'>Region</b> - you may select from what regions you want your preferred job is/are from.</li>
+                            <li><b className='b-helpa'>Categories</b> - you can select as many categories as you want depending on your interest in skills  such as residentials sales, sales marketing, accounts management, and many more.</li>
+                            <li><b className='b-helpa'>Hourly Rate</b> - you can select the hourly range of the job costs that you want to get paid.</li>
+                            <li><b className='b-helpa'>Vaccination</b> - you can set the vaccination status of the job requirements  you are looking for such as fully vaccinated, not vaccinated or not negotiable.</li>
+                            <li><b className='b-helpa'>Experience</b>  - you can set the experience level you are looking for a job hiring.</li>
+                            <li><b className='b-helpa'>Payment</b> - you can select those jobs whose Agent has Payment Verified status or Not Verified.</li>
+                            <li><b className='b-helpa'>Certification</b> - you can set your certification requirements status that an Agent has set for the job to be qualified to the job Agent is hiring.</li>
+                            <li><b className='b-helpa'>Popularity</b> - you can set the percentage of popularity of an Agent when doing job contracts with Helpas.</li>
                         </ul>
                     <p>Once done with setting all the parameters you want to be filtered, just click the “Set Filter” button to save your filter settings. Otherwise, click the “Clear All” if you want to reset your filter settings. </p>
                     <li>After you click the “Set Filter” button, the “Filter jobs” modal will automatically close and on the “Find works” page will give you the matched job hiring results of your filter. Otherwise, if the filter is reset, the matched jobs will be back into the default random results.</li>

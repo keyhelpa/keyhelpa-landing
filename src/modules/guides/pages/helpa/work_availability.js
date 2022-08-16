@@ -15,9 +15,9 @@ class WorkAvailability extends Component {
                     <li>On Helpa’s web application, click your profile icon or photo then a dropdown menu will appear.Choose “Settings” and you will be taken to a new sidebar menu. Click the “Availability” on your sidebar menu and you will be redirected to the “Availability” page.</li>
                     <li>On your “Availability” page, all of the information is automatically filled with data you have already entered during your profile setup. These are the datas you can update and edit on your work availability info:</li>
                     <ul>
-                        <li><b>Days for work</b> - Select the days on which it is convenient for you to work (minimum number of days is 1).</li>
-                        <li><b>Time slot</b> - Select the time slot in which it is convenient for you to work.</li>
-                        <li><b>Working hours</b> - Select the number of hours that you are available to work each day.</li>
+                        <li><b className='b-helpa'>Days for work</b> - Select the days on which it is convenient for you to work (minimum number of days is 1).</li>
+                        <li><b className='b-helpa'>Time slot</b> - Select the time slot in which it is convenient for you to work.</li>
+                        <li><b className='b-helpa'>Working hours</b> - Select the number of hours that you are available to work each day.</li>
                     </ul>
                     <li>Once you have made changes or updates on your work availability, just click the “Save” button to save your changes.</li>
                 </ol>
