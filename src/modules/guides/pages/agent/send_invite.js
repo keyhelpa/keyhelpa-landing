@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Colors from 'common/Colors';
+import './agent.css'
 import VideoCard from 'modules/guides/videoCard'
 class SendInvite extends Component {
     constructor(props) {

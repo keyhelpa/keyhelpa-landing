@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Colors from 'common/Colors';
 import VideoCard from 'modules/guides/videoCard'
+import './agent.css'
 class ManageNotifAgent extends Component {
     constructor(props) {
         super(props)
@@ -14,7 +15,7 @@ class ManageNotifAgent extends Component {
                 <p>On Agent’s web application, click your profile icon or photo then a dropdown menu will appear. Choose “Settings” and you will be taken to a new sidebar menu. Click the “Notifications” on your sidebar menu and you will be redirected to the “Notifications” page.</p>
                 <p>Agents can set where to receive notifications either via Email, Push, or SMS. The notifications that an Agent can received are categorized into two categories:</p>
                 <ol type='1'>
-                    <li><b>Messages</b> - these are notifications that can be received by Agents that are outside contracts or non-contract related such as::</li>
+                    <li><b className='b-agent'>Messages</b> - these are notifications that can be received by Agents that are outside contracts or non-contract related such as::</li>
                     <ul>
                         <li>A job invitation is received</li>
                         <li>An invitation has been received</li>
@@ -25,7 +26,7 @@ class ManageNotifAgent extends Component {
                         <li>A job posting will expire soon</li>
                         <li>A job posting expired</li>
                     </ul>
-                    <li><b>Contracts</b> - these are notifications that can be received by Agents are contract-related such as:</li>
+                    <li><b className='b-agent'>Contracts</b> - these are notifications that can be received by Agents are contract-related such as:</li>
                     <ul>
                         <li>Freelancer accepted terms</li>
                         <li>Freelancer requested changes</li>
