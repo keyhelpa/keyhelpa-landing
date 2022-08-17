@@ -137,8 +137,7 @@ class Guide extends Component {
                     gap: '5%'
                 }}>
                     {
-                        menu.map((item) => (
-                            
+                        menu.map((item) => {
                             <div style={{
                                 width: '30%',
                                 float: 'left',
@@ -181,8 +180,8 @@ class Guide extends Component {
                                         item.description
                                     }
                                 </p>
-                            </div>
-                        ))
+                            </div>}
+    )
                     }
                 </div>
             </div>
