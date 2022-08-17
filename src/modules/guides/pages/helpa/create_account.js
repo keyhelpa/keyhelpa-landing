@@ -7,6 +7,7 @@ import HelpaVideoThumbnail from 'assets/helpa-video-thumbnail.png'
 import { PlayArrow, PlayCircleFilled } from '@mui/icons-material';
 import { SvgIcon } from '@mui/material';
 import VideoCard from 'modules/guides/videoCard'
+import './helpa.css'
 class CreateAccountHelpa extends Component {
     constructor(props) {
         super(props)

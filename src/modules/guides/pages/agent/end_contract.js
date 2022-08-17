@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Colors from 'common/Colors';
+import './agent.css'
 import VideoCard from 'modules/guides/videoCard'
 class EndContractAgent extends Component {
     constructor(props) {
@@ -30,7 +31,7 @@ class EndContractAgent extends Component {
                         <p>Once you end the contract,, the Helpa will receive an email notification and a notification card on his/her  My Contracts' page.</p>                    
                     <li>All terminated contracts can be seen on your “My Contracts” page End section. </li>
                     <li>You can still “Cancel” the contract you just have ended, if the Helpa does not yet take action of the end contract notification he or she has received, where Helpa can either Accept or Dispute the job contract. If Helpa confirms the termination of contract (by Accept button) , it means the contract and work has officially terminated and can no longer be resumed. Unless, if Helpa disputes the contract, that is another process.</li>
-                    <p><b>Note</b>: When you are cancelling the job less than 48 hours before it starts, the fine for this action is 1 weekly payment. </p>
+                    <p><b className='b-agent'>Note</b>: When you are cancelling the job less than 48 hours before it starts, the fine for this action is 1 weekly payment. </p>
                 </ol>            
                 <p>If you have any concerns or inquiries, please don’t hesitate to <a href='#'>contact us</a>. </p>
             </div>

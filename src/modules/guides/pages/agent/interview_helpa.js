@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Colors from 'common/Colors';
 import VideoCard from 'modules/guides/videoCard'
+import './agent.css'
 class InterviewHelpa extends Component {
     constructor(props) {
         super(props)
@@ -20,7 +21,7 @@ class InterviewHelpa extends Component {
                 </ul>
                 <p>Once you have filled out all the interview details, click the “Send” button to successfully invite the Helpa to an interview.</p>
                 <p>Every time you send an invitation to an interview, the Helpa will receive an email notification and the schedule of the interview will be added to the calendar of Helpa and you, the Agent.</p>
-                <p><b>NOTE</b>: Please take note that when conducting an interview with candidates or Helpas don’t forget to update the status of the interview.</p>
+                <p><b  className='b-agent'>NOTE</b>: Please take note that when conducting an interview with candidates or Helpas don’t forget to update the status of the interview.</p>
                 <p>On your “My proposals” page, you can see the “Interviews” section which is found at the bottom of the page. There are 3 types of interview which are the following:</p>
                 <ol type='1'>
                     <li><b className='b-agent'>Upcoming</b> - these are literally the upcoming interviews, the actions you can make with the candidates in this section are:</li>

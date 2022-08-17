@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Colors from 'common/Colors';
 import VideoCard from 'modules/guides/videoCard'
+import './helpa.css'
 class UpdateCert extends Component {
     constructor(props) {
         super(props)
