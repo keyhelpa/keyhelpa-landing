@@ -153,7 +153,7 @@ class Banner extends Component {
                 
                 
                 <div className={theme === 'agent' ? 'btnLeft' : 'btnRight'} style={{cursor: 'pointer'}} onClick={() => this.handleClick()}>
-                    <h1>{theme === 'agent' ? 'Freelancer' : 'Agents'}</h1>
+                    <h1>{theme === 'agent' ? 'Freelancers' : 'Agents'}</h1>
                 </div>
               </div>
 

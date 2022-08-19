@@ -31,15 +31,22 @@ export class Video extends Component {
         <div>
           <h1 style={{
             color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle,
-            marginBottom: 25
+            marginBottom: 25,
+            fontSize: '64px',
+            fontWeight: 'bold'
           }}>
             {
               data.title
             }
           </h1>
-          {
-            data.description()
-          }
+          <p style={{
+            fontSize: '18px'
+          }}>
+           {
+              data.description()
+            } 
+          </p>
+          
         </div>
       </div>
     )
@@ -112,7 +119,7 @@ export class Video extends Component {
                 className="full-width-mobile video-player-text-holder"
                 >
                   <h2 style={{
-                    color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle
+                    color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle,
                   }}>
                     {
                       item.title
