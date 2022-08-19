@@ -23,11 +23,11 @@ export default {
   }],
   login: {
     leftMenu: [{
-      title: 'Agent Looking for Helpa',
+      title: 'Agents Looking for Helpas',
       type: 'internal',
       route: '/agent'
     }, {
-      title: 'Helpa Looking to Earn',
+      title: 'Helpas Looking to Earn',
       type: 'internal',
       route: '/helpa'
     }],
@@ -46,11 +46,11 @@ export default {
     }]
   },
   mobileMenu: [{
-    title: 'Agent Looking for Helpa',
+    title: 'Agents Looking for Helpas',
     type: 'internal',
     route: '/agent'
   }, {
-    title: 'Helpa Looking to Earn',
+    title: 'Helpas Looking to Earn',
     type: 'internal',
     route: '/helpa'
   }, {

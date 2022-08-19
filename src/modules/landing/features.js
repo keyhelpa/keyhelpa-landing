@@ -15,6 +15,7 @@ import HelpaMobileCircleRight from 'assets/uniform_images/helpa-mobile-circle-ri
 import HelpaMobileCircle from 'assets/uniform_images/helpa-mobile-circle.png';
 import Colors from 'common/Colors'
 import './featureStyle.css'
+import Config from "config";
 
 function Features(props) {
   const [features, setFeatures] = useState([]);

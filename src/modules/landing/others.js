@@ -3,6 +3,7 @@ import './Style.css'
 import Colors from 'common/Colors';
 import Button from 'modules/generic/button'
 import './others.css'
+import Config from "config";
 export class Others extends Component {
   constructor(props) {
     super(props)
