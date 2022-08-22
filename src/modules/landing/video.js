@@ -5,6 +5,7 @@ import HelpaVideoThumbnail from 'assets/helpa-video-thumbnail.png'
 import { PlayArrow, PlayCircleFilled } from '@mui/icons-material';
 import VideoModal from 'modules/generic/modal/video'
 import { SvgIcon } from '@mui/material';
+import YouTube, { YouTubeProps } from 'react-youtube';
 export class Video extends Component {
   constructor(props) {
     super(props)
