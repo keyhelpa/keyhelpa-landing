@@ -47,7 +47,9 @@ class AcceptProposal extends Component {
                 </p>
 
 
-                <VideoCard />
+                <VideoCard 
+                hasUrl={true}
+                url={"k6M5C-oKw9k"}/>
                 {
                     this.renderContent()
                 }
