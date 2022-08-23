@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import Footer from 'modules/generic/frames/footer.js'
-import { Container, Box, Grid } from '@mui/material';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import { SvgIcon } from '@mui/material';
+import Colors from 'common/Colors';
+import { Container, Box, Grid,  } from '@mui/material';
 import Button from 'modules/generic/button'
 import bgAgent from 'assets/lighterGray.png'
 import bgHelpa from 'assets/lighterPink.png'
@@ -165,6 +169,30 @@ class Banner extends Component {
                 marginTop: '25%'
             }}  className={theme=='helpa' ? 'Helpa' : ''}
                 src={theme == 'agent'? require('../../assets/agent-mobile-bg.png') : require('../../assets/helpa-mobile-bg.png')}></img>
+                
+                <div className={theme === 'agent' ? 'btnLeft' : 'btnRight'} style={{cursor: 'pointer'}} onClick={() => this.handleClick()}>
+                    {
+                        theme === 'agent' ? 
+                        <SvgIcon
+                                    component={ArrowBackIosIcon}
+                                    style={{
+                                        fontSize: 60,
+                                        color: theme == 'agent' ? Colors.agentDarkGray : Colors.helpaDarkPink
+                                    }}
+                                    className='card-icon'
+                        />
+                                :
+                        <SvgIcon
+                        component={ArrowForwardIosIcon}
+                        style={{
+                            fontSize: 60,
+                            color: theme == 'agent' ? Colors.agentDarkGray : Colors.helpaDarkPink
+                        }}
+                        className='card-icon'
+                        />
+
+                    }
+                </div>
             </div>
           </div>
         )

@@ -4,11 +4,35 @@ import { withRouter } from 'react-router-dom';
 import Colors from 'common/Colors';
 import VideoCard from 'modules/guides/videoCard'
 import './agent.css'
+import Data from 'modules/guides/data'
 class EditBasicAgent extends Component {
     constructor(props) {
         super(props)
+        this.state={
+            data: Data.agent,
+            url: null
+        }
     }
-
+    componentDidMount() {
+        this.handleLoad()
+    }
+    handleLoad(){
+        const {data} = this.state;
+        const {url} = this.state;
+        return(
+            <div>
+                {
+                    data.map((item)=> {
+                        if(this.props.history.location.pathname ===  item.route){
+                            this.setState({
+                                url: item.url
+                            })
+                        }
+                    })
+                }
+            </div>
+        )
+    }
     renderContent() {
         return (
             <div>
@@ -51,7 +75,8 @@ class EditBasicAgent extends Component {
                     Basic information is vital data that needs to be up-to-date within KeyHelpa platform, not just for the systems identity verification but also important to Helpa who are looking for Agents with good credibility and fit to their choice of work location.                 </p>
 
 
-                <VideoCard />
+                    <VideoCard 
+                url={url}/>
                 {
                     this.renderContent()
                 }

@@ -4,11 +4,35 @@ import { withRouter } from 'react-router-dom';
 import Colors from 'common/Colors';
 import VideoCard from 'modules/guides/videoCard'
 import './agent.css'
+import Data from 'modules/guides/data'
 class CreateAccountAgent extends Component {
     constructor(props) {
         super(props)
+        this.state={
+            data: Data.agent,
+            url: null
+        }
     }
-
+    componentDidMount() {
+        this.handleLoad()
+    }
+    handleLoad(){
+        const {data} = this.state;
+        const {url} = this.state;
+        return(
+            <div>
+                {
+                    data.map((item)=> {
+                        if(this.props.history.location.pathname ===  item.route){
+                            this.setState({
+                                url: item.url
+                            })
+                        }
+                    })
+                }
+            </div>
+        )
+    }
     renderContent(){
         return(
             <div style={{
@@ -39,6 +63,7 @@ class CreateAccountAgent extends Component {
 
     render() {
         const { theme } = this.props;
+        const {url} = this.state;
         return (
             <div style={{
                 width: '100%',
@@ -50,7 +75,8 @@ class CreateAccountAgent extends Component {
                 }}>
                     Are you looking for Freelancers to work on your real estate business? Get started  with KeyHelpa and hire Helpa when you need help by creating an account.
                 </p>
-                <VideoCard />
+                <VideoCard 
+                url={url}/>
                 {
                     this.renderContent()
                 }

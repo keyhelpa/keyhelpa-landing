@@ -4,9 +4,33 @@ import { withRouter } from 'react-router-dom';
 import Colors from 'common/Colors';
 import VideoCard from 'modules/guides/videoCard'
 import './agent.css'
+import Data from 'modules/guides/data'
 class SearchHelpa extends Component {
     constructor(props) {
         super(props)
+        this.state={
+            data: Data.agent,
+            url: null
+        }
+    }
+    componentDidMount() {
+        this.handleLoad()
+    }
+    handleLoad(){
+        const {data} = this.state;
+        return(
+            <div>
+                {
+                    data.map((item)=> {
+                        if(this.props.history.location.pathname ===  item.route){
+                            this.setState({
+                                url: item.url
+                            })
+                        }
+                    })
+                }
+            </div>
+        )
     }
     renderContent() {
         return (
@@ -39,6 +63,7 @@ class SearchHelpa extends Component {
     }
 
     render() {
+        const {url} = this.state;
         const { theme } = this.props;
         return (
             <div style={{
@@ -52,7 +77,8 @@ class SearchHelpa extends Component {
                     Are you looking for someone who could work on your real estate projects at your preferred location, experience, or availability? Start searching among our freelancers or shall we say “Helpa”!
                 </p>
 
-                <VideoCard />
+                <VideoCard 
+                url={url}/>
                 {
                     this.renderContent()
                 }
