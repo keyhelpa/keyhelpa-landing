@@ -4,9 +4,33 @@ import { withRouter } from 'react-router-dom';
 import Colors from 'common/Colors';
 import VideoCard from 'modules/guides/videoCard'
 import './helpa.css'
+import Data from 'modules/guides/data'
 class Stack extends Component {
     constructor(props) {
         super(props)
+        this.state={
+            data: Data.helpa,
+            url: null
+        }
+    }
+    componentDidMount() {
+        this.handleLoad()
+    }
+    handleLoad(){
+        const {data} = this.state;
+        return(
+            <div>
+                {
+                    data.map((item)=> {
+                        if(this.props.history.location.pathname ===  item.route){
+                            this.setState({
+                                url: item.url
+                            })
+                        }
+                    })
+                }
+            </div>
+        )
     }
     renderContent(){
         return(
@@ -38,6 +62,7 @@ class Stack extends Component {
     }
     render() {
         const { theme } = this.props;
+        const {url} = this.state;
         return (
             <div style={{
                 width: '100%',
@@ -51,7 +76,8 @@ class Stack extends Component {
                 </p>
 
 
-                <VideoCard />
+                <VideoCard 
+                url={url}/>
                 {
                     this.renderContent()
                 }

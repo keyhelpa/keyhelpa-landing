@@ -4,10 +4,35 @@ import { withRouter } from 'react-router-dom';
 import Colors from 'common/Colors';
 import VideoCard from 'modules/guides/videoCard'
 import './helpa.css'
+import Data from 'modules/guides/data'
 class UpdateCert extends Component {
     constructor(props) {
         super(props)
+        this.state={
+            data: Data.helpa,
+            url: null
+        }
     }
+    componentDidMount() {
+        this.handleLoad()
+    }
+    handleLoad(){
+        const {data} = this.state;
+        return(
+            <div>
+                {
+                    data.map((item)=> {
+                        if(this.props.history.location.pathname ===  item.route){
+                            this.setState({
+                                url: item.url
+                            })
+                        }
+                    })
+                }
+            </div>
+        )
+    }
+    rend
     renderContent(){
         return(
             <div>
@@ -23,6 +48,7 @@ class UpdateCert extends Component {
     }
 
     render() {
+        const {url} = this.state;
         const { theme } = this.props;
         return (
             <div style={{
@@ -34,7 +60,8 @@ class UpdateCert extends Component {
                     marginBottom: '5%'
                 }}>
 Your profile is one of your most important tools as a freelancer on KeyHelpa. Compiling license certificates is vital information that needs to be up-to-date within KeyHelpa platform, as it is important to agents who are looking for Helpas with good credibility to be fit for the job they are hiring. Your certificates plays  an important factor to attract hiring Agents.                </p>
-                <VideoCard />
+                <VideoCard 
+                url={url}/>
                 {
                     this.renderContent()
                 }

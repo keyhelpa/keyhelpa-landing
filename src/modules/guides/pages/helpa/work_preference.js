@@ -4,9 +4,33 @@ import { withRouter } from 'react-router-dom';
 import Colors from 'common/Colors';
 import VideoCard from 'modules/guides/videoCard'
 import './helpa.css'
+import Data from 'modules/guides/data'
 class WorkPreference extends Component {
     constructor(props) {
         super(props)
+        this.state={
+            data: Data.helpa,
+            url: null
+        }
+    }
+    componentDidMount() {
+        this.handleLoad()
+    }
+    handleLoad(){
+        const {data} = this.state;
+        return(
+            <div>
+                {
+                    data.map((item)=> {
+                        if(this.props.history.location.pathname ===  item.route){
+                            this.setState({
+                                url: item.url
+                            })
+                        }
+                    })
+                }
+            </div>
+        )
     }
     renderContent(){
         return(
@@ -46,6 +70,7 @@ class WorkPreference extends Component {
     }
 
     render() {
+        const {url} = this.state;
         const { theme } = this.props;
         return (
             <div style={{
@@ -63,7 +88,8 @@ they are hiring. Your work preferences play an important factor to attract hirin
                 </p>
 
 
-                <VideoCard />
+                <VideoCard 
+                url={url}/>
                 {
                     this.renderContent()
                 }
