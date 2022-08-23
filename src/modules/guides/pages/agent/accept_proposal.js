@@ -4,11 +4,34 @@ import { withRouter } from 'react-router-dom';
 import Colors from 'common/Colors';
 import VideoCard from 'modules/guides/videoCard'
 import './agent.css'
+import Data from 'modules/guides/data'
 class AcceptProposal extends Component {
     constructor(props) {
         super(props)
+        this.state={
+            data: Data.agent,
+            url: null
+        }
     }
-
+    componentDidMount() {
+        this.handleLoad()
+    }
+    handleLoad(){
+        const {data} = this.state;
+        return(
+            <div>
+                {
+                    data.map((item)=> {
+                        if(this.props.history.location.pathname ===  item.route){
+                            this.setState({
+                                url: item.url
+                            })
+                        }
+                    })
+                }
+            </div>
+        )
+    }
     renderContent(){
         return(
             <div>
@@ -34,6 +57,7 @@ class AcceptProposal extends Component {
 
     render() {
         const { theme } = this.props;
+        const {url} = this.state;
         return (
             <div style={{
                 width: '100%',
@@ -45,11 +69,12 @@ class AcceptProposal extends Component {
                 }}>
                 How is your job post going on? Have you received a lot of proposals from Helpas? Check your My Proposals page now to check proposals from Helpa you invited and those you did not send a job invitation who were interested to apply for your job hiring that they send you a proposal.    
                 </p>
-
-
+                {
+                    console.log('log::', url)
+                }
+                
                 <VideoCard 
-                hasUrl={true}
-                url={"k6M5C-oKw9k"}/>
+                url={url}/>
                 {
                     this.renderContent()
                 }

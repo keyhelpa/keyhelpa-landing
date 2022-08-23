@@ -4,11 +4,34 @@ import { withRouter } from 'react-router-dom';
 import Colors from 'common/Colors';
 import VideoCard from 'modules/guides/videoCard'
 import './agent.css'
+import Data from 'modules/guides/data'
 class ManageSecurityAgent extends Component {
     constructor(props) {
         super(props)
+        this.state={
+            data: Data.agent,
+            url: null
+        }
     }
-
+    componentDidMount() {
+        this.handleLoad()
+    }
+    handleLoad(){
+        const {data} = this.state;
+        return(
+            <div>
+                {
+                    data.map((item)=> {
+                        if(this.props.history.location.pathname ===  item.route){
+                            this.setState({
+                                url: item.url
+                            })
+                        }
+                    })
+                }
+            </div>
+        )
+    }
     renderContent() {
         return (
             <div>
@@ -35,6 +58,7 @@ class ManageSecurityAgent extends Component {
     }
 
     render() {
+        const {url} = this.state;
         const { theme } = this.props;
         return (
             <div style={{
@@ -48,7 +72,8 @@ class ManageSecurityAgent extends Component {
                     Security is very important within KeyHelpa, this is why we add a two-step verification on our platform for all our users' accounts. Add an extra layer of security, now, to block unauthorised access and to have an additional protection for your account.                </p>
 
 
-                <VideoCard />
+                    <VideoCard 
+                url={url}/>
                 {
                     this.renderContent()
                 }

@@ -4,11 +4,34 @@ import { withRouter } from 'react-router-dom';
 import Colors from 'common/Colors';
 import VideoCard from 'modules/guides/videoCard'
 import './agent.css'
+import Data from 'modules/guides/data'
 class EditAgency extends Component {
     constructor(props) {
         super(props)
+        this.state={
+            data: Data.agent,
+            url: null
+        }
     }
-
+    componentDidMount() {
+        this.handleLoad()
+    }
+    handleLoad(){
+        const {data} = this.state;
+        return(
+            <div>
+                {
+                    data.map((item)=> {
+                        if(this.props.history.location.pathname ===  item.route){
+                            this.setState({
+                                url: item.url
+                            })
+                        }
+                    })
+                }
+            </div>
+        )
+    }
     renderContent() {
         return (
             <div>
@@ -29,6 +52,7 @@ class EditAgency extends Component {
     }
 
     render() {
+        const {url} = this.state;
         const { theme } = this.props;
         return (
             <div style={{
@@ -42,7 +66,8 @@ class EditAgency extends Component {
                     Agency information is vital data that needs to be up-to-date within KeyHelpa platform, so that Helpas who are searching for jobs will know the kind of business your Agency is offering. It will help them correlate their interest to your Agency and may find interest in submitting job proposals.                </p>
 
 
-                <VideoCard />
+                    <VideoCard 
+                url={url}/>
                 {
                     this.renderContent()
                 }

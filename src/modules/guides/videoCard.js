@@ -11,20 +11,6 @@ class Stack extends Component {
     constructor(props) {
         super(props)
     }
-    handleClick(){
-        return(
-            <div>
-                <YouTube
-                    videoId={data.url}
-                    opts={{
-                        playerVars: {
-                            autoplay: 1
-                        }
-                    }}
-                />
-            </div>
-        )
-    }
     render() {
         const { accountType } = this.props.state;
         const { url } = this.props;

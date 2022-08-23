@@ -4,11 +4,34 @@ import { withRouter } from 'react-router-dom';
 import Colors from 'common/Colors';
 import VideoCard from 'modules/guides/videoCard'
 import './agent.css'
+import Data from 'modules/guides/data'
 class ManageNotifAgent extends Component {
     constructor(props) {
         super(props)
+        this.state={
+            data: Data.agent,
+            url: null
+        }
     }
-
+    componentDidMount() {
+        this.handleLoad()
+    }
+    handleLoad(){
+        const {data} = this.state;
+        return(
+            <div>
+                {
+                    data.map((item)=> {
+                        if(this.props.history.location.pathname ===  item.route){
+                            this.setState({
+                                url: item.url
+                            })
+                        }
+                    })
+                }
+            </div>
+        )
+    }
     renderContent() {
         return (
             <div>
@@ -40,6 +63,7 @@ class ManageNotifAgent extends Component {
     }
 
     render() {
+        const {url} = this.state;
         const { theme } = this.props;
         return (
             <div style={{
@@ -53,7 +77,8 @@ class ManageNotifAgent extends Component {
                     A notification email relays an important message to both Helpa and Agent. It is important for them to get notified what has been going on with their jobs, contracts, and any activities they do in KeyHelpa.                </p>
 
 
-                <VideoCard />
+                    <VideoCard 
+                url={url}/>
                 {
                     this.renderContent()
                 }

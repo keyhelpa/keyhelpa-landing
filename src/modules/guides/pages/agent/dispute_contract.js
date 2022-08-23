@@ -4,11 +4,34 @@ import { withRouter } from 'react-router-dom';
 import Colors from 'common/Colors';
 import VideoCard from 'modules/guides/videoCard'
 import './agent.css'
+import Data from 'modules/guides/data'
 class DisputeContractAgent extends Component {
     constructor(props) {
         super(props)
+        this.state={
+            data: Data.agent,
+            url: null
+        }
     }
-
+    componentDidMount() {
+        this.handleLoad()
+    }
+    handleLoad(){
+        const {data} = this.state;
+        return(
+            <div>
+                {
+                    data.map((item)=> {
+                        if(this.props.history.location.pathname ===  item.route){
+                            this.setState({
+                                url: item.url
+                            })
+                        }
+                    })
+                }
+            </div>
+        )
+    }
     renderContent() {
         return (
             <div>
@@ -35,6 +58,7 @@ class DisputeContractAgent extends Component {
     }
 
     render() {
+        const {url} = this.state;
         const { theme } = this.props;
         return (
             <div style={{
@@ -48,7 +72,8 @@ class DisputeContractAgent extends Component {
                     Contract dispute may happen if there is a disagreement between Agent and Helpa concerning the job terms, payments or anything with the contract. Dispute contracts can be costly and time-consuming and may end up in court and damage to agencies connections and reputation if handled poorly.                </p>
 
 
-                <VideoCard />
+                    <VideoCard 
+                url={url}/>
                 {
                     this.renderContent()
                 }
