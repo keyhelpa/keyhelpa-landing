@@ -34,7 +34,9 @@ class PauseContractAgent extends Component {
     }
     renderContent(){
         return(
-            <div>
+            <div style={{
+                marginTop: 30
+            }}>
                 <p>You can view all your contracts on your “My Contracts” page. Here are the following guidelines for Agent to pause a contract:</p>
                 <ol type='1'>
                     <li>On your “My Contracts”, you can opt to pause contracts whose status are:</li>

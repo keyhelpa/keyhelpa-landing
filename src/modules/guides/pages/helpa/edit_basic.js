@@ -4,13 +4,39 @@ import { withRouter } from 'react-router-dom';
 import Colors from 'common/Colors';
 import VideoCard from 'modules/guides/videoCard'
 import './helpa.css'
+import Data from 'modules/guides/data'
 class EditBasicHelpa extends Component {
     constructor(props) {
         super(props)
+        this.state={
+            data: Data.helpa,
+            url: null
+        }
+    }
+    componentDidMount() {
+        this.handleLoad()
+    }
+    handleLoad(){
+        const {data} = this.state;
+        return(
+            <div>
+                {
+                    data.map((item)=> {
+                        if(this.props.history.location.pathname ===  item.route){
+                            this.setState({
+                                url: item.url
+                            })
+                        }
+                    })
+                }
+            </div>
+        )
     }
     renderContent(){
         return(
-            <div>
+            <div style={{
+                marginTop: 30
+            }}>
                 <p>To edit your basic information, read the following instructions below:</p>
                 <ol type='1'>
                     <li>On Helpa’s web application, click your profile icon or photo then a dropdown menu will appear. Choose “Settings” and you will be taken to a new sidebar menu with a default dashboard of the “Basic information” page.</li>
@@ -34,6 +60,7 @@ class EditBasicHelpa extends Component {
 
     render() {
         const { theme } = this.props;
+        const {url} = this.state;
         return (
             <div style={{
                 width: '100%',
@@ -46,7 +73,8 @@ class EditBasicHelpa extends Component {
 Basic information is vital data that needs to be up-to-date within KeyHelpa platform, not just for the system's identity verification but also important to agents who are looking for Helpas with good credibility to be fit for the job they are hiring.                </p>
 
 
-                <VideoCard />
+                <VideoCard 
+                url={url}/>
                 {
                     this.renderContent()
                 }

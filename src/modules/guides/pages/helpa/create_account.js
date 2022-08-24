@@ -8,15 +8,38 @@ import { PlayArrow, PlayCircleFilled } from '@mui/icons-material';
 import { SvgIcon } from '@mui/material';
 import VideoCard from 'modules/guides/videoCard'
 import './helpa.css'
+import Data from 'modules/guides/data'
 class CreateAccountHelpa extends Component {
     constructor(props) {
         super(props)
+        this.state={
+            data: Data.helpa,
+            url: null
+        }
     }
-
+    componentDidMount() {
+        this.handleLoad()
+    }
+    handleLoad(){
+        const {data} = this.state;
+        return(
+            <div>
+                {
+                    data.map((item)=> {
+                        if(this.props.history.location.pathname ===  item.route){
+                            this.setState({
+                                url: item.url
+                            })
+                        }
+                    })
+                }
+            </div>
+        )
+    }
     renderContent(){
         return(
             <div style={{
-                marginTop: "50%"
+                marginTop: 30
             }}>
                 <p>Follow the steps below to register as Helpa (Freelancer) in KeyHelpa:</p>
                 <ol type='1'>
@@ -43,6 +66,7 @@ class CreateAccountHelpa extends Component {
 
     render() {
         const { theme } = this.props;
+        const {url} = this.state;
         return (
             <div style={{
                 width: '100%',
@@ -55,7 +79,8 @@ class CreateAccountHelpa extends Component {
                     Are you into the Real Estate Industry? If yes, get any freelance jobs you want with us.Get started  with KeyHelpa and be your own boss, get paid securely!
                 </p>
 
-                <VideoCard />
+                <VideoCard 
+                url={url}/>
 
                 {
                     this.renderContent()

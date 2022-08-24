@@ -34,7 +34,9 @@ class CreateContract extends Component {
     }
     renderContent(){
         return(
-            <div>
+            <div style={{
+                marginTop: 30
+            }}>
                 <p>Final job offer or contract is very important to both Agent and Helpa as it will provide protection and security for both parties. The terms and conditions of employment and the capacity in which a Helpa is being hired, along with the corresponding job responsibilities must be conveyed in the contract. Most of the content of the contract is just the same with the job description you posted, but the contract is now more specific and  will entail the Helpa when to actually start the  job and other more important agreements.</p>
                 <p>The following information are the guidelines when creating a contract between Agent and Helpa through KeyHelpa:</p>
                 <ol type='1'>

@@ -34,7 +34,9 @@ class ManageNotifAgent extends Component {
     }
     renderContent() {
         return (
-            <div>
+            <div style={{
+                marginTop: 30
+            }}>
                 <p>On Agent’s web application, click your profile icon or photo then a dropdown menu will appear. Choose “Settings” and you will be taken to a new sidebar menu. Click the “Notifications” on your sidebar menu and you will be redirected to the “Notifications” page.</p>
                 <p>Agents can set where to receive notifications either via Email, Push, or SMS. The notifications that an Agent can received are categorized into two categories:</p>
                 <ol type='1'>

@@ -34,7 +34,9 @@ class EditAgency extends Component {
     }
     renderContent() {
         return (
-            <div>
+            <div style={{
+                marginTop: 30
+            }}>
                 <p>To edit your agency information, read the following instructions below:</p>
                 <ol type='1'>
                     <li>On Agent’s web application, click your profile icon or photo then a dropdown menu will appear. Choose “Settings” and you will be taken to a new sidebar menu. Click the “Agency information” on your sidebar menu and you will be redirected to the “Agency information” page.</li>
