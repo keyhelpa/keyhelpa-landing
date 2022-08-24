@@ -36,7 +36,7 @@ class CreateAccountAgent extends Component {
     renderContent(){
         return(
             <div style={{
-                marginTop: 100
+                marginTop: 30
             }}>
                 <p>Follow the steps below to register as Agent in KeyHelpa:</p>
                 <ol type='1'>

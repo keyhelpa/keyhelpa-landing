@@ -39,7 +39,7 @@ class CreateAccountHelpa extends Component {
     renderContent(){
         return(
             <div style={{
-                marginTop: "5%"
+                marginTop: 30
             }}>
                 <p>Follow the steps below to register as Helpa (Freelancer) in KeyHelpa:</p>
                 <ol type='1'>

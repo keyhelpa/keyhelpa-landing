@@ -35,7 +35,9 @@ class SendInvite extends Component {
     }
     renderContent() {
         return (
-            <div>
+            <div style={{
+                marginTop: 30
+            }}>
                 <p>To invite a candidate to view your job post just simply do the following:</p>
                 <ol type='1'>
                     <li>On your Candidates page, click on the “View candidate” button on the card of the candidate you are interested in inviting  and you will be redirected to the Candidate details page.</li>

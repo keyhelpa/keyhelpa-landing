@@ -34,7 +34,9 @@ class Stack extends Component {
     }
     renderContent(){
         return(
-            <div>
+            <div style={{
+                marginTop: 30
+            }}>
                 <p>To apply for a job that matches you skills, experience and interest,  read the following instructions below:</p>
                 <ol type='1'>
                     <li>Go to your “Find work” page, where you can see all the job hiring that all Agents from KeyHelpa has posted. </li>

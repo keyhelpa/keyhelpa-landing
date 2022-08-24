@@ -34,7 +34,9 @@ class InterviewHelpa extends Component {
     }
     renderContent() {
         return (
-            <div>
+            <div style={{
+                marginTop: 30
+            }}>
                 <p>After you have clicked on the “Interview” button in  the View Proposal page, an Interview modal will pop-up where you need to fill up the following field:</p>
                 <ul >
                     <li><b className='b-agent'>Job</b> - this is not editable since it is retrieved from the job the Helpa has sent a proposal.</li>

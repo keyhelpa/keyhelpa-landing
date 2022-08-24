@@ -34,7 +34,9 @@ class SetupAgent extends Component {
     }
     renderContent() {
         return (
-            <div>
+            <div style={{
+                marginTop: 30
+            }}>
                 <p>When you sign up to KeyHelpa, automatically, you will be redirected to the welcome page. If you have logged out right after you sign up, you can still login using your newly registered credentials and then proceed to the welcome page. </p>
                 <p>Follow the steps  below to complete your profile setup with KeyHelpa as an Agent:</p>
                 <ol type='1'>

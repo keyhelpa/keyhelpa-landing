@@ -34,7 +34,9 @@ class Stack extends Component {
     }
     renderContent(){
         return(
-            <div>
+            <div style={{
+                marginTop: 30
+            }}>
                 <p>Use KeyHelpa’s filter search to filter jobs based on your preferences.</p>
                 <ul>
                     <li>Once your account is done with profile setup and has been validated, your web app header will have a search field where you can filter your search on the  jobs that match your skills and interests.</li>

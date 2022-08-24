@@ -34,7 +34,9 @@ class HireHelpa extends Component {
     }
     renderContent() {
         return (
-            <div>
+            <div style={{
+                marginTop: 30
+            }}>
                 <p>Go to your “Successful” Interviews section which can be found on your “My proposals” page. Click on the “View” action of the candidate you want to hire, and you will be redirected to a page where you can view the candidate details including the job terms and proposal. On this page you can see the “Reject” and “Hire” button.</p>
                 <p>To hire the candidate, you just need to click on the “Hire” button and you will be redirected to creating a contract or the final job offer and sending the job offer. Click here to know more about creating a contract.</p>
                 <p>Once you have sent the job offer or contract, it means you have hired the candidate for the job but please take note that it needs to be accepted by the Helpa to actually start the job or else the Helpa may reject it.</p>

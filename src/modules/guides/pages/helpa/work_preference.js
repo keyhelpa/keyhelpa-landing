@@ -34,7 +34,9 @@ class WorkPreference extends Component {
     }
     renderContent(){
         return(
-            <div>
+            <div style={{
+                marginTop: 30
+            }}>
                 <p>To update your work preferences, read the following instructions below:</p>
                 <ol type='1'>
                     <li>On Helpa’s web application, click your profile icon or photo then a dropdown menu

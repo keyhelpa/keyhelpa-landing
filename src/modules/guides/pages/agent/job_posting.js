@@ -34,7 +34,9 @@ class JobPosting extends Component {
     }
     renderContent() {
         return (
-            <div>
+            <div style={{
+                marginTop: 30
+            }}>
                 <p>To create you job posting, read the following instructions to know:</p>
                 <ol type='1'>
                     <li>Go to your My Jobs page and click on the “Create Job”  button on the top right corner of the page. Then you will be redirected to the “Post a job” page.</li>

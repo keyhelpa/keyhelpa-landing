@@ -35,7 +35,9 @@ class UpdateCert extends Component {
     rend
     renderContent(){
         return(
-            <div>
+            <div style={{
+                marginTop: 30
+            }}>
                 <p>To update your certificates, read the following instructions below:</p>
                 <ol type='1'>
                     <li>On Helpa’s web application, click your profile icon or photo then a dropdown menu will appear.Choose “Settings” and you will be taken to a new sidebar menu. Click the “Certificates” on your sidebar menu and you will be redirected to the “My certificates” page.</li>

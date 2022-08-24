@@ -18,7 +18,6 @@ class EditBasicAgent extends Component {
     }
     handleLoad(){
         const {data} = this.state;
-        const {url} = this.state;
         return(
             <div>
                 {
@@ -35,7 +34,9 @@ class EditBasicAgent extends Component {
     }
     renderContent() {
         return (
-            <div>
+            <div style={{
+                marginTop: 30
+            }}>
                 <p>To edit your basic information, read the following instructions below:</p>
                 <ol type='1'>
                     <li>On Agent’s web application, click your profile icon or photo then a dropdown menu will appear. Choose “Settings” and you will be taken to a new sidebar menu with a default dashboard of the “Basic information” page.</li>
@@ -62,7 +63,7 @@ class EditBasicAgent extends Component {
     }
 
     render() {
-        const { theme } = this.props;
+        const {url} = this.state;
         return (
             <div style={{
                 width: '100%',

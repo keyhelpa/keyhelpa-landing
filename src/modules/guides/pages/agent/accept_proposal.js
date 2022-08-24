@@ -34,7 +34,9 @@ class AcceptProposal extends Component {
     }
     renderContent(){
         return(
-            <div>
+            <div style={{
+                marginTop: 30
+            }}>
                 <p>There are two types of Helpa that will send you job proposals:</p>
                 <ul>
                     <li>Invited Helpa - this are helpa you send a job invitation and have accept your invitation by sending you a proposal.</li>
@@ -69,10 +71,6 @@ class AcceptProposal extends Component {
                 }}>
                 How is your job post going on? Have you received a lot of proposals from Helpas? Check your My Proposals page now to check proposals from Helpa you invited and those you did not send a job invitation who were interested to apply for your job hiring that they send you a proposal.    
                 </p>
-                {
-                    console.log('log::', url)
-                }
-                
                 <VideoCard 
                 url={url}/>
                 {
