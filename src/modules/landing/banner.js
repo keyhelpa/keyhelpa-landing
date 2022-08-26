@@ -48,8 +48,8 @@ class Banner extends Component {
                 <img  className={theme=='agent' ? 'agentRobyn' : ''}
                 src={theme =='agent' ? require('../../assets/Robyn.png') : ''}></img>
                     <div className='right'>
-                    <h3>{theme ==='agent' ? 'Robyn': ''}</h3>
-                    <p >{
+                    <h3 className='tooltip-title'>{theme ==='agent' ? 'Robyn': ''}</h3>
+                    <p className='tooltip-desc'>{
                     theme ==='agent' ?
                     'Robyn is a licence  Real Estate Agent. She just signed four new clients who have all put their properties on the market, and she needs help at the open houses.'
                     :
@@ -66,8 +66,8 @@ class Banner extends Component {
                 <img className={theme=='agent' ? 'agentPaul' : 'freelanceSarah'}
                 src={theme =='agent' ? require('../../assets/Paul.png') : require('../../assets/Sarah.png')}></img>
                     <div className='right'>
-                    <h3>{theme ==='agent' ? 'Paul': 'Sarah'}</h3>
-                    <p>{
+                    <h3 className='tooltip-title'>{theme ==='agent' ? 'Paul': 'Sarah'}</h3>
+                    <p className='tooltip-desc'>{
                         theme ==='agent' ?
                         'Paul is a senior property manager at a busy real estate office. The agency manages properties, and he has a lot going on dealing with landlords and tenants.'
                         :
@@ -83,8 +83,8 @@ class Banner extends Component {
                 <img  className={theme=='agent' ? 'agentTrevor' : 'freelanceAlan'}
                 src={theme =='agent' ? require('../../assets/Trevor.png') : require('../../assets/Alan.png')}></img>
                     <div className='right'>
-                    <h3>{theme ==='agent' ? 'Trevor': 'Alan'}</h3>
-                    <p>
+                    <h3 className='tooltip-title'>{theme ==='agent' ? 'Trevor': 'Alan'}</h3>
+                    <p className='tooltip-desc'>
                     {
                         theme ==='agent' ?
                         "Trevor is a Strata Manager at a busy Strata Agents' office. He has a lot going on dealing with annual general meetings, building repairs, tradespeople and budgets."
@@ -102,8 +102,8 @@ class Banner extends Component {
                 <img  className={theme=='agent' ? 'agentJohn' : 'freelanceLana'}
                 src={theme =='agent' ? require('../../assets/JohnAgent.png') : require('../../assets/Lana.png')}></img>
                     <div className='right'>
-                    <h3>{theme ==='agent' ? 'John': 'Lana'}</h3>
-                    <p>
+                    <h3 className='tooltip-title'>{theme ==='agent' ? 'John': 'Lana'}</h3>
+                    <p className='tooltip-desc'>
                     {
                         theme ==='agent' ?
                         "John is a licensed real estate agent working in a busy real estate office. John needs additional assistance with his open homes and general marketing work."
@@ -121,8 +121,8 @@ class Banner extends Component {
                 <img  className={theme=='agent' ? 'Agent' : 'freelanceTracey'}
                 src={theme =='agent' ? require('../../assets/Agent.png') : require('../../assets/Tracey.png')}></img>
                     <div className='right'>
-                    <h3>{theme ==='agent' ? '': 'Tracey'}</h3>
-                    <p>
+                    <h3 className='tooltip-title'>{theme ==='agent' ? '': 'Tracey'}</h3>
+                    <p className='tooltip-desc'>
                     {
                         theme ==='agent' ?
                         ""
@@ -139,9 +139,9 @@ class Banner extends Component {
                 
                 <img  className={theme=='helpa' ? 'freelanceJohn' : ''}
                 src={theme =='helpa' ? require('../../assets/JohnHelpa.png') : ''}></img>
-                    <div className='right'>
-                    <h3>{theme =='helpa' ? 'John': ''}</h3>
-                    <p>
+                    <div className='left'>
+                    <h3 className='tooltip-title'>{theme =='helpa' ? 'John': ''}</h3>
+                    <p className='tooltip-desc'>
                     {
                         theme ==='helpa' ?
                         "John is a licensed real estate agent working in a busy real estate office. John needs additional assistance with his open homes and general marketing work."
