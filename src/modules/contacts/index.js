@@ -207,7 +207,7 @@ export class Contacts extends Component {
             </div>
           </Form.Group>
           <Form.Group>
-            <Form.Label>Organization</Form.Label>
+            <Form.Label>Organisation</Form.Label>
             <Form.Control type="text" size="sm" onChange={(e) => this.setState({ organization: e.target.value })}></Form.Control>
           </Form.Group>
           <Form.Group>

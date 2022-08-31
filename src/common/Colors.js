@@ -40,4 +40,6 @@ export default{
 	helpaText: '#686868',
 	helpaPink: '#f290bb',
 	helpaDarkPink: '#E62D7E',
+	helpaVidText: "#B6B6B6",
+	helpaOthersText: "#b6b6b6"
 }
