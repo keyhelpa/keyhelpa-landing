@@ -61,7 +61,7 @@ function Landing(props) {
                 />
               </div>
               <div style={{
-                backgroundImage: `url(${accountType == 'agent' ? AgentLogoBackground : HelpaLogoBackground})`,
+                // backgroundImage: `url(${accountType == 'agent' ? AgentLogoBackground : HelpaLogoBackground})`,
                 backgroundPosition: 'center',
                 backgroundSize: 'auto 60%',
                 backgroundRepeat: 'no-repeat',

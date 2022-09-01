@@ -99,7 +99,7 @@ function Features(props) {
                 width: '100%'
               }}>
                 <p style={{
-                  color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle,
+                  color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaOthersText,
                   textAlign: 'center'
                 }}>
                   {
@@ -172,7 +172,7 @@ function Features(props) {
                 alignItems: 'center'
               }}>
                 <p style={{
-                  color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle,
+                  color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaOthersText,
                   textAlign: 'center'
                 }}>
                   {
@@ -190,7 +190,20 @@ function Features(props) {
       </div>
     )
   }
-
+  const renderBottom = () => {
+    return(
+      <div style={{
+        textAlign: 'center',
+        width: '100%',
+        float: 'left',
+        marginBottom: 100
+      }}>
+        <h1 style={{
+          color: '#686868'
+        }}>Lifestyle. Choose your days, hours. <h1 style={{color: "rgb(230, 45, 126)"}}>Be your own boss.</h1></h1>
+      </div>
+    )
+  }
   return (
     <div style={{
       width: '100%',
@@ -230,7 +243,7 @@ function Features(props) {
         marginBottom: 100
       }}>
         <Button
-          title={'Get Started'}
+          title={'Get started'}
           style={{
             backgroundColor: theme == 'agent' ? Colors.agentDarkGray : Colors.helpaDarkPink,
             color: 'white',
@@ -240,6 +253,12 @@ function Features(props) {
           onChange={() => window.location.href = Config.HELPA}
         ></Button>
       </div>
+      
+        {
+          theme == 'agent' ? '' : renderBottom()
+        }
+      
+
     </div>
   )
 }

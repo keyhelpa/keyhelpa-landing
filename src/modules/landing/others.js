@@ -49,7 +49,7 @@ export class Others extends Component {
             }
           </h1>
           <p style={{
-            color: theme == 'agent' ? Colors.agentText : Colors.helpaText,
+            color: theme == 'agent' ? Colors.agentText : Colors.helpaOthersText,
             marginBottom: 25
           }}  >
             {
@@ -117,7 +117,7 @@ export class Others extends Component {
             }
           </h1>
           <p style={{
-            color: theme == 'agent' ? Colors.agentText : Colors.helpaText,
+            color: theme == 'agent' ? Colors.agentText : Colors.helpaOthersText,
             marginBottom: 25
           }}  >
             {

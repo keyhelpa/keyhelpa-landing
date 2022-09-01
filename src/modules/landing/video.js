@@ -6,6 +6,7 @@ import { PlayArrow, PlayCircleFilled } from '@mui/icons-material';
 import VideoModal from 'modules/generic/modal/video'
 import { SvgIcon } from '@mui/material';
 import YouTube, { YouTubeProps } from 'react-youtube';
+import './Style.css'
 export class Video extends Component {
   constructor(props) {
     super(props)
@@ -33,15 +34,12 @@ export class Video extends Component {
           <h1 style={{
             color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle,
             marginBottom: 25,
-            fontSize: '64px',
-            fontWeight: 'bold'
           }}>
             {
               data.title
             }
           </h1>
           <p style={{
-            fontSize: '18px'
           }}>
            {
               data.description()
@@ -119,15 +117,15 @@ export class Video extends Component {
                 }}
                 className="full-width-mobile video-player-text-holder"
                 >
-                  <h2 style={{
+                  <h2 className='mobile-justify-text-center' style={{
                     color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle,
                   }}>
                     {
                       item.title
                     }
                   </h2>
-                  <p style={{
-                    color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle
+                  <p className='mobile-justify-text-center' style={{
+                    color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaVidText
                   }}>
                     {
                       item.description()
@@ -178,7 +176,7 @@ export class Video extends Component {
               description: () => {
                 return (
                   <p style={{
-                    color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle
+                    color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaVidText
                   }}>
                     We’ve got real estate agencies, agents and property managers looking for help from experienced people just like you. You’ll find a range of real estate industry-related jobs right here.
                   </p>

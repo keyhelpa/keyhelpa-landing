@@ -99,7 +99,7 @@ export class Contacts extends Component {
     const { accountType } = this.props.state;
     return (
       <div style={{
-        width: '60%',
+        width: '80%',
         float: 'left',
         marginLeft: '40%',
       }}
@@ -184,7 +184,7 @@ export class Contacts extends Component {
         }
         <Form>
           <Form.Group>
-            <Form.Label>Full Name</Form.Label>
+            <Form.Label>Full name</Form.Label>
             <Form.Control type="text" size="sm" onChange={(e) => this.setState({ name: e.target.value })}></Form.Control>
           </Form.Group>
           <Form.Group style={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -193,7 +193,7 @@ export class Contacts extends Component {
               <Form.Control type="email" size="sm" onChange={(e) => this.setState({ email: e.target.value })}></Form.Control>
             </div>
             <div style={{ width: '45%' }}>
-              <Form.Label>Contact Number</Form.Label>
+              <Form.Label>Telephone Number</Form.Label>
               <div style={{ display: 'flex' }}>
                 <Form.Select aria-label="Default select example" style={{ width: '130px' }} onChange={(e) => this.setState({ contactPrefix: e.target.value })}>
                   {
@@ -207,7 +207,7 @@ export class Contacts extends Component {
             </div>
           </Form.Group>
           <Form.Group>
-            <Form.Label>Organization</Form.Label>
+            <Form.Label>Organisation</Form.Label>
             <Form.Control type="text" size="sm" onChange={(e) => this.setState({ organization: e.target.value })}></Form.Control>
           </Form.Group>
           <Form.Group>
