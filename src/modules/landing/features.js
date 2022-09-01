@@ -99,7 +99,7 @@ function Features(props) {
                 width: '100%'
               }}>
                 <p style={{
-                  color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle,
+                  color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaOthersText,
                   textAlign: 'center'
                 }}>
                   {
@@ -172,7 +172,7 @@ function Features(props) {
                 alignItems: 'center'
               }}>
                 <p style={{
-                  color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle,
+                  color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaOthersText,
                   textAlign: 'center'
                 }}>
                   {
