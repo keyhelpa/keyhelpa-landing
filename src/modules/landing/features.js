@@ -173,7 +173,7 @@ function Features(props) {
               }}>
                 <p style={{
                   color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaOthersText,
-                  textAlign: 'center'
+                  textAlign: 'left'
                 }}>
                   {
                     item.description

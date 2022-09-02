@@ -14,7 +14,7 @@ import { Check } from '@mui/icons-material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Colors from 'common/Colors'
 import './mobile.css'
-import Modal from 'modules/generic/modal/textButton'
+import Modal from 'modules/generic/modal/iconText'
 const style = {
   iconAgent: {
     width: 40,
