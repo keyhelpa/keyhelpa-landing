@@ -14,7 +14,7 @@ import { Check } from '@mui/icons-material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Colors from 'common/Colors'
 import './mobile.css'
-import Modal from 'modules/generic/modal/textButton'
+import Modal from 'modules/generic/modal/iconText'
 const style = {
   iconAgent: {
     width: 40,
@@ -107,7 +107,7 @@ export class Contacts extends Component {
       >
         <h1 style={{
           color: accountType == 'agent' ? Colors.agentText : Colors.helpaText
-        }}>Contact Us</h1>
+        }}>Contact us</h1>
         <p style={{
           color: accountType == 'agent' ? Colors.agentText : Colors.helpaText
         }}>We love questions and feedback - and we’re always happy to help! Here are some ways to contact us.</p>

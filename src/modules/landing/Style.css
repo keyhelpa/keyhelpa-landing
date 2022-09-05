@@ -10,8 +10,9 @@
   background-color: #f290bb;
   color: #E62D7E;
   padding-top: 30px;
-  width: 100px;
-  padding-bottom: 20px;
+  padding-left: 20px;
+  width: 80px;
+  padding-bottom: 30px;
   border-radius: 200px;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
@@ -23,10 +24,10 @@
   top: 30%;
   background-color: #59687A;
   color: #34475D;
-  padding-top: 50px;
+  padding-top: 30px;
   padding-left: 20px;
-  width: 100px;
-  padding-bottom: 40px;
+  width: 80px;
+  padding-bottom: 30px;
   border-radius: 200px;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;

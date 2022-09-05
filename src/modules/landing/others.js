@@ -110,7 +110,8 @@ export class Others extends Component {
         >
           <h1 style={{
             color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle,
-            marginBottom: 25
+            marginBottom: 25,
+            width: '80%'
           }}>
             {
               item.title
