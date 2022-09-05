@@ -107,7 +107,7 @@ export class Contacts extends Component {
       >
         <h1 style={{
           color: accountType == 'agent' ? Colors.agentText : Colors.helpaText
-        }}>Contact Us</h1>
+        }}>Contact us</h1>
         <p style={{
           color: accountType == 'agent' ? Colors.agentText : Colors.helpaText
         }}>We love questions and feedback - and we’re always happy to help! Here are some ways to contact us.</p>

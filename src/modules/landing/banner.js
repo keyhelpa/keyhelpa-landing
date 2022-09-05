@@ -28,9 +28,11 @@ class Banner extends Component {
         if(theme === 'helpa'){
             setSelectedUser('agent')
             history.push('/agent')
+            location.reload()
         }else{
             setSelectedUser('helpa')
             history.push('/helpa')
+            location.reload()
         }
     }
     render(){
@@ -174,18 +176,18 @@ class Banner extends Component {
                     {
                         theme === 'agent' ? 
                         <SvgIcon
-                                    component={ArrowBackIosIcon}
-                                    style={{
-                                        fontSize: 60,
-                                        color: theme == 'agent' ? Colors.agentDarkGray : Colors.helpaDarkPink
-                                    }}
-                                    className='card-icon'
+                        component={ArrowBackIosIcon}
+                        style={{
+                            fontSize: 50,
+                            color: theme == 'agent' ? Colors.agentDarkGray : Colors.helpaDarkPink
+                        }}
+                        className='card-icon'
                         />
                                 :
                         <SvgIcon
                         component={ArrowForwardIosIcon}
                         style={{
-                            fontSize: 60,
+                            fontSize: 50,
                             color: theme == 'agent' ? Colors.agentDarkGray : Colors.helpaDarkPink
                         }}
                         className='card-icon'
