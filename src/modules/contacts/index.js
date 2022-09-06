@@ -68,7 +68,7 @@ export class Contacts extends Component {
   }
 
   handleSubmit() {
-    const { name, email, contactNumber, contactPrefix, organization, message } = this.state
+    const { name, email, contactNumber, contactPrefix, organization, message, error} = this.state
     let params = {
       name: name,
       email: email,
@@ -78,20 +78,25 @@ export class Contacts extends Component {
         message: message
       })
     }
-    API.request(Routes.createContact, params, response => {
-      this.setState({
-        submitted: true,
-        name: null,
-        email: null,
-        organization: null,
-        message: null,
-        contactNumber: null,
-        error: true
+    if(params.name != null || params.email != null || params.details.contactNumber != null || params.details.organization != null || params.details.message != null){
+      API.request(Routes.createContact, params, response => {
+        this.setState({
+          submitted: true,
+          name: null,
+          email: null,
+          organization: null,
+          message: null,
+          contactNumber: null,
+          error: true
+        })
+        setTimeout(() => {
+          this.setState({ submitted: false })
+        }, 5000)
       })
-      setTimeout(() => {
-        this.setState({ submitted: false })
-      }, 5000)
-    })
+    }else{
+      console.log('error::', error)
+      this.renderAlert()
+    }
   }
 
   renderLeft() {
@@ -143,15 +148,24 @@ export class Contacts extends Component {
   }
 
   renderAlert() {
-    const { theme } = this.state
+    const { theme, error } = this.state
     return (
       <div>
+        { error == null ? 
+        <Modal
+        show={true}
+        title={'Error'}
+        description={'Please fill out missing fields'}
+        withCancel={true}
+        />
+        :
         <Modal
         show={true}
         title={'Thank  you!'}
         description={'Your message has been sent. Our support team will respond within 24 hours'}
         withCancel={true}
         />
+      }
       </div>
     )
   }
@@ -182,6 +196,7 @@ export class Contacts extends Component {
             </div>
           } : ""
         }
+        <div className='web'>
         <Form>
           <Form.Group>
             <Form.Label>Full name</Form.Label>
@@ -190,7 +205,9 @@ export class Contacts extends Component {
           <Form.Group style={{ display: 'flex', justifyContent: 'space-between' }}>
             <div style={{ width: '50%' }}>
               <Form.Label>Email</Form.Label>
+              <div style={{marginTop: '5px'}}>
               <Form.Control type="email" size="sm" onChange={(e) => this.setState({ email: e.target.value })}></Form.Control>
+              </div>
             </div>
             <div style={{ width: '45%' }}>
               <Form.Label>Telephone Number</Form.Label>
@@ -215,6 +232,45 @@ export class Contacts extends Component {
             <Form.Control type="text" size="sm" onChange={(e) => this.setState({ message: e.target.value })}></Form.Control>
           </Form.Group>
         </Form>
+        </div>
+        <div className='mobile'>
+        <Form>
+          <Form.Group>
+            <Form.Label>Full name</Form.Label>
+            <Form.Control type="text" size="sm" onChange={(e) => this.setState({ name: e.target.value })}></Form.Control>
+          </Form.Group>
+          <Form.Group style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <div style={{ width: '100%' }}>
+              <Form.Label>Email</Form.Label>
+              <Form.Control type="email" size="sm" onChange={(e) => this.setState({ email: e.target.value })}></Form.Control>
+            </div>
+          </Form.Group>
+          <Form.Group>
+          <div style={{ width: '100%' }}>
+              <Form.Label>Telephone Number</Form.Label>
+              <div style={{ display: 'flex' }}>
+                <Form.Select aria-label="Default select example" style={{ width: '130px' }} onChange={(e) => this.setState({ contactPrefix: e.target.value })}>
+                  {
+                    Object.values(mobilePrefixes).map(item => (
+                      <option value={item}>{item}</option>
+                    ))
+                  }
+                </Form.Select>
+                <Form.Control type="number" size="lg" onChange={(e) => this.setState({ contactNumber: e.target.value })}></Form.Control>
+              </div>
+            </div>
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>Organisation</Form.Label>
+            <Form.Control type="text" size="sm" onChange={(e) => this.setState({ organization: e.target.value })}></Form.Control>
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>Message</Form.Label>
+            <Form.Control type="text" size="sm" onChange={(e) => this.setState({ message: e.target.value })}></Form.Control>
+          </Form.Group>
+        </Form>
+        </div>
+        
         <div>
           {/* <p>Captcha</p> */}
           <Button style={{ float: 'right' }} className="btn-submit" onClick={() => this.handleSubmit()}>Submit</Button>
