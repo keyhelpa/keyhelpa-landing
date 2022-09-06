@@ -68,7 +68,7 @@ export class Contacts extends Component {
   }
 
   handleSubmit() {
-    const { name, email, contactNumber, contactPrefix, organization, message } = this.state
+    const { name, email, contactNumber, contactPrefix, organization, message, error} = this.state
     let params = {
       name: name,
       email: email,
@@ -78,20 +78,25 @@ export class Contacts extends Component {
         message: message
       })
     }
-    API.request(Routes.createContact, params, response => {
-      this.setState({
-        submitted: true,
-        name: null,
-        email: null,
-        organization: null,
-        message: null,
-        contactNumber: null,
-        error: true
+    if(params.name != null || params.email != null || params.details.contactNumber != null || params.details.organization != null || params.details.message != null){
+      API.request(Routes.createContact, params, response => {
+        this.setState({
+          submitted: true,
+          name: null,
+          email: null,
+          organization: null,
+          message: null,
+          contactNumber: null,
+          error: true
+        })
+        setTimeout(() => {
+          this.setState({ submitted: false })
+        }, 5000)
       })
-      setTimeout(() => {
-        this.setState({ submitted: false })
-      }, 5000)
-    })
+    }else{
+      console.log('error::', error)
+      this.renderAlert()
+    }
   }
 
   renderLeft() {
@@ -143,15 +148,24 @@ export class Contacts extends Component {
   }
 
   renderAlert() {
-    const { theme } = this.state
+    const { theme, error } = this.state
     return (
       <div>
+        { error == null ? 
+        <Modal
+        show={true}
+        title={'Error'}
+        description={'Please fill out missing fields'}
+        withCancel={true}
+        />
+        :
         <Modal
         show={true}
         title={'Thank  you!'}
         description={'Your message has been sent. Our support team will respond within 24 hours'}
         withCancel={true}
         />
+      }
       </div>
     )
   }
