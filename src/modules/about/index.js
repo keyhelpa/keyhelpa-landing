@@ -16,9 +16,7 @@ export class About extends Component {
       isLoading: false,
       content: () => {
         return (
-          <div className='contentContainer' style={{
-            color: "red"
-          }}>
+          <div className='contentContainer'>
             <p>KeyHelpa originated from the question of how to improve the profitability of real estate agencies given the high cost of labour and overhead expenses, employment regulations and the competitive nature of the real estate industry.</p>
             <p>
               The founders bring to the table their knowledge of accountancy, law and real estate practice to provide agency principals with the flexibility and versatility to deal with their high-volume activities without the need to undertake expensive employment and recruitment expenses. It allows  experienced real estate personnel the flexibility to choose their working times to suit their own individual lifestyles

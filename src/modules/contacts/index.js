@@ -182,6 +182,7 @@ export class Contacts extends Component {
             </div>
           } : ""
         }
+        <div className='web'>
         <Form>
           <Form.Group>
             <Form.Label>Full name</Form.Label>
@@ -190,7 +191,9 @@ export class Contacts extends Component {
           <Form.Group style={{ display: 'flex', justifyContent: 'space-between' }}>
             <div style={{ width: '50%' }}>
               <Form.Label>Email</Form.Label>
+              <div style={{marginTop: '5px'}}>
               <Form.Control type="email" size="sm" onChange={(e) => this.setState({ email: e.target.value })}></Form.Control>
+              </div>
             </div>
             <div style={{ width: '45%' }}>
               <Form.Label>Telephone Number</Form.Label>
@@ -215,6 +218,45 @@ export class Contacts extends Component {
             <Form.Control type="text" size="sm" onChange={(e) => this.setState({ message: e.target.value })}></Form.Control>
           </Form.Group>
         </Form>
+        </div>
+        <div className='mobile'>
+        <Form>
+          <Form.Group>
+            <Form.Label>Full name</Form.Label>
+            <Form.Control type="text" size="sm" onChange={(e) => this.setState({ name: e.target.value })}></Form.Control>
+          </Form.Group>
+          <Form.Group style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <div style={{ width: '100%' }}>
+              <Form.Label>Email</Form.Label>
+              <Form.Control type="email" size="sm" onChange={(e) => this.setState({ email: e.target.value })}></Form.Control>
+            </div>
+          </Form.Group>
+          <Form.Group>
+          <div style={{ width: '100%' }}>
+              <Form.Label>Telephone Number</Form.Label>
+              <div style={{ display: 'flex' }}>
+                <Form.Select aria-label="Default select example" style={{ width: '130px' }} onChange={(e) => this.setState({ contactPrefix: e.target.value })}>
+                  {
+                    Object.values(mobilePrefixes).map(item => (
+                      <option value={item}>{item}</option>
+                    ))
+                  }
+                </Form.Select>
+                <Form.Control type="number" size="lg" onChange={(e) => this.setState({ contactNumber: e.target.value })}></Form.Control>
+              </div>
+            </div>
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>Organisation</Form.Label>
+            <Form.Control type="text" size="sm" onChange={(e) => this.setState({ organization: e.target.value })}></Form.Control>
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>Message</Form.Label>
+            <Form.Control type="text" size="sm" onChange={(e) => this.setState({ message: e.target.value })}></Form.Control>
+          </Form.Group>
+        </Form>
+        </div>
+        
         <div>
           {/* <p>Captcha</p> */}
           <Button style={{ float: 'right' }} className="btn-submit" onClick={() => this.handleSubmit()}>Submit</Button>
