@@ -9,7 +9,12 @@
 .main-content{
   text-align: center;
 }
-
+.red{
+  color: red
+}
+.white{
+  color: white
+}
 .contents{
   padding-top: 5%;
 }
