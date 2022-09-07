@@ -150,19 +150,5 @@ export default {
             )
         },
         open: false
-    }, {
-        title: '',
-        description: () => {
-            return (
-                <div style={{
-                    width: '100%',
-                    float: 'left',
-                    textAlign: 'justify'
-                }}>
-                    <p></p>
-                </div>
-            )
-        },
-        open: false
     }]
 }
