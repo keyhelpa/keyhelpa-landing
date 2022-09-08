@@ -152,9 +152,9 @@ class Stack extends Component {
                             color: Colors.agentTextTitle
                         }}>
                             <p>
-                                If you have any concerns or inquiries, please don’t hesitate to contact us at
+                                If you have any concerns or inquiries, please don’t hesitate to contact us at 
                                 <b>
-                                    support@keyhelpa.com
+                                    <a href="#">support@keyhelpa.com</a>
                                 </b>
                             </p>
                         </div>

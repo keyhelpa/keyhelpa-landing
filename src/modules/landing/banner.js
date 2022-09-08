@@ -179,7 +179,7 @@ class Banner extends Component {
                         component={ArrowBackIosIcon}
                         style={{
                             fontSize: 50,
-                            color: theme == 'agent' ? Colors.agentDarkGray : Colors.helpaDarkPink
+                            color: theme == 'agent' ?  Colors.helpaDarkPink : Colors.agentDarkGray
                         }}
                         className='card-icon'
                         />
@@ -188,7 +188,7 @@ class Banner extends Component {
                         component={ArrowForwardIosIcon}
                         style={{
                             fontSize: 50,
-                            color: theme == 'agent' ? Colors.agentDarkGray : Colors.helpaDarkPink
+                            color: theme == 'agent' ? Colors.helpaDarkPink : Colors.agentDarkGray
                         }}
                         className='card-icon'
                         />
