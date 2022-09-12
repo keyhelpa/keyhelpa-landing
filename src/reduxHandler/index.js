@@ -44,7 +44,7 @@ const initialState = {
   },{
     title: 'Members Login',
     type: 'external',
-    route:  Config.HELPA
+    route:  Config.AGENT
   }, {
     title: 'Join Us',
     type: 'external',
