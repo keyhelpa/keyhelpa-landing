@@ -281,10 +281,10 @@
     position: absolute;
     top: 30%;
     padding-left: 20px;
-    background-color: #f290bb;
+    background-color: #f290bb;  
     color: #E62D7E;
     padding-top: 30px;
-    width: 80px;
+    width: 60px;
     padding-bottom: 30px;
     border-radius: 200px;
     border-top-left-radius: 0;
@@ -299,7 +299,7 @@
     color: #34475D;
     padding-top: 30px;
     padding-left: 20px;
-    width: 80px;
+    width: 60px;
     padding-bottom: 30px;
     border-radius: 200px;
     border-top-right-radius: 0;

@@ -178,7 +178,7 @@ class Banner extends Component {
                         <SvgIcon
                         component={ArrowBackIosIcon}
                         style={{
-                            fontSize: 50,
+                            fontSize: 25,
                             color: theme == 'agent' ?  Colors.helpaDarkPink : Colors.agentDarkGray
                         }}
                         className='card-icon'
@@ -187,7 +187,7 @@ class Banner extends Component {
                         <SvgIcon
                         component={ArrowForwardIosIcon}
                         style={{
-                            fontSize: 50,
+                            fontSize: 25,
                             color: theme == 'agent' ? Colors.helpaDarkPink : Colors.agentDarkGray
                         }}
                         className='card-icon'
