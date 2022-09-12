@@ -14,6 +14,7 @@ import { Check } from '@mui/icons-material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Colors from 'common/Colors'
 import './mobile.css'
+import 'services/validator'
 import Modal from 'modules/generic/modal/textButton'
 const style = {
   iconAgent: {
@@ -72,7 +73,7 @@ export class Contacts extends Component {
     const { name, email, contactNumber, contactPrefix, organization, message, error} = this.state
     let params = {
       name: name,
-      email: email,
+      email: checkEmail(email) ? email : null,
       details: JSON.stringify({
         contact_number: contactPrefix + contactNumber,
         organization: organization,
