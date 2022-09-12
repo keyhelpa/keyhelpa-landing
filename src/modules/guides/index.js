@@ -149,7 +149,8 @@ class Guide extends Component {
                                 paddingBottom: 10,
                                 paddingLeft: 20,
                                 paddingRight: 20,
-                                marginBottom: 25
+                                marginBottom: 25,
+                                cursor: 'pointer'
                             }}
                                 onClick={() => {
                                     this.setState({

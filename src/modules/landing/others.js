@@ -176,7 +176,7 @@ export class Others extends Component {
           marginBottom: 100
         }}>
           <Button
-            title={'Get Started'}
+            title={'Get started'}
             style={{
               backgroundColor: theme == 'agent' ? Colors.agentDarkGray : Colors.helpaDarkPink,
               color: 'white',
