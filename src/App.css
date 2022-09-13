@@ -64,11 +64,9 @@ iframe {
 .modal-content {
   border-radius: 25px !important;
 }
-<<<<<<< HEAD
 .MuiOutlinedInput-notchedOutline{
   border: none !important;
 }
-=======
 
 .hide-on-desktop {
   display: none !important;
@@ -78,7 +76,6 @@ iframe {
   display: block !important;
 }
 
->>>>>>> 95a95b0213a86d36ea29607f365230d05a354539
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
