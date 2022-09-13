@@ -217,16 +217,13 @@ export class Contacts extends Component {
           <div style={{
             width: '100%',
             float: 'left',
-            color: Colors.white
+            color: Colors.white,
+            marginBottom: 25
           }}>
-            <p style={{
-              color: Colors.white
-            }}>
-              <b>Full name</b>
-            </p>
             <TextInput
               placeholder={'Type full name here'}
               type={"text"}
+              label={'Full name'}
               value={name}
               onChange={(name, ename) => {
                 this.setState({
@@ -255,21 +252,18 @@ export class Contacts extends Component {
           <div style={{
             width: '100%',
             float: 'left',
-            color: Colors.white
+            color: Colors.white,
+            marginBottom: 25
           }}>
             <div style={{
               float: 'left',
               width: '50%'
             }}>
-              <p style={{
-                color: Colors.white
-              }}>
-                <b>Email</b>
-              </p>
               <TextInput
                 placeholder={'Type full name here'}
                 type={"text"}
                 value={name}
+                label={'Email'}
                 onChange={(name, ename) => {
                   this.setState({
                     name,
@@ -318,16 +312,13 @@ export class Contacts extends Component {
           <div style={{
             width: '100%',
             float: 'left',
-            color: Colors.white
+            color: Colors.white,
+            marginBottom: 25
           }}>
-            <p style={{
-              color: Colors.white
-            }}>
-              <b>Organization name</b>
-            </p>
             <TextInput
               placeholder={'Type full organization here'}
               type={"text"}
+              label={'Organization name'}
               value={organization}
               onChange={(organization, eorganization) => {
                 this.setState({
@@ -355,21 +346,25 @@ export class Contacts extends Component {
           <div style={{
             width: '100%',
             float: 'left',
-            color: Colors.white
+            color: Colors.white,
+            marginBottom: 25
           }}>
-            <p style={{
-              color: Colors.white
-            }}>
-              <b>Message</b>
-            </p>
             <TextArea
-              placeholder={'Message'}
+              placeholder={'Type your message here'}
               type={"text"}
+              label={'Message'}
               style={{
                 background: 'transparent',
                 paddingLeft: 0,
                 paddingRight: 0,
-                minHeight: 150
+                minHeight: 100,
+                borderBottom: 'solid 2px ' + Colors.white
+              }}
+              inputStyle={{
+                color: Colors.white
+              }}
+              errorStyle={{
+                color: Colors.white
               }}
               value={message}
               rows={5}
