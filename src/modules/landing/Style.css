@@ -7,8 +7,8 @@
 .btnLeft h1{
   writing-mode: vertical-rl;
   font-size: 28px;
-  font-weight: bold
-  /* transform: rotate(180deg); */
+  font-weight: bold;
+  transform: rotate(180deg);
 }
 
 .btnLeft{
@@ -300,6 +300,7 @@
     color: #34475D;
     padding-top: 30px;
     padding-left: 20px;
+    height: auto;
     width: 60px;
     padding-bottom: 30px;
     border-radius: 200px;
