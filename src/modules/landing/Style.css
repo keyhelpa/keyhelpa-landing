@@ -7,8 +7,8 @@
 .btnLeft h1{
   writing-mode: vertical-rl;
   font-size: 28px;
-  font-weight: bold
-  /* transform: rotate(180deg); */
+  font-weight: bold;
+  transform: rotate(180deg);
 }
 
 .btnLeft{
