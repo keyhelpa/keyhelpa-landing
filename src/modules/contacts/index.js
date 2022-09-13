@@ -60,7 +60,8 @@ export class Contacts extends Component {
       submitted: false,
       error: null,
       show: false,
-      errorMessage: null
+      errorMessage: null,
+      successMessage: null
     }
   }
 
@@ -76,7 +77,8 @@ export class Contacts extends Component {
   handleSubmit() {
     const { name, email, contactNumber, contactPrefix, organization, message, error } = this.state
     this.setState({
-      errorMessage: null
+      errorMessage: null,
+      successMessage: null
     })
     let params = {
       name: name,
@@ -97,11 +99,8 @@ export class Contacts extends Component {
           eorganization: null,
           message: null,
           contactNumber: null,
-          error: true
+          successMessage: 'Successfully submitted.'
         })
-        setTimeout(() => {
-          this.setState({ submitted: false, show: true })
-        }, 5000)
       })
     } else {
       this.setState({
@@ -190,7 +189,7 @@ export class Contacts extends Component {
 
   renderRight() {
     const { theme, mobilePrefixes, errorMessage } = this.state
-    const { name, ename, email, eemail, contactNumber, organization, eorganization, message } = this.state
+    const { name, ename, email, eemail, contactNumber, organization, eorganization, message, successMessage } = this.state
     const { accountType } = this.props.state;
     return (
       <div
@@ -213,6 +212,17 @@ export class Contacts extends Component {
             }}>
               {
                 errorMessage
+              }
+            </p>
+          )
+        }
+        {
+          successMessage && (
+            <p style={{
+              color: Colors.white
+            }}>
+              {
+                successMessage
               }
             </p>
           )
