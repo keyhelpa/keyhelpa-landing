@@ -324,6 +324,8 @@ export class Contacts extends Component {
               <ContactNumber
                 contactNumber={this.state.contactNumber}
                 hasFlag={true}
+                style={{borderBottom: '3px solid white'}}
+                textColor={{color: 'white'}}
                 handleMobileNumber={(countryCode, mobile, errorMobile) => {
                   this.setState({
                     contactPrefix: countryCode,
