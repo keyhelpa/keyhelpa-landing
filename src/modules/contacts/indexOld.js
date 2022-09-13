@@ -220,7 +220,7 @@ export class Contacts extends Component {
               Full name
             </Form.Label>
           <Form.Control type="text" size="sm" style={{margin: 0}} onChange={(e) => this.setState({ name: e.target.value })}></Form.Control>
-          <Form.Label className={ accountType == 'agent' ? 'red' : 'white'} style={{ margin: '0px 0px 0px 10px'}}>
+          <Form.Label className={ accountType == 'agent' ? 'pink' : 'white'} style={{ margin: '0px 0px 0px 10px'}}>
                 {name == '' ? 'Invalid Name' : ''}
           </Form.Label>
           </Form.Group>
@@ -232,7 +232,7 @@ export class Contacts extends Component {
               <div style={{marginTop: '5px'}}>
               <Form.Control type="email" size="sm" style={{margin: 0}} onChange={(e) => this.setState({ email: e.target.value })}></Form.Control>
               </div>
-              <Form.Label className={ accountType == 'agent' ? 'red' : 'white'} style={{ margin: '0px 0px 0px 10px'}}>
+              <Form.Label className={ accountType == 'agent' ? 'pink' : 'white'} style={{ margin: '0px 0px 0px 10px'}}>
                   { email == '' ? 'Invalid Email' : ''}
                 </Form.Label>
             </div>
@@ -250,7 +250,7 @@ export class Contacts extends Component {
                 </Form.Select>
                 <Form.Control style={{margin:0}}type="number" size="sm" onChange={(e) => this.setState({ contactNumber: e.target.value })}></Form.Control>
               </div>
-              <Form.Label className={ accountType == 'agent' ? 'red' : 'white'} style={{ margin: '0px 0px 0px 5px'}}>
+              <Form.Label className={ accountType == 'agent' ? 'pink' : 'white'} style={{ margin: '0px 0px 0px 5px'}}>
                   { contactNumber == '' ? 'Invalid Number' : ''}
                 </Form.Label>
             </div>
@@ -260,7 +260,7 @@ export class Contacts extends Component {
               Organisation
               </Form.Label>
             <Form.Control style={{margin:0}} type="text" size="sm" onChange={(e) => this.setState({ organization: e.target.value })}></Form.Control>
-            <Form.Label className={ accountType == 'agent' ? 'red' : 'white'} style={{ margin: '0px 0px 0px 10px'}}>
+            <Form.Label className={ accountType == 'agent' ? 'pink' : 'white'} style={{ margin: '0px 0px 0px 10px'}}>
                 { organization == '' ? 'Invalid Organization Name' : ''}
               </Form.Label>
           </Form.Group>
@@ -269,7 +269,7 @@ export class Contacts extends Component {
               Message
             </Form.Label>
             <Form.Control style={{margin:0}} type="text" size="sm" onChange={(e) => this.setState({ message: e.target.value })}></Form.Control>
-            <Form.Label className={ accountType == 'agent' ? 'red' : 'white'} style={{ margin: '0px 0px 0px 10px'}}>
+            <Form.Label className={ accountType == 'agent' ? 'pink' : 'white'} style={{ margin: '0px 0px 0px 10px'}}>
               { message == '' ? 'Invalid Message' : ''}
               </Form.Label>
           </Form.Group>
@@ -283,7 +283,7 @@ export class Contacts extends Component {
               Full name
             </Form.Label>
           <Form.Control type="text" size="sm" style={{margin: 0}} onChange={(e) => this.setState({ name: e.target.value })}></Form.Control>
-          <Form.Label className={ accountType == 'agent' ? 'red' : 'white'} style={{ margin: '0px 0px 0px 10px'}}>
+          <Form.Label className={ accountType == 'agent' ? 'pink' : 'white'} style={{ margin: '0px 0px 0px 10px'}}>
                 {name == '' ? 'Invalid Name' : ''}
           </Form.Label>
           </Form.Group>
@@ -295,7 +295,7 @@ export class Contacts extends Component {
               <div style={{marginTop: '5px'}}>
               <Form.Control type="email" size="sm" style={{margin: 0}} onChange={(e) => this.setState({ email: e.target.value })}></Form.Control>
               </div>
-              <Form.Label className={ accountType == 'agent' ? 'red' : 'white'} style={{ margin: '0px 0px 0px 10px'}}>
+              <Form.Label className={ accountType == 'agent' ? 'pink' : 'white'} style={{ margin: '0px 0px 0px 10px'}}>
                   { email == '' ? 'Invalid Email' : ''}
                 </Form.Label>
             </div>
@@ -315,7 +315,7 @@ export class Contacts extends Component {
                 </Form.Select>
                 <Form.Control style={{margin:0}}type="number" size="sm" onChange={(e) => this.setState({ contactNumber: e.target.value })}></Form.Control>
               </div>
-              <Form.Label className={ accountType == 'agent' ? 'red' : 'white'} style={{ margin: '0px 0px 0px 5px'}}>
+              <Form.Label className={ accountType == 'agent' ? 'pink' : 'white'} style={{ margin: '0px 0px 0px 5px'}}>
                   { contactNumber == '' ? 'Invalid Number' : ''}
                 </Form.Label>
             </div>
@@ -325,7 +325,7 @@ export class Contacts extends Component {
               Organisation
               </Form.Label>
             <Form.Control style={{margin:0}} type="text" size="sm" onChange={(e) => this.setState({ organization: e.target.value })}></Form.Control>
-            <Form.Label className={ accountType == 'agent' ? 'red' : 'white'} style={{ margin: '0px 0px 0px 10px'}}>
+            <Form.Label className={ accountType == 'agent' ? 'pink' : 'white'} style={{ margin: '0px 0px 0px 10px'}}>
                 { organization == '' ? 'Invalid Organization Name' : ''}
               </Form.Label>
           </Form.Group>
@@ -334,7 +334,7 @@ export class Contacts extends Component {
               Message
             </Form.Label>
             <Form.Control style={{margin:0}} type="text" size="sm" onChange={(e) => this.setState({ message: e.target.value })}></Form.Control>
-            <Form.Label className={ accountType == 'agent' ? 'red' : 'white'} style={{ margin: '0px 0px 0px 10px'}}>
+            <Form.Label className={ accountType == 'agent' ? 'pink' : 'white'} style={{ margin: '0px 0px 0px 10px'}}>
               { message == '' ? 'Invalid Message' : ''}
               </Form.Label>
           </Form.Group>
