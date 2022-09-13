@@ -44,7 +44,7 @@ const initialState = {
   },{
     title: 'Members Login',
     type: 'external',
-    route:  Config.HELPA
+    route:  Config.AGENT
   }, {
     title: 'Join Us',
     type: 'external',
@@ -64,36 +64,36 @@ const reducer = (state = initialState, action) => {
         selectedUser: userTypes ? userTypes : selectedUser
       }
     case types.SET_RIGHT_MENU:
-      if(userTypes){
-        let exist = state.loginRightMenu.filter(item => {return item.title === 'About'})
-        if(exist.length > 0){
-          state.loginRightMenu[state.loginRightMenu.indexOf(exist[0])] = {
-            title: 'About',
-            type: 'internal',
-            route:  '/' + rightMenu + '/about'
-          }
-        }else{
-          state.loginRightMenu.unshift({
-            title: 'About',
-            type: 'internal',
-            route:  '/' + rightMenu + '/about'
-          })
-        }
-        exist = state.loginRightMenu.filter(items => {return items.title === 'Contact'})
-        if(exist.length > 0){
-          state.loginRightMenu[state.loginRightMenu.indexOf(exist[0])] = {
-            title: 'Contact',
-            type: 'internal',
-            route: '/' + rightMenu + '/contact'
-          }
-        }else{
-          state.loginRightMenu.unshift({
-            title: 'Contact',
-            type: 'internal',
-            route: '/' + rightMenu + '/contact'
-          })
-        }
-      }
+      // if(userTypes){
+      //   let exist = state.loginRightMenu.filter(item => {return item.title === 'About'})
+      //   if(exist.length > 0){
+      //     state.loginRightMenu[state.loginRightMenu.indexOf(exist[0])] = {
+      //       title: 'About',
+      //       type: 'internal',
+      //       route:  '/' + rightMenu + '/about'
+      //     }
+      //   }else{
+      //     state.loginRightMenu.unshift({
+      //       title: 'About',
+      //       type: 'internal',
+      //       route:  '/' + rightMenu + '/about'
+      //     })
+      //   }
+      //   exist = state.loginRightMenu.filter(items => {return items.title === 'Contact'})
+      //   if(exist.length > 0){
+      //     state.loginRightMenu[state.loginRightMenu.indexOf(exist[0])] = {
+      //       title: 'Contact',
+      //       type: 'internal',
+      //       route: '/' + rightMenu + '/contact'
+      //     }
+      //   }else{
+      //     state.loginRightMenu.unshift({
+      //       title: 'Contact',
+      //       type: 'internal',
+      //       route: '/' + rightMenu + '/contact'
+      //     })
+      //   }
+      // }
       return {
         ...state,
       }

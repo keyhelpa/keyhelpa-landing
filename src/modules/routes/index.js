@@ -64,7 +64,8 @@ class RouteList extends Component {
           <Route path="/" exact component={Landing}></Route>
           <Route path="/agent" exact component={Landing}></Route>
           <Route path="/helpa" exact component={Landing}></Route>
-          <Route path="/faq" exact component={Faq}></Route>
+          <Route path="/agent/faq" exact component={Faq}></Route>
+          <Route path="/helpa/faq" exact component={Faq}></Route>
           <Route path="/agent/about" exact component={About}></Route>
           <Route path="/helpa/about" exact component={About}></Route>
           <Route path="/agent/contact" exact component={Contacts}></Route>
@@ -76,6 +77,7 @@ class RouteList extends Component {
           <Route path="/helpa/guides/:path?" component={Guides}></Route>
           <Route path="/agent/guides/:path?" component={Guides}></Route>
           <Route path="/guides" exact component={Guides}></Route>
+          <Route path="*" component={PageNotFound}></Route>
           {/* {
             localStorage.getItem('user_type') === 'helpa' ? (
               <Route path="/*" exact component={PageNotFound}></Route>

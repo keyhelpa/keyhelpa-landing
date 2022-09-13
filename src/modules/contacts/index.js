@@ -14,6 +14,7 @@ import { Check } from '@mui/icons-material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Colors from 'common/Colors'
 import './mobile.css'
+import 'services/validator'
 import Modal from 'modules/generic/modal/textButton'
 import TextInput from "components/increment/generic/form/TextInput"
 import TextArea from 'components/increment/generic/form/TextArea'
@@ -83,7 +84,7 @@ export class Contacts extends Component {
     })
     let params = {
       name: name,
-      email: email,
+      email: checkEmail(email) ? email : null,
       details: JSON.stringify({
         contact_number: contactPrefix + contactNumber,
         organization: organization,
