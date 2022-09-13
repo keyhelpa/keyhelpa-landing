@@ -14,7 +14,7 @@ import { Check } from '@mui/icons-material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Colors from 'common/Colors'
 import './mobile.css'
-import 'services/validator'
+import validator from 'services/validator'
 import Modal from 'modules/generic/modal/textButton'
 const style = {
   iconAgent: {
@@ -73,7 +73,7 @@ export class Contacts extends Component {
     const { name, email, contactNumber, contactPrefix, organization, message, error} = this.state
     let params = {
       name: name,
-      email: checkEmail(email) ? email : null,
+      email: validator.checkEmail(email) ? email : null,
       details: JSON.stringify({
         contact_number: contactPrefix + contactNumber,
         organization: organization,
@@ -98,6 +98,7 @@ export class Contacts extends Component {
     }else{
       console.log('error::missing fields')
       this.renderAlert()
+      alert('Missing Fields')
       this.setState({
         show: true,
         error: true
