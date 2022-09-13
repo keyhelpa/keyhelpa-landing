@@ -64,6 +64,9 @@ iframe {
 .modal-content {
   border-radius: 25px !important;
 }
+.MuiOutlinedInput-notchedOutline{
+  border: none !important;
+}
 
 .hide-on-desktop {
   display: none !important;
