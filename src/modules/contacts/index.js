@@ -58,7 +58,8 @@ export class Contacts extends Component {
       mobilePrefixes: countryCodes.customList('countryCode', '+{countryCallingCode}'),
       submitted: false,
       error: null,
-      show: false
+      show: false,
+      errorMessage: null
     }
   }
 
@@ -73,6 +74,9 @@ export class Contacts extends Component {
 
   handleSubmit() {
     const { name, email, contactNumber, contactPrefix, organization, message, error } = this.state
+    this.setState({
+      errorMessage: null
+    })
     let params = {
       name: name,
       email: email,
@@ -99,11 +103,8 @@ export class Contacts extends Component {
         }, 5000)
       })
     } else {
-      console.log('error::missing fields')
-      this.renderAlert()
       this.setState({
-        show: true,
-        error: true
+        errorMessage: 'Please fill up the required fields.'
       })
     }
   }
@@ -187,7 +188,7 @@ export class Contacts extends Component {
   }
 
   renderRight() {
-    const { theme, mobilePrefixes, error } = this.state
+    const { theme, mobilePrefixes, errorMessage } = this.state
     const { name, ename, email, contactNumber, organization, eorganization, message } = this.state
     const { accountType } = this.props.state;
     return (
@@ -205,13 +206,15 @@ export class Contacts extends Component {
         className="full-width-mobile text-field-container"
       >
         {
-          this.error ? () => {
-            <div>
-              <p style={{
-                color: 'red'
-              }}>A network error has occurred. Please try again.</p>
-            </div>
-          } : ""
+          errorMessage && (
+            <p style={{
+              color: Colors.white
+            }}>
+              {
+                errorMessage
+              }
+            </p>
+          )
         }
         <div className='web'>
           <div style={{
