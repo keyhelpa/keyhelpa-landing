@@ -76,6 +76,7 @@ class RouteList extends Component {
           <Route path="/helpa/guides/:path?" component={Guides}></Route>
           <Route path="/agent/guides/:path?" component={Guides}></Route>
           <Route path="/guides" exact component={Guides}></Route>
+          <Route path="*" component={PageNotFound}></Route>
           {/* {
             localStorage.getItem('user_type') === 'helpa' ? (
               <Route path="/*" exact component={PageNotFound}></Route>
