@@ -17,6 +17,7 @@ import './mobile.css'
 import Modal from 'modules/generic/modal/textButton'
 import TextInput from "components/increment/generic/form/TextInput"
 import TextArea from 'components/increment/generic/form/TextArea'
+import ContactNumber from 'components/increment/generic/form/ContactNumber';
 const style = {
   iconAgent: {
     width: 40,
@@ -319,14 +320,26 @@ export class Contacts extends Component {
               }}>
                 <b>Phone number</b>
               </p>
-              <Form.Select aria-label="Default select example" style={{ width: '130px', margin: 0 }} onChange={(e) => this.setState({ contactPrefix: e.target.value })}>
+              <ContactNumber
+                contactNumber={this.state.contactNumber}
+                hasFlag={true}
+                handleMobileNumber={(countryCode, mobile, errorMobile) => {
+                  this.setState({
+                    contactPrefix: countryCode,
+                    contactNumber: mobile, 
+                    errorMobile
+                  })
+                }}
+                errorMobile={''}
+              />
+              {/* <Form.Select aria-label="Default select example" style={{ width: '130px', margin: 0 }} onChange={(e) => this.setState({ contactPrefix: e.target.value })}>
                 {
                   Object.values(mobilePrefixes).map(item => (
                     <option value={item}>{item}</option>
                   ))
                 }
               </Form.Select>
-              <Form.Control style={{ margin: 0 }} type="number" size="sm" onChange={(e) => this.setState({ contactNumber: e.target.value })}></Form.Control>
+              <Form.Control style={{ margin: 0 }} type="number" size="sm" onChange={(e) => this.setState({ contactNumber: e.target.value })}></Form.Control> */}
             </div>
 
           </div>
