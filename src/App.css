@@ -65,6 +65,14 @@ iframe {
   border-radius: 25px !important;
 }
 
+.hide-on-desktop {
+  display: none !important;
+}
+
+.hide-on-mobile {
+  display: block !important;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -157,5 +165,13 @@ iframe {
   .unset-flex-mobile {
     display: unset !important;
     justify-content: unset !important;
+  }
+
+  .hide-on-desktop {
+    display: block !important;
+  }
+
+  .hide-on-mobile {
+    display: none !important;
   }
 }

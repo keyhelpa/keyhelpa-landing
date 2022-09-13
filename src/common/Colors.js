@@ -37,7 +37,7 @@ export default{
 	helpaHeaderBackground: '#f290bb',
 	helpaBackgroundColor: '#fffafc',
 	helpaTextTitle: '#686868',
-	helpaText: '#686868',
+	helpaPink: '#686868',
 	helpaPink: '#f290bb',
 	helpaDarkPink: '#E62D7E',
 	helpaVidText: "#B6B6B6",
