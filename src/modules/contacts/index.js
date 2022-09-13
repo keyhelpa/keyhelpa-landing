@@ -51,6 +51,7 @@ export class Contacts extends Component {
       name: null,
       ename: null,
       email: null,
+      eemail: null,
       contactNumber: null,
       contactPrefix: null,
       organization: null,
@@ -189,7 +190,7 @@ export class Contacts extends Component {
 
   renderRight() {
     const { theme, mobilePrefixes, errorMessage } = this.state
-    const { name, ename, email, contactNumber, organization, eorganization, message } = this.state
+    const { name, ename, email, eemail, contactNumber, organization, eorganization, message } = this.state
     const { accountType } = this.props.state;
     return (
       <div
@@ -216,7 +217,10 @@ export class Contacts extends Component {
             </p>
           )
         }
-        <div className='web'>
+        <div style={{
+          width: '100%',
+          float: 'left',
+        }}>
           <div style={{
             width: '100%',
             float: 'left',
@@ -255,24 +259,24 @@ export class Contacts extends Component {
           <div style={{
             width: '100%',
             float: 'left',
-            color: Colors.white,
-            marginBottom: 25
+            color: Colors.white
           }}>
             <div style={{
               float: 'left',
-              width: '50%'
+              width: '50%',
+              marginBottom: 25
             }}
             className="full-width-mobile"
             >
               <TextInput
-                placeholder={'Type full name here'}
+                placeholder={'Type email here'}
                 type={"text"}
-                value={name}
+                value={email}
                 label={'Email'}
-                onChange={(name, ename) => {
+                onChange={(email, eemail) => {
                   this.setState({
-                    name,
-                    ename
+                    email,
+                    eemail
                   })
                 }}
                 style={{
@@ -286,16 +290,17 @@ export class Contacts extends Component {
                 }}
                 validation={{
                   size: 2,
-                  type: 'text',
-                  column: 'Name',
-                  error: ename
+                  type: 'email',
+                  column: 'Email',
+                  error: eemail
                 }}
               />
             </div>
 
             <div style={{
               float: 'left',
-              width: '50%'
+              width: '50%',
+              marginBottom: 25
             }}
             className="full-width-mobile"
             >
