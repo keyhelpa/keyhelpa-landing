@@ -331,7 +331,7 @@ export class Contacts extends Component {
                   this.setState({
                     contactPrefix: countryCode,
                     contactNumber: mobile, 
-                    errorMobile
+                    errorMessage: errorMobile
                   })
                 }}
                 errorMobile={''}
