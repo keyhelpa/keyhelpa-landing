@@ -78,6 +78,9 @@ export class Contacts extends Component {
 
   handleSubmit() {
     const { name, email, contactNumber, contactPrefix, organization, message, error } = this.state
+    if(this.state.errorMessage !== null){
+      return
+    }
     this.setState({
       errorMessage: null,
       successMessage: null
