@@ -172,7 +172,7 @@ class Banner extends Component {
             }}  className={theme=='helpa' ? 'Helpa' : ''}
                 src={theme == 'agent'? require('../../assets/agent-mobile-bg.png') : require('../../assets/helpa-mobile-bg.png')}></img>
                 
-                <div className={theme === 'agent' ? 'btnLeft' : 'btnRight'} style={{cursor: 'pointer'}} onClick={() => this.handleClick()}>
+                <div className={theme === 'agent' ? 'btnLeft' : 'btnRight'} style={{cursor: 'pointer',paddingLeft: '14px', width: '50px'}} onClick={() => this.handleClick()}>
                     {
                         theme === 'agent' ? 
                         <SvgIcon
