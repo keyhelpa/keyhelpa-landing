@@ -168,7 +168,7 @@ class Banner extends Component {
             <img style={{
                 justifyContent: 'right',
                 width: '100%',
-                marginTop: '25%',
+                marginTop: '25%'
             }}  className={theme=='helpa' ? 'Helpa' : ''}
                 src={theme == 'agent'? require('../../assets/agent-mobile-bg.png') : require('../../assets/helpa-mobile-bg.png')}></img>
                 
