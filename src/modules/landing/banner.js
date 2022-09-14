@@ -168,11 +168,11 @@ class Banner extends Component {
             <img style={{
                 justifyContent: 'right',
                 width: '100%',
-                marginTop: '25%'
+                marginTop: '25%',
             }}  className={theme=='helpa' ? 'Helpa' : ''}
                 src={theme == 'agent'? require('../../assets/agent-mobile-bg.png') : require('../../assets/helpa-mobile-bg.png')}></img>
                 
-                <div className={theme === 'agent' ? 'btnLeft' : 'btnRight'} style={{cursor: 'pointer'}} onClick={() => this.handleClick()}>
+                <div className={theme === 'agent' ? 'btnLeft' : 'btnRight'} style={{cursor: 'pointer',paddingLeft: '14px', width: '50px'}} onClick={() => this.handleClick()}>
                     {
                         theme === 'agent' ? 
                         <SvgIcon
