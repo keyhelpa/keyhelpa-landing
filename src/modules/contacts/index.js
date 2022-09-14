@@ -311,8 +311,9 @@ export class Contacts extends Component {
 
             <div style={{
               float: 'left',
-              width: '50%',
-              marginBottom: 25
+              width: '45%',
+              marginBottom: 25,
+              marginLeft: '35px'
             }}
             className="full-width-mobile"
             >
