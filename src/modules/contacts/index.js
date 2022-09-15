@@ -78,7 +78,7 @@ export class Contacts extends Component {
 
   handleSubmit() {
     const { name, email, contactNumber, contactPrefix, organization, message, error } = this.state
-    if(this.state.errorMessage !== null){
+    if (this.state.errorMessage !== null) {
       return
     }
     this.setState({
@@ -89,7 +89,7 @@ export class Contacts extends Component {
       name: name,
       email: validator.checkEmail(email) ? email : null,
       details: JSON.stringify({
-        contact_number: contactPrefix + contactNumber,
+        contact_number: '+' + contactPrefix + contactNumber,
         organization: organization,
         message: message
       })
@@ -104,7 +104,8 @@ export class Contacts extends Component {
           eorganization: null,
           message: null,
           contactNumber: null,
-          successMessage: 'Successfully submitted.'
+          successMessage: 'Successfully submitted.',
+          show: true
         })
       })
     } else {
@@ -163,31 +164,18 @@ export class Contacts extends Component {
   }
 
   renderAlert() {
-    const { theme, error, show } = this.state
-    console.log('error', error)
+    const { theme, error, show, submitted } = this.state
     return (
       <div>
-        {error == true ?
-          <Modal
-            show={show}
-            title={'Error'}
-            description={'Please fill out missing fields'}
-            withCancel={true}
-            onCancel={this.setState({
-              show: false
-            })}
-          />
-          :
-          <Modal
-            show={show}
-            title={'Thank  you!'}
-            description={'Your message has been sent. Our support team will respond within 24 hours'}
-            withCancel={true}
-            onCancel={this.setState({
-              show: false
-            })}
-          />
-        }
+        <Modal
+          show={show}
+          title={'Thank  you!'}
+          description={'Your message has been sent. Our support team will respond within 24 hours'}
+          withCancel={true}
+          onCancel={() => this.setState({
+            show: false
+          })}
+        />
       </div>
     )
   }
@@ -281,7 +269,7 @@ export class Contacts extends Component {
               width: '50%',
               marginBottom: 25
             }}
-            className="full-width-mobile"
+              className="full-width-mobile"
             >
               <TextInput
                 placeholder={'Type email here'}
@@ -318,7 +306,7 @@ export class Contacts extends Component {
               marginBottom: 25,
               marginLeft: '35px'
             }}
-            className="full-width-mobile"
+              className="full-width-mobile"
             >
               <p style={{
                 color: Colors.white
@@ -328,12 +316,12 @@ export class Contacts extends Component {
               <ContactNumber
                 contactNumber={this.state.contactNumber}
                 hasFlag={false}
-                style={{borderBottom: '3px solid white'}}
-                textColor={{color: 'white'}}
+                style={{ borderBottom: '3px solid white' }}
+                textColor={{ color: 'white' }}
                 handleMobileNumber={(countryCode, mobile, errorMobile) => {
                   this.setState({
                     contactPrefix: countryCode,
-                    contactNumber: mobile, 
+                    contactNumber: mobile,
                     errorMessage: errorMobile
                   })
                 }}
@@ -470,9 +458,9 @@ export class Contacts extends Component {
         minHeight: '100vh'
       }}>
         {this.renderContent()}
-        {this.state.submitted && (
-          this.renderAlert()
-        )}
+        {/* {this.state.submitted && ( */}
+        {this.renderAlert()}
+        {/* )} */}
       </div>
     )
   }
