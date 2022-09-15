@@ -4,6 +4,17 @@ import HelpaLogo from 'assets/img/logo_footer_helpa.png'
 export default {
   name: 'Keyhelpa',
   ACCOUNT_TYPE: 'landing',
+  AGENT_LOGIN: 'https://agent.keyhelpa.com',
+  AGENT_SIGNUP: 'https://agent.keyhelpa.com/signup',
+  FREELANCER_LOGIN: 'https://app.keyhelpa.com',
+  FREELANCER_SIGNUP: 'https://app.keyhelpa.com/signup',
+  redirect(accountType, page){
+    if(accountType.toLowerCase() == 'agent'){
+      window.location.href = page.toLowerCase() == 'join us' ? this.AGENT_SIGNUP : this.AGENT_LOGIN
+    }else{
+      window.location.href = page.toLowerCase() == 'join us' ? this.FREELANCER_SIGNUP : this.FREELANCER_LOGIN
+    }
+  },
   headerMenu: [{
     title: 'Agent Looking for Helpa',
     position: 'left',
@@ -38,11 +49,11 @@ export default {
     }, {
       title: 'Members login',
       type: 'external',
-      route: Config.HELPA
+      route: Config.HELPA 
     }, {
       title: 'Join us',
       type: 'external',
-      route: Config.HELPA
+      route: Config.HELPA + "signup"
     }]
   },
   mobileMenu: [{
@@ -64,7 +75,7 @@ export default {
   }, {
     title: 'Join us',
     type: 'external',
-    route: Config.HELPA
+    route: Config.HELPA + "signup"
   }],
   getFooterLogo() {
     let curr_path = window.location.pathname

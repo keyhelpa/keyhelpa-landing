@@ -33,5 +33,14 @@ export default{
 	    }else{
 	      return true
 	    }
+	},
+
+	checkPhoneNumber(value){
+		let reg = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/
+		if(reg.test(value)){
+			return true
+		}else{
+			return false
+		}
 	}
 }

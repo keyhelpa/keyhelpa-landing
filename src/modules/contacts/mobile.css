@@ -19,3 +19,13 @@
         text-align: center !important;
     }
 }
+
+@media (max-width: 1804px) {
+    .contactNumber{
+        margin-left: 0 !important;
+    }
+
+    .contactNumber, .email{
+        width: 100% !important;
+    }
+}

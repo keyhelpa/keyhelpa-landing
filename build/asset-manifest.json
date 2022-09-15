@@ -1,7 +1,8 @@
 {
   "files": {
-    "main.css": "/static/css/main.3294cf2b.css",
-    "main.js": "/static/js/main.65cc5c6d.js",
+    "main.css": "/static/css/main.64f93f2f.css",
+    "main.js": "/static/js/main.5a02a668.js",
+    "static/media/landing_banner.png": "/static/media/landing_banner.ffaf29cbd163a05cd80e.png",
     "static/media/helpaRight.png": "/static/media/helpaRight.72af74feda5a77b30fd7.png",
     "static/media/agentLeft.png": "/static/media/agentLeft.5baf66453a322368a2b8.png",
     "static/media/helpa-circle-up.png": "/static/media/helpa-circle-up.34e54f687e5689b1b591.png",
@@ -13,17 +14,18 @@
     "static/media/helpa-circle.png": "/static/media/helpa-circle.2f3878be6a9a6bf9dfe7.png",
     "static/media/agent-circle.png": "/static/media/agent-circle.2d5b602014adda360077.png",
     "static/media/Helpa.png": "/static/media/Helpa.339d8b834037e9f1abf7.png",
+    "static/media/helpa-mobile-circle-right.png": "/static/media/helpa-mobile-circle-right.5a26aa923f6767b44e71.png",
     "static/media/helpa-mobile-bg.png": "/static/media/helpa-mobile-bg.500e680de84ef491beb3.png",
     "static/media/helpa-mobile-circle.png": "/static/media/helpa-mobile-circle.031b0cea58da659ce4b8.png",
     "static/media/agent-mobile-circle.png": "/static/media/agent-mobile-circle.02d381055e5759f234fe.png",
     "static/media/agent-mobile-bg.png": "/static/media/agent-mobile-bg.db8e73bcc55d85e5c3cc.png",
+    "static/media/group_freelancer.png": "/static/media/group_freelancer.112ca10bc99775b86abc.png",
     "static/media/group_agent.png": "/static/media/group_agent.052ae8a096f0202fe295.png",
     "static/media/helpa-video-thumbnail.png": "/static/media/helpa-video-thumbnail.a6ddf3292fdd6925ed63.png",
     "static/media/agent-video-thumbnail.png": "/static/media/agent-video-thumbnail.d1f2f4d069055e06367e.png",
     "static/media/Agent.png": "/static/media/Agent.1a36e1d25e28768e4653.png",
     "static/media/man-gray.png": "/static/media/man-gray.80d4f1f5e14d5f8bb2df.png",
     "static/media/man-pink.png": "/static/media/man-pink.dddf9e16e706a18e5630.png",
-    "static/media/helpa-mobile-circle-right.png": "/static/media/helpa-mobile-circle-right.8135b60dcae70465fc11.png",
     "static/media/JohnAgent.png": "/static/media/JohnAgent.c986cf749734500d2b05.png",
     "static/media/Sarah.png": "/static/media/Sarah.cb7414ecf284f3ab5023.png",
     "static/media/helpa-mobile-circle-left.png": "/static/media/helpa-mobile-circle-left.b526bc15235574bbadec.png",
@@ -42,11 +44,11 @@
     "static/media/guide.png": "/static/media/guide.e0fcef3805e7929c1806.png",
     "static/media/logo.svg": "/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/index.html",
-    "main.3294cf2b.css.map": "/static/css/main.3294cf2b.css.map",
-    "main.65cc5c6d.js.map": "/static/js/main.65cc5c6d.js.map"
+    "main.64f93f2f.css.map": "/static/css/main.64f93f2f.css.map",
+    "main.5a02a668.js.map": "/static/js/main.5a02a668.js.map"
   },
   "entrypoints": [
-    "static/css/main.3294cf2b.css",
-    "static/js/main.65cc5c6d.js"
+    "static/css/main.64f93f2f.css",
+    "static/js/main.5a02a668.js"
   ]
 }
