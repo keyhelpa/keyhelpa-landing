@@ -40,7 +40,7 @@ const initialState = {
   loginRightMenu: [{
     title: 'Guides',
     type: 'external',
-    route:  '/guide'
+    route:  '/guides'
   },{
     title: 'Members Login',
     type: 'external',
