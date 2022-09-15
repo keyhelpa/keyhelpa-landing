@@ -47,7 +47,7 @@ class WorkHistory extends Component {
                     </ul>
                     <li>Once you have made changes or updates on your experience, just click the “Save” button to save your changes.</li>
                 </ol>
-                <p>If you have any concerns or inquiries, please don’t hesitate to <a href='#'>contact us</a>. </p>
+                <p>If you have any concerns or inquiries, please don’t hesitate to <a href='../contact'>contact us</a>. </p>
             </div>
         )
     }
