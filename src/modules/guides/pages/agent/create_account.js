@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import Colors from 'common/Colors';
 import VideoCard from 'modules/guides/videoCard'
 import './agent.css'
 import Data from 'modules/guides/data'
+import Config from "common/Config";
 class CreateAccountAgent extends Component {
     constructor(props) {
         super(props)
@@ -40,7 +41,7 @@ class CreateAccountAgent extends Component {
             }}>
                 <p>Follow the steps below to register as Agent in KeyHelpa:</p>
                 <ol type='1'>
-                    <li>Go to the Agent Sign Up Page (Click <a href='#'>here</a>).</li>
+                    <li>Go to the Agent Sign Up Page (Click <a href={Config.AGENT+'signup'}>here</a>).</li>
                     <li>Start registering your credentials such as:</li>
                     <ol type='a'>
                         <li>First Name</li>
@@ -56,7 +57,7 @@ class CreateAccountAgent extends Component {
                     <li>Once providing all details, click the “Create Account” button. That’s it! You have successfully created your account and you will be redirected to your dashboard for <a href='#'>profile setup</a>.</li>
                     <li>You may also sign up by linking your social media account such as Facebook, Google and Linkedin.</li>              
                 </ol>
-                <p>If you have any concerns or inquiries, please don’t hesitate to <a href='#'>contact us</a>. </p>
+                <p>If you have any concerns or inquiries, please don’t hesitate to <a href='../contact'>contact us</a>. </p>
             </div>
         )
     }
