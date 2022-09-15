@@ -52,11 +52,11 @@ export default {
     }, {
       title: 'Members login',
       type: 'external',
-      route: Config.HELPA
+      route: Config.HELPA 
     }, {
       title: 'Join us',
       type: 'external',
-      route: Config.HELPA
+      route: Config.HELPA + "signup"
     }]
   },
   mobileMenu: [{
@@ -78,7 +78,7 @@ export default {
   }, {
     title: 'Join us',
     type: 'external',
-    route: Config.HELPA
+    route: Config.HELPA + "signup"
   }],
   getFooterLogo() {
     let curr_path = window.location.pathname

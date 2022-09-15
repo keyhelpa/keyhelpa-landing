@@ -52,7 +52,7 @@ class UpdateBankHelpa extends Component {
                 </ol>
                 <p><b className='b-helpa'>Reminders</b>:</p>
                 <p>You will require usual online banking details. KeyHelpa uses Stripe for secure payments and financial services.</p>
-                <p>If you have any concerns or inquiries, please don’t hesitate to <a href='#'>contact us</a>. </p>
+                <p>If you have any concerns or inquiries, please don’t hesitate to <a href='../contact'>contact us</a>. </p>
             </div>
         )
     }
