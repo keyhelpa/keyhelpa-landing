@@ -4,8 +4,6 @@ import HelpaLogo from 'assets/img/logo_footer_helpa.png'
 export default {
   name: 'Keyhelpa',
   ACCOUNT_TYPE: 'landing',
-  AGENT_LOGIN: 'https://agent.keyhelpa.com',
-  AGENT_SIGNUP: 'https://agent.keyhelpa.com/signup',
   FREELANCER_LOGIN: 'https://app.keyhelpa.com',
   FREELANCER_SIGNUP: 'https://app.keyhelpa.com/signup',
   redirect(accountType, page){
