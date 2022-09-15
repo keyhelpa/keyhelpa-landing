@@ -269,7 +269,7 @@ export class Contacts extends Component {
               width: '50%',
               marginBottom: 25
             }}
-              className="full-width-mobile"
+              className="full-width-mobile email"
             >
               <TextInput
                 placeholder={'Type email here'}
@@ -304,9 +304,9 @@ export class Contacts extends Component {
               float: 'left',
               width: '45%',
               marginBottom: 25,
-              marginLeft: '35px'
+              marginLeft: 35
             }}
-              className="full-width-mobile"
+              className="full-width-mobile contactNumber"
             >
               <p style={{
                 color: Colors.white
