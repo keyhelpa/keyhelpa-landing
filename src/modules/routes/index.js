@@ -66,8 +66,8 @@ class RouteList extends Component {
           <Route path="/helpa" exact component={Landing}></Route>
           <Route path="/agent/faq" exact component={Faq}></Route>
           <Route path="/helpa/faq" exact component={Faq}></Route>
-          <Route path="/agent/about" exact component={About}></Route>
-          <Route path="/helpa/about" exact component={About}></Route>
+          <Route path="/agent/about_us" exact component={About}></Route>
+          <Route path="/helpa/about_us" exact component={About}></Route>
           <Route path="/agent/contact_us" exact component={Contacts}></Route>
           <Route path="/helpa/contact_us" exact component={Contacts}></Route>
           <Route path="/agent/terms_and_conditions" exact component={Stack}></Route>
