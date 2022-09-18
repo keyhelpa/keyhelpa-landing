@@ -94,7 +94,9 @@ export class Contacts extends Component {
         message: message
       })
     }
-    if (params.name !== null && params.email !== null && params.details.contactNumber !== null && params.details.organization !== null && params.details.message !== null) {
+    console.log('message::', params.details.message)
+    console.log('organization::', params.details.organization)
+    if (params.name !== null && params.email !== null && params.details.contactNumber !== null && params.details.organization !== null && params.details.organization !== undefined && params.details.message !== null && params.details.message !== undefined) {
       API.request(Routes.createContact, params, response => {
         this.setState({
           submitted: true,
@@ -168,10 +170,13 @@ export class Contacts extends Component {
     return (
       <div>
         <Modal
+          customFooter={true}
+          centered={true}
           show={show}
           title={'Thank  you!'}
           description={'Your message has been sent. Our support team will respond within 24 hours'}
-          withCancel={true}
+          withButton={true}
+          buttonMsg={'Ok'}
           onCancel={() => this.setState({
             show: false
           })}
