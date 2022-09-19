@@ -5,6 +5,7 @@ import Colors from 'common/Colors';
 import VideoCard from 'modules/guides/videoCard'
 import './agent.css'
 import Data from 'modules/guides/data'
+import Config from "common/Config";
 class InterviewHelpa extends Component {
     constructor(props) {
         super(props)
@@ -66,7 +67,7 @@ class InterviewHelpa extends Component {
                         <li>Remove - this action will delete the candidate details or row from the table of unsuccessful interviews.</li>
                     </ol>
                 </ol>
-                <p>If you have any concerns or inquiries, please don’t hesitate to <a href='../contact_us'>contact us</a>. </p>
+                <p>If you have any concerns or inquiries, please don’t hesitate to <a href={Config.LANDING+"agent/contact_us"}>contact us</a>. </p>
             </div>
         )
     }

@@ -5,6 +5,7 @@ import Colors from 'common/Colors';
 import VideoCard from 'modules/guides/videoCard'
 import './agent.css'
 import Data from 'modules/guides/data'
+import Config from "common/Config";
 class EditBasicAgent extends Component {
     constructor(props) {
         super(props)
@@ -57,7 +58,7 @@ class EditBasicAgent extends Component {
                     </ul>
                     <li>Once you have made changes or updates on your basic information, just click the “Save” button to save your changes.</li>
                 </ol>
-                <p>If you have any concerns or inquiries, please don’t hesitate to <a href='../contact_us'>contact us</a>. </p>
+                <p>If you have any concerns or inquiries, please don’t hesitate to <a href={Config.LANDING+"agent/contact_us"}>contact us</a>. </p>
             </div>
         )
     }

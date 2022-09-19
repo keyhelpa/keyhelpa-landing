@@ -5,6 +5,7 @@ import Colors from 'common/Colors';
 import VideoCard from 'modules/guides/videoCard'
 import './agent.css'
 import Data from 'modules/guides/data'
+import Config from "common/Config";
 class JobPosting extends Component {
     constructor(props) {
         super(props)
@@ -55,7 +56,7 @@ class JobPosting extends Component {
                     </ol>
                     <li>All job postings will be added to your “My Job” page where you can edit, draft, and activate it. You can also check how many Helpa have messaged you about the job.</li>
                 </ol>
-                <p>If you have any concerns or inquiries, please don’t hesitate to <a href='../contact_us'>contact us</a>. </p>
+                <p>If you have any concerns or inquiries, please don’t hesitate to <a href={Config.LANDING+"agent/contact_us"}>contact us</a>. </p>
             </div>
         )
     }

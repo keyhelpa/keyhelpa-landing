@@ -5,6 +5,7 @@ import Colors from 'common/Colors';
 import VideoCard from 'modules/guides/videoCard'
 import './agent.css'
 import Data from 'modules/guides/data'
+import Config from "common/Config";
 class UpdateBankAgent extends Component {
     constructor(props) {
         super(props)
@@ -55,7 +56,7 @@ class UpdateBankAgent extends Component {
                     <li>Payments day: On Monday of each week for the duration of the term of the contract the freelancer submits a payment request. The payment is equal to "weekly payment''. Payer receives a notification email of payment due. The payer is not required to take any action unless he/she declines the payment by clicking the decline link.</li>
                     <li>Decline payment: Payer is required to provide reasons for the cancellation of the contract and for declining payment. - A notification is sent to the freelancer for their reply. The payment held in Stripe is held in Keyhelpa's disputed account until the dispute is settled within the terms and conditions.</li>
                 </ul>
-                <p>If you have any concerns or inquiries, please don’t hesitate to <a href='../contact_us'>contact us</a>. </p>
+                <p>If you have any concerns or inquiries, please don’t hesitate to <a href={Config.LANDING+"agent/contact_us"}>contact us</a>. </p>
             </div>
         )
     }

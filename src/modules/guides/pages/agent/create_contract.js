@@ -5,6 +5,7 @@ import Colors from 'common/Colors';
 import VideoCard from 'modules/guides/videoCard'
 import './agent.css'
 import Data from 'modules/guides/data'
+import Config from "common/Config";
 class CreateContract extends Component {
     constructor(props) {
         super(props)
@@ -50,7 +51,7 @@ class CreateContract extends Component {
                     <p><b className='b-agent'>Note</b>: Before sending the final job offer, make sure to review and check if all the information or content of the contract is all good and correct. If something is missed or wrong, you may click the “Back to Edit” button and correct the changes before sending your job offer to Helpa.</p>
                 </ol>
                 <p>All the contracts that you have sent to Helpas will be found in your “My contracts” page which has the following status: active, pending, pause, dispute, end, and rejected.</p>
-                <p>If you have any concerns or inquiries, please don’t hesitate to <a href='../contact_us'>contact us</a>. </p>
+                <p>If you have any concerns or inquiries, please don’t hesitate to <a href={Config.LANDING+"agent/contact_us"}>contact us</a>. </p>
             </div>
         )
     }
