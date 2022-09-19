@@ -59,7 +59,7 @@ class ManageNotifAgent extends Component {
                         <li>Communications from KeyHelpa</li>
                     </ul>
                 </ol>
-                <p>If you have any concerns or inquiries, please don’t hesitate to <a href='../contact'>contact us</a>. </p>
+                <p>If you have any concerns or inquiries, please don’t hesitate to <a href='../contact_us'>contact us</a>. </p>
             </div>
         )
     }

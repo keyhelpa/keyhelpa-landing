@@ -66,7 +66,7 @@ class InterviewHelpa extends Component {
                         <li>Remove - this action will delete the candidate details or row from the table of unsuccessful interviews.</li>
                     </ol>
                 </ol>
-                <p>If you have any concerns or inquiries, please don’t hesitate to <a href='../contact'>contact us</a>. </p>
+                <p>If you have any concerns or inquiries, please don’t hesitate to <a href='../contact_us'>contact us</a>. </p>
             </div>
         )
     }

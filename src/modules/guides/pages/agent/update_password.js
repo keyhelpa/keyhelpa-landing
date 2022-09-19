@@ -50,7 +50,7 @@ class UpdatePasswordAgent extends Component {
                 </ol>
                 <p><b className='b-agent'>Tips</b>:</p>
                 <p>When coming up with a new password, you want something that can be safe from guesswork and hacking attempts. You may be tempted to use a long password, but quality is much more important than quantity. Please avoid using any personal information such as dates, addresses or names. Also avoid using simple words and phrases; if you do, make them grammatically incorrect to avoid guessing. Use random combinations of numbers, letters and symbols that can still be easy to remember. </p>
-                <p>If you have any concerns or inquiries, please don’t hesitate to <a href='../contact'>contact us</a>. </p>
+                <p>If you have any concerns or inquiries, please don’t hesitate to <a href='../contact_us'>contact us</a>. </p>
             </div>
         )
     }
