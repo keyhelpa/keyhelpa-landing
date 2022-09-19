@@ -59,7 +59,7 @@ class Stack extends Component {
                     <p>Once done with setting all the parameters you want to be filtered, just click the “Set Filter” button to save your filter settings. Otherwise, click the “Clear All” if you want to reset your filter settings. </p>
                     <li>After you click the “Set Filter” button, the “Filter jobs” modal will automatically close and on the “Find works” page will give you the matched job hiring results of your filter. Otherwise, if the filter is reset, the matched jobs will be back into the default random results.</li>
                 </ol>
-                <p>If you have any concerns or inquiries, please don’t hesitate to <a href='../contact'>contact us</a>. </p>
+                <p>If you have any concerns or inquiries, please don’t hesitate to <a href='../contact_us'>contact us</a>. </p>
             </div>
         )
     }
