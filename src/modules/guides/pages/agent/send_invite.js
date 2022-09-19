@@ -5,6 +5,7 @@ import Colors from 'common/Colors';
 import './agent.css'
 import Data from 'modules/guides/data'
 import VideoCard from 'modules/guides/videoCard'
+import Config from "common/Config";
 class SendInvite extends Component {
     constructor(props) {
         super(props)
@@ -45,7 +46,7 @@ class SendInvite extends Component {
                     <p>Once you are done selecting the job and adding your message to Helpa, you can click the “Send” button to finally send the invitation.</p>
                     <li>By sending a job invitation to Helpa, the Helpa will receive an email notification and will create a thread message on your app Messages' page.</li>
                 </ol>
-                <p>If you have any concerns or inquiries, please don’t hesitate to <a href='../contact_us'>contact us</a>. </p>
+                <p>If you have any concerns or inquiries, please don’t hesitate to <a href={Config.LANDING+"agent/contact_us"}>contact us</a>. </p>
             </div>
         )
     }

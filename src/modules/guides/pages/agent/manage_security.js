@@ -5,6 +5,7 @@ import Colors from 'common/Colors';
 import VideoCard from 'modules/guides/videoCard'
 import './agent.css'
 import Data from 'modules/guides/data'
+import Config from "common/Config";
 class ManageSecurityAgent extends Component {
     constructor(props) {
         super(props)
@@ -54,7 +55,7 @@ class ManageSecurityAgent extends Component {
                     <li> When you click to turn on the “Security question”, you will then be prompted to set your security QUESTIONS and ANSWERS. Once you have provided, just click the “Save” button and your “Security question” layer of protection will be ON.</li>
                     <p>You may turn OFF your “Security question”, by just switching off the toggle button.</p>
                 </ol>
-                <p>If you have any concerns or inquiries, please don’t hesitate to <a href='../contact_us'>contact us</a>. </p>
+                <p>If you have any concerns or inquiries, please don’t hesitate to <a href={Config.LANDING+"agent/contact_us"}>contact us</a>. </p>
             </div>
         )
     }

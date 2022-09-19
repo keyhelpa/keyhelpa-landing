@@ -5,6 +5,7 @@ import Colors from 'common/Colors';
 import VideoCard from 'modules/guides/videoCard'
 import './agent.css'
 import Data from 'modules/guides/data'
+import Config from "common/Config";
 class SetupAgent extends Component {
     constructor(props) {
         super(props)
@@ -47,7 +48,7 @@ class SetupAgent extends Component {
                     <li>On the Verification page, please read the instructions and  click the “Verify me” pink button to get your ID validated. Once validated, click the “Submit” button at the bottom right corner of the page. </li>
                     <li>Once all done with Step 1-5, you can now enjoy searching for candidates and create your job postings!</li>
                 </ol>
-                <p>If you have any concerns or inquiries, please don’t hesitate to <a href='../contact_us'>contact us</a>. </p>
+                <p>If you have any concerns or inquiries, please don’t hesitate to <a href={Config.LANDING+"agent/contact_us"}>contact us</a>. </p>
             </div>
         )
     }
