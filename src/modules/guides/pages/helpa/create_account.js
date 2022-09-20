@@ -44,7 +44,7 @@ class CreateAccountHelpa extends Component {
             }}>
                 <p>Follow the steps below to register as Helpa (Freelancer) in KeyHelpa:</p>
                 <ol type='1'>
-                    <li>Go to the Helpa Sign Up Page (Click <a href={Config.HELPA + 'signup'}>here</a>).</li>
+                    <li>Go to the Helpa Sign Up Page (Click <a href={Config.HELPA+'signup'}>here</a>).</li>
                     <li>Start registering your credentials such as:</li>
                         <ul>
                             <li>First Name</li>
