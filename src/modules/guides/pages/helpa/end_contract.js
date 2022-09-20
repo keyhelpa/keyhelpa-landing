@@ -58,7 +58,7 @@ class Stack extends Component {
                     <li>You can still “Cancel” the contract you just have ended, if the Agent does not yet take action of the end contract notification he or she has received, where Agent can either Accept or Dispute the job contract. If the Agent confirms the termination of contract (by Accept button) , it means the contract and work has officially terminated and can no longer be resumed. Unless, if the Agent disputes the contract, that is another process.</li>
                     <p><b className='b-helpa'>Note</b>: If you cancel a job 3 times within a month, your profile will be blocked automatically.</p>
                 </ol>
-                <p>If you have any concerns or inquiries, please don’t hesitate to <a href='../contact_us'>contact us</a>. </p>
+                <p>If you have any concerns or inquiries, please don’t hesitate to <a href={Config.LANDING+"helpa/contact_us"}>contact us</a>. </p>
             </div>
         )
     }

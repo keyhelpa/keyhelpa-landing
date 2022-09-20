@@ -58,7 +58,7 @@ class Stack extends Component {
                     <li>All paused contracts can be seen on your “My Contracts” page Pause section. </li>
                     <li>You can restart or put into active the status of the contract by clicking the “Resume”  on the action column  of the job contract and it will then be transferred back to the Active contracts section.</li>
                 </ol>
-                <p>If you have any concerns or inquiries, please don’t hesitate to <a href='../contact_us'>contact us</a>. </p>
+                <p>If you have any concerns or inquiries, please don’t hesitate to <a href={Config.LANDING+"helpa/contact_us"}>contact us</a>. </p>
             </div>
         )
     }

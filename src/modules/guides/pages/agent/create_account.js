@@ -54,7 +54,7 @@ class CreateAccountAgent extends Component {
                         <li>Confirm Password - Should match the previous password field.</li>
                     </ol>
                     <p>***All fields are mandatory.</p>
-                    <li>Once providing all details, click the “Create Account” button. That’s it! You have successfully created your account and you will be redirected to your dashboard for <a href='setup_profile'>profile setup</a>.</li>
+                    <li>Once providing all details, click the “Create Account” button. That’s it! You have successfully created your account and you will be redirected to your dashboard for <a href={Config.LANDING+"agent/guides/setup_profile"}>profile setup</a>.</li>
                     <li>You may also sign up by linking your social media account such as Facebook, Google and Linkedin.</li>              
                 </ol>
                 <p>If you have any concerns or inquiries, please don’t hesitate to <a href={Config.LANDING+"agent/contact_us"}>contact us</a>. </p>
