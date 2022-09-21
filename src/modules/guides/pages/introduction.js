@@ -20,7 +20,7 @@ class Stack extends Component {
                 }}>
                     {
                         theme == 'agent' ? 
-                        'Find Agents for you. Browse agents around (country) that best fits your talent. Browse agents. Search for jobs. In Keyhelpa, work remotely. Look for agents that offers jobs that suits you.'
+                        'Find Agents for you. Browse agents around the country that best fits your needs. Browse agents. Search for jobs. In Keyhelpa, work remotely. Look for agents that offers jobs that suits you.'
                         :
                         'Find Helpas for you. We make it easier for you to connect with helpas around the country. Source for talents. Hire our Helpas.Look for helpas that can work remotely. Search in Keyhelpa.'
                     }

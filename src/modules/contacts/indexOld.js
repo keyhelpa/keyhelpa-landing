@@ -16,6 +16,8 @@ import Colors from 'common/Colors'
 import './mobile.css'
 import validator from 'services/validator'
 import Modal from 'modules/generic/modal/textButton'
+import TextInput from "components/increment/generic/form/TextInput"
+import TextArea from 'components/increment/generic/form/TextArea'
 const style = {
   iconAgent: {
     width: 40,
@@ -48,7 +50,9 @@ export class Contacts extends Component {
     this.state = {
       theme: 'agent',
       name: null,
+      ename: null,
       email: null,
+      eemail: null,
       contactNumber: null,
       contactPrefix: null,
       organization: null,
@@ -56,7 +60,9 @@ export class Contacts extends Component {
       mobilePrefixes: countryCodes.customList('countryCode', '+{countryCallingCode}'),
       submitted: false,
       error: null,
-      show: false
+      show: false,
+      errorMessage: null,
+      successMessage: null
     }
   }
 
@@ -70,40 +76,36 @@ export class Contacts extends Component {
   }
 
   handleSubmit() {
-    const { name, email, contactNumber, contactPrefix, organization, message, error} = this.state
+    const { name, email, contactNumber, contactPrefix, organization, message, error } = this.state
+    this.setState({
+      errorMessage: null,
+      successMessage: null
+    })
     let params = {
       name: name,
-      email: validator.checkEmail(email) ? email : 'invalid',
+      email: validator.checkEmail(email) ? email : null,
       details: JSON.stringify({
         contact_number: contactPrefix + contactNumber,
         organization: organization,
         message: message
       })
     }
-    if(params.email == 'invalid'){
-      alert('Invalid Email')
-    }else if(params.name !== null && params.email !== null && params.details.contactNumber !== null && params.details.organization !== null && params.details.message !== null){
+    if (params.name !== null && params.email !== null && params.details.contactNumber !== null && params.details.organization !== null && params.details.message !== null) {
       API.request(Routes.createContact, params, response => {
         this.setState({
           submitted: true,
           name: null,
           email: null,
           organization: null,
+          eorganization: null,
           message: null,
           contactNumber: null,
-          error: true
-        })
-        setTimeout(() => {
-          this.setState({ submitted: false, show: true })
-        }, 5000)
+          successMessage: 'Successfully submitted.'
+        })  
       })
-    }else{
-      console.log('error::missing fields')
-      this.renderAlert()
-      alert('Missing Fields')
+    } else {
       this.setState({
-        show: true,
-        error: true
+        errorMessage: 'Please fill up the required fields.'
       })
     }
   }
@@ -117,7 +119,7 @@ export class Contacts extends Component {
         float: 'left',
         marginLeft: '40%',
       }}
-      className="full-width-mobile mt-mobile-50 contact-left-side-content"
+        className="full-width-mobile mt-mobile-50 contact-left-side-content"
       >
         <h1 style={{
           color: accountType == 'agent' ? Colors.agentText : Colors.helpaText
@@ -161,186 +163,247 @@ export class Contacts extends Component {
     console.log('error', error)
     return (
       <div>
-        { error == true ? 
-        <Modal
-        show={show}
-        title={'Error'}
-        description={'Please fill out missing fields'}
-        withCancel={true}
-        onCancel={this.setState({
-          show: false
-        })}
-        />
-        :
-        <Modal
-        show={show}
-        title={'Thank  you!'}
-        description={'Your message has been sent. Our support team will respond within 24 hours'}
-        withCancel={true}
-        onCancel={this.setState({
-          show: false
-        })}
-        />
-      }
+        {error == true ?
+          <Modal
+            show={show}
+            title={'Error'}
+            description={'Please fill out missing fields'}
+            withCancel={true}
+            onCancel={this.setState({
+              show: false
+            })}
+          />
+          :
+          <Modal
+            show={show}
+            title={'Thank  you!'}
+            description={'Your message has been sent. Our support team will respond within 24 hours'}
+            withCancel={true}
+            onCancel={this.setState({
+              show: false
+            })}
+          />
+        }
       </div>
     )
   }
 
   renderRight() {
-    const { theme, mobilePrefixes, error } = this.state
-    const { name, email, contactNumber, organization, message} = this.state
+    const { theme, mobilePrefixes, errorMessage } = this.state
+    const { name, ename, email, eemail, contactNumber, organization, eorganization, message, successMessage } = this.state
     const { accountType } = this.props.state;
     return (
-      <div 
-      style={{
-        width: '60%',
-        float: 'left',
-        background: accountType == 'agent' ? Colors.agentDarkGray : Colors.helpaDarkPink,
-        borderRadius: 20,
-        padding: 30,
-        color: Colors.white,
-        marginLeft: '30%',
-        minHeight: '45vh'
-      }}
-      className="full-width-mobile text-field-container"
+      <div
+        style={{
+          width: '60%',
+          float: 'left',
+          background: accountType == 'agent' ? Colors.agentDarkGray : Colors.helpaDarkPink,
+          borderRadius: 20,
+          padding: 30,
+          color: Colors.white,
+          marginLeft: '30%',
+          minHeight: '45vh'
+        }}
+        className="full-width-mobile text-field-container"
       >
         {
-          this.error ? () => {
-            <div>
-              <p style={{
-                color: 'red'
-              }}>A network error has occurred. Please try again.</p>
-            </div>
-          } : ""
+          errorMessage && (
+            <p style={{
+              color: Colors.white
+            }}>
+              {
+                errorMessage
+              }
+            </p>
+          )
         }
-        <div className='web'>
-        <Form>
-          <Form.Group>
-            <Form.Label style={{display: 'flex', }}>
-              Full name
-            </Form.Label>
-          <Form.Control type="text" size="sm" style={{margin: 0}} onChange={(e) => this.setState({ name: e.target.value })}></Form.Control>
-          <Form.Label className={ accountType == 'agent' ? 'pink' : 'white'} style={{ margin: '0px 0px 0px 10px'}}>
-                {name == '' ? 'Invalid Name' : ''}
-          </Form.Label>
-          </Form.Group>
-          <Form.Group style={{ display: 'flex', justifyContent: 'space-between' }}>
-            <div style={{ width: '50%' }}>
-              <Form.Label style={{display: 'flex', }}>
-                Email
-              </Form.Label>
-              <div style={{marginTop: '5px'}}>
-              <Form.Control type="email" size="sm" style={{margin: 0}} onChange={(e) => this.setState({ email: e.target.value })}></Form.Control>
-              </div>
-              <Form.Label className={ accountType == 'agent' ? 'pink' : 'white'} style={{ margin: '0px 0px 0px 10px'}}>
-                  { email == '' ? 'Invalid Email' : ''}
-                </Form.Label>
+        {
+          successMessage && (
+            <p style={{
+              color: Colors.white
+            }}>
+              {
+                successMessage
+              }
+            </p>
+          )
+        }
+        <div style={{
+          width: '100%',
+          float: 'left',
+        }}>
+          <div style={{
+            width: '100%',
+            float: 'left',
+            color: Colors.white,
+            marginBottom: 25
+          }}>
+            <TextInput
+              placeholder={'Type full name here'}
+              type={"text"}
+              label={'Full name'}
+              value={name}
+              onChange={(name, ename) => {
+                this.setState({
+                  name,
+                  ename
+                })
+              }}
+              style={{
+                borderBottom: 'solid 3px ' + Colors.white
+              }}
+              inputStyle={{
+                color: Colors.white
+              }}
+              errorStyle={{
+                color: Colors.white
+              }}
+              validation={{
+                size: 2,
+                type: 'text',
+                column: 'Name',
+                error: ename
+              }}
+            />
+          </div>
+
+          <div style={{
+            width: '100%',
+            float: 'left',
+            color: Colors.white
+          }}>
+            <div style={{
+              float: 'left',
+              width: '50%',
+              marginBottom: 25
+            }}
+            className="full-width-mobile"
+            >
+              <TextInput
+                placeholder={'Type email here'}
+                type={"text"}
+                value={email}
+                label={'Email'}
+                onChange={(email, eemail) => {
+                  this.setState({
+                    email,
+                    eemail
+                  })
+                }}
+                style={{
+                  borderBottom: 'solid 3px ' + Colors.white
+                }}
+                inputStyle={{
+                  color: Colors.white
+                }}
+                errorStyle={{
+                  color: Colors.white
+                }}
+                validation={{
+                  size: 2,
+                  type: 'email',
+                  column: 'Email',
+                  error: eemail
+                }}
+              />
             </div>
-            <div style={{ width: '45%' }}>
-              <Form.Label style={{display: 'flex', }}>
-                Telephone Number
-              </Form.Label>
-              <div style={{ display: 'flex' }}>
-                <Form.Select aria-label="Default select example" style={{ width: '130px', margin: 0 }} onChange={(e) => this.setState({ contactPrefix: e.target.value })}>
-                  {
-                    Object.values(mobilePrefixes).map(item => (
-                      <option value={item}>{item}</option>
-                    ))
-                  }
-                </Form.Select>
-                <Form.Control style={{margin:0}}type="number" size="sm" onChange={(e) => this.setState({ contactNumber: e.target.value })}></Form.Control>
-              </div>
-              <Form.Label className={ accountType == 'agent' ? 'pink' : 'white'} style={{ margin: '0px 0px 0px 5px'}}>
-                  { contactNumber == '' ? 'Invalid Number' : ''}
-                </Form.Label>
+
+            <div style={{
+              float: 'left',
+              width: '50%',
+              marginBottom: 25
+            }}
+            className="full-width-mobile"
+            >
+              <p style={{
+                color: Colors.white
+              }}>
+                <b>Phone number</b>
+              </p>
+              <Form.Select aria-label="Default select example" style={{ width: '130px', margin: 0 }} onChange={(e) => this.setState({ contactPrefix: e.target.value })}>
+                {
+                  Object.values(mobilePrefixes).map(item => (
+                    <option value={item}>{item}</option>
+                  ))
+                }
+              </Form.Select>
+              <Form.Control style={{ margin: 0 }} type="number" size="sm" onChange={(e) => this.setState({ contactNumber: e.target.value })}></Form.Control>
             </div>
-          </Form.Group>
-          <Form.Group>
-            <Form.Label style={{display: 'flex', }}>
-              Organisation
-              </Form.Label>
-            <Form.Control style={{margin:0}} type="text" size="sm" onChange={(e) => this.setState({ organization: e.target.value })}></Form.Control>
-            <Form.Label className={ accountType == 'agent' ? 'pink' : 'white'} style={{ margin: '0px 0px 0px 10px'}}>
-                { organization == '' ? 'Invalid Organization Name' : ''}
-              </Form.Label>
-          </Form.Group>
-          <Form.Group>
-            <Form.Label style={{display: 'flex', }}>
-              Message
-            </Form.Label>
-            <Form.Control style={{margin:0}} type="text" size="sm" onChange={(e) => this.setState({ message: e.target.value })}></Form.Control>
-            <Form.Label className={ accountType == 'agent' ? 'pink' : 'white'} style={{ margin: '0px 0px 0px 10px'}}>
-              { message == '' ? 'Invalid Message' : ''}
-              </Form.Label>
-          </Form.Group>
-        </Form>
+
+          </div>
+
+          <div style={{
+            width: '100%',
+            float: 'left',
+            color: Colors.white,
+            marginBottom: 25
+          }}>
+            <TextInput
+              placeholder={'Type full organization here'}
+              type={"text"}
+              label={'Organization name'}
+              value={organization}
+              onChange={(organization, eorganization) => {
+                this.setState({
+                  organization,
+                  eorganization
+                })
+              }}
+              style={{
+                borderBottom: 'solid 3px ' + Colors.white
+              }}
+              inputStyle={{
+                color: Colors.white
+              }}
+              errorStyle={{
+                color: Colors.white
+              }}
+              validation={{
+                size: 2,
+                type: 'text',
+                column: 'Organization',
+                error: eorganization
+              }}
+            />
+          </div>
+          <div style={{
+            width: '100%',
+            float: 'left',
+            color: Colors.white,
+            marginBottom: 25
+          }}>
+            <TextArea
+              placeholder={'Type your message here'}
+              type={"text"}
+              label={'Message'}
+              style={{
+                background: 'transparent',
+                paddingLeft: 0,
+                paddingRight: 0,
+                minHeight: 100,
+                borderBottom: 'solid 2px ' + Colors.white
+              }}
+              inputStyle={{
+                color: Colors.white
+              }}
+              errorStyle={{
+                color: Colors.white
+              }}
+              value={message}
+              rows={5}
+              onChange={(message, errorMesssage) => {
+                this.setState({
+                  message
+                })
+              }}
+              validation={{
+                type: 'text',
+                size: 0,
+                column: 'Message'
+              }}
+            />
+          </div>
         </div>
-        
-        <div className='mobile'>
-        <Form>
-          <Form.Group>
-            <Form.Label style={{display: 'flex', }}>
-              Full name
-            </Form.Label>
-          <Form.Control type="text" size="sm" style={{margin: 0}} onChange={(e) => this.setState({ name: e.target.value })}></Form.Control>
-          <Form.Label className={ accountType == 'agent' ? 'pink' : 'white'} style={{ margin: '0px 0px 0px 10px'}}>
-                {name == '' ? 'Invalid Name' : ''}
-          </Form.Label>
-          </Form.Group>
-          <Form.Group style={{ display: 'flex', justifyContent: 'space-between' }}>
-            <div style={{ width: '100%' }}>
-              <Form.Label style={{display: 'flex', }}>
-                Email
-              </Form.Label>
-              <div style={{marginTop: '5px'}}>
-              <Form.Control type="email" size="sm" style={{margin: 0}} onChange={(e) => this.setState({ email: e.target.value })}></Form.Control>
-              </div>
-              <Form.Label className={ accountType == 'agent' ? 'pink' : 'white'} style={{ margin: '0px 0px 0px 10px'}}>
-                  { email == '' ? 'Invalid Email' : ''}
-                </Form.Label>
-            </div>
-          </Form.Group>
-          <Form.Group>
-          <div style={{ width: '100%' }}>
-              <Form.Label style={{display: 'flex', }}>
-                Telephone Number
-              </Form.Label>
-              <div style={{ display: 'flex' }}>
-                <Form.Select aria-label="Default select example" style={{ width: '130px', margin: 0 }} onChange={(e) => this.setState({ contactPrefix: e.target.value })}>
-                  {
-                    Object.values(mobilePrefixes).map(item => (
-                      <option value={item}>{item}</option>
-                    ))
-                  }
-                </Form.Select>
-                <Form.Control style={{margin:0}}type="number" size="sm" onChange={(e) => this.setState({ contactNumber: e.target.value })}></Form.Control>
-              </div>
-              <Form.Label className={ accountType == 'agent' ? 'pink' : 'white'} style={{ margin: '0px 0px 0px 5px'}}>
-                  { contactNumber == '' ? 'Invalid Number' : ''}
-                </Form.Label>
-            </div>
-          </Form.Group>
-          <Form.Group>
-            <Form.Label style={{display: 'flex', }}>
-              Organisation
-              </Form.Label>
-            <Form.Control style={{margin:0}} type="text" size="sm" onChange={(e) => this.setState({ organization: e.target.value })}></Form.Control>
-            <Form.Label className={ accountType == 'agent' ? 'pink' : 'white'} style={{ margin: '0px 0px 0px 10px'}}>
-                { organization == '' ? 'Invalid Organization Name' : ''}
-              </Form.Label>
-          </Form.Group>
-          <Form.Group>
-            <Form.Label style={{display: 'flex', }}>
-              Message
-            </Form.Label>
-            <Form.Control style={{margin:0}} type="text" size="sm" onChange={(e) => this.setState({ message: e.target.value })}></Form.Control>
-            <Form.Label className={ accountType == 'agent' ? 'pink' : 'white'} style={{ margin: '0px 0px 0px 10px'}}>
-              { message == '' ? 'Invalid Message' : ''}
-              </Form.Label>
-          </Form.Group>
-        </Form>
-        </div>
-        
         <div>
           {/* <p>Captcha</p> */}
           <Button style={{ float: 'right' }} className="btn-submit" onClick={() => this.handleSubmit()}>Submit</Button>
@@ -360,13 +423,13 @@ export class Contacts extends Component {
         display: 'flex',
         alignItems: 'center'
       }}
-      className="full-width-mobile unset-flex-mobile"
+        className="full-width-mobile unset-flex-mobile"
       >
         <div style={{
           width: '30%',
           float: 'left'
         }}
-        className="full-width-mobile"
+          className="full-width-mobile"
         >
           {this.renderLeft()}
         </div>
@@ -374,7 +437,7 @@ export class Contacts extends Component {
           width: '70%',
           float: 'left'
         }}
-        className="full-width-mobile">
+          className="full-width-mobile">
           {this.renderRight()}
         </div>
       </div>
