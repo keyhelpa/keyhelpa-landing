@@ -114,25 +114,25 @@ export default {
     helpa: [{
         title: 'Create account',
         icon: PersonAdd,
-        description: "Get started  with KeyHelpa and hire Helpa when you need help.",
+        description: "Be guided on how to get started with KeyHelpa..",
         route: '/helpa/guides/create_account',
         url: 'k6M5C-oKw9k'
     },{
         title: 'Set up profile',
         icon: Badge,
-        description: "Get started  with KeyHelpa and hire Helpa when you need help.",
+        description: "Complete your profile setup to access all features of KeyHelpa.",
         route: '/helpa/guides/setup_profile',
         url: 'k6M5C-oKw9k'
     }, {
         title: 'Search job',
         icon: Search,
-        description: "Get started  with KeyHelpa and hire Helpa when you need help.",
+        description: "Look for the job that match your skills..",
         route: '/helpa/guides/search_job',
         url: 'k6M5C-oKw9k'
     }, {
         title: 'Submit proposal',
         icon: UploadFile,
-        description: "Send your proposal to the job you are interested to received by Agent.",
+        description: "Send proposals to desired agents and or job..",
         route: '/helpa/guides/submit_proposal',
         url: 'k6M5C-oKw9k'
     }, {
@@ -192,25 +192,25 @@ export default {
     }, {
         title: 'Update work preferences',
         icon: BusinessCenter,
-        description: "Set your work perferences to allow Agent know your limits.",
+        description: "Set your work preferences for agents to know your limits..",
         route: '/helpa/guides/update_work_preferences',
         url: 'k6M5C-oKw9k'
     }, {
         title: 'Update work availabilty',
         icon: EventAvailable,
-        description: "Set your work days and time  to allow Agent know your availability.",
+        description: "Set your work days and time to allow Agent know your availability..",
         route: '/helpa/guides/update_work_availability',
         url: 'k6M5C-oKw9k'
     }, {
         title: 'Update other data',
         icon: DesignServices,
-        description: "Set your other data to add more credibility to your profile.",
+        description: "Update your data to add more credibility to your profile..",
         route: '/helpa/guides/update_other_data',
         url: 'k6M5C-oKw9k'
     }, {
         title: 'Update Certificates',
         icon: HistoryEdu,
-        description: "Lorem Ipsum Dolor et estal",
+        description: "Add certificates to boost your professional credibility.",
         route: '/helpa/guides/update_certificates',
         url: 'k6M5C-oKw9k'
     },{
