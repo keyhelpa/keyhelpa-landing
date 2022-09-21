@@ -5,7 +5,7 @@ import Colors from 'common/Colors';
 import VideoCard from 'modules/guides/videoCard'
 import './helpa.css'
 import Data from 'modules/guides/data'
-
+import Config from 'common/Config';
 class OtherData extends Component {
     constructor(props) {
         super(props)
