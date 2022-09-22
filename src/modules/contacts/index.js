@@ -94,7 +94,6 @@ export class Contacts extends Component {
         message: message
       })
     }
-    console.log("log::",params.name !== null && params.name !== undefined && params.email !== null && params.email != undefined && JSON.parse(params.details).contactNumber !== null && JSON.parse(params.details).organization !== null && JSON.parse(params.details).organization !== undefined && JSON.parse(params.details).message !== null && JSON.parse(params.details).message !== undefined)
     if (params.name !== null && params.name !== undefined && params.email !== null && params.email != undefined && JSON.parse(params.details).contactNumber !== null && JSON.parse(params.details).organization !== null && JSON.parse(params.details).organization !== undefined && JSON.parse(params.details).message !== null && JSON.parse(params.details).message !== undefined) {
       API.request(Routes.createContact, params, response => {
         this.setState({
@@ -114,7 +113,6 @@ export class Contacts extends Component {
       this.setState({
         errorMessage: 'Please fill up the required fields.'
       })
-      console.log('fire')
     }
   }
 
@@ -317,7 +315,7 @@ export class Contacts extends Component {
               <p style={{
                 color: Colors.white
               }}>
-                <b>Phone number</b>
+                <b>Telephone</b>
               </p>
               <ContactNumber
                 contactNumber={this.state.contactNumber}
@@ -352,9 +350,9 @@ export class Contacts extends Component {
             marginBottom: 25
           }}>
             <TextInput
-              placeholder={'Type full organization here'}
+              placeholder={'Organisation name'}
               type={"text"}
-              label={'Organization name'}
+              label={'Organisation'}
               value={organization}
               onChange={(organization, eorganization) => {
                 this.setState({
@@ -393,7 +391,6 @@ export class Contacts extends Component {
                 background: 'transparent',
                 paddingLeft: 0,
                 paddingRight: 0,
-                minHeight: 100,
                 borderBottom: 'solid 2px ' + Colors.white
               }}
               inputStyle={{
@@ -419,7 +416,7 @@ export class Contacts extends Component {
         </div>
         <div>
           {/* <p>Captcha</p> */}
-          <Button style={{ float: 'right' }} className="btn-submit" onClick={() => this.handleSubmit()}>Submit</Button>
+          <Button style={{ float: 'right', height: '45px', width: '150px' }} className="btn-submit" onClick={() => this.handleSubmit()}>Submit</Button>
         </div>
       </div>
     )
