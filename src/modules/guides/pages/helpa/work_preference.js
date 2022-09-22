@@ -67,7 +67,7 @@ class WorkPreference extends Component {
                         “Save” button to save your changes.
                         </li>
                 </ol>
-                <p>If you have any concerns or inquiries, please don’t hesitate to <a href={Config.LANDING+"helpa/contact_us"}>contact us</a>. </p>
+                <p>If you have any concerns or inquiries, please don’t hesitate to <a href="../contact_us">contact us</a>. </p>
             </div>
         )
     }

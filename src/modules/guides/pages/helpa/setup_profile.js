@@ -54,7 +54,7 @@ class SetupHelpa extends Component {
                     <p>Before submitting your profile, you may opt to click the “Preview Profile” button at the bottom left corner of the page to overview how your profile can be seen by Agent.</p>
                     <li>Once all done with Step 1-9, you can now enjoy searching for jobs and apply by submitting  proposals!</li>
                 </ol>
-                <p>If you have any concerns or inquiries, please don’t hesitate to <a href={Config.LANDING+"helpa/contact_us"}>contact us</a>. </p>
+                <p>If you have any concerns or inquiries, please don’t hesitate to <a href="../contact_us">contact us</a>. </p>
             </div>
         )
     }
