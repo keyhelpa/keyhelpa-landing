@@ -42,7 +42,7 @@ class HireHelpa extends Component {
                 <p>To hire the candidate, you just need to click on the “Hire” button and you will be redirected to creating a contract or the final job offer and sending the job offer. Click here to know more about creating a contract.</p>
                 <p>Once you have sent the job offer or contract, it means you have hired the candidate for the job but please take note that it needs to be accepted by the Helpa to actually start the job or else the Helpa may reject it.</p>
                 <p>Every time you send a job offer contract to the Helpa, they will receive an email notification that they are hired for the job and that you have sent them a job offer contract. In return, you will also receive an email notification if the Helpa accepts or rejects the job offer.</p>
-                <p>If you have any concerns or inquiries, please don’t hesitate to <a href={Config.LANDING+"agent/contact_us"}>contact us</a>. </p>
+                <p>If you have any concerns or inquiries, please don’t hesitate to <a href="../contact_us">contact us</a>. </p>
             </div>
         )
     }

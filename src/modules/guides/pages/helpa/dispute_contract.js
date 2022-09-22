@@ -54,7 +54,7 @@ class DisputeContractHelpa extends Component {
                     <li>All dispute contracts can be seen on your “My Contracts” page Dispute section. </li>
                     <li>You can still “Cancel Dispute” the contract you just have disputed, if the Agent does not yet take action of the dispute contract notification he or she has received, where Helpa can either Accept or Decline to open a dispute to the job contract. If Helpa confirms the dispute of contract (by Accept button) , it means the Helpa and Agent can  still settle their issues within KeyHelpa’s platform inline with the terms and conditions set by KeyHelpa. Unless, if the Agent declines to open  disputes with the contract, that is another process where the Helpa can ask for consultation with KeyHelpa by sending them a message through the contact us form..</li>
                 </ol>
-                <p>If you have any concerns or inquiries, please don’t hesitate to <a href={Config.LANDING+"helpa/contact_us"}>contact us</a>. </p>
+                <p>If you have any concerns or inquiries, please don’t hesitate to <a href="../contact_us">contact us</a>. </p>
             </div>
         )
     }
