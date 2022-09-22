@@ -94,7 +94,6 @@ export class Contacts extends Component {
         message: message
       })
     }
-    console.log("log::",params.name !== null && params.name !== undefined && params.email !== null && params.email != undefined && JSON.parse(params.details).contactNumber !== null && JSON.parse(params.details).organization !== null && JSON.parse(params.details).organization !== undefined && JSON.parse(params.details).message !== null && JSON.parse(params.details).message !== undefined)
     if (params.name !== null && params.name !== undefined && params.email !== null && params.email != undefined && JSON.parse(params.details).contactNumber !== null && JSON.parse(params.details).organization !== null && JSON.parse(params.details).organization !== undefined && JSON.parse(params.details).message !== null && JSON.parse(params.details).message !== undefined) {
       API.request(Routes.createContact, params, response => {
         this.setState({
@@ -114,7 +113,6 @@ export class Contacts extends Component {
       this.setState({
         errorMessage: 'Please fill up the required fields.'
       })
-      console.log('fire')
     }
   }
 
