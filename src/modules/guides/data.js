@@ -114,7 +114,7 @@ export default {
     helpa: [{
         title: 'Create account',
         icon: PersonAdd,
-        description: "Be guided on how to get started with KeyHelpa..",
+        description: "Be guided on how to get started with KeyHelpa.",
         route: '/helpa/guides/create_account',
         url: 'k6M5C-oKw9k'
     },{
@@ -126,13 +126,13 @@ export default {
     }, {
         title: 'Search job',
         icon: Search,
-        description: "Look for the job that match your skills..",
+        description: "Look for the job that match your skills.",
         route: '/helpa/guides/search_job',
         url: 'k6M5C-oKw9k'
     }, {
         title: 'Submit proposal',
         icon: UploadFile,
-        description: "Send proposals to desired agents and or job..",
+        description: "Send proposals to desired agents and or job.",
         route: '/helpa/guides/submit_proposal',
         url: 'k6M5C-oKw9k'
     }, {
@@ -192,19 +192,19 @@ export default {
     }, {
         title: 'Update work preferences',
         icon: BusinessCenter,
-        description: "Set your work preferences for agents to know your limits..",
+        description: "Set your work preferences for agents to know your limits.",
         route: '/helpa/guides/update_work_preferences',
         url: 'k6M5C-oKw9k'
     }, {
         title: 'Update work availabilty',
         icon: EventAvailable,
-        description: "Set your work days and time to allow Agent know your availability..",
+        description: "Set your work days and time to allow Agent know your availability.",
         route: '/helpa/guides/update_work_availability',
         url: 'k6M5C-oKw9k'
     }, {
         title: 'Update other data',
         icon: DesignServices,
-        description: "Update your data to add more credibility to your profile..",
+        description: "Update your data to add more credibility to your profile.",
         route: '/helpa/guides/update_other_data',
         url: 'k6M5C-oKw9k'
     }, {
