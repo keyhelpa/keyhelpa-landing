@@ -78,9 +78,9 @@ export class Contacts extends Component {
 
   handleSubmit() {
     const { name, email, contactNumber, contactPrefix, organization, message, error } = this.state
-    if (this.state.errorMessage !== null) {
-      return
-    }
+    // if (this.state.errorMessage !== null) {
+    //   return
+    // }
     this.setState({
       errorMessage: null,
       successMessage: null
@@ -94,6 +94,7 @@ export class Contacts extends Component {
         message: message
       })
     }
+    console.log("log::",params.name !== null && params.name !== undefined && params.email !== null && params.email != undefined && JSON.parse(params.details).contactNumber !== null && JSON.parse(params.details).organization !== null && JSON.parse(params.details).organization !== undefined && JSON.parse(params.details).message !== null && JSON.parse(params.details).message !== undefined)
     if (params.name !== null && params.name !== undefined && params.email !== null && params.email != undefined && JSON.parse(params.details).contactNumber !== null && JSON.parse(params.details).organization !== null && JSON.parse(params.details).organization !== undefined && JSON.parse(params.details).message !== null && JSON.parse(params.details).message !== undefined) {
       API.request(Routes.createContact, params, response => {
         this.setState({
@@ -107,12 +108,13 @@ export class Contacts extends Component {
           successMessage: 'Successfully submitted.',
           show: true
         })
-        // window.location.reload()
+        window.location.reload()
       })
     } else {
       this.setState({
         errorMessage: 'Please fill up the required fields.'
       })
+      console.log('fire')
     }
   }
 
