@@ -53,7 +53,7 @@ class AcceptProposal extends Component {
                     <p>By clicking the “Interview” button on the proposal page, it means that you accept the Helpa’s job proposal.</p>
                     <li>When accepting or rejecting the proposal, the Helpa will receive an email notification about his job proposal.</li>
                 </ol>
-                <p>If you have any concerns or inquiries, please don’t hesitate to <a href={Config.LANDING+"agent/contact_us"}>contact us</a>. </p>
+                <p>If you have any concerns or inquiries, please don’t hesitate to <a href="../contact_us">contact us</a>. </p>
             </div>
         )
     }
