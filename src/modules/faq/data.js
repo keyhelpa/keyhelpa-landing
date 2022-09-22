@@ -28,7 +28,7 @@ export default {
                         With KeyHelpa, Real Estate Agents will find the right help as they can quickly and easily access a pool of available freelancers who are familiar with the real estate and property management industry, the suburbs where agents need work done and the job that needs doing.
                     </p>
                     <p>
-                        They can search profiles for a freelancer, or browse by skills, years of experience, area, service and more. Then select the type of help and price that’s right for the Agent and their agency. No more full-time wages that you don’t need to pay - and more money saved.
+                        They can search profiles for a freelancer, or browse by skills, years of experience, area, service and more. Then select the type of help and price that’s right for the Agent and their agency. Pay wages based on designated schedules - which means more money saved.
                     </p>
                 </div>
             )
