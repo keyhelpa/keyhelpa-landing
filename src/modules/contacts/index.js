@@ -315,7 +315,7 @@ export class Contacts extends Component {
               <p style={{
                 color: Colors.white
               }}>
-                <b>Phone number</b>
+                <b>Telephone</b>
               </p>
               <ContactNumber
                 contactNumber={this.state.contactNumber}
@@ -350,9 +350,9 @@ export class Contacts extends Component {
             marginBottom: 25
           }}>
             <TextInput
-              placeholder={'Type full organization here'}
+              placeholder={'Organisation name'}
               type={"text"}
-              label={'Organization name'}
+              label={'Organisation'}
               value={organization}
               onChange={(organization, eorganization) => {
                 this.setState({
@@ -391,7 +391,6 @@ export class Contacts extends Component {
                 background: 'transparent',
                 paddingLeft: 0,
                 paddingRight: 0,
-                minHeight: 100,
                 borderBottom: 'solid 2px ' + Colors.white
               }}
               inputStyle={{
@@ -417,7 +416,7 @@ export class Contacts extends Component {
         </div>
         <div>
           {/* <p>Captcha</p> */}
-          <Button style={{ float: 'right' }} className="btn-submit" onClick={() => this.handleSubmit()}>Submit</Button>
+          <Button style={{ float: 'right', height: '45px', width: '150px' }} className="btn-submit" onClick={() => this.handleSubmit()}>Submit</Button>
         </div>
       </div>
     )
