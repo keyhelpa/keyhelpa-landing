@@ -45,7 +45,7 @@ class UpdateCert extends Component {
                     <li>On your “My certificates” page, you will see all the certificates you uploaded during your profile setup including its status. KeyHelpa may reject or accept the certificates you uploaded if they find it to be invalid or valid.</li>
                     <li>To add updates or to add new certificates, just click the “browse” action or just drag & drop the files to upload the certificates.</li>
                 </ol>
-                <p>If you have any concerns or inquiries, please don’t hesitate to <a href={Config.LANDING+"helpa/contact_us"}>contact us</a>. </p>
+                <p>If you have any concerns or inquiries, please don’t hesitate to <a href="../contact_us">contact us</a>. </p>
             </div>
         )
     }
