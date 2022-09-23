@@ -178,6 +178,7 @@ export class Contacts extends Component {
           description={'Your message has been sent. Our support team will respond within 24 hours'}
           withButton={true}
           buttonMsg={'Ok'}
+          color={theme == 'agent' ? Colors.agentDarkGray : Colors.helpaDarkPink}
           onCancel={() => this.setState({
             show: false
           })}
