@@ -117,6 +117,9 @@ export class Contacts extends Component {
   renderLeft() {
     const { theme } = this.state
     const { accountType } = this.props.state;
+    console.log({
+      accountType
+    })
     return (
       <div style={{
         width: '80%',
@@ -126,7 +129,7 @@ export class Contacts extends Component {
         className="full-width-mobile mt-mobile-50 contact-left-side-content"
       >
         <h1 style={{
-          color: accountType == 'agent' ? Colors.agentText : Colors.helpaText
+          color: accountType == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle
         }}>Contact us</h1>
         <p style={{
           color: accountType == 'agent' ? Colors.agentText : Colors.helpaText
@@ -134,7 +137,8 @@ export class Contacts extends Component {
         <br /><br />
         <div>
           <p style={{
-            color: accountType == 'agent' ? Colors.agentText : Colors.helpaText
+            color: accountType == 'agent' ? Colors.agentDarkGray : Colors.helpaDarkPink,
+            fontWeight: 'bold'
           }}>support@keyhelpa.com</p>
           <div style={{
             width: '100%',
@@ -164,6 +168,7 @@ export class Contacts extends Component {
 
   renderAlert() {
     const { theme, error, show, submitted } = this.state
+    const { accountType } = this.props.state;
     return (
       <div>
         <Modal
@@ -174,7 +179,7 @@ export class Contacts extends Component {
           description={'Your message has been sent. Our support team will respond within 24 hours'}
           withButton={true}
           buttonMsg={'Ok'}
-          color={theme == 'agent' ? Colors.agentDarkGray : Colors.helpaDarkPink}
+          color={accountType == 'agent' ? Colors.agentDarkGray : Colors.helpaDarkPink}
           onCancel={() => this.setState({
             show: false
           })}
@@ -418,10 +423,11 @@ export class Contacts extends Component {
           <Button
             title={'Submit'}
             style={{
-              backgroundColor: theme == 'agent' ? Colors.agentDarkGray : Colors.helpaDarkPink,
-              color: 'white',
+              backgroundColor: Colors.white,
+              color: accountType == 'agent' ? Colors.agentDarkGray : Colors.helpaDarkPink,
               fontSize: '24px',
-              width: '10%'
+              width: '10%',
+              float: 'right'
             }}
             onChange={() => {
               this.handleSubmit()
