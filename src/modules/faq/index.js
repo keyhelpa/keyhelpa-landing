@@ -44,6 +44,7 @@ class Stack extends Component {
 
     renderData() {
         const { data } = this.state;
+        const { accountType } = this.props.state;
         return (
             <div style={{
                 float: 'left',
@@ -84,7 +85,7 @@ class Stack extends Component {
                                     marginTop: 20
                                 }}>
                                     <b style={{
-                                        color: Colors.agentTextTitle
+                                        color: accountType == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle
                                     }}>
                                         {
                                             item.title

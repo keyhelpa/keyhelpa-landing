@@ -79,7 +79,7 @@ export class About extends Component {
             className="full-width-mobile">
             <h1
               style={{
-                color: accountType == 'agent' ? Colors.agentText : Colors.helpaText,
+                color: accountType == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle,
                 textAlign: 'center',
                 marginTop: 100,
                 fontSize: '13vw'
@@ -98,7 +98,7 @@ export class About extends Component {
             className="full-width-mobile mt-mobile-25">
             <h1
               style={{
-                color: accountType == 'agent' ? Colors.agentText : Colors.helpaText,
+                color: accountType == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle,
                 marginTop: '10%'
               }}
               className="hide-on-mobile"
