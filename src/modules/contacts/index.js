@@ -2,15 +2,11 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom';
 import Strings from 'modules/generic/helper/String'
-import TextField from '@mui/material/TextField';
 import './Style.css'
 import Routes from 'common/Routes'
 import API from 'services/api'
-import Footer from 'modules/generic/frames/footer.js'
-import { Button, Form } from 'react-bootstrap';
+import Button from 'modules/generic/button'
 import countryCodes from 'country-codes-list'
-import { Alert } from '@mui/material';
-import { Check } from '@mui/icons-material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Colors from 'common/Colors'
 import './mobile.css'
@@ -107,7 +103,7 @@ export class Contacts extends Component {
           successMessage: 'Successfully submitted.',
           show: true
         })
-        setTimeout(()=>{
+        setTimeout(() => {
           window.location.reload()
         }, 5000)
       })
@@ -134,7 +130,7 @@ export class Contacts extends Component {
         }}>Contact us</h1>
         <p style={{
           color: accountType == 'agent' ? Colors.agentText : Colors.helpaText
-        }}>We love questions and feedback - and we’re always happy to help! Here are some ways to contact us.</p>
+        }}>We love questions and feedback - and we're always happy to help! Here are some ways to contact us.</p>
         <br /><br />
         <div>
           <p style={{
@@ -419,7 +415,18 @@ export class Contacts extends Component {
         </div>
         <div>
           {/* <p>Captcha</p> */}
-          <Button style={{ float: 'right', height: '45px', width: '150px' }} className="btn-submit" onClick={() => this.handleSubmit()}>Submit</Button>
+          <Button
+            title={'Submit'}
+            style={{
+              backgroundColor: theme == 'agent' ? Colors.agentDarkGray : Colors.helpaDarkPink,
+              color: 'white',
+              fontSize: '24px',
+              width: '10%'
+            }}
+            onChange={() => {
+              this.handleSubmit()
+            }}
+          ></Button>
         </div>
       </div>
     )
