@@ -41,7 +41,7 @@ class CreateAccountAgent extends Component {
             }}>
                 <p>Follow the steps below to register as Agent in KeyHelpa:</p>
                 <ol type='1'>
-                    <li>Go to the Agent Sign Up Page (Click <a href={Config.AGENT+'signup'}>here</a>).</li>
+                    <li>Go to the Agent Sign Up Page (Click <a href={Config.AGENT+'/signup'}>here</a>).</li>
                     <li>Start registering your credentials such as:</li>
                     <ol type='a'>
                         <li>First Name</li>
