@@ -183,7 +183,7 @@ export class Others extends Component {
               fontSize: '24px',
               width: '10%'
             }}
-            onChange={theme == 'agent' ? () => window.location.href = Config.AGENT :() => window.location.href = Config.HELPA}
+            onChange={() => theme == 'agent' ? window.location.href = Config.AGENT : window.location.href = Config.HELPA}
           ></Button>
         </div>
 
