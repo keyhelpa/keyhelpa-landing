@@ -9,6 +9,10 @@
   pointer-events: none;
 }
 
+.MuiSelect-select{
+  padding: 0px !important;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
