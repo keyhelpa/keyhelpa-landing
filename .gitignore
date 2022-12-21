@@ -128,3 +128,5 @@ yarn-error.log*
 /src/modules/generic
 /src/config.js
 /src/components/
+.idea/
+build/
