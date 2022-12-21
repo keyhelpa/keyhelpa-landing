@@ -125,8 +125,6 @@ dist
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-/src/modules/generic
 /src/config.js
-/src/components/
 .idea/
 build/

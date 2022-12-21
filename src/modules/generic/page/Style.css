@@ -1,0 +1,45 @@
+.form-helpa{
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    padding: 5%;
+    text-align: left;
+  }
+  
+  .main-content{
+    text-align: center;
+  }
+  
+  .contents{
+    padding-top: 5%;
+  }
+  
+  .contents.agent{
+    background-color: #F1F5FB;
+    display: flex;
+    padding-bottom: 10%;
+  }
+  
+  .contents.helpa{
+    background-color: #FFFAFC;
+    display: flex;
+    padding-bottom: 10%;
+  }
+  
+  .btn-submit{
+    background-color: white !important;
+    border:1px solid white !important;
+    color: #34475D !important;
+    border-radius: 20px !important;
+  }
+  
+  @media (max-width: 991px){
+    .contents.helpa, .contents.agent{
+      display:block;
+    }
+    .form-helpa{
+      padding-bottom: 15%;
+      margin-bottom: 10%;
+      margin-top: 10%;
+    }
+  }
+  
