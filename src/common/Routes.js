@@ -4,9 +4,11 @@
 // const baseUrl = isDev ? localUrl : liveUrl
 import CONFIG from 'config'
 
+const {REACT_FREELANCER_SANDBOX_URL,REACT_AGENT_SANDBOX_URL}=process.env
+
 export default{
   payloadsRetrieve: CONFIG.BACKEND_URL + '/payloads/retrieve_authorize',
   createContact: CONFIG.BACKEND_URL + '/contactus/create_with_email',
-  freelancer: 'https://sandbox.keyhelpa.com',
-  agent: 'https://agent.sandbox.keyhelpa.com',
+  freelancer: `${REACT_FREELANCER_SANDBOX_URL}`,
+  agent: `${REACT_AGENT_SANDBOX_URL}`,
 }

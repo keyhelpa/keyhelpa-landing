@@ -15,6 +15,9 @@ import Helper from 'modules/generic/helper/Common'
 import { SvgIcon } from '@mui/material';
 import { HelpOutline } from '@mui/icons-material';
 import { BasicStyles } from 'common';
+import { Link } from "react-router-dom";
+
+const {REACT_APP_URL}=process.env
 class Stack extends React.Component {
   constructor(props) {
     super(props);
@@ -547,19 +550,21 @@ class Stack extends React.Component {
               component: () => {
                 return (
                   <span style={{ marginLeft: 12, textAlign: 'left' }}>
-                    Yes, I understand and agree to KeyHelpa's <b style={{
+                    Yes, I understand and agree to KeyHelpa's
+                    <Link to={`${REACT_APP_URL}/helpa/terms_and_conditions`} target="_blank">
+                    <b style={{
                       color: Colors.primary
                     }}
-                      onClick={() => {
-                        window.open('https://keyhelpa.com/helpa/terms_and_conditions', 'blank')
-                      }}
-                    >Terms of Conditions</b>, including the <b style={{
+                    >Terms of Conditions</b>
+                    , including the
+                    </Link>
+
+                  <Link to={`${REACT_APP_URL}/helpa/privacy_policy`} target="_blank">
+                    <b style={{
                       color: Colors.primary
                     }}
-                      onClick={() => {
-                        window.open('https://keyhelpa.com/helpa/privacy_policy', 'blank')
-                      }}
                     >Privacy Policy</b>
+                    </Link>
                   </span>
                 )
               }

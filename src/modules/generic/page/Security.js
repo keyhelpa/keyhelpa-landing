@@ -12,6 +12,7 @@ import ConfirmationOTP from 'modules/generic/modal/confirmationOTP'
 import API from 'services/api'
 import Routes from 'common/Routes'
 
+const {REACT_APP_AUTH_API}= process.env;
 const menu = [{
   id: 1,
   title: 'Text message',
@@ -147,7 +148,7 @@ class Stack extends React.Component {
         securityQuestion: false,
         // flag: true
       })
-      // params.flag = true 
+      // params.flag = true
     }
     else if (params.id == 1 && params.flag == true) {
       await this.setState({
@@ -163,7 +164,7 @@ class Stack extends React.Component {
     else if (params.id == 2 && params.flag == false) {
       // window.open(`https://www.authenticatorApi.com/pair.aspx?AppName=KeyHelpa&AppInfo=${user?.username}&SecretCode=${user?.code.slice(-12)}`, '_blank').focus()
       await this.setState({
-        qrCode: `https://www.authenticatorApi.com/pair.aspx?AppName=KeyHelpa&AppInfo=${user?.username}&SecretCode=${user?.code.slice(-12)}`,
+        qrCode: `${REACT_APP_AUTH_API}/pair.aspx?AppName=KeyHelpa&AppInfo=${user?.username}&SecretCode=${user?.code.slice(-12)}`,
         textMessage: false,
         googleAuthenticator: true,
         securityQuestion: false,
