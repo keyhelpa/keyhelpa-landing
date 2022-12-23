@@ -9,7 +9,9 @@ import Config from 'config';
 import Strings from 'modules/generic/helper/String'
 import Common from 'modules/generic/helper/Common'
 
-const mainRoute = 'https://keyhelpa.com/'
+const {REACT_APP_URL}= process.env;
+
+const mainRoute = `${REACT_APP_URL}/`
 // const mainRoute = 'http://localhost:3000/'
 const links = [{
 //   title: 'Company',
@@ -60,7 +62,6 @@ class Stack extends React.Component {
   navigate(route){
     this.props.history.push(route)
   }
- 
   quickLinks(){
     return(
       <div style={{
@@ -99,7 +100,7 @@ class Stack extends React.Component {
               }
             </ul>
 
-            
+
             <ul style={{
               fontSize: BasicStyles.fontSize,
               listStyle: 'none',
