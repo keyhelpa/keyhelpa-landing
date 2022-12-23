@@ -7,7 +7,7 @@ import SelectInput from "components/increment/generic/form/SelectInput"
 import Button from 'components/increment/generic/form/Button'
 import Config from 'config.js';
 import MenuButton from 'components/increment/generic/pagination/menuButton';
-
+const {REACT_APP_AGENT,REACT_APP_HELPA}=process.env;
 class Stack extends React.Component {
   constructor(props) {
     super(props);
@@ -147,10 +147,10 @@ class Stack extends React.Component {
           width: '80%'
         }}
         onChange={(param) => {
-          if (param == 'Agent') {
-            window.location.href = Config.AGENT
+          if (param === 'Agent') {
+            window.location.href = `${REACT_APP_AGENT}`
           } else {
-            window.location.href = Config.HELPA
+            window.location.href = `${REACT_APP_HELPA}`
           }
         }}
       />
@@ -223,19 +223,19 @@ class Stack extends React.Component {
               this.props.sort && this.sort()
             }
             {
-              this.props.page == 'tasks' && this.renderSelection()
+              this.props.page === 'tasks' && this.renderSelection()
             }
             {
-              this.props.page == 'job_works' && this.renderSelection()
+              this.props.page === 'job_works' && this.renderSelection()
             }
             {
-              this.props.page == 'candidates' && this.renderSelection()
+              this.props.page === 'candidates' && this.renderSelection()
             }
             {
-              this.props.page == 'agent_jobs' && this.renderCreateJob()
+              this.props.page === 'agent_jobs' && this.renderCreateJob()
             }
             {
-              this.props.page == 'calendar' && this.renderCalendar()
+              this.props.page === 'calendar' && this.renderCalendar()
             }
             {/* {
               this.props.page == 'messages' && (
@@ -305,16 +305,16 @@ class Stack extends React.Component {
               this.props.sort && this.sort()
             }
             {
-              this.props.page == 'tasks' && this.renderSelection()
+              this.props.page === 'tasks' && this.renderSelection()
             }
             {
-              this.props.page == 'job_works' && this.renderSelection()
+              this.props.page === 'job_works' && this.renderSelection()
             }
             {
-              this.props.page == 'candidates' && this.renderSelection()
+              this.props.page === 'candidates' && this.renderSelection()
             }
             {
-              this.props.page == 'agent_jobs' && this.renderCreateJob()
+              this.props.page === 'agent_jobs' && this.renderCreateJob()
             }
 
             {/* {

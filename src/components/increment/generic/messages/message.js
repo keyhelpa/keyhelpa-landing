@@ -9,6 +9,7 @@ import _ from 'lodash'
 import Config from 'common/Config';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
+const {REACT_APP_API_URL}=process.env;
 class Stack extends React.Component {
   constructor(props) {
     super(props);
@@ -106,7 +107,7 @@ class Stack extends React.Component {
     const { user } = this.props.state
     return (
       <div>
-        
+
         <div style={{
           display: 'flex',
           flexDirection: 'column-reverse',
@@ -143,7 +144,7 @@ class Stack extends React.Component {
                     width: 60
                   }}>
                     {el.account.profile ? <img
-                      src={Config.BACKEND_URL + el.account.profile.url}
+                      src={`${REACT_APP_API_URL}` + el.account.profile.url}
                       style={{
                         width: 50,
                         height: 50,
@@ -186,7 +187,7 @@ class Stack extends React.Component {
                       {el.payload === 'text' && <h3 dangerouslySetInnerHTML={{ __html: this.convertLineToBreak(el.message) }}></h3>}
                       {el.payload === 'image' &&
                         (el.files?.length > 0 && el.files.map((item, index) => (<img
-                          src={Config.BACKEND_URL + item.url}
+                          src={`${REACT_APP_API_URL}` + item.url}
                           style={{
                             height: 200
                           }}

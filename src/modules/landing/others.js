@@ -4,6 +4,7 @@ import Colors from 'common/Colors';
 import Button from 'modules/generic/button'
 import './others.css'
 import Config from "config";
+const{REACT_APP_AGENT,REACT_APP_HELPA}=process.env;
 export class Others extends Component {
   constructor(props) {
     super(props)
@@ -18,7 +19,7 @@ export class Others extends Component {
         marginBottom: 100
       }}>
         {
-          item.template == 'left' && (
+          item.template === 'left' && (
             <div style={{
               float: 'left',
               width: '50%'
@@ -35,13 +36,13 @@ export class Others extends Component {
         <div style={{
           float: 'left',
           width: '50%',
-          paddingLeft: item.template == 'right' ? 0 : '5%',
-          paddingRight: item.template == 'right' ? '5%' : 0,
+          paddingLeft: item.template === 'right' ? 0 : '5%',
+          paddingRight: item.template === 'right' ? '5%' : 0,
         }}
           className="full-width-mobile others-mobile-reset"
         >
           <h1 style={{
-            color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle,
+            color: theme === 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle,
             marginBottom: 25
           }}>
             {
@@ -49,7 +50,7 @@ export class Others extends Component {
             }
           </h1>
           <p style={{
-            color: theme == 'agent' ? Colors.agentText : Colors.helpaOthersText,
+            color: theme === 'agent' ? Colors.agentText : Colors.helpaOthersText,
             marginBottom: 25
           }}  >
             {
@@ -60,7 +61,7 @@ export class Others extends Component {
         </div>
 
         {
-          item.template == 'right' && (
+          item.template === 'right' && (
             <div style={{
               float: 'left',
               width: '50%',
@@ -102,14 +103,14 @@ export class Others extends Component {
         <div style={{
           float: 'left',
           width: '50%',
-          paddingLeft: item.template == 'right' ? 0 : '5%',
-          paddingRight: item.template == 'right' ? '5%' : 0,
+          paddingLeft: item.template === 'right' ? 0 : '5%',
+          paddingRight: item.template === 'right' ? '5%' : 0,
           marginTop: 50
         }}
           className="full-width-mobile others-mobile-reset"
         >
           <h1 style={{
-            color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle,
+            color: theme === 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle,
             marginBottom: 25,
             width: '80%'
           }}>
@@ -118,7 +119,7 @@ export class Others extends Component {
             }
           </h1>
           <p style={{
-            color: theme == 'agent' ? Colors.agentText : Colors.helpaOthersText,
+            color: theme === 'agent' ? Colors.agentText : Colors.helpaOthersText,
             marginBottom: 25
           }}  >
             {
@@ -178,12 +179,12 @@ export class Others extends Component {
           <Button
             title={'Get started'}
             style={{
-              backgroundColor: theme == 'agent' ? Colors.agentDarkGray : Colors.helpaDarkPink,
+              backgroundColor: theme === 'agent' ? Colors.agentDarkGray : Colors.helpaDarkPink,
               color: 'white',
               fontSize: '24px',
               width: '10%'
             }}
-            onChange={() => theme == 'agent' ? window.location.href = Config.AGENT : window.location.href = Config.HELPA}
+            onChange={() => theme === 'agent' ? window.location.href = `${REACT_APP_AGENT}` : window.location.href = `${REACT_APP_HELPA}`}
           ></Button>
         </div>
 

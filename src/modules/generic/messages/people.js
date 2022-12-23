@@ -12,7 +12,7 @@ import Helper from './helper'
 import HelperGeneric from 'modules/generic/helper/Common'
 import Empty from 'modules/generic/page/empty'
 import {requestForToken, onMessageListener, subscibe} from 'services/firebase'
-
+const {REACT_APP_API_URL}=process.env
 class Stack extends React.Component {
   constructor(props) {
     super(props);
@@ -60,7 +60,7 @@ class Stack extends React.Component {
           let code = this.props.match.params.code
           for (let index = 0; index < temp.length; index++) {
             const element = temp[index];
-            if(element.title == code){
+            if(element.title === code){
               this.props.setActiveMessage(element)
             }
           }
@@ -97,7 +97,7 @@ class Stack extends React.Component {
     return (
       <div>
         {item.account.profile && item.account.profile.url ? <img
-          src={Config.BACKEND_URL + item.account.profile.url}
+          src={`${REACT_APP_API_URL}` + item.account.profile.url}
           style={{
             width: 50,
             height: 50,
@@ -155,7 +155,7 @@ class Stack extends React.Component {
           </span>
         </div>
         {
-          item.account && item.account.account_type == 'Freelancer' && item.account.experience && (
+          item.account && item.account.account_type === 'Freelancer' && item.account.experience && (
             <span style={{
               color: Colors.rgbaGray,
               width: '100%',
@@ -166,7 +166,7 @@ class Stack extends React.Component {
           )
         }
         {
-          item.account && item.account.account_type == 'Agent' && item.job && item.job.categories && (
+          item.account && item.account.account_type === 'Agent' && item.job && item.job.categories && (
             <span style={{
               color: Colors.rgbaGray,
               width: '100%',
@@ -247,7 +247,7 @@ class Stack extends React.Component {
                     justifyContent: 'space-between'
                   }
                 }
-                onClick={() => { 
+                onClick={() => {
                   this.props.setActiveMessage(item)
                   console.log(this.props.state.subscribedToken, 'KEYHELPA-' + this.props.state.user.id)
                   subscibe(this.props.state.subscribedToken, 'KEYHELPA-' + this.props.state.user.id)

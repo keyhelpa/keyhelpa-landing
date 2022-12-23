@@ -10,6 +10,7 @@ import VideoCard from 'modules/guides/videoCard'
 import './helpa.css'
 import Data from 'modules/guides/data'
 import Config from 'common/Config';
+const {REACT_APP_HELPA}=process.env
 class CreateAccountHelpa extends Component {
     constructor(props) {
         super(props)
@@ -44,7 +45,7 @@ class CreateAccountHelpa extends Component {
             }}>
                 <p>Follow the steps below to register as Helpa (Freelancer) in KeyHelpa:</p>
                 <ol type='1'>
-                    <li>Go to the Helpa Sign Up Page (Click <a href={Config.HELPA+'signup'}>here</a>).</li>
+                    <li>Go to the Helpa Sign Up Page (Click <a href={`${REACT_APP_HELPA}`+'signup'}>here</a>).</li>
                     <li>Start registering your credentials such as:</li>
                         <ul>
                             <li>First Name</li>
@@ -80,7 +81,7 @@ class CreateAccountHelpa extends Component {
                     Are you into the Real Estate Industry? If yes, get any freelance jobs you want with us.Get started  with KeyHelpa and be your own boss, get paid securely!
                 </p>
 
-                <VideoCard 
+                <VideoCard
                 url={url}/>
 
                 {

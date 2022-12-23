@@ -15,6 +15,7 @@ import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 import SocialAuth from './socialAuth'
 import Config from 'config.js'
 import CommonApi from 'services/commonApi'
+const {REACT_APP_AGENT, REACT_APP_HELPA, REACT_APP_TEST} = process.env
 class Stack extends React.Component {
   constructor(props) {
     super(props);
@@ -51,7 +52,7 @@ class Stack extends React.Component {
 
   login() {
     const { errorPassword, errorUsername, username, password } = this.state;
-    if (Config.TEST == true) {
+    if (`${REACT_APP_TEST}`) {
       const { login } = this.props;
       login({
         id: 1,
@@ -79,7 +80,7 @@ class Stack extends React.Component {
           localStorage.setItem(Helper.APP_NAME + 'token', response.token)
           API.request(Routes.authenticatedUser, {}, user => {
             const { login } = this.props;
-            if (user && (user.account_type == Helper.ACCOUNT_TYPE || user.account_type == 'ADMIN')) {
+            if (user && (user.account_type === Helper.ACCOUNT_TYPE || user.account_type === 'ADMIN')) {
               login(user, response.token)
               this.navigate('/welcome')
             } else {
@@ -153,13 +154,13 @@ class Stack extends React.Component {
       })
       return false
     }
-    if (Helper.ACCOUNT_TYPE.toLowerCase() == 'admin') {
+    if (Helper.ACCOUNT_TYPE.toLowerCase() === 'admin') {
       this.setState({
         errorMessage: 'Registration not allowed.'
       })
       return false
     }
-    if (password != confirmPassword) {
+    if (password !== confirmPassword) {
       this.setState({
         errorConfirmPassword: 'Password not match'
       })
@@ -342,7 +343,7 @@ class Stack extends React.Component {
             _color={true}
           />
           {
-            Helper.ACCOUNT_TYPE.toLowerCase() != 'admin' && (
+            Helper.ACCOUNT_TYPE.toLowerCase() !== 'admin' && (
               <div style={{
                 width: '100%',
                 display: 'flex',
@@ -364,10 +365,10 @@ class Stack extends React.Component {
                       float: 'left'
                     }}
                     onChange={(param) => {
-                      if (param == 'Agent') {
-                        window.location.href = Config.AGENT + '/signup'
+                      if (param === 'Agent') {
+                        window.location.href = `${REACT_APP_AGENT}` + '/signup'
                       } else {
-                        window.location.href = Config.HELPA + '/signup'
+                        window.location.href = `${REACT_APP_HELPA}` + '/signup'
                       }
                     }}
                   />

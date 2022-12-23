@@ -5,6 +5,8 @@ import Colors from 'common/Colors'
 import Config from 'common/Config';
 import { SvgIcon } from '@mui/material';
 import { PersonOutline } from '@mui/icons-material';
+
+const {REACT_APP_API_URL} = process.env;
 export default class Stack extends React.Component {
   constructor(props) {
     super(props);
@@ -14,7 +16,7 @@ export default class Stack extends React.Component {
 
   getUrl(url){
     if(url && url.includes('storage/')){
-      return Config.BACKEND_URL + url
+      return `${REACT_APP_API_URL} + ${url}`
     }
     return url
   }
@@ -34,9 +36,9 @@ export default class Stack extends React.Component {
       }}
       >
         {
-            (data == null || data == undefined) && (
+            (data === null || data === undefined) && (
               <SvgIcon
-                component={PersonOutline} 
+                component={PersonOutline}
                 style={{
                   color: Colors.white,
                   fontSize: size,
@@ -66,7 +68,7 @@ export default class Stack extends React.Component {
                 }}/>
             )
         }
-        
+
       </div>
     )
   }

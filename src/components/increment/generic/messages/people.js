@@ -9,7 +9,7 @@ import _ from 'lodash'
 import Config from 'config';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Helper from 'modules/generic/helper/Common'
-
+const {REACT_APP_API_URL}=process.env
 class Stack extends React.Component {
   constructor(props) {
     super(props);
@@ -75,7 +75,7 @@ class Stack extends React.Component {
     return (
       <div>
         {item.account.profile && item.account.profile.url ? <img
-          src={Config.BACKEND_URL + item.account.profile.url}
+          src={`${REACT_APP_API_URL}` + item.account.profile.url}
           style={{
             width: 50,
             height: 50,

@@ -16,7 +16,6 @@ import { SvgIcon } from '@mui/material';
 import { HelpOutline } from '@mui/icons-material';
 import { BasicStyles } from 'common';
 
-const {REACT_APP_URL}=process.env
 class Stack extends React.Component {
   constructor(props) {
     super(props);
@@ -550,7 +549,7 @@ class Stack extends React.Component {
                 return (
                   <span style={{ marginLeft: 12, textAlign: 'left' }}>
                     Yes, I understand and agree to KeyHelpa's
-                    <Link to={`${REACT_APP_URL}/helpa/terms_and_conditions`} target="_blank" rel="noopener noreferrer">
+                    <Link to= "/helpa/terms_and_conditions" target="_blank" rel="noopener noreferrer">
                     <b style={{
                       color: Colors.primary
                     }}
@@ -558,7 +557,7 @@ class Stack extends React.Component {
                     , including the
                     </Link>
 
-                  <Link to={`${REACT_APP_URL}/helpa/privacy_policy`} target="_blank" rel="noopener noreferrer">
+                  <Link to="/helpa/privacy_policy" target="_blank" rel="noopener noreferrer">
                     <b style={{
                       color: Colors.primary
                     }}

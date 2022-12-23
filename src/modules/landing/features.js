@@ -16,7 +16,7 @@ import HelpaMobileCircle from 'assets/uniform_images/helpa-mobile-circle.png';
 import Colors from 'common/Colors'
 import './featureStyle.css'
 import Config from "config";
-
+const {REACT_APP_AGENT,REACT_APP_HELPA}= process.env;
 function Features(props) {
   const [features, setFeatures] = useState([]);
   const { data, theme } = props;
@@ -24,7 +24,7 @@ function Features(props) {
 
 
   const getImage = (template, device) => {
-    if (device == 'desktop') {
+    if (device === 'desktop') {
       switch (template) {
         case 'up': return AgentCircleUp
         case 'down': return AgentCircleDown
@@ -64,7 +64,7 @@ function Features(props) {
           paddingLeft: 50,
           paddingRight: 50,
           textAlign: 'center',
-          color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle,
+          color: theme === 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle,
         }}>
           {
             title
@@ -99,7 +99,7 @@ function Features(props) {
                 width: '100%'
               }}>
                 <p style={{
-                  color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaOthersText,
+                  color: theme === 'agent' ? Colors.agentTextTitle : Colors.helpaOthersText,
                   textAlign: 'center'
                 }}>
                   {
@@ -137,7 +137,7 @@ function Features(props) {
           paddingLeft: 50,
           paddingRight: 50,
           textAlign: 'center',
-          color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle,
+          color: theme === 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle,
           fontSize: 16
         }}>
           {
@@ -172,7 +172,7 @@ function Features(props) {
                 alignItems: 'center'
               }}>
                 <p style={{
-                  color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaOthersText,
+                  color: theme === 'agent' ? Colors.agentTextTitle : Colors.helpaOthersText,
                   textAlign: 'left'
                 }}>
                   {
@@ -245,19 +245,19 @@ function Features(props) {
         <Button
           title={'Get started'}
           style={{
-            backgroundColor: theme == 'agent' ? Colors.agentDarkGray : Colors.helpaDarkPink,
+            backgroundColor: theme === 'agent' ? Colors.agentDarkGray : Colors.helpaDarkPink,
             color: 'white',
             fontSize: '24px',
             width: '10%'
           }}
-          onChange={() => theme == 'agent' ? window.location.href = Config.AGENT :  window.location.href = Config.HELPA}
+          onChange={() => theme === 'agent' ? window.location.href = `${REACT_APP_AGENT}` :  window.location.href = `${REACT_APP_HELPA}`}
         ></Button>
       </div>
-      
+
         {
-          theme == 'agent' ? '' : renderBottom()
+          theme === 'agent' ? '' : renderBottom()
         }
-      
+
 
     </div>
   )

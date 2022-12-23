@@ -8,7 +8,7 @@ import './Style.css'
 import API from 'services/api'
 import Routes from 'common/Routes'
 import Config from "config";
-
+const {REACT_APP_API_URL,REACT_APP_HELPA} = process.env;
 export class Others extends Component {
     constructor(props) {
       super(props)
@@ -24,7 +24,7 @@ export class Others extends Component {
             {/* Web */}
           <div className='web'>
             <Grid className='gridBg' style={
-              theme == 'agent' ? {backgroundImage: `url(${bgAgent})`, backgroundColor: '#F1F5FB'} : {backgroundImage: `url(${bgHelpa})`, backgroundColor: '#FFFAFC'}}
+              theme === 'agent' ? {backgroundImage: `url(${bgAgent})`, backgroundColor: '#F1F5FB'} : {backgroundImage: `url(${bgHelpa})`, backgroundColor: '#FFFAFC'}}
               container alignItems={'left'} justifyContent={'left'}>
               {
                 others.map((item,index)=>{
@@ -42,7 +42,7 @@ export class Others extends Component {
                           <img style={{
                           width: '80%',
                           height: 'auto',
-                        }} src={`${Config.BACKEND_URL}${item.url}`}></img>
+                        }} src={`${REACT_APP_API_URL}${item.url}`}></img>
                         </Grid>
                         <Grid item xs={6} style={{
                           padding: '5% 5% 5% 5%',
@@ -55,7 +55,7 @@ export class Others extends Component {
                             color: '#34475DA3',
                             fontSize: '18px'
                           }}>{item.description}</p>
-                        </Grid> 
+                        </Grid>
                       </div>
                     )
                   }else{
@@ -83,9 +83,9 @@ export class Others extends Component {
                             <img style={{
                             width: '80%',
                             height: 'auto',
-                          }} src={`${Config.BACKEND_URL}${item.url}`}></img>
+                          }} src={`${REACT_APP_API_URL}${item.url}`}></img>
                           </Grid>
-                          
+
                       </div>
                     )
                   }
@@ -93,7 +93,7 @@ export class Others extends Component {
               }
             </Grid>
           <div className='flex-center' style={
-          theme == 'agent' ? {backgroundColor: '#F1F5FB'} : {backgroundColor: '#FFFAFC'}}>
+          theme === 'agent' ? {backgroundColor: '#F1F5FB'} : {backgroundColor: '#FFFAFC'}}>
           <Button
               title={'Get Started'}
               style={theme==='agent' ? {
@@ -104,14 +104,14 @@ export class Others extends Component {
                 fontSize: '24px',
                 width: '10%'
               }}
-              onChange={() => window.location.href = Config.HELPA}
+              onChange={() => window.location.href = `${REACT_APP_HELPA}`}
               ></Button>
           </div>
           </div>
           {/* Mobile */}
           <div className='mobile'>
             <Grid className='gridBg' style={
-              theme == 'agent' ? {backgroundImage: `url(${bgAgent})`, backgroundColor: '#F1F5FB'} : {backgroundImage: `url(${bgHelpa})`, backgroundColor: '#FFFAFC'}}
+              theme === 'agent' ? {backgroundImage: `url(${bgAgent})`, backgroundColor: '#F1F5FB'} : {backgroundImage: `url(${bgHelpa})`, backgroundColor: '#FFFAFC'}}
               container alignItems={'center'} justifyContent={'center'}>
               {
                 others.map((item,index)=>{
@@ -128,7 +128,7 @@ export class Others extends Component {
                         height: 'auto',
                         marginTop: '25px',
                         marginBottom: '25px',
-                      }} src={`${Config.BACKEND_URL}${item.url}`}></img>
+                      }} src={`${REACT_APP_API_URL}${item.url}`}></img>
                       <div style={{
                         textAlign: 'left',
                       }}>
@@ -142,9 +142,9 @@ export class Others extends Component {
                           fontSize: '18px'
                         }}>{item.description}</p>
                       </div>
-                      
+
                       </Grid>
-                      
+
                     </div>
                   )
                 })
@@ -159,7 +159,7 @@ export class Others extends Component {
                   fontSize: '24px',
                   width: '10%', marginBottom: '25px'
                 }}
-                onChange={() => window.location.href = Config.HELPA}
+                onChange={() => window.location.href = `${REACT_APP_HELPA}`}
               ></Button>
             </Grid>
           </div>

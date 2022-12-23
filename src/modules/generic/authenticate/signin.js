@@ -18,7 +18,7 @@ import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 import CheckBox from 'modules/generic/form/CheckBox'
 import SocialAuth from './socialAuth'
 import { Color } from 'common';
-
+const {REACT_APP_TEST,REACT_APP_HELPA,REACT_APP_AGENT}=process.env;
 class Stack extends React.Component {
   constructor(props) {
     super(props);
@@ -34,12 +34,12 @@ class Stack extends React.Component {
       rememberMe: null
     };
   }
-  
+
   componentDidMount(){
     const username = localStorage.getItem('username')
     const password = localStorage.getItem('password')
     const rememberMe = parseInt(localStorage.getItem('rememberMe'))
-    if(rememberMe == 1){
+    if(rememberMe === 1){
       this.setState({
         rememberMe: [{
           title: 'Remember me',
@@ -69,7 +69,7 @@ class Stack extends React.Component {
       localStorage.setItem('username', username)
       localStorage.setItem('password', password)
     }
-    if(Config.TEST == true){
+    if(`${REACT_APP_TEST}`){
       const { login } = this.props;
       login({
         id: 1,
@@ -97,13 +97,13 @@ class Stack extends React.Component {
           localStorage.setItem(Helper.APP_NAME + 'token', response.token)
            API.request(Routes.authenticatedUser, {}, user => {
             const { login } = this.props;
-            if(user && (user.account_type == Helper.ACCOUNT_TYPE || user.account_type == 'ADMIN')){
+            if(user && (user.account_type === Helper.ACCOUNT_TYPE || user.account_type === 'ADMIN')){
               login(user, response.token)
-              if(user.status == 'ACCOUNT_VERIFIED' || user.status == 'PROFILE_SETUP'){
+              if(user.status === 'ACCOUNT_VERIFIED' || user.status === 'PROFILE_SETUP'){
                 if(user.security !== null){
-                  if(user.security.sms == 1){
+                  if(user.security.sms === 1){
                     this.navigate('/2_step_verification')
-                  }else if(user.security.google_auth == 1){
+                  }else if(user.security.google_auth === 1){
                     this.navigate('/2_step_verification')
                   }else{
                     this.navigate(Helper.NEXT_ROUTE)
@@ -132,7 +132,7 @@ class Stack extends React.Component {
       }, error => {
         this.setState({
           isLoading: false,
-          errorMessage: error && error.error == 'invalid_credentials' ? 'Username and Password did not match.' : 'Invalid accessed.'
+          errorMessage: error && error.error === 'invalid_credentials' ? 'Username and Password did not match.' : 'Invalid accessed.'
         })
       })
     }else{
@@ -163,9 +163,9 @@ class Stack extends React.Component {
             description={'Proceed with registration below to start your career with KeyHelpa'}
             _color={true}
             />
-          
+
           {
-            Helper.ACCOUNT_TYPE.toLowerCase() != 'admin' && (
+            Helper.ACCOUNT_TYPE.toLowerCase() !== 'admin' && (
               <div style={{
                 width: '100%',
                 display: 'flex',
@@ -187,10 +187,10 @@ class Stack extends React.Component {
                       float: 'left'
                     }}
                     onChange={(param) => {
-                      if(param == 'Agent'){
-                        window.location.href = Config.AGENT
+                      if(param === 'Agent'){
+                        window.location.href = `${REACT_APP_AGENT}`
                       }else{
-                        window.location.href = Config.HELPA
+                        window.location.href = `${REACT_APP_HELPA}`
                       }
                     }}
                   />
@@ -198,7 +198,7 @@ class Stack extends React.Component {
               </div>
             )
           }
-          
+
           {
             errorMessage && (
               <p style={{
@@ -268,7 +268,7 @@ class Stack extends React.Component {
           width: '100%',
           paddingTop: 20
         }}>
-          
+
           <div style={{width: '50%'}}>
             <CheckBox
               data={[{
@@ -301,9 +301,9 @@ class Stack extends React.Component {
               width: '50%',
               textAlign: 'right',
               fontWeight: 'bold'
-            }} 
+            }}
             className='href-link'>Forgot password? </label>
-          
+
         </div>
 
 
@@ -315,7 +315,7 @@ class Stack extends React.Component {
           textAlign: 'center'
         }}>
           <Button
-              title={'Log In'} 
+              title={'Log In'}
               onClick={() => {
                 this.submit()
               }}
@@ -331,9 +331,9 @@ class Stack extends React.Component {
               />
 
         </div>
-      
 
-      
+
+
         <div style={{
           width: '100%',
           float: 'left'
@@ -351,7 +351,7 @@ class Stack extends React.Component {
             }}
           />
         </div>
-        
+
         <div style={{
           textAlign: 'center',
           width: '100%',

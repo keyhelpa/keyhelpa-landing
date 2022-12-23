@@ -9,7 +9,7 @@ import Config from 'config';
 import Strings from 'modules/generic/helper/String'
 import Common from 'modules/generic/helper/Common'
 
-const {REACT_APP_URL}= process.env;
+const {REACT_APP_URL,REACT_APP_AGENT,REACT_APP_HELPA,REACT_APP_HOST}= process.env;
 
 const mainRoute = `${REACT_APP_URL}/`
 // const mainRoute = 'http://localhost:3000/'
@@ -43,10 +43,10 @@ const links = [{
 
 const menuLink = [{
   title: "Agents Looking for Helpas",
-  route: Config.AGENT
+  route: `${REACT_APP_AGENT}`
 }, {
   title: "Helpas Looking to Earn",
-  route: Config.HELPA
+  route: `${REACT_APP_HELPA}`
 }]
 class Stack extends React.Component {
   constructor(props) {
@@ -174,7 +174,7 @@ class Stack extends React.Component {
           }}
           className="cursor-hover"
           onClick={() => {
-            window.location.href = Config.HOST
+            window.location.href = `${REACT_APP_HOST}`
           }}
           />
           <p style={{
