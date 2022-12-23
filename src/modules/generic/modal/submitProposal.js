@@ -8,14 +8,13 @@ import CheckBox from 'modules/generic/form/CheckBox'
 import TextInput from "components/increment/generic/form/TextInput"
 import TextArea from 'components/increment/generic/form/TextArea'
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter,Link } from 'react-router-dom';
 import API from 'services/api'
 import Routes from 'common/Routes'
 import Helper from 'modules/generic/helper/Common'
 import { SvgIcon } from '@mui/material';
 import { HelpOutline } from '@mui/icons-material';
 import { BasicStyles } from 'common';
-import { Link } from "react-router-dom";
 
 const {REACT_APP_URL}=process.env
 class Stack extends React.Component {
@@ -68,7 +67,7 @@ class Stack extends React.Component {
         // hourlyRate: data.amount > 0 ? data.amount : 0,
         currency: data.job_terms.currency
       })
-    } else if (data && data.proposal != null && (data.proposal.category != 'invite')) {
+    } else if (data && data.proposal !== null && (data.proposal.category !== 'invite')) {
       this.setState({
         hourlyRate: data.proposal.amount,
         currency: data.proposal.currency,
@@ -78,11 +77,11 @@ class Stack extends React.Component {
         }]
       })
     }
-    if (data && data.proposal && data.proposal.category != 'invite') {
+    if (data && data.proposal && data.proposal.category !== 'invite') {
       this.setState({
-        message: data.proposal !== null ? data.proposal.details.message : null,
+        message: data.proposal?.details.message,
         // image: data.proposal !== null ? JSON.parse(data.proposal.details).cv : null,
-        terms: data.proposal !== null ? data.proposal.details.terms : null
+        terms: data.proposal?.details.terms
       })
     }
   }
@@ -108,7 +107,7 @@ class Stack extends React.Component {
   setLoading(param, value) {
     const { actions } = this.state;
     let newActions = actions.map(item => {
-      if (item.title == param.title) {
+      if (item.title === param.title) {
         return {
           ...item,
           isLoading: value
@@ -130,7 +129,7 @@ class Stack extends React.Component {
       })
       return
     }
-    if (message == null || message == '') {
+    if (message == null || message === '') {
       this.setState({
         errorMessage: 'Message is required.'
       })
@@ -167,21 +166,21 @@ class Stack extends React.Component {
     let serve = terms.filter(el => { return el.value === 'service_fee' });
     let percentage = terms.filter(el => { return el.value === 'percent' });
     if (data && data.proposal == null) return
-    if (hourlyRate == 0 || hourlyRate < 0) {
+    if (hourlyRate === 0 || hourlyRate < 0) {
       this.setState({
         errorMessage: 'Hourly rate must be greater than A$1'
       })
       return
     }
 
-    if (message == null || message == '') {
+    if (message == null || message === '') {
       this.setState({
         errorMessage: 'Message is required.'
       })
       return
     }
 
-    if (cons.length == 0 || serve.length == 0 || percentage.length == 0) {
+    if (cons.length === 0 || serve.length === 0 || percentage.length === 0) {
       this.setState({
         errorMessage: 'Terms are required.'
       })
@@ -225,19 +224,19 @@ class Stack extends React.Component {
     const { user } = this.props.state;
     if (data == null) return null
     if (user == null) return null
-    if (hourlyRate == 0 || hourlyRate < 0) {
+    if (hourlyRate === 0 || hourlyRate < 0) {
       this.setState({
         errorMessage: 'Hourly rate must be greater than A$1'
       })
       return
     }
-    if (message == null || message == '') {
+    if (message == null || message === '') {
       this.setState({
         errorMessage: 'Message is required.'
       })
       return
     }
-    if (cons.length == 0 || serve.length == 0 || percentage.length == 0) {
+    if (cons.length === 0 || serve.length === 0 || percentage.length === 0) {
       this.setState({
         errorMessage: 'Please accept and acknowledge the following terms and conditions.'
       })
@@ -265,7 +264,7 @@ class Stack extends React.Component {
     API.request(Routes.proposalCreate, parameter, response => {
       this.setLoading(param, false)
       if (response && response.data) {
-        if (data && data.proposal && data.proposal.category === 'invite' && data.proposal.category_status == 'pending') {
+        if (data && data.proposal && data.proposal.category === 'invite' && data.proposal.category_status === 'pending') {
           this.updateInvite()
         } else {
           this.props.history.push('/proposals')
@@ -455,7 +454,7 @@ class Stack extends React.Component {
         overflowY: 'scroll'
       }}>
         {
-          this.state.errorMessage != null && (
+          this.state.errorMessage !== null && (
             <div>
               <p style={{
                 color: Colors.dangerText
@@ -551,7 +550,7 @@ class Stack extends React.Component {
                 return (
                   <span style={{ marginLeft: 12, textAlign: 'left' }}>
                     Yes, I understand and agree to KeyHelpa's
-                    <Link to={`${REACT_APP_URL}/helpa/terms_and_conditions`} target="_blank">
+                    <Link to={`${REACT_APP_URL}/helpa/terms_and_conditions`} target="_blank" rel="noopener noreferrer">
                     <b style={{
                       color: Colors.primary
                     }}
@@ -559,7 +558,7 @@ class Stack extends React.Component {
                     , including the
                     </Link>
 
-                  <Link to={`${REACT_APP_URL}/helpa/privacy_policy`} target="_blank">
+                  <Link to={`${REACT_APP_URL}/helpa/privacy_policy`} target="_blank" rel="noopener noreferrer">
                     <b style={{
                       color: Colors.primary
                     }}
@@ -624,7 +623,7 @@ class Stack extends React.Component {
         <ModalFooter
           actions={actions}
           onClick={(param) => {
-            if (data && data.proposal == null && param.title == 'Submit proposal' || (data.proposal.category === 'invite')) {
+            if (data && data.proposal === null && param.title === 'Submit proposal' || (data.proposal.category === 'invite')) {
               this.submit(param)
             } else {
               this.update(param)

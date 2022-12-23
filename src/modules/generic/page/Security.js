@@ -74,12 +74,12 @@ class Stack extends React.Component {
       })
       if (response.data.length > 0) {
         let temp = response.data[0];
-        if (temp.sms == 1) {
+        if (temp.sms === 1) {
           menu[0].flag = true
         } else {
           menu[0].flag = false
         }
-        if (temp.google_auth == 1) {
+        if (temp.google_auth === 1) {
           menu[1].flag = true
         } else {
           menu[1].flag = false
@@ -118,18 +118,18 @@ class Stack extends React.Component {
     const { data } = this.state
     const { user } = this.props.state
     let params = null;
-    if (security == 'sms') {
+    if (security === 'sms') {
       params = {
         'id': data[0].id,
         'sms': 0,
         '2fa': 0,
         'account_id': user?.id
       }
-    }else if (security == 'google_auth') {
+    }else if (security === 'google_auth') {
       params = {
         'id': data[0].id,
-        'sms': data[0].sms == 1 ? 1 : 0,
-        '2fa': data[0].sms == 0 && data[0].google_auth == 0 ? 0 : 1,
+        'sms': data[0].sms === 1 ? 1 : 0,
+        '2fa': data[0].sms === 0 && data[0].google_auth === 0 ? 0 : 1,
         'google_auth': 0,
         'account_id': user?.id
       }
@@ -141,7 +141,7 @@ class Stack extends React.Component {
 
   async flag(params) {
     const { user } = this.props.state
-    if (params.id == 1 && params.flag == false) {
+    if (params.id === 1 && params.flag === false) {
       await this.setState({
         textMessage: true,
         googleAuthenticator: false,
@@ -150,7 +150,7 @@ class Stack extends React.Component {
       })
       // params.flag = true
     }
-    else if (params.id == 1 && params.flag == true) {
+    else if (params.id === 1 && params.flag === true) {
       await this.setState({
         textMessage: false,
         googleAuthenticator: false,
@@ -161,7 +161,7 @@ class Stack extends React.Component {
       })
       // params.flag = false
     }
-    else if (params.id == 2 && params.flag == false) {
+    else if (params.id === 2 && params.flag === false) {
       // window.open(`https://www.authenticatorApi.com/pair.aspx?AppName=KeyHelpa&AppInfo=${user?.username}&SecretCode=${user?.code.slice(-12)}`, '_blank').focus()
       await this.setState({
         qrCode: `${REACT_APP_AUTH_API}/pair.aspx?AppName=KeyHelpa&AppInfo=${user?.username}&SecretCode=${user?.code.slice(-12)}`,
@@ -171,7 +171,7 @@ class Stack extends React.Component {
       })
       // params.flag = true
     }
-    else if (params.id == 2 && params.flag == true) {
+    else if (params.id === 2 && params.flag === true) {
       await this.setState({
         textMessage: false,
         googleAuthenticator: false,
@@ -182,7 +182,7 @@ class Stack extends React.Component {
       })
       // params.flag = false
     }
-    else if (params.id == 3) {
+    else if (params.id === 3) {
       await this.setState({
         textMessage: false,
         googleAuthenticator: false,

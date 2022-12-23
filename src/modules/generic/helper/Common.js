@@ -167,7 +167,7 @@ export default {
                     url: links[key],
                     icon: this.getSocialIcon(key)
                 })
-            }            
+            }
         }
         return array
     }
