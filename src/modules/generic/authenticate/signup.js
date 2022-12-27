@@ -52,7 +52,7 @@ class Stack extends React.Component {
 
   login() {
     const { errorPassword, errorUsername, username, password } = this.state;
-    if (`${REACT_APP_TEST}`) {
+    if (`${REACT_APP_TEST}`=== true) {
       const { login } = this.props;
       login({
         id: 1,

@@ -69,7 +69,7 @@ class Stack extends React.Component {
       localStorage.setItem('username', username)
       localStorage.setItem('password', password)
     }
-    if(`${REACT_APP_TEST}`){
+    if(`${REACT_APP_TEST}`=== true){
       const { login } = this.props;
       login({
         id: 1,
