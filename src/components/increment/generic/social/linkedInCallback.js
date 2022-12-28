@@ -19,9 +19,9 @@ function Stack() {
         }, {
             grant_type: 'authorization_code',
             code: code,
-            client_id: `${REACT_APP_LINKEDIN_ID}`,
-            client_secret: `${REACT_APP_LINKEDIN_SECRET}`,
-            redirect_uri: `${REACT_APP_LINKEDIN_REDIRECT_URL}`
+            client_id: REACT_APP_LINKEDIN_ID,
+            client_secret: REACT_APP_LINKEDIN_SECRET,
+            redirect_uri: REACT_APP_LINKEDIN_REDIRECT_URL
         }).then(response => {
             console.log({
                 response

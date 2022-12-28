@@ -64,7 +64,7 @@ export default class Stack extends React.Component {
   initClient = (response) => {
       let gapi = window.gapi
       gapi.auth2.init({
-          'clientId': `${REACT_APP_GOOGLE_ID}`,
+          'clientId': REACT_APP_GOOGLE_ID,
           'scope': 'https://www.googleapis.com/auth/drive.metadata.readonly',
           'discoveryDocs': ['https://www.googleapis.com/discovery/v1/apis/drive/v3/rest']
       }).then(() => {
@@ -90,7 +90,7 @@ export default class Stack extends React.Component {
               />
 
           <Helmet>
-                <meta name="google-signin-client_id" content={`${REACT_APP_GOOGLE_ID}`} />
+                <meta name="google-signin-client_id" content={REACT_APP_GOOGLE_ID} />
                 <script src="https://apis.google.com/js/platform.js" async defer></script>
           </Helmet>
         </div>

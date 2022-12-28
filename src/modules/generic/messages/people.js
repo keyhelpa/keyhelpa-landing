@@ -97,7 +97,7 @@ class Stack extends React.Component {
     return (
       <div>
         {item.account.profile && item.account.profile.url ? <img
-          src={`${REACT_APP_API_URL}` + item.account.profile.url}
+          src={REACT_APP_API_URL + item.account.profile.url}
           style={{
             width: 50,
             height: 50,

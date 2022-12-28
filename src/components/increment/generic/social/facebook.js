@@ -25,7 +25,7 @@ export default class Stack extends React.Component {
     this.props.isLoading(true)
     API.request(Routes.socialSignin, user, response => {
       const { login } = this.props;
-      if(response && response.data && user && (user.account_type === Helper.ACCOUNT_TYPE || user.account_type == 'ADMIN')){
+      if(response && response.data && user && (user.account_type === Helper.ACCOUNT_TYPE || user.account_type === 'ADMIN')){
         this.props.isLoading(false)
         login(user, user.token.token)
         if(user.status === 'ACCOUNT_VERIFIED' || user.status === 'PROFILE_SETUP'){
@@ -100,7 +100,7 @@ export default class Stack extends React.Component {
     console.log('Facebook Authentication')
     let FB = window.FB
     FB.init({
-      appId            : `${REACT_APP_FACEBOOK_ID}`,
+      appId            : REACT_APP_FACEBOOK_ID,
       autoLogAppEvents : true,
       xfbml            : true,
       version          : 'v13.0'

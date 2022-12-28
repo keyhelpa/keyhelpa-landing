@@ -52,7 +52,7 @@ class Stack extends React.Component {
 
   login() {
     const { errorPassword, errorUsername, username, password } = this.state;
-    if (`${REACT_APP_TEST}`=== true) {
+    if (!!REACT_APP_TEST) {
       const { login } = this.props;
       login({
         id: 1,
@@ -68,7 +68,7 @@ class Stack extends React.Component {
       }, '1321321321321321')
       this.navigate('/welcome')
     }
-    if (errorPassword == null && errorUsername == null && username != null && password != null) {
+    if (errorPassword === null && errorUsername === null && username !== null && password !== null) {
       this.setState({
         isLoading: true
       })
@@ -366,9 +366,9 @@ class Stack extends React.Component {
                     }}
                     onChange={(param) => {
                       if (param === 'Agent') {
-                        window.location.href = `${REACT_APP_AGENT}` + '/signup'
+                        window.location.href = REACT_APP_AGENT + '/signup'
                       } else {
-                        window.location.href = `${REACT_APP_HELPA}` + '/signup'
+                        window.location.href = REACT_APP_HELPA + '/signup'
                       }
                     }}
                   />

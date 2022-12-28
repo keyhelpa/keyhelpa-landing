@@ -250,7 +250,7 @@ function Features(props) {
             fontSize: '24px',
             width: '10%'
           }}
-          onChange={() => theme === 'agent' ? window.location.href = `${REACT_APP_AGENT}` :  window.location.href = `${REACT_APP_HELPA}`}
+          onChange={() => theme === 'agent' ? window.location.href = REACT_APP_AGENT :  window.location.href = REACT_APP_HELPA}
         ></Button>
       </div>
 

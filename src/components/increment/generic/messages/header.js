@@ -88,7 +88,7 @@ class Stack extends React.Component {
             }}
               className="full-width-mobile mt-mobile-15"
               onClick={() => {
-                window.location.href = `${REACT_APP_HOST}` + '/contract/view/' + item.contract.code
+                window.location.href = REACT_APP_HOST + '/contract/view/' + item.contract.code
               }}>
               View Contract
             </span>

@@ -70,7 +70,7 @@ const Header = (props) => {
             setSelectedUser(null)
             setColor(null)
           } else {
-            window.location.href = `${REACT_APP_HOST}`
+            window.location.href = REACT_APP_HOST
           }
           window.scrollTo(0,0)
         }}

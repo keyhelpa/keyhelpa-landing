@@ -143,7 +143,7 @@ const Header = (props) => {
       }}
         className="cursor-href header-logo"
         onClick={() => {
-          window.location.href = `${REACT_APP_HOST}`
+          window.location.href = REACT_APP_HOST
         }}
       />
     )

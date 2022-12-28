@@ -16,7 +16,7 @@ export default class Stack extends React.Component {
 
   getUrl(url){
     if(url && url.includes('storage/')){
-      return `${REACT_APP_API_URL} + ${url}`
+      return REACT_APP_API_URL + url
     }
     return url
   }

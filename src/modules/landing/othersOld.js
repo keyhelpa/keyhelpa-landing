@@ -104,7 +104,7 @@ export class Others extends Component {
                 fontSize: '24px',
                 width: '10%'
               }}
-              onChange={() => window.location.href = `${REACT_APP_HELPA}`}
+              onChange={() => window.location.href = REACT_APP_HELPA}
               ></Button>
           </div>
           </div>
@@ -159,7 +159,7 @@ export class Others extends Component {
                   fontSize: '24px',
                   width: '10%', marginBottom: '25px'
                 }}
-                onChange={() => window.location.href = `${REACT_APP_HELPA}`}
+                onChange={() => window.location.href = REACT_APP_HELPA}
               ></Button>
             </Grid>
           </div>

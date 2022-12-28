@@ -69,7 +69,7 @@ class Stack extends React.Component {
       localStorage.setItem('username', username)
       localStorage.setItem('password', password)
     }
-    if(`${REACT_APP_TEST}`=== true){
+    if(!!REACT_APP_TEST){
       const { login } = this.props;
       login({
         id: 1,
@@ -85,7 +85,7 @@ class Stack extends React.Component {
       }, '1321321321321321')
       this.navigate('/dashboard')
     }
-    if(errorPassword == null && errorUsername == null && username != null && password != null){
+    if(errorPassword === null && errorUsername === null && username !== null && password !== null){
       this.setState({
         isLoading: true
       })
@@ -188,9 +188,9 @@ class Stack extends React.Component {
                     }}
                     onChange={(param) => {
                       if(param === 'Agent'){
-                        window.location.href = `${REACT_APP_AGENT}`
+                        window.location.href = REACT_APP_AGENT
                       }else{
-                        window.location.href = `${REACT_APP_HELPA}`
+                        window.location.href = REACT_APP_HELPA
                       }
                     }}
                   />
@@ -344,9 +344,9 @@ class Stack extends React.Component {
                 isLoading: flag
               })
             }}
-            errorMessage={(messsage) => {
+            errorMessage={(message) => {
               this.setState({
-                errorMessage: messsage
+                errorMessage: message
               })
             }}
           />

@@ -13,7 +13,7 @@ import { MenuOutlined } from "@mui/icons-material";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faSearch } from '@fortawesome/free-solid-svg-icons'
 import Config from "config";
-const {REACT_APP_HOST}=process.env;
+const {REACT_APP_HOST, REACT_APP_AGENT,REACT_APP_HELPA }=process.env;
 const headerHeight = 70
 const Header = (props) => {
   const history = useHistory();
@@ -54,7 +54,7 @@ const Header = (props) => {
           marginLeft: '50px'
         }}
         onClick={() => {
-          window.location.href = `${REACT_APP_HOST}`
+          window.location.href = REACT_APP_HOST
         }}
         className="brand-on-mobile cursor-href"
         />
@@ -133,10 +133,10 @@ const Header = (props) => {
 
   const leftMenu = [{
     title: 'Agents Looking for Helpas',
-    route: `${REACT_APP_AGENT}`
+    route: REACT_APP_AGENT
   }, {
     title: 'Helpas Looking to Earn',
-    route: `${REACT_APP_HELPA}`
+    route: REACT_APP_HELPA
   }]
 
   const rightMenu = [{

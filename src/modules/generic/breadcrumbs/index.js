@@ -148,9 +148,9 @@ class Stack extends React.Component {
         }}
         onChange={(param) => {
           if (param === 'Agent') {
-            window.location.href = `${REACT_APP_AGENT}`
+            window.location.href = REACT_APP_AGENT
           } else {
-            window.location.href = `${REACT_APP_HELPA}`
+            window.location.href = REACT_APP_HELPA
           }
         }}
       />

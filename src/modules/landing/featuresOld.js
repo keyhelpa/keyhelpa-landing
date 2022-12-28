@@ -132,7 +132,7 @@ export class Features extends Component {
                   fontSize: '24px',
                   width: '10%'
                 }}
-                onChange={() => window.location.href = `${REACT_APP_HELPA}`}
+                onChange={() => window.location.href = REACT_APP_HELPA}
               ></Button>
             </Grid>
           </div>
@@ -276,7 +276,7 @@ export class Features extends Component {
                   fontSize: '24px',
                   width: '10%'
                 }}
-                onChange={() => window.location.href = `${REACT_APP_HELPA}`}
+                onChange={() => window.location.href = REACT_APP_HELPA}
                 ></Button>
             </Grid>
           </div>

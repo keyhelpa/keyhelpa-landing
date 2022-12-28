@@ -43,10 +43,10 @@ const links = [{
 
 const menuLink = [{
   title: "Agents Looking for Helpas",
-  route: `${REACT_APP_AGENT}`
+  route: REACT_APP_AGENT
 }, {
   title: "Helpas Looking to Earn",
-  route: `${REACT_APP_HELPA}`
+  route: REACT_APP_HELPA
 }]
 class Stack extends React.Component {
   constructor(props) {
@@ -174,7 +174,7 @@ class Stack extends React.Component {
           }}
           className="cursor-hover"
           onClick={() => {
-            window.location.href = `${REACT_APP_HOST}`
+            window.location.href = REACT_APP_HOST
           }}
           />
           <p style={{
