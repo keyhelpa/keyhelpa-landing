@@ -44,11 +44,11 @@ const initialState = {
   },{
     title: 'Members Login',
     type: 'external',
-    route:  `${REACT_APP_AGENT}`
+    route:  REACT_APP_AGENT
   }, {
     title: 'Join Us',
     type: 'external',
-    route:  `${REACT_APP_HELPA}`
+    route:  REACT_APP_HELPA
   }],
   accountType: null
 }

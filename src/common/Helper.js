@@ -77,7 +77,7 @@ export default {
   }, {
     title: 'Join us',
     type: 'external',
-    route: `${REACT_APP_HELPA}/signup`
+    route: `${REACT_APP_HELPA}signup`
   }],
   getFooterLogo() {
     let curr_path = window.location.pathname

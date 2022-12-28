@@ -35,7 +35,7 @@ const Header = (props) => {
       }}
       className="cursor-hover"
       onClick={() => {
-        window.location.href = `${REACT_APP_HOST}`
+        window.location.href = REACT_APP_HOST
       }}
       />
     )
