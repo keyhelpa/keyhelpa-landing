@@ -13,7 +13,7 @@ import { MenuOutlined } from "@mui/icons-material";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faSearch } from '@fortawesome/free-solid-svg-icons'
 import Config from "config";
-
+const {REACT_APP_HOST, REACT_APP_AGENT,REACT_APP_HELPA }=process.env;
 const headerHeight = 70
 const Header = (props) => {
   const history = useHistory();
@@ -35,7 +35,7 @@ const Header = (props) => {
       }}
       className="cursor-hover"
       onClick={() => {
-        window.location.href = Config.HOST
+        window.location.href = REACT_APP_HOST
       }}
       />
     )
@@ -54,7 +54,7 @@ const Header = (props) => {
           marginLeft: '50px'
         }}
         onClick={() => {
-          window.location.href = Config.HOST
+          window.location.href = REACT_APP_HOST
         }}
         className="brand-on-mobile cursor-href"
         />
@@ -68,7 +68,7 @@ const Header = (props) => {
         className="hide-on-mobile"
         >Agents Looking for Helpas</b>
 
-        
+
         <b style={{
           color: Color.white,
           paddingLeft: 50,
@@ -102,7 +102,7 @@ const Header = (props) => {
           <Nav.Link style={{
             color: Color.white,
             paddingLeft: '1rem'
-          }}>    
+          }}>
           </Nav.Link>
         </Nav>
         <Navbar.Brand
@@ -133,10 +133,10 @@ const Header = (props) => {
 
   const leftMenu = [{
     title: 'Agents Looking for Helpas',
-    route: Config.AGENT
+    route: REACT_APP_AGENT
   }, {
     title: 'Helpas Looking to Earn',
-    route: Config.HELPA
+    route: REACT_APP_HELPA
   }]
 
   const rightMenu = [{
@@ -149,7 +149,7 @@ const Header = (props) => {
 
   const desktopMenu = () => {
     return(
-      <div 
+      <div
         style={{
           width: '100%',
           display: 'flex',
@@ -246,7 +246,7 @@ const Header = (props) => {
         <div
           onClick={() => {
             props.toggleMenu()
-          }}  
+          }}
           style={{
             display: 'flex',
             alignItems: 'center',
@@ -266,7 +266,7 @@ const Header = (props) => {
 
   const mobileMenu = () => {
     return(
-      <div 
+      <div
         style={{
           width: '100%',
           display: 'flex',
@@ -284,7 +284,7 @@ const Header = (props) => {
       </div>
     )
   }
-  
+
   return (
     <div style={{
       height: headerHeight,
@@ -314,7 +314,7 @@ const Header = (props) => {
         className="hide-on-desktop"
         >
         {
-          mobileMenu() 
+          mobileMenu()
         }
       </div>
     </div>

@@ -21,7 +21,7 @@ import Footer from '../button/Footer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCcVisa, faCcMastercard, faCcAmex, faCcDiscover, faCcDinersClub } from '@fortawesome/fontawesome-free-brands';
 import Confirmation from 'modules/generic/modal/confirmation'
-
+const {REACT_APP_STRIPE_PK}=process.env;
 const cardList = [
   {
     name: 'Visa',
@@ -214,7 +214,7 @@ class Billing extends React.Component {
         marginBottom: 25
       }}
         className="full-width-mobile">
-        <Elements stripe={loadStripe(config.stripe.pk)} options={{ clientSecret: clientSecret }}>
+        <Elements stripe={loadStripe(`${REACT_APP_STRIPE_PK}`)} options={{ clientSecret: clientSecret }}>
           <p style={{ color: Color.danger }}>{this.state.errorMessage}</p>
           <ElementsConsumer>
             {({ stripe, elements }) => (

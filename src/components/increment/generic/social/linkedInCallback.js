@@ -5,6 +5,7 @@ import { faLinkedinIn } from '@fortawesome/fontawesome-free-brands'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
 import { withRouter, useLocation } from 'react-router-dom';
+const{REACT_APP_LINKEDIN_ID,REACT_APP_LINKEDIN_SECRET,REACT_APP_LINKEDIN_REDIRECT_URL}=process.env;
 function Stack() {
     const { search } = useLocation()
     const [ code, setCode ] = useState(null)
@@ -18,9 +19,9 @@ function Stack() {
         }, {
             grant_type: 'authorization_code',
             code: code,
-            client_id: config.linkedIn.id,
-            client_secret: config.linkedIn.secret,
-            redirect_uri: config.linkedIn.redirectUrl
+            client_id: REACT_APP_LINKEDIN_ID,
+            client_secret: REACT_APP_LINKEDIN_SECRET,
+            redirect_uri: REACT_APP_LINKEDIN_REDIRECT_URL
         }).then(response => {
             console.log({
                 response
@@ -34,7 +35,6 @@ function Stack() {
         }
     })
 
-  
     console.log({
         code
     })

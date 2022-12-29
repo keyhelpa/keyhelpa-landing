@@ -13,6 +13,7 @@ import TextInput from "components/increment/generic/form/TextInput"
 import Config from 'config'
 import Filter from 'modules/generic/modal/Filter'
 import { param } from "jquery";
+const {REACT_APP_HOST}=process.env;
 
 const headerHeight = 70
 const Header = (props) => {
@@ -43,7 +44,7 @@ const Header = (props) => {
   }
 
   const otherMenuHandler = (menu) => {
-    if (otherMenuActive == menu) {
+    if (otherMenuActive === menu) {
       setOtherMenuActive(null)
     } else {
       setOtherMenuActive(menu)
@@ -78,7 +79,7 @@ const Header = (props) => {
           </div>
 
           {
-            view == 'desktop' && (
+            view === 'desktop' && (
               <b style={{
                 paddingLeft: 10,
                 color: Colors.headerText,
@@ -90,7 +91,7 @@ const Header = (props) => {
           }
 
           {
-            view == 'desktop' && (
+            view === 'desktop' && (
               <span style={{
                 paddingLeft: 10,
                 color: Colors.headerText,
@@ -142,7 +143,7 @@ const Header = (props) => {
       }}
         className="cursor-href header-logo"
         onClick={() => {
-          window.location.href = Config.HOST
+          window.location.href = REACT_APP_HOST
         }}
       />
     )
@@ -166,7 +167,7 @@ const Header = (props) => {
           component={SearchOutlined}
           style={{
             fontSize: BasicStyles.headerIconSize,
-            color: otherMenuActive == '/search' ? Colors.primary : Colors.headerIconColor
+            color: otherMenuActive === '/search' ? Colors.primary : Colors.headerIconColor
           }}
           classes="href-link"
         ></SvgIcon>
@@ -185,7 +186,7 @@ const Header = (props) => {
           height: headerHeight
         }}>
           <TextInput
-            placeholder={'Search for ' + (Helper.ACCOUNT_TYPE == 'Agent' ? 'candidates' : 'jobs')}
+            placeholder={'Search for ' + (Helper.ACCOUNT_TYPE === 'Agent' ? 'candidates' : 'jobs')}
             type={"text"}
             style={{
               background: 'transparent',
@@ -269,7 +270,7 @@ const Header = (props) => {
             component={NotificationsNone}
             style={{
               fontSize: BasicStyles.headerIconSize,
-              color: otherMenuActive == '/notifications' ? Colors.primary : Colors.headerIconColor
+              color: otherMenuActive === '/notifications' ? Colors.primary : Colors.headerIconColor
             }}
             classes="href-link"
           ></SvgIcon>
@@ -299,7 +300,7 @@ const Header = (props) => {
             component={ChatBubbleOutline}
             style={{
               fontSize: BasicStyles.headerIconSize,
-              color: otherMenuActive == '/messages' ? Colors.primary : Colors.headerIconColor
+              color: otherMenuActive === '/messages' ? Colors.primary : Colors.headerIconColor
             }}
             classes="href-link"
           ></SvgIcon>
@@ -339,10 +340,10 @@ const Header = (props) => {
           <div style={{
           }}>
             {
-              user && user.status.toLowerCase() == 'account_verified' && message()
+              user && user.status.toLowerCase() === 'account_verified' && message()
             }
             {
-              user && user.status.toLowerCase() == 'account_verified' &&  notification()
+              user && user.status.toLowerCase() === 'account_verified' &&  notification()
             }
             {
               userProfile('desktop')
@@ -368,16 +369,16 @@ const Header = (props) => {
           logo()
         }
         {
-          (history.location.pathname === '/works' || history.location.pathname === '/candidates') && otherMenuActive == '/search' && searchInput('mobile')
+          (history.location.pathname === '/works' || history.location.pathname === '/candidates') && otherMenuActive === '/search' && searchInput('mobile')
         }
         {
-          (history.location.pathname === '/works' || history.location.pathname === '/candidates') && otherMenuActive != '/search' && search()
+          (history.location.pathname === '/works' || history.location.pathname === '/candidates') && otherMenuActive !== '/search' && search()
         }
         {
-          user && user.status.toLowerCase() == 'account_verified' && otherMenuActive != '/search' && message()
+          user && user.status.toLowerCase() === 'account_verified' && otherMenuActive !== '/search' && message()
         }
         {
-          user && user.status.toLowerCase() == 'account_verified' && otherMenuActive != '/search' && notification()
+          user && user.status.toLowerCase() === 'account_verified' && otherMenuActive !== '/search' && notification()
         }
 
         {

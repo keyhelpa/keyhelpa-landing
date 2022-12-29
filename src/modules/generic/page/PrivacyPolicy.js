@@ -19,7 +19,7 @@ class Stack extends React.Component{
     componentDidMount(){
         this.retrieve()
     }
-    
+
     retrieve(){
         const {user} = this.props.state
         let params = {

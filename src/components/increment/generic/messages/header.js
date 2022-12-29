@@ -6,7 +6,7 @@ import Grid from '@mui/material/Grid';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import Config from 'config.js';
 import Helper from 'modules/generic/helper/Common'
-
+const {REACT_APP_HOST}=process.env;
 class Stack extends React.Component {
   constructor(props) {
     super(props);
@@ -88,7 +88,7 @@ class Stack extends React.Component {
             }}
               className="full-width-mobile mt-mobile-15"
               onClick={() => {
-                window.location.href = Config.HOST + '/contract/view/' + item.contract.code
+                window.location.href = REACT_APP_HOST + '/contract/view/' + item.contract.code
               }}>
               View Contract
             </span>

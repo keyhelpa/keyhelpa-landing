@@ -8,7 +8,7 @@ import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
 import _ from 'lodash'
 import Config from 'common/Config';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-
+const {REACT_APP_API_URL}=process.env
 class Stack extends React.Component {
   constructor(props) {
     super(props);
@@ -113,7 +113,7 @@ class Stack extends React.Component {
         width: 60
       }}>
         {item.account && item.account.profile ? <img
-          src={item.account.profile.url.includes('storage') ? Config.BACKEND_URL + item.account.profile.url : item.account.profile.url}
+          src={item.account.profile.url.includes('storage') ? REACT_APP_API_URL + item.account.profile.url : item.account.profile.url}
           style={{
             width: 50,
             height: 50,
@@ -163,7 +163,7 @@ class Stack extends React.Component {
           marginTop: 5
         }}>
           {item.payload === 'text' && (
-            <span 
+            <span
               style={{
                 color: Colors.textGray
               }}
@@ -172,7 +172,7 @@ class Stack extends React.Component {
           }
           {item.payload === 'image' && (item.files?.length > 0 && item.files.map((iItem, index) => (
             <img
-              src={iItem.url.includes('storage') ? Config.BACKEND_URL + iItem.url: iItem.url }
+              src={iItem.url.includes('storage') ? REACT_APP_API_URL + iItem.url: iItem.url }
               style={{
                 height: 200
               }}

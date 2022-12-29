@@ -6,7 +6,7 @@ const types = {
   SET_COLOR: 'SET_COLOR',
   SET_ACCOUNT_TYPE: 'SET_ACCOUNT_TYPE'
 };
-
+const {REACT_APP_HELPA,REACT_APP_AGENT}=process.env
 export const actions = {
   setSelectedUser: (selectedUser) => {
     return {type: types.SET_SELECTED_USER, selectedUser}
@@ -44,11 +44,11 @@ const initialState = {
   },{
     title: 'Members Login',
     type: 'external',
-    route:  Config.AGENT
+    route:  REACT_APP_AGENT
   }, {
     title: 'Join Us',
     type: 'external',
-    route:  Config.HELPA
+    route:  REACT_APP_HELPA
   }],
   accountType: null
 }

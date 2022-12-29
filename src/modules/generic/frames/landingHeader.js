@@ -15,6 +15,7 @@ import { faBars, faSearch } from '@fortawesome/free-solid-svg-icons'
 import Config from "config";
 import { useEffect } from "react";
 // import 'assets/style/global.scss'
+const {REACT_APP_HOST}=process.env;
 const headerHeight = 70;
 const allowedPath = ['/about_us', '/privacy_policy', '/terms_and_conditions'];
 const Header = (props) => {
@@ -69,7 +70,7 @@ const Header = (props) => {
             setSelectedUser(null)
             setColor(null)
           } else {
-            window.location.href = Config.HOST
+            window.location.href = REACT_APP_HOST
           }
           window.scrollTo(0,0)
         }}
@@ -194,14 +195,14 @@ const Header = (props) => {
             display: 'flex',
             alignItems: 'center',
             borderRadius: 10,
-            backgroundColor: accountType == 'agent' ? Colors.agentBackgroundColor : Colors.helpaBackgroundColor,
+            backgroundColor: accountType === 'agent' ? Colors.agentBackgroundColor : Colors.helpaBackgroundColor,
             paddingLeft: 15,
             paddingRight: 15,
             height: 50
           }}
           className="href-link"
         >
-          <FontAwesomeIcon icon={faBars} color={accountType == 'agent' ? Colors.agentDarkGray : Colors.helpaDarkPink} className="href-link" size="2x" />
+          <FontAwesomeIcon icon={faBars} color={accountType === 'agent' ? Colors.agentDarkGray : Colors.helpaDarkPink} className="href-link" size="2x" />
         </div>
       </div>
     )

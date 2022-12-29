@@ -21,7 +21,7 @@ import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
 import _ from 'lodash'
 import Footer from './footer';
 import Header from './header';
-
+const {REACT_APP_AGENT, REACT_APP_HELPA}=process.env
 class Stack extends React.Component {
   constructor(props) {
     super(props);
@@ -84,10 +84,10 @@ class Stack extends React.Component {
             float: 'left'
           }}
           onChange={(param) => {
-            if (param == 'Agent') {
-              window.location.href = Config.AGENT
+            if (param === 'Agent') {
+              window.location.href = REACT_APP_AGENT
             } else {
-              window.location.href = Config.HELPA
+              window.location.href = REACT_APP_HELPA
             }
           }}
         />

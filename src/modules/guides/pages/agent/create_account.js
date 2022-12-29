@@ -6,6 +6,7 @@ import VideoCard from 'modules/guides/videoCard'
 import './agent.css'
 import Data from 'modules/guides/data'
 import Config from "common/Config";
+const {REACT_APP_AGENT}=process.env;
 class CreateAccountAgent extends Component {
     constructor(props) {
         super(props)
@@ -41,7 +42,7 @@ class CreateAccountAgent extends Component {
             }}>
                 <p>Follow the steps below to register as Agent in KeyHelpa:</p>
                 <ol type='1'>
-                    <li>Go to the Agent Sign Up Page (Click <a href={Config.AGENT+'/signup'}>here</a>).</li>
+                    <li>Go to the Agent Sign Up Page (Click <a href={`${REACT_APP_AGENT}/signup`}>here</a>).</li>
                     <li>Start registering your credentials such as:</li>
                     <ol type='a'>
                         <li>First Name</li>
@@ -55,7 +56,7 @@ class CreateAccountAgent extends Component {
                     </ol>
                     <p>***All fields are mandatory.</p>
                     <li>Once providing all details, click the “Create Account” button. That’s it! You have successfully created your account and you will be redirected to your dashboard for <a href="setup_profile">profile setup</a>.</li>
-                    <li>You may also sign up by linking your social media account such as Facebook, Google and Linkedin.</li>              
+                    <li>You may also sign up by linking your social media account such as Facebook, Google and Linkedin.</li>
                 </ol>
                 <p>If you have any concerns or inquiries, please don’t hesitate to <a href="../contact_us">contact us</a>. </p>
             </div>
@@ -71,12 +72,12 @@ class CreateAccountAgent extends Component {
                 float: 'left'
             }}>
                 <p style={{
-                    color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle,
+                    color: theme === 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle,
                     marginBottom: '5%'
                 }}>
                     Are you looking for Freelancers to work on your real estate business? Get started  with KeyHelpa and hire Helpa when you need help by creating an account.
                 </p>
-                <VideoCard 
+                <VideoCard
                 url={url}/>
                 {
                     this.renderContent()
