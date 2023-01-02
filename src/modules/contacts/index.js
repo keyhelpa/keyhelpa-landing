@@ -129,15 +129,15 @@ export class Contacts extends Component {
         className="full-width-mobile mt-mobile-50 contact-left-side-content"
       >
         <h1 style={{
-          color: accountType == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle
+          color: accountType === 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle
         }}>Contact us</h1>
         <p style={{
-          color: accountType == 'agent' ? Colors.agentText : Colors.helpaText
+          color: accountType === 'agent' ? Colors.agentText : Colors.helpaText
         }}>We love questions and feedback - and we're always happy to help! Here are some ways to contact us.</p>
         <br /><br />
         <div>
           <p style={{
-            color: accountType == 'agent' ? Colors.agentDarkGray : Colors.helpaDarkPink,
+            color: accountType === 'agent' ? Colors.agentDarkGray : Colors.helpaDarkPink,
             fontWeight: 'bold'
           }}>support@keyhelpa.com</p>
           <div style={{
@@ -179,7 +179,7 @@ export class Contacts extends Component {
           description={'Your message has been sent. Our support team will respond within 24 hours'}
           withButton={true}
           buttonMsg={'Ok'}
-          color={accountType == 'agent' ? Colors.agentDarkGray : Colors.helpaDarkPink}
+          color={accountType === 'agent' ? Colors.agentDarkGray : Colors.helpaDarkPink}
           onCancel={() => this.setState({
             show: false
           })}
@@ -195,19 +195,19 @@ export class Contacts extends Component {
     return (
       <div
         style={{
-          width: '60%',
-          float: 'left',
-          background: accountType == 'agent' ? Colors.agentDarkGray : Colors.helpaDarkPink,
-          borderRadius: 20,
+          width: '75%',
+          float: 'right',
+          background: accountType === 'agent' ? Colors.agentDarkGray : Colors.helpaDarkPink,
+          borderRadius: '25px 0 0 25px/ 25px 0 0 25px',
           padding: 30,
           color: Colors.white,
-          marginLeft: '30%',
+	        margin: '10% 0 10% 30%',
           minHeight: '45vh'
         }}
         className="full-width-mobile text-field-container"
       >
         {
-          errorMessage && (
+          errorMessage && errorMessage !=='Invalid Phone Number' && (
             <p style={{
               color: Colors.white
             }}>
@@ -268,14 +268,13 @@ export class Contacts extends Component {
           </div>
 
           <div style={{
+						display: "flex",
             width: '100%',
-            float: 'left',
+	          marginBottom: 25,
             color: Colors.white
           }}>
             <div style={{
               float: 'left',
-              width: '50%',
-              marginBottom: 25
             }}
               className="full-width-mobile email"
             >
@@ -310,9 +309,9 @@ export class Contacts extends Component {
 
             <div style={{
               float: 'left',
-              width: '45%',
-              marginBottom: 25,
-              marginLeft: 35
+              marginLeft: 35,
+	            paddingLeft: 20,
+	            paddingTop:1
             }}
               className="full-width-mobile contactNumber"
             >
@@ -333,7 +332,7 @@ export class Contacts extends Component {
                     errorMessage: errorMobile
                   })
                 }}
-                errorMobile={''}
+                errorMobile={errorMessage}
               />
               {/* <Form.Select aria-label="Default select example" style={{ width: '130px', margin: 0 }} onChange={(e) => this.setState({ contactPrefix: e.target.value })}>
                 {
@@ -398,7 +397,9 @@ export class Contacts extends Component {
                 borderBottom: 'solid 2px ' + Colors.white
               }}
               inputStyle={{
-                color: Colors.white
+                color: Colors.white,
+	              fontSize: 14,
+	              paddingTop:10
               }}
               errorStyle={{
                 color: Colors.white
@@ -424,7 +425,7 @@ export class Contacts extends Component {
             title={'Submit'}
             style={{
               backgroundColor: Colors.white,
-              color: accountType == 'agent' ? Colors.agentDarkGray : Colors.helpaDarkPink,
+              color: accountType === 'agent' ? Colors.agentDarkGray : Colors.helpaDarkPink,
               fontSize: '24px',
               width: '10%',
               float: 'right'

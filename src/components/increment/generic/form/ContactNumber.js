@@ -42,8 +42,9 @@ class ContactNumber extends Component {
 
 	render() {
 		return (
-			<div style={{display: 'flex'}}>
-				<div style={{width: '30%', ...this.props.style}}>
+			<div style={{display: 'flex', flexDirection: 'column'}}>
+			<div style={{display: 'flex', flexDirection: 'row'}}>
+				<div style={{maxWidth: 100, minWidth: 95, height:53, ...this.props.style}}>
 					<Select
 						style={{
 							...BasicStyles.formControl,
@@ -57,13 +58,13 @@ class ContactNumber extends Component {
 						ref={(input) => this.menu = input}
 						onChange={this.handleChange}
 					>
-						{this.props.hasFlag == true && getCountries().map((country) => {
+						{this.props.hasFlag === true && getCountries().map((country) => {
 							let flag = `https://flag.pk/flags/4x3/${country.toLowerCase()}.svg`;
 							return (
 								<MenuItem value={getCountryCallingCode(country)} key={country}> <img src={flag}/> {country} (+{getCountryCallingCode(country)})</MenuItem>
 							)
 						})}
-						{this.props.hasFlag == false && getCountries().map((country) => {
+						{this.props.hasFlag === false && getCountries().map((country) => {
 							return (
 								<MenuItem value={getCountryCallingCode(country)}> {country} (+{getCountryCallingCode(country)})</MenuItem>
 							)
@@ -73,7 +74,7 @@ class ContactNumber extends Component {
 				<div  style={{width: '70%'}}>
 					<TextInput
 						placeholder={'Phone number'}
-						type={"number"}
+						type={"tel"}
 						style={{
 							...this.props.textColor,
 							...this.props.style,
@@ -83,7 +84,7 @@ class ContactNumber extends Component {
 							...this.props.textColor
 						}}
 						value={this.props.contactNumber}
-						onChange={(mobile, errorMobile) => this.validateNumber(mobile, errorMobile)}
+						onChange={(mobile, errorMobile, errorPoneNumber) => this.validateNumber(mobile, errorMobile,errorPoneNumber)}
 						validation={{
 							type: 'text_without_space',
 							size: 0,
@@ -91,6 +92,20 @@ class ContactNumber extends Component {
 							error: this.props.errorMobile
 						}}
 					/>
+				</div>
+			</div>
+				<div style={{
+					width: '100%',
+					float: 'left'
+				}}>
+				{
+					this.props.errorMobile && this.props.errorMobile !== 'Please fill up the required fields.' &&	<label style={{
+						...this.props.errorStyle
+
+					}}>
+						<b>Oops! </b>{this.props.errorMobile}
+					</label>
+				}
 				</div>
 			</div>
 		)
