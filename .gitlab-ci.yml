@@ -11,6 +11,8 @@ stages:
       - build/
     when: on_success
     expire_in: 1h
+  variables:
+    NODE_OPTIONS: --max_old_space_size=3584
   script:
     - cp $ENV ./.env
     - npm install --legacy-peer-deps
