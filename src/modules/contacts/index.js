@@ -311,7 +311,6 @@ export class Contacts extends Component {
               float: 'left',
               marginLeft: 35,
 	            paddingLeft: 20,
-	            paddingTop:1
             }}
               className="full-width-mobile contactNumber"
             >

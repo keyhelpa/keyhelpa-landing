@@ -19,7 +19,6 @@ class ContactNumber extends Component {
 	}
 
 	handleChange(event) {
-		console.log('>>>>>>>', event.target.value);
 		this.setState({ countryCode: event.target.value })
 	}
 
@@ -43,15 +42,18 @@ class ContactNumber extends Component {
 	render() {
 		return (
 			<div style={{display: 'flex', flexDirection: 'column'}}>
-			<div style={{display: 'flex', flexDirection: 'row'}}>
-				<div style={{maxWidth: 100, minWidth: 95, height:53, ...this.props.style}}>
+			<div style={{display: 'flex', flexDirection: 'row',  }}>
 					<Select
 						style={{
 							...BasicStyles.formControl,
 							float: 'left',
 							borderTop: 'none',
 							borderLeft: 'none',
-							...this.props.textColor
+							...this.props.textColor,
+							...this.props.style,
+							maxWidth: 100,
+							marginTop: 3,
+							borderRadius: 'unset'
 						}}
 						className="full-width-mobile"
 						value={this.state.countryCode}
@@ -70,7 +72,6 @@ class ContactNumber extends Component {
 							)
 						})}
 					</Select>
-				</div>
 				<div  style={{width: '70%'}}>
 					<TextInput
 						placeholder={'Phone number'}
