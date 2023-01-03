@@ -1,13 +1,13 @@
-import React, { createRef, Component } from 'react';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+import React, {Component, createRef} from 'react';
+import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
-import { getCountries, getCountryCallingCode } from 'react-phone-number-input'
-import { BasicStyles } from 'common'
-import { Col, Row } from 'react-bootstrap';
+import {getCountries, getCountryCallingCode} from 'react-phone-number-input'
+import {BasicStyles} from 'common'
 import TextInput from './TextInput';
-import { withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
+import {withRouter} from 'react-router-dom';
+import {connect} from 'react-redux';
 import validator from 'services/validator'
+
 class ContactNumber extends Component {
 	constructor(props) {
 		super(props)
@@ -42,7 +42,7 @@ class ContactNumber extends Component {
 	render() {
 		return (
 			<div style={{display: 'flex', flexDirection: 'column'}}>
-			<div style={{display: 'flex', flexDirection: 'row',  }}>
+			<div style={{display: 'flex', flexDirection: 'row', ...this.props.style }}>
 					<Select
 						style={{
 							...BasicStyles.formControl,
@@ -50,10 +50,7 @@ class ContactNumber extends Component {
 							borderTop: 'none',
 							borderLeft: 'none',
 							...this.props.textColor,
-							...this.props.style,
 							maxWidth: 100,
-							marginTop: 3,
-							borderRadius: 'unset'
 						}}
 						className="full-width-mobile"
 						value={this.state.countryCode}
@@ -63,7 +60,7 @@ class ContactNumber extends Component {
 						{this.props.hasFlag === true && getCountries().map((country) => {
 							let flag = `https://flag.pk/flags/4x3/${country.toLowerCase()}.svg`;
 							return (
-								<MenuItem value={getCountryCallingCode(country)} key={country}> <img src={flag}/> {country} (+{getCountryCallingCode(country)})</MenuItem>
+								<MenuItem value={getCountryCallingCode(country)} key={country}> <img src={flag} alt={'falg'}/> {country} (+{getCountryCallingCode(country)})</MenuItem>
 							)
 						})}
 						{this.props.hasFlag === false && getCountries().map((country) => {
@@ -78,8 +75,8 @@ class ContactNumber extends Component {
 						type={"tel"}
 						style={{
 							...this.props.textColor,
-							...this.props.style,
-							background: 'transparent'
+							background: 'transparent',
+							borderBottom: 'none'
 						}}
 						inputStyle={{
 							...this.props.textColor
