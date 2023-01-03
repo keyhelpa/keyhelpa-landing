@@ -145,8 +145,8 @@ export class Contacts extends Component {
             float: 'left'
           }}>
             {
-              Strings.socialMedias.map((item) => (
-                <div style={{
+              Strings.socialMedias.map((item,index) => (
+                <div key={index} style={{
                   float: 'left'
                 }}>
                   <span

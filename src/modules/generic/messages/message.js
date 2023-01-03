@@ -201,8 +201,8 @@ class Stack extends React.Component {
           borderBottomLeftRadius: 25
         }}
           className={'message-container'}>
-          {isLoading && [1, 2, 3].map((item) => (
-            <Skeleton
+          {isLoading && [1, 2, 3].map((item, index) => (
+            <Skeleton key={index}
               height={75}
               style={{
                 borderRadius: 10,

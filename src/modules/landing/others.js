@@ -49,14 +49,14 @@ export class Others extends Component {
               item.title
             }
           </h1>
-          <p style={{
+          <span style={{
             color: theme === 'agent' ? Colors.agentText : Colors.helpaOthersText,
             marginBottom: 25
           }}  >
             {
               item.description()
             }
-          </p>
+          </span>
 
         </div>
 
@@ -118,14 +118,14 @@ export class Others extends Component {
               item.title
             }
           </h1>
-          <p style={{
+          <span style={{
             color: theme === 'agent' ? Colors.agentText : Colors.helpaOthersText,
             marginBottom: 25
           }}  >
             {
               item.description()
             }
-          </p>
+          </span>
 
         </div>
       </div>
@@ -144,7 +144,7 @@ export class Others extends Component {
         <div className="hide-on-mobile">
           {
             data && data.length > 0 && data.map((item, index) => (
-              <div style={{
+              <div key={index} style={{
                 width: '100%',
                 float: 'left'
               }}>
@@ -159,7 +159,7 @@ export class Others extends Component {
         <div className="hide-on-desktop">
           {
             data && data.length > 0 && data.map((item, index) => (
-              <div style={{
+              <div key={index} style={{
                 width: '100%',
                 float: 'left'
               }}>

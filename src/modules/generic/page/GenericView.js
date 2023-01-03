@@ -46,7 +46,7 @@ class Stack extends React.Component {
           }}>
             <span style={{
             }}>
-              <FontAwesomeIcon 
+              <FontAwesomeIcon
                 icon={faMapMarkerAlt}
                 color={Colors.primary}
                 style={{
@@ -195,7 +195,7 @@ class Stack extends React.Component {
             </p>
           </span>
         </div>
-              
+        
       </div>
     )
   }
@@ -229,7 +229,7 @@ class Stack extends React.Component {
   //             this.renderDetails(data)
   //           }
   //         </div>
-          
+  
   //       </div>
   //       <div style={{
   //         width: '40%',
@@ -298,7 +298,7 @@ class Stack extends React.Component {
   //           </p>
   //         </span>
   //       </div>
-              
+  
   //     </div>
   //   )
   // }
@@ -332,7 +332,7 @@ class Stack extends React.Component {
   //             this.renderDetails(data)
   //           }
   //         </div>
-          
+  
   //       </div>
   //       <div style={{
   //         width: '40%',
@@ -401,7 +401,7 @@ class Stack extends React.Component {
   //           </p>
   //         </span>
   //       </div>
-              
+  
   //     </div>
   //   )
   // }
@@ -489,7 +489,7 @@ class Stack extends React.Component {
                 color: Colors.gray
               }}>
                 { // Still unclear
-                data.account.merchant.name} 
+                data.account.merchant.name}
               </p>
             </Row>
             <Row>
@@ -649,8 +649,8 @@ class Stack extends React.Component {
               content: () => {
                 return(
                   <ul>
-                    {tasks.map(item => (
-                      <li>{item}</li>
+                    {tasks.map((item,index) => (
+                      <li key={index}>{item}</li>
                     ))}
                   </ul>
                 )
@@ -695,7 +695,7 @@ class Stack extends React.Component {
                             width: '100%',
                             float: 'left'
                           }}>
-                            
+                          
                           <span>
                             <p style={{fontWeight: 'bold'}}>{data.job.requirements.cert.certifications.title}</p>
                             <p>Experience as Sales Assistant</p>
@@ -706,7 +706,7 @@ class Stack extends React.Component {
                           </span>
                           </div>
                         </div>
-                          
+                        
                       </span>
                     </div>
                   )

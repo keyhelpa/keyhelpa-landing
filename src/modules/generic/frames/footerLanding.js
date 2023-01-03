@@ -46,7 +46,7 @@ class Stack extends React.Component {
   }
 
   componentDidMount() {
-    
+  
   }
 
   navigate(route){
@@ -76,8 +76,8 @@ class Stack extends React.Component {
               marginBottom: 50
             }}>
               {
-                links && links.map((item) => (
-                  <li style={{
+                links && links.map((item, index) => (
+                  <li key={index} style={{
                     paddingTop: 10,
                     width: '100%',
                     float: 'left',
@@ -105,8 +105,8 @@ class Stack extends React.Component {
               marginBottom: 50
             }}>
               {
-                menuLink.map((item) => (
-                  <li style={{
+                menuLink.map((item, index) => (
+                  <li key={index} style={{
                     paddingTop: 10,
                     width: '100%',
                     float: 'left',
@@ -192,8 +192,8 @@ class Stack extends React.Component {
         }}
         >
           {
-            Strings.socialMedias.map((item) => (
-              <span
+            Strings.socialMedias.map((item,index) => (
+              <span key={index}
                 style={{...style.icon, backgroundColor: window.location.pathname.includes('/agent') ? '#E62D7E' : '#34475D'}} className="cursor-hover"
                 onClick={() => {
                   window.open(item.route)

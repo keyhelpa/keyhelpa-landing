@@ -54,8 +54,8 @@ class Stack extends React.Component {
         {
           [
             `You'll be prompted to provide the reason for ending this job and provide feedback.`
-          ].map(item => (
-            <p style={{
+          ].map((item,index) => (
+            <p key={index} style={{
               textAlign: 'justify'
             }}>
               {

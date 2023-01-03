@@ -170,8 +170,8 @@ class Stack extends React.Component {
         className={'people-container'}
       >
         {
-          isLoading && [1, 2, 3, 4].map(item => (
-            <Skeleton height={150} style={{ marginBottom: 20, borderRadius: 5 }} />
+          isLoading && [1, 2, 3, 4].map((item,index) => (
+            <Skeleton key={index} height={150} style={{ marginBottom: 20, borderRadius: 5 }} />
           )
           )
         }

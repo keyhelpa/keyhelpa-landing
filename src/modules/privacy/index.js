@@ -57,7 +57,7 @@ class Privacy extends Component {
                 }}>
                     {
                         data.map((item, index) => (
-                            <li
+                            <li key={index}
 
                                 style={{
                                     paddingLeft: 20,
