@@ -94,6 +94,9 @@ const Header = (props) => {
           width: '50%',
           float: 'left'
         }}>
+	        <div style={{
+		        display: 'flex',
+	        }}>
           <div style={{
             float: 'left',
             display: 'flex',
@@ -137,6 +140,7 @@ const Header = (props) => {
               ))
             }
           </div>
+	        </div>
         </div>
         <div style={{
           width: '50%',
