@@ -496,8 +496,8 @@ class Stack extends React.Component {
           socialMedias && socialMedias.length > 0 && (
             <span style={style.full}>
               {
-                socialMedias.map((item) => (
-                  <span
+                socialMedias.map((item, index) => (
+                  <span key={index}
                     style={{
                       width: 40,
                       height: 40,

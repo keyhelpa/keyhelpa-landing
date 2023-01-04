@@ -17,7 +17,7 @@ export default class Stack extends React.Component {
         borderBottom: 'solid 1px ' + Colors.lightGray,
         ...style.full,
       }}>
-        <Skeleton 
+        <Skeleton
             height={200}
             style={{
             backgroundColor: Colors.activeGray,
@@ -36,8 +36,8 @@ export default class Stack extends React.Component {
 
         <div className="hide-on-mobile">
             {
-                [1,2,3,4,5].map((item) => (
-                    <Skeleton 
+                [1,2,3,4,5].map((item, index) => (
+                    <Skeleton key={index}
                         height={100}
                         style={{
                             backgroundColor: Colors.activeGray,
@@ -51,8 +51,8 @@ export default class Stack extends React.Component {
 
         <div className="hide-on-desktop">
             {
-                [1].map((item) => (
-                    <Skeleton 
+                [1].map((item, index) => (
+                    <Skeleton key={index}
                         height={100}
                         style={{
                             backgroundColor: Colors.activeGray,
@@ -76,7 +76,7 @@ export default class Stack extends React.Component {
       }}
       className="no-pl-on-mobile"
       >
-          <Skeleton 
+          <Skeleton
                 height={'70vh'}
                 style={{
                     backgroundColor: Colors.activeGray,

@@ -212,7 +212,7 @@ class Stack extends React.Component {
       }}>
         {
           menu.map((item, index) => (
-            <Toggle
+            <Toggle key={index}
               data={item}
               loading={isLoading}
               onClick={(params) => {

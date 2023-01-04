@@ -23,8 +23,8 @@ export default class Button extends React.Component {
       }}>
         {
           array.map((i, index) => (
-            <SvgIcon
-              component={i < value ? Star : StarBorder} 
+            <SvgIcon key={index}
+              component={i < value ? Star : StarBorder}
               className="cursor-hover"
               onClick={() => {
                 this.setState({

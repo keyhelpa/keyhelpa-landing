@@ -39,12 +39,12 @@ export class Video extends Component {
               data.title
             }
           </h1>
-          <p style={{
+          <span style={{
           }}>
            {
               data.description()
-            } 
-          </p>
+            }
+          </span>
           
         </div>
       </div>
@@ -63,8 +63,8 @@ export class Video extends Component {
       }}>
         <div>
           {
-            data && data.length > 0 && data.map((item) => (
-              <div style={{
+            data && data.length > 0 && data.map((item, index) => (
+              <div key={index} style={{
                 float: 'left',
                 width: '100%',
                 marginBottom: 25
@@ -124,13 +124,13 @@ export class Video extends Component {
                       item.title
                     }
                   </h2>
-                  <p className='mobile-justify-text-center' style={{
+                  <span className='mobile-justify-text-center' style={{
                     color: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaVidText
                   }}>
                     {
                       item.description()
                     }
-                  </p>
+                  </span>
                 </div>
               </div>
             ))

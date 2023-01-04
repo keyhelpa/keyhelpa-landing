@@ -117,8 +117,8 @@ export class Contacts extends Component {
             float: 'left'
           }}>
             {
-              Strings.socialMedias.map((item) => (
-                <div style={{
+              Strings.socialMedias.map((item, index) => (
+                <div key={index} style={{
                   float: 'left'
                 }}>
                   <span
@@ -156,7 +156,7 @@ export class Contacts extends Component {
     const { theme, mobilePrefixes, error } = this.state
     const { accountType } = this.props.state;
     return (
-      <div 
+      <div
       style={{
         width: '60%',
         float: 'left',
@@ -193,8 +193,8 @@ export class Contacts extends Component {
               <div style={{ display: 'flex' }}>
                 <Form.Select aria-label="Default select example" style={{ width: '130px' }} onChange={(e) => this.setState({ contactPrefix: e.target.value })}>
                   {
-                    Object.values(mobilePrefixes).map(item => (
-                      <option value={item}>{item}</option>
+                    Object.values(mobilePrefixes).map((item, index) => (
+                      <option key={index} value={item}>{item}</option>
                     ))
                   }
                 </Form.Select>

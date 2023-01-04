@@ -20,8 +20,8 @@ class RouteList extends Component {
       prevDepth: this.getPathDepth(this.props.location)
     };
   }
-
-  componentWillReceiveProps() {
+	
+	UNSAFE_componentWillReceiveProps() {
     this.setState({ prevDepth: this.getPathDepth(this.props.location) });
   }
 
@@ -46,7 +46,7 @@ class RouteList extends Component {
             mountOnEnter={false}
             unmountOnExit={true}
           >
-            <div 
+            <div
               className={
                 this.getPathDepth(location) - this.state.prevDepth >= 0
                   ? "left"
