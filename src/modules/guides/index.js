@@ -137,9 +137,9 @@ class Guide extends Component {
                     gap: '5%'
                 }}>
                     {
-                        menu.map((item) => (
+                        menu.map((item, index) => (
                             
-                            <div style={{
+                            <div key={index} style={{
                                 width: '30%',
                                 float: 'left',
                                 backgroundColor: Colors.white,

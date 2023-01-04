@@ -17,9 +17,9 @@ export default class Button extends React.Component {
         float: 'left'
       }}>
         {
-          array.map((i) => (
-            <SvgIcon
-              component={i < value ? Star : StarBorder} 
+          array.map((i, index) => (
+            <SvgIcon key={index}
+              component={i < value ? Star : StarBorder}
               style={{
                 fontSize: BasicStyles.largeIcon,
                 color: Colors.primary

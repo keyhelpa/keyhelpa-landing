@@ -346,7 +346,7 @@ class Stack extends React.Component {
 
         {
           experience && experience.map((item, index) => (
-            <div
+            <div key={index}
               className="container-50-full-mobile">
               <span>
                 <p style={{ fontWeight: 'bold' }}>
@@ -552,8 +552,8 @@ class Stack extends React.Component {
               return (
                 <ul>
                   {
-                    data.requirements?.tasks.map(el => (
-                      <li>{el}</li>
+                    data.requirements?.tasks.map((el, index) => (
+                      <li key={index}>{el}</li>
                     ))
                   }
                 </ul>
@@ -617,7 +617,7 @@ class Stack extends React.Component {
                     <ol>
                       {
                         (data && data?.job_terms?.daily_schedule && data?.job_terms?.daily_schedule.length > 0) && data?.job_terms?.daily_schedule.map((el, ndx) => (
-                          <li style={{
+                          <li key={ndx} style={{
                             borderSpacing: '10px',
                             borderCollapse: 'separate',
                             display: 'flex',
@@ -659,8 +659,8 @@ class Stack extends React.Component {
                   float: 'left',
                 }}>
                   {
-                    data.attachments.map((item) => (
-                      <File data={item}/>
+                    data.attachments.map((item,index) => (
+                      <File key={index} data={item}/>
                     ))
                   }
                 </div>

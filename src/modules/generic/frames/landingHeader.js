@@ -88,12 +88,15 @@ const Header = (props) => {
           alignContent: 'center',
           justifyContent: 'space-between',
           height: headerHeight,
-          backgroundColor: '#f290bb;'
+          backgroundColor: '#f290bb'
         }}>
         <div style={{
           width: '50%',
           float: 'left'
         }}>
+	        <div style={{
+		        display: 'flex',
+	        }}>
           <div style={{
             float: 'left',
             display: 'flex',
@@ -137,6 +140,7 @@ const Header = (props) => {
               ))
             }
           </div>
+	        </div>
         </div>
         <div style={{
           width: '50%',

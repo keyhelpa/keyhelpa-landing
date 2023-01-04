@@ -101,7 +101,7 @@ export class Contacts extends Component {
           message: null,
           contactNumber: null,
           successMessage: 'Successfully submitted.'
-        })  
+        })
       })
     } else {
       this.setState({
@@ -137,8 +137,8 @@ export class Contacts extends Component {
             float: 'left'
           }}>
             {
-              Strings.socialMedias.map((item) => (
-                <div style={{
+              Strings.socialMedias.map((item,index) => (
+                <div key={index} style={{
                   float: 'left'
                 }}>
                   <span
@@ -322,8 +322,8 @@ export class Contacts extends Component {
               </p>
               <Form.Select aria-label="Default select example" style={{ width: '130px', margin: 0 }} onChange={(e) => this.setState({ contactPrefix: e.target.value })}>
                 {
-                  Object.values(mobilePrefixes).map(item => (
-                    <option value={item}>{item}</option>
+                  Object.values(mobilePrefixes).map((item,index) => (
+                    <option key={index} value={item}>{item}</option>
                   ))
                 }
               </Form.Select>

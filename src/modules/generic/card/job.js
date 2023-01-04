@@ -141,8 +141,8 @@ export default class Stack extends React.Component {
         float: 'left'
       }}>
         {
-          data && data.map((item) => (
-            <div style={{
+          data && data.map((item, index) => (
+            <div key={index} style={{
               height: 30,
               borderRadius: 15,
               marginRight: 20,
