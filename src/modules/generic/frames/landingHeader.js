@@ -88,7 +88,7 @@ const Header = (props) => {
           alignContent: 'center',
           justifyContent: 'space-between',
           height: headerHeight,
-          backgroundColor: '#f290bb'
+          backgroundColor: props.backgroundColor,
         }}>
         <div style={{
           width: '50%',
