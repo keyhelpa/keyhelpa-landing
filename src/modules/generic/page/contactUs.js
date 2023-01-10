@@ -50,7 +50,8 @@ export class Contacts extends Component {
       message: null,
       mobilePrefixes: countryCodes.customList('countryCode', '+{countryCallingCode}'),
       submitted: false,
-      error: null
+      error: null,
+	    showModal: true,
     }
   }
 
@@ -62,7 +63,9 @@ export class Contacts extends Component {
       this.setState({ theme: 'helpa' })
     }
   }
-
+	closeModal = () => {
+		this.setState({ showModal: false });
+	};
   handleSubmit() {
     const { name, email, contactNumber, contactPrefix, organization, message } = this.state
     let params = {
@@ -146,7 +149,10 @@ export class Contacts extends Component {
         show={true}
         title={'Thank  you!'}
         description={'Your message has been sent. Our support team will respond within 24 hours'}
-        withCancel={true}
+        withButton={true}
+        buttonMsg={"OK"}
+        customFooter={true}
+        onCancel={this.closeModal}
         />
       </div>
     )
@@ -258,9 +264,7 @@ export class Contacts extends Component {
         minHeight: '100vh'
       }}>
         {this.renderContent()}
-        {this.state.submitted && (
-          this.renderAlert()
-        )}
+	      {this.state.showModal && this.state.submitted && this.renderAlert()}
       </div>
     )
   }

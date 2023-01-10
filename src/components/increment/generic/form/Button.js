@@ -1,18 +1,26 @@
 import React from 'react';
-import {BasicStyles} from 'common'
+import {BasicStyles, Color} from 'common'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 export default class Button extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+	    message: props.children,
     };
   }
 
   render() {
     return (
         <button
-            style={{...BasicStyles.btn, ...this.props.style}}
+	        style={
+		        this.state.message === "OK"
+			        ? {
+				        ...BasicStyles.btn,
+				        backgroundColor: Color.primary,
+			        }
+			        : { ...BasicStyles.btn, ...this.props.style }
+	        }
             onClick={() => this.props.onClick()}
             className={this.props.className}
             >
@@ -26,8 +34,17 @@ export default class Button extends React.Component {
               )
             }
             {this.props.title}
-            {
-              this.props.iconRight && (
+	          {this.state.message && (
+		          <span
+			          style={{
+				          color: Color.white,
+			          }}
+		          >
+                {this.state.message}
+             </span>
+	          )}
+	        
+            {this.props.iconRight && (
                 <span style={{
                   paddingLeft: 20
                 }}>

@@ -103,9 +103,6 @@ export class Contacts extends Component {
           successMessage: 'Successfully submitted.',
           show: true
         })
-        setTimeout(() => {
-          window.location.reload()
-        }, 5000)
       })
     } else {
       this.setState({
