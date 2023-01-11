@@ -75,7 +75,13 @@ h1.agent{
 h1.helpa{
   color: #E62D7E
 }
+.MuiPaper-root > ul {
+  max-height: 300px;
+}
 
+.MuiPaper-root > ul > li {
+  font-size: 12px !important;
+}
 
 @media (max-width: 991px){
   .web{
