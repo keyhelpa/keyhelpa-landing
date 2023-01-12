@@ -22,8 +22,8 @@ export default class Stack extends React.Component {
           }}>
 
             {
-              actions && actions.map((item) => (
-                <Button
+              actions && actions.map((item, index) => (
+                <Button key={index}
                   title={item.title}
                   onClick={() => this.props.onClick(item)}
                   style={{

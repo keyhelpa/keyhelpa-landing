@@ -196,7 +196,7 @@ class Stack extends React.Component {
 
         {
           tasks.length > 0 && tasks.map((item, index) =>
-            <div>
+            <div key={index}>
               <TextInput
                 placeholder={'Enter task'}
                 type={"text"}

@@ -59,8 +59,8 @@ export default class Stack extends React.Component {
             onChange={this.handleChange}
           >
             {
-              Object.values(mobilePrefixes).map(item => (
-                <option value={item}>{item}</option>
+              Object.values(mobilePrefixes).map((item,index) => (
+                <option key={index} value={item}>{item}</option>
               ))
             }
           </select>
@@ -85,8 +85,8 @@ export default class Stack extends React.Component {
 
               onChange={(e) => {
                 // this.validation(e)
-                this.setState({ 
-                  contactNumber: e 
+                this.setState({
+                  contactNumber: e
                 })
               }}
               validation={{

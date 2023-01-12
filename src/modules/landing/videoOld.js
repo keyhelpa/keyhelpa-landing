@@ -127,7 +127,7 @@ export class Video extends Component {
               {
                 data.map((item, index) => {
                   return (
-                    <div>
+                    <div key={index}>
                       <Box sx={{
                         justifyContent: 'center',
                         textAlign: 'center',

@@ -46,15 +46,15 @@ export default class Button extends React.Component {
   }
 
   render() {
-    const { data } = this.props; 
+    const { data } = this.props;
     return (
       <div style={{
         width: '100%',
         float: 'left'
       }}>
         {
-          data.map((item) => (
-            <div style={{
+          data.map((item, index) => (
+            <div key={index} style={{
               width: '100%',
               display: 'flex',
               textAlign: 'left',

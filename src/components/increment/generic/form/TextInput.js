@@ -11,7 +11,7 @@ export default class TextInput extends React.Component {
   validation = (e) => {
     const { validation, type } = this.props;
     let response = Validator.validate(e.target.value, validation, validation.column);
-    if (response == true) {
+    if (response === true) {
       if (type === 'file') {
         this.props.onChange(e.target.files[0], null)
       } else {
@@ -72,7 +72,7 @@ export default class TextInput extends React.Component {
             placeholder={this.props.placeholder}
             value={this.props.value}
             disabled={this.props.disable ? this.props.disable : false}
-            maxlength={this.props.max ? this.props.max : '60000'}
+            maxLength={this.props.max ? this.props.max : '60000'}
             style={{
               ...BasicStyles.formControl,
               width: this.props.iconRight || this.props.rightLabel || this.props.iconLeft ? '90%' : BasicStyles.formControl.width,
@@ -126,7 +126,7 @@ export default class TextInput extends React.Component {
           float: 'left'
         }}>
           {
-            this.props.validation && this.props.validation.error && (
+            this.props.validation && this.props.validation.error && (this.props.validation.error !=='Invalid Phone Number' && this.props.validation.error !== 'Please fill up the required fields.') && (
               <label style={{
                 color: Colors.danger,
                 ...this.props.errorStyle

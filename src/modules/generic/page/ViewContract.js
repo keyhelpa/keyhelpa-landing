@@ -150,7 +150,7 @@ class Stack extends React.Component {
       ...params
     };
 
-    if (user.id == data.account_id) { 
+    if (user.id == data.account_id) {
       parameter['account_id'] = user.id
     } else {
       parameter['freelancer'] = user.id
@@ -514,8 +514,8 @@ class Stack extends React.Component {
                     'Try to make it fair for both parties;',
                     'Offer an alternate option to the agent;',
                     'You should ensure that you are aware of the obligations you and your hiring agent have so that you do not violate them and find yourself in breach of contract.'
-                  ].map(item => (
-                    <li>{item}</li>
+                  ].map((item, index) => (
+                    <li key={index}>{item}</li>
                   ))
                 }
               </ul>

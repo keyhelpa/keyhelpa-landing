@@ -86,7 +86,7 @@ function Features(props) {
       }}>
         {
           data && data.map((item, index) => (
-            <div style={{
+            <div key={index} style={{
               width: '300px',
             }}
               className={"desktop-feature-card-" + index}
@@ -156,7 +156,7 @@ function Features(props) {
       }}>
         {
           data && data.map((item, index) => (
-            <div style={{
+            <div key={index} style={{
               width: '100%',
             }}
               className={"mobile-feature-card-" + index}
@@ -200,7 +200,7 @@ function Features(props) {
       }}>
         <h1 style={{
           color: '#686868'
-        }}>Lifestyle. Choose your days, hours. <h1 style={{color: "rgb(230, 45, 126)"}}>Be your own boss.</h1></h1>
+        }}>Lifestyle. Choose your days, hours. <p style={{color: "rgb(230, 45, 126)"}}>Be your own boss.</p></h1>
       </div>
     )
   }

@@ -1,15 +1,14 @@
-import Config from "config";
 import AgentLogo from 'assets/img/logo_footer_agent.png'
 import HelpaLogo from 'assets/img/logo_footer_helpa.png'
 
-const { REACT_APP_AGENT_URL, REACT_APP_FREELANCER_URL,REACT_APP_HELPA } = process.env;
+const { REACT_APP_AGENT, REACT_APP_HELPA } = process.env;
 export default {
   name: 'Keyhelpa',
   ACCOUNT_TYPE: 'landing',
-  AGENT_LOGIN: `${REACT_APP_AGENT_URL}`,
-  AGENT_SIGNUP: `${REACT_APP_AGENT_URL}/signup`,
-  FREELANCER_LOGIN: `${REACT_APP_FREELANCER_URL}`,
-  FREELANCER_SIGNUP: `${REACT_APP_FREELANCER_URL}/signup`,
+  AGENT_LOGIN: `${REACT_APP_AGENT}`,
+  AGENT_SIGNUP: `${REACT_APP_AGENT}/signup`,
+  FREELANCER_LOGIN: `${REACT_APP_HELPA}`,
+  FREELANCER_SIGNUP: `${REACT_APP_HELPA}/signup`,
   redirect(accountType, page){
     if(accountType.toLowerCase() === 'agent'){
       window.location.href = page.toLowerCase() === 'join us' ? this.AGENT_SIGNUP : this.AGENT_LOGIN
