@@ -37,7 +37,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "prepare": "husky install"
   },
   "browserslist": {
     "production": [
@@ -52,7 +53,25 @@
     ]
   },
   "devDependencies": {
+    "husky": "^8.0.0",
+    "lint-staged": "^13.1.0",
     "node-sass": "^7.0.1",
+    "prettier": "^2.8.2",
     "sass": "^1.49.10"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.{html,css}": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }

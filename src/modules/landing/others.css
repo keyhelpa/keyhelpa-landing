@@ -1,101 +1,107 @@
-
 /* 
   transition rendering
 
 */
-.desktop-other-card-0, .desktop-other-card-1, .desktop-other-card-2, .desktop-other-card-3 {
-    animation-name: slide;
-    animation-duration: 4s;
+.desktop-other-card-0,
+.desktop-other-card-1,
+.desktop-other-card-2,
+.desktop-other-card-3 {
+  animation-name: slide;
+  animation-duration: 4s;
+}
+
+@keyframes slide {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateX(0);
   }
-  
-  @keyframes slide {
-  
-    0%,
-    20%,
-    50%,
-    80%,
-    100% {
-      transform: translateX(0);
-    }
-  
-    40% {
-      transform: translateX(200px);
-    }
-  
-    60% {
-      transform: translateX(100px);
-    }
+
+  40% {
+    transform: translateX(200px);
   }
-  
-  @keyframes slide-hover {
-  
-    0%,
-    20%,
-    50%,
-    80%,
-    100% {
-      transform: translateX(0);
-    }
-  
-    40% {
-      transform: translateX(200px);
-    }
-  
-    60% {
-      transform: translateX(100px);
-    }
+
+  60% {
+    transform: translateX(100px);
   }
-  .desktop-other-card-0:hover, .desktop-other-card-1:hover, .desktop-other-card-2:hover, .desktop-other-card-3:hover{
-    animation-name: slide-hover;
-    animation-duration: 2s;
-    cursor: pointer;
+}
+
+@keyframes slide-hover {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateX(0);
   }
-  
-  
-  
-  .mobile-other-card-0, .mobile-other-card-1, .mobile-other-card-2, .mobile-other-card-3 {
-    animation-name: mobile-bounce;
-    animation-duration: 4s;
+
+  40% {
+    transform: translateX(200px);
   }
-  
-  @keyframes mobile-bounce {
-    0%,
-    20%,
-    50%,
-    80%,
-    100% {
-      transform: translateY(0);
-    }
-  
-    40% {
-      transform: translateY(-100px);
-    }
-  
-    60% {
-      transform: translateY(-50px);
-    }
+
+  60% {
+    transform: translateX(100px);
   }
-  
-  @keyframes mobile-bounce-hover {
-  
-    0%,
-    20%,
-    50%,
-    80%,
-    100% {
-      transform: translateY(0);
-    }
-  
-    40% {
-      transform: translateY(-100px);
-    }
-  
-    60% {
-      transform: translateY(-50px);
-    }
+}
+.desktop-other-card-0:hover,
+.desktop-other-card-1:hover,
+.desktop-other-card-2:hover,
+.desktop-other-card-3:hover {
+  animation-name: slide-hover;
+  animation-duration: 2s;
+  cursor: pointer;
+}
+
+.mobile-other-card-0,
+.mobile-other-card-1,
+.mobile-other-card-2,
+.mobile-other-card-3 {
+  animation-name: mobile-bounce;
+  animation-duration: 4s;
+}
+
+@keyframes mobile-bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
   }
-  .mobile-other-card-0:hover, .mobile-other-card-1:hover, .mobile-other-card-2:hover, .mobile-other-card-3:hover{
-    animation-name: mobile-bounce-hover;
-    animation-duration: 2s;
-    cursor: pointer;
+
+  40% {
+    transform: translateY(-100px);
   }
+
+  60% {
+    transform: translateY(-50px);
+  }
+}
+
+@keyframes mobile-bounce-hover {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+
+  40% {
+    transform: translateY(-100px);
+  }
+
+  60% {
+    transform: translateY(-50px);
+  }
+}
+.mobile-other-card-0:hover,
+.mobile-other-card-1:hover,
+.mobile-other-card-2:hover,
+.mobile-other-card-3:hover {
+  animation-name: mobile-bounce-hover;
+  animation-duration: 2s;
+  cursor: pointer;
+}

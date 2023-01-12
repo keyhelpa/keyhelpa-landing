@@ -1,44 +1,58 @@
-import React, { useEffect, useState, Component} from "react";
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
-import Button from 'components/increment/generic/form/Button'
-import Colors from 'common/Colors'
+import React, { useEffect, useState, Component } from "react";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
+import Button from "components/increment/generic/form/Button";
+import Colors from "common/Colors";
 
 class TextEditor extends Component {
   constructor(props) {
-    super(props)
-    this.state={
-      value: '',
-      inputted: ''
-    }
+    super(props);
+    this.state = {
+      value: "",
+      inputted: "",
+    };
   }
 
   componentDidMount() {
-    this.setState({value: this.props.data})
+    this.setState({ value: this.props.data });
   }
 
   onEditorChange = (value, delta, source, editor) => {
     this.setState({
       value: editor.getContents(),
-      inputted: value
+      inputted: value,
     });
-    if(this.props.onChange !== undefined){
-      this.props?.onChange(value)
+    if (this.props.onChange !== undefined) {
+      this.props?.onChange(value);
     }
-  }
+  };
 
-  render(){
+  render() {
     return (
-      <div style={{float: 'left',
-        width: '100%', paddingLeft: '2%', marginTop: '2%', ...this.props.style}}>
-        <ReactQuill theme="snow" value={this.state.value}  onChange={this.onEditorChange}/>
+      <div
+        style={{
+          float: "left",
+          width: "100%",
+          paddingLeft: "2%",
+          marginTop: "2%",
+          ...this.props.style,
+        }}
+      >
+        <ReactQuill
+          theme="snow"
+          value={this.state.value}
+          onChange={this.onEditorChange}
+        />
         {!this.props?.hideAction && (
-          <Button title={'Save'} onClick={() => this.props.handleInput(this.state.inputted)} 
+          <Button
+            title={"Save"}
+            onClick={() => this.props.handleInput(this.state.inputted)}
             style={{
-              backgroundColor: 'transparent',
-              float: 'right',
-              color: Colors.footerIcons
-          }}/>
+              backgroundColor: "transparent",
+              float: "right",
+              color: Colors.footerIcons,
+            }}
+          />
         )}
       </div>
     );
