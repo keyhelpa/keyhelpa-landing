@@ -1,21 +1,21 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { Helper, BasicStyles } from 'common'
-import Button from 'components/increment/generic/form/Button'
-import TextInput from "components/increment/generic/form/TextInput"
-import Style from './style'
-import Colors from 'common/Colors';
-import HeaderLabel from './headerLabel';
-import LeftContainer from './leftContainer';
-import { withRouter } from 'react-router-dom';
-import API from 'services/api'
-import Routes from 'common/Routes'
-import MenuButton from 'components/increment/generic/pagination/menuButton'
-import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
-import SocialAuth from './socialAuth'
-import Config from 'config.js'
-import CommonApi from 'services/commonApi'
-const {REACT_APP_AGENT, REACT_APP_HELPA, REACT_APP_TEST} = process.env
+import React from "react";
+import { connect } from "react-redux";
+import { Helper, BasicStyles } from "common";
+import Button from "components/increment/generic/form/Button";
+import TextInput from "components/increment/generic/form/TextInput";
+import Style from "./style";
+import Colors from "common/Colors";
+import HeaderLabel from "./headerLabel";
+import LeftContainer from "./leftContainer";
+import { withRouter } from "react-router-dom";
+import API from "services/api";
+import Routes from "common/Routes";
+import MenuButton from "components/increment/generic/pagination/menuButton";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import SocialAuth from "./socialAuth";
+import Config from "config.js";
+import CommonApi from "services/commonApi";
+const { REACT_APP_AGENT, REACT_APP_HELPA, REACT_APP_TEST } = process.env;
 class Stack extends React.Component {
   constructor(props) {
     super(props);
@@ -40,264 +40,299 @@ class Stack extends React.Component {
       selected: Helper.ACCOUNT_TYPE,
       errorMessage: null,
       passwordShowFlag: false,
-      confirmPasswordShowFlag: false
+      confirmPasswordShowFlag: false,
     };
   }
   navigate = (route) => {
-    this.props.history.push(route)
+    this.props.history.push(route);
     setTimeout(() => {
-      window.location.reload()
-    }, 50)
-  }
+      window.location.reload();
+    }, 50);
+  };
 
   login() {
     const { errorPassword, errorUsername, username, password } = this.state;
     if (!!REACT_APP_TEST) {
       const { login } = this.props;
-      login({
-        id: 1,
-        username: 'Test',
-        email: 'Test@gmail.com',
-        information: {
-          first_name: 'Kennette',
-          last_name: 'Canales'
+      login(
+        {
+          id: 1,
+          username: "Test",
+          email: "Test@gmail.com",
+          information: {
+            first_name: "Kennette",
+            last_name: "Canales",
+          },
+          profile: {
+            url: "test",
+          },
         },
-        profile: {
-          url: 'test'
-        }
-      }, '1321321321321321')
-      this.navigate('/welcome')
+        "1321321321321321"
+      );
+      this.navigate("/welcome");
     }
-    if (errorPassword === null && errorUsername === null && username !== null && password !== null) {
+    if (
+      errorPassword === null &&
+      errorUsername === null &&
+      username !== null &&
+      password !== null
+    ) {
       this.setState({
-        isLoading: true
-      })
-      CommonApi.authenticate(username, password, response => {
-        this.setState({
-          isLoading: false
-        })
-        if (response && response.token) {
-          localStorage.setItem(Helper.APP_NAME + 'token', response.token)
-          API.request(Routes.authenticatedUser, {}, user => {
-            const { login } = this.props;
-            if (user && (user.account_type === Helper.ACCOUNT_TYPE || user.account_type === 'ADMIN')) {
-              login(user, response.token)
-              this.navigate('/welcome')
-            } else {
-              this.setState({
-                errorMessage: 'Invalid Accessed.'
-              })
-            }
-          }, error => {
-            this.setState({
-              errorMessage: 'Invalid Accessed.'
-            })
+        isLoading: true,
+      });
+      CommonApi.authenticate(
+        username,
+        password,
+        (response) => {
+          this.setState({
+            isLoading: false,
+          });
+          if (response && response.token) {
+            localStorage.setItem(Helper.APP_NAME + "token", response.token);
+            API.request(
+              Routes.authenticatedUser,
+              {},
+              (user) => {
+                const { login } = this.props;
+                if (
+                  user &&
+                  (user.account_type === Helper.ACCOUNT_TYPE ||
+                    user.account_type === "ADMIN")
+                ) {
+                  login(user, response.token);
+                  this.navigate("/welcome");
+                } else {
+                  this.setState({
+                    errorMessage: "Invalid Accessed.",
+                  });
+                }
+              },
+              (error) => {
+                this.setState({
+                  errorMessage: "Invalid Accessed.",
+                });
+              }
+            );
+          }
+        },
+        (error) => {
+          this.setState({
+            isLoading: false,
+            errorMessage: "Invalid accessed.",
           });
         }
-      }, error => {
-        this.setState({
-          isLoading: false,
-          errorMessage: 'Invalid accessed.'
-        })
-      })
+      );
     } else {
       this.setState({
-        errorMessage: 'Username and Password are required.'
-      })
+        errorMessage: "Username and Password are required.",
+      });
     }
   }
 
-
   submit() {
     const { errorUsername, username, email, errorEmail } = this.state;
-    const { password, errorPassword, confirmPassword, errorConfirmPassword } = this.state;
+    const { password, errorPassword, confirmPassword, errorConfirmPassword } =
+      this.state;
     const { errorFirstName, firstName, errorLastName, lastName } = this.state;
     const { errorTradingName, tradingName } = this.state;
 
     this.setState({
-      errorMessage: null
-    })
+      errorMessage: null,
+    });
     if (errorFirstName != null || firstName == null) {
       this.setState({
-        errorFirstName: 'First name is required.'
-      })
-      return false
+        errorFirstName: "First name is required.",
+      });
+      return false;
     }
 
     if (errorLastName != null || lastName == null) {
       this.setState({
-        errorLastName: 'Last name is required.'
-      })
-      return false
+        errorLastName: "Last name is required.",
+      });
+      return false;
     }
     if (errorTradingName != null || tradingName == null) {
       this.setState({
-        errorTradingName: 'Trading name is required.'
-      })
-      return false
+        errorTradingName: "Trading name is required.",
+      });
+      return false;
     }
-    if (errorUsername != null || username == null){
+    if (errorUsername != null || username == null) {
       this.setState({
-        errorUsername: 'Username is required.'
-      })
-      return false
+        errorUsername: "Username is required.",
+      });
+      return false;
     }
     if (errorEmail != null || email == null) {
       this.setState({
-        errorEmail: 'Email is required.'
-      })
-      return false
+        errorEmail: "Email is required.",
+      });
+      return false;
     }
     if (errorPassword != null || password == null) {
       this.setState({
-        errorPassword: 'Password is required.'
-      })
-      return false
+        errorPassword: "Password is required.",
+      });
+      return false;
     }
-    if (Helper.ACCOUNT_TYPE.toLowerCase() === 'admin') {
+    if (Helper.ACCOUNT_TYPE.toLowerCase() === "admin") {
       this.setState({
-        errorMessage: 'Registration not allowed.'
-      })
-      return false
+        errorMessage: "Registration not allowed.",
+      });
+      return false;
     }
     if (password !== confirmPassword) {
       this.setState({
-        errorConfirmPassword: 'Password not match'
-      })
-      return false
+        errorConfirmPassword: "Password not match",
+      });
+      return false;
     }
     this.setState({
-      isLoading: true
-    })
-    API.request(Routes.accountCreate, {
-      username, email, password,
-      first_name: firstName,
-      last_name: lastName,
-      merchant: tradingName,
-      referral_code: null,
-      account_type: Helper.ACCOUNT_TYPE,
-      status: 'ADMIN',
-      account_status: '/welcome'
-    }, response => {
-      this.setState({
-        isLoading: false
-      })
-      if (response && response.data) {
-        this.login()
-      } else if (response && response.error) {
-        for (var key in response.error.message) {
-          if (response.error.message.hasOwnProperty(key)) {
-            this.setState({
-              errorMessage: response.error.message[key][0]
-            })
-            break
+      isLoading: true,
+    });
+    API.request(
+      Routes.accountCreate,
+      {
+        username,
+        email,
+        password,
+        first_name: firstName,
+        last_name: lastName,
+        merchant: tradingName,
+        referral_code: null,
+        account_type: Helper.ACCOUNT_TYPE,
+        status: "ADMIN",
+        account_status: "/welcome",
+      },
+      (response) => {
+        this.setState({
+          isLoading: false,
+        });
+        if (response && response.data) {
+          this.login();
+        } else if (response && response.error) {
+          for (var key in response.error.message) {
+            if (response.error.message.hasOwnProperty(key)) {
+              this.setState({
+                errorMessage: response.error.message[key][0],
+              });
+              break;
+            }
           }
         }
+      },
+      (error) => {
+        this.setState({
+          isLoading: false,
+        });
       }
-    }, error => {
-      this.setState({
-        isLoading: false
-      })
-    })
+    );
   }
-
 
   renderFirst() {
     const { firstName, errorFirstName, lastName, errorLastName } = this.state;
     return (
       <div
         style={{
-          width: '100%',
-          float: 'left',
+          width: "100%",
+          float: "left",
           paddingTop: 20,
           paddingBottom: 20,
         }}
         className="full-width-mobile-without-padding"
       >
-        <div style={{
-          width: '48%',
-          float: 'left',
-          marginRight: '2%'
-        }}
+        <div
+          style={{
+            width: "48%",
+            float: "left",
+            marginRight: "2%",
+          }}
           className="full-width-mobile-without-padding"
         >
           <TextInput
-            placeholder={'First name'}
+            placeholder={"First name"}
             type={"text"}
             value={firstName}
             onChange={(firstName, errorFirstName) => {
               this.setState({
-                firstName, errorFirstName
-              })
+                firstName,
+                errorFirstName,
+              });
             }}
             validation={{
-              type: 'text_without_space',
+              type: "text_without_space",
               size: 2,
-              column: 'First name',
-              error: errorFirstName
+              column: "First name",
+              error: errorFirstName,
             }}
           />
         </div>
-        <div style={{
-          width: '48%',
-          float: 'left',
-          marginLeft: '2%'
-        }}
+        <div
+          style={{
+            width: "48%",
+            float: "left",
+            marginLeft: "2%",
+          }}
           className="full-width-mobile-without-padding"
         >
           <TextInput
-            placeholder={'Last name'}
+            placeholder={"Last name"}
             type={"text"}
             value={lastName}
             onChange={(lastName, errorLastName) => {
               this.setState({
-                lastName, errorLastName
-              })
+                lastName,
+                errorLastName,
+              });
             }}
             validation={{
-              type: 'text_without_space',
+              type: "text_without_space",
               size: 2,
-              column: 'Last name',
-              error: errorLastName
+              column: "Last name",
+              error: errorLastName,
             }}
           />
         </div>
       </div>
-    )
+    );
   }
 
   renderSecond() {
-    const { tradingName, errorTradingName, postCode, errorPostCode } = this.state;
+    const { tradingName, errorTradingName, postCode, errorPostCode } =
+      this.state;
     return (
       <div
         style={{
-          width: '100%',
-          float: 'left',
+          width: "100%",
+          float: "left",
           paddingTop: 20,
           paddingBottom: 20,
         }}
         className="full-width-mobile-without-padding"
       >
-        <div style={{
-          width: '100%',
-          float: 'left'
-        }}
+        <div
+          style={{
+            width: "100%",
+            float: "left",
+          }}
           className="full-width-mobile-without-padding"
         >
           <TextInput
-            placeholder={'Trading name'}
+            placeholder={"Trading name"}
             type={"text"}
             value={tradingName}
             onChange={(tradingName, errorTradingName) => {
               this.setState({
-                tradingName, errorTradingName
-              })
+                tradingName,
+                errorTradingName,
+              });
             }}
             validation={{
-              type: 'text_without_space',
+              type: "text_without_space",
               size: 3,
-              column: 'Trading name',
-              error: errorTradingName
+              column: "Trading name",
+              error: errorTradingName,
             }}
           />
         </div>
@@ -326,251 +361,283 @@ class Stack extends React.Component {
           />
         </div> */}
       </div>
-    )
+    );
   }
   render() {
-    const { errorUsername, username, email, errorEmail, selected, passwordShowFlag, confirmPasswordShowFlag } = this.state;
-    const { password, errorPassword, confirmPassword, errorConfirmPassword, errorMessage } = this.state;
+    const {
+      errorUsername,
+      username,
+      email,
+      errorEmail,
+      selected,
+      passwordShowFlag,
+      confirmPasswordShowFlag,
+    } = this.state;
+    const {
+      password,
+      errorPassword,
+      confirmPassword,
+      errorConfirmPassword,
+      errorMessage,
+    } = this.state;
     return (
       <div style={Style.mainContainer}>
-        <div style={Style.leftContainer} className='two-third-container'>
+        <div style={Style.leftContainer} className="two-third-container">
           <LeftContainer />
         </div>
-        <div style={Style.rightContainer} className='full-width-mobile-with-margin'>
+        <div
+          style={Style.rightContainer}
+          className="full-width-mobile-with-margin"
+        >
           <HeaderLabel
-            title={'Sign Up'}
-            description={'Proceed with registration below to start your career with KeyHelpa'}
+            title={"Sign Up"}
+            description={
+              "Proceed with registration below to start your career with KeyHelpa"
+            }
             _color={true}
           />
-          {
-            Helper.ACCOUNT_TYPE.toLowerCase() !== 'admin' && (
-              <div style={{
-                width: '100%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center'
-              }}>
-                <div
+          {Helper.ACCOUNT_TYPE.toLowerCase() !== "admin" && (
+            <div
+              style={{
+                width: "100%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <div
+                style={{
+                  width: "65%",
+                }}
+                className="full-width-mobile"
+              >
+                <MenuButton
+                  data={["Agent", "Freelancer"]}
+                  selected={selected}
                   style={{
-                    width: '65%'
+                    color: Colors.gray,
+                    backgroundColor: Colors.activeGray,
+                    float: "left",
                   }}
-                  className="full-width-mobile"
-                >
-                  <MenuButton
-                    data={['Agent', 'Freelancer']}
-                    selected={selected}
-                    style={{
-                      color: Colors.gray,
-                      backgroundColor: Colors.activeGray,
-                      float: 'left'
-                    }}
-                    onChange={(param) => {
-                      if (param === 'Agent') {
-                        window.location.href = REACT_APP_AGENT + '/signup'
-                      } else {
-                        window.location.href = REACT_APP_HELPA + '/signup'
-                      }
-                    }}
-                  />
-                </div>
+                  onChange={(param) => {
+                    if (param === "Agent") {
+                      window.location.href = REACT_APP_AGENT + "/signup";
+                    } else {
+                      window.location.href = REACT_APP_HELPA + "/signup";
+                    }
+                  }}
+                />
               </div>
-            )
-          }
+            </div>
+          )}
 
-
-          {
-            errorMessage && (
-              <p style={{
-                fontWeight: 'bold',
+          {errorMessage && (
+            <p
+              style={{
+                fontWeight: "bold",
                 color: Colors.danger,
-                textAlign: 'center',
-                marginTop: 25
-              }}>
-                {errorMessage}
-              </p>
-            )
-          }
+                textAlign: "center",
+                marginTop: 25,
+              }}
+            >
+              {errorMessage}
+            </p>
+          )}
 
           {this.renderFirst()}
 
           {this.renderSecond()}
 
           <TextInput
-            placeholder={'Username'}
+            placeholder={"Username"}
             type={"text"}
             value={username}
             style={{
-              marginTop: 20
+              marginTop: 20,
             }}
             className="full-width-mobile-without-padding"
             onChange={(username, errorUsername) => {
               this.setState({
-                username, errorUsername
-              })
+                username,
+                errorUsername,
+              });
             }}
             validation={{
-              type: 'text_without_space',
+              type: "text_without_space",
               size: 8,
-              column: 'Username',
-              error: errorUsername
+              column: "Username",
+              error: errorUsername,
             }}
           />
 
           <TextInput
-            placeholder={'Email'}
+            placeholder={"Email"}
             type={"text"}
             value={email}
             style={{
-              marginTop: 20
+              marginTop: 20,
             }}
             onChange={(email, errorEmail) => {
               this.setState({
-                email, errorEmail
-              })
+                email,
+                errorEmail,
+              });
             }}
             validation={{
-              type: 'email',
+              type: "email",
               size: 8,
-              column: 'Email',
-              error: errorEmail
+              column: "Email",
+              error: errorEmail,
             }}
           />
 
           <TextInput
-            placeholder={'Password'}
-            type={this.state.passwordShowFlag ? 'text' : 'password'}
+            placeholder={"Password"}
+            type={this.state.passwordShowFlag ? "text" : "password"}
             value={password}
             style={{
-              marginTop: 20
+              marginTop: 20,
             }}
             onChange={(password, errorPassword) => {
               this.setState({
-                password, errorPassword,
-                errorMessage: null
-              })
+                password,
+                errorPassword,
+                errorMessage: null,
+              });
             }}
             onClickRightIcon={() => {
               this.setState({
-                passwordShowFlag: !this.state.passwordShowFlag
-              })
+                passwordShowFlag: !this.state.passwordShowFlag,
+              });
             }}
             iconRight={passwordShowFlag === false ? faEye : faEyeSlash}
             validation={{
-              type: 'text',
+              type: "text",
               size: 8,
-              column: 'Password',
-              error: errorPassword
+              column: "Password",
+              error: errorPassword,
             }}
           />
           <TextInput
-            placeholder={'Confirm Password'}
-            type={this.state.confirmPasswordShowFlag ? 'text' : 'password'}
+            placeholder={"Confirm Password"}
+            type={this.state.confirmPasswordShowFlag ? "text" : "password"}
             value={confirmPassword}
             style={{
               marginTop: 20,
             }}
             onChange={(confirmPassword, errorConfirmPassword) => {
               this.setState({
-                confirmPassword, errorConfirmPassword,
-                errorMessage: null
-              })
+                confirmPassword,
+                errorConfirmPassword,
+                errorMessage: null,
+              });
             }}
             onClickRightIcon={() => {
               this.setState({
-                confirmPasswordShowFlag: !this.state.confirmPasswordShowFlag
-              })
+                confirmPasswordShowFlag: !this.state.confirmPasswordShowFlag,
+              });
             }}
             iconRight={confirmPasswordShowFlag === false ? faEye : faEyeSlash}
             validation={{
-              type: 'text',
+              type: "text",
               size: 8,
-              column: 'Confirm Password',
-              error: errorConfirmPassword
+              column: "Confirm Password",
+              error: errorConfirmPassword,
             }}
           />
 
-          <div style={{
-            display: 'flex',
-            width: '100%',
-            float: 'left',
-            justifyContent: 'center',
-            marginTop: 25
-          }}>
+          <div
+            style={{
+              display: "flex",
+              width: "100%",
+              float: "left",
+              justifyContent: "center",
+              marginTop: 25,
+            }}
+          >
             <Button
-              title={'Create Account'}
+              title={"Create Account"}
               onClick={() => {
-                this.submit()
-              }
-              }
+                this.submit();
+              }}
               style={{
                 backgroundColor: Colors.primary,
                 color: Colors.white,
-                paddingLeft: '10%',
-                paddingRight: '10%'
+                paddingLeft: "10%",
+                paddingRight: "10%",
               }}
               className="full-width-mobile"
               isLoading={this.state.isLoading}
             />
           </div>
 
-          <div style={{
-            width: '100%',
-            float: 'left',
-            marginTop: 25
-          }}>
-            <SocialAuth payload="signup"
+          <div
+            style={{
+              width: "100%",
+              float: "left",
+              marginTop: 25,
+            }}
+          >
+            <SocialAuth
+              payload="signup"
               isLoading={(flag) => {
                 this.setState({
-                  isLoading: flag
-                })
+                  isLoading: flag,
+                });
               }}
-
               errorMessage={(messsage) => {
                 this.setState({
-                  errorMessage: messsage
-                })
+                  errorMessage: messsage,
+                });
               }}
             />
           </div>
 
-          <div style={{
-            float: 'left',
-            width: '100%',
-            marginTop: 20,
-            paddingTop: 20,
-            paddingBottom: 20,
-            textAlign: 'center'
-          }}>
-            <label style={{
-              color: Colors.iconText
-            }}>Already have an account?</label>
+          <div
+            style={{
+              float: "left",
+              width: "100%",
+              marginTop: 20,
+              paddingTop: 20,
+              paddingBottom: 20,
+              textAlign: "center",
+            }}
+          >
+            <label
+              style={{
+                color: Colors.iconText,
+              }}
+            >
+              Already have an account?
+            </label>
 
             <span
-              onClick={() =>
-                this.navigate('signin')
-              }
+              onClick={() => this.navigate("signin")}
               className="href-link"
               style={{
-                fontWeight: 'bold',
+                fontWeight: "bold",
                 color: Colors.primary,
-                paddingLeft: 5
+                paddingLeft: 5,
               }}
-            >Log In</span>
+            >
+              Log In
+            </span>
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
 const mapStateToProps = (state) => ({ state: state });
 
 const mapDispatchToProps = (dispatch) => {
-  const { actions } = require('reduxhandler');
+  const { actions } = require("reduxhandler");
   return {
-    login: (user, token) => { dispatch(actions.login(user, token)) }
+    login: (user, token) => {
+      dispatch(actions.login(user, token));
+    },
   };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Stack));
-

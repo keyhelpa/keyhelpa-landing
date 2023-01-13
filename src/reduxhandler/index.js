@@ -1,68 +1,75 @@
 import Config from "config";
 const types = {
-  SET_SELECTED_USER: 'SET_SELECTED_USER',
-  SET_RIGHT_MENU: 'SET_RIGHT_MENU',
-  SET_LEFT_MENU: 'SET_LEFT_MENU',
-  SET_COLOR: 'SET_COLOR',
-  SET_ACCOUNT_TYPE: 'SET_ACCOUNT_TYPE'
+  SET_SELECTED_USER: "SET_SELECTED_USER",
+  SET_RIGHT_MENU: "SET_RIGHT_MENU",
+  SET_LEFT_MENU: "SET_LEFT_MENU",
+  SET_COLOR: "SET_COLOR",
+  SET_ACCOUNT_TYPE: "SET_ACCOUNT_TYPE",
 };
-const {REACT_APP_HELPA,REACT_APP_AGENT}=process.env
+const { REACT_APP_HELPA, REACT_APP_AGENT } = process.env;
 export const actions = {
   setSelectedUser: (selectedUser) => {
-    return {type: types.SET_SELECTED_USER, selectedUser}
+    return { type: types.SET_SELECTED_USER, selectedUser };
   },
   setRightMenu: (rightMenu) => {
-    return {type: types.SET_RIGHT_MENU, rightMenu}
+    return { type: types.SET_RIGHT_MENU, rightMenu };
   },
   setLeftMenu: (leftMenu) => {
-    return {type: types.SET_LEFT_MENU, leftMenu}
+    return { type: types.SET_LEFT_MENU, leftMenu };
   },
   setColor: (userType) => {
-    return {type: types.SET_COLOR, userType}
+    return { type: types.SET_COLOR, userType };
   },
   setAccountType: (accountType) => {
-    return {type: types.SET_ACCOUNT_TYPE, accountType}
-  }
-}
+    return { type: types.SET_ACCOUNT_TYPE, accountType };
+  },
+};
 
 const initialState = {
   selectedUser: null,
   color: null,
-  loginLeftMenu: [{
-    title: 'Agents Looking for Helpas',
-    type: 'internal',
-    route: '/agent'
-  }, {
-    title: 'Helpas Looking to Earn',
-    type: 'internal',
-    route: '/helpa'
-  }],
-  loginRightMenu: [{
-    title: 'Guides',
-    type: 'external',
-    route:  '/guides'
-  },{
-    title: 'Members Login',
-    type: 'external',
-    route:  REACT_APP_AGENT
-  }, {
-    title: 'Join Us',
-    type: 'external',
-    route:  REACT_APP_HELPA
-  }],
-  accountType: null
-}
+  loginLeftMenu: [
+    {
+      title: "Agents Looking for Helpas",
+      type: "internal",
+      route: "/agent",
+    },
+    {
+      title: "Helpas Looking to Earn",
+      type: "internal",
+      route: "/helpa",
+    },
+  ],
+  loginRightMenu: [
+    {
+      title: "Guides",
+      type: "external",
+      route: "/guides",
+    },
+    {
+      title: "Members Login",
+      type: "external",
+      route: REACT_APP_AGENT,
+    },
+    {
+      title: "Join Us",
+      type: "external",
+      route: REACT_APP_HELPA,
+    },
+  ],
+  accountType: null,
+};
 
 const reducer = (state = initialState, action) => {
-  const {selectedUser, type} = action
-  const {rightMenu, userType, accountType} = action
-  let userTypes = localStorage.getItem('user_type');
+  const { selectedUser, type } = action;
+  const { rightMenu, userType, accountType } = action;
+  let userTypes = localStorage.getItem("user_type");
   switch (type) {
     case types.SET_SELECTED_USER:
       return {
         ...state,
-        selectedUser: userTypes ? userTypes : selectedUser
-      }
+        selectedUser: userTypes ? userTypes : selectedUser,
+      };
     case types.SET_RIGHT_MENU:
       // if(userTypes){
       //   let exist = state.loginRightMenu.filter(item => {return item.title === 'About'})
@@ -96,14 +103,14 @@ const reducer = (state = initialState, action) => {
       // }
       return {
         ...state,
-      }
+      };
     case types.SET_COLOR:
-      let color = null
-      console.log('<<<<<', userType);
-      if(userType === 'agent'){
-        color = '#59687A'
-      }else{
-        color = '#f290bb'
+      let color = null;
+      console.log("<<<<<", userType);
+      if (userType === "agent") {
+        color = "#59687A";
+      } else {
+        color = "#f290bb";
       }
       // if(state.selectedUser === 'agent'){
       //   color = '#59687A'
@@ -122,16 +129,16 @@ const reducer = (state = initialState, action) => {
       // }
       return {
         ...state,
-        color: color
-      }
+        color: color,
+      };
     case types.SET_ACCOUNT_TYPE:
       return {
         ...state,
-        accountType
-      }
+        accountType,
+      };
     default:
-      return {...state}
+      return { ...state };
   }
-}
+};
 
 export default reducer;

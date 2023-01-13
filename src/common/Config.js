@@ -1,4 +1,4 @@
-import CONFIG from '../config.js'
-export default{
-	...CONFIG
-}
+import CONFIG from "../config.js";
+export default {
+  ...CONFIG,
+};

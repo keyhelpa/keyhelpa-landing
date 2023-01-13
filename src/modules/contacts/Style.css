@@ -1,51 +1,51 @@
-
-.form-helpa{
+.form-helpa {
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
   padding: 5%;
   text-align: left;
 }
 
-.main-content{
+.main-content {
   text-align: center;
 }
-.red{
-  color: red
+.red {
+  color: red;
 }
-.pink{
-  color: #E62D7E;
+.pink {
+  color: #e62d7e;
 }
-.white{
-  color: white
+.white {
+  color: white;
 }
-.contents{
+.contents {
   padding-top: 5%;
 }
 
-.contents.agent{
-  background-color: #F1F5FB;
+.contents.agent {
+  background-color: #f1f5fb;
   display: flex;
   padding-bottom: 10%;
 }
 
-.contents.helpa{
-  background-color: #FFFAFC;
+.contents.helpa {
+  background-color: #fffafc;
   display: flex;
   padding-bottom: 10%;
 }
 
-.btn-submit{
+.btn-submit {
   background-color: white !important;
-  border:1px solid white !important;
-  color: #34475D !important;
+  border: 1px solid white !important;
+  color: #34475d !important;
   border-radius: 20px !important;
 }
 
-@media (max-width: 991px){
-  .contents.helpa, .contents.agent{
-    display:block;
+@media (max-width: 991px) {
+  .contents.helpa,
+  .contents.agent {
+    display: block;
   }
-  .form-helpa{
+  .form-helpa {
     padding-bottom: 15%;
     margin-bottom: 10%;
     margin-top: 10%;

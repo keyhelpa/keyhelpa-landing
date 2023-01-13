@@ -1,22 +1,22 @@
-import { ExportToCsv } from 'export-to-csv'
+import { ExportToCsv } from "export-to-csv";
 
 const csvExport = {
   exportData: (data, title, header) => {
     const options = {
-      fieldSeparator: ',',
+      fieldSeparator: ",",
       quoteStrings: '"',
-      decimalSeparator: '.',
-      showLabels: true, 
+      decimalSeparator: ".",
+      showLabels: true,
       showTitle: true,
       title: title,
       useTextFile: false,
       useBom: true,
       // useKeysAsHeaders: true,
-      headers: header
+      headers: header,
     };
     const csvExporter = new ExportToCsv(options);
     csvExporter.generateCsv(data);
-  }
-}
+  },
+};
 
 export default csvExport;

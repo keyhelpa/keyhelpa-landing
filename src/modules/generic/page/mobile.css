@@ -1,21 +1,21 @@
 @media (max-width: 991px) {
-    .text-field-container {
-        border-radius: 30px !important;
-        width: 90% !important;
-        margin-left: 5% !important;
-        margin-right: 5% !important;
-        margin-bottom: 150px !important;
-    }
+  .text-field-container {
+    border-radius: 30px !important;
+    width: 90% !important;
+    margin-left: 5% !important;
+    margin-right: 5% !important;
+    margin-bottom: 150px !important;
+  }
 
-    .contact-left-side-content {
-        width: 90% !important;
-        margin-left: 5% !important;
-        margin-right: 5% !important;
-        margin-top: 150px !important;
-        margin-bottom: 50px !important;
-    }
+  .contact-left-side-content {
+    width: 90% !important;
+    margin-left: 5% !important;
+    margin-right: 5% !important;
+    margin-top: 150px !important;
+    margin-bottom: 50px !important;
+  }
 
-    .contact-left-side-content h1 {
-        text-align: center !important;
-    }
+  .contact-left-side-content h1 {
+    text-align: center !important;
+  }
 }
