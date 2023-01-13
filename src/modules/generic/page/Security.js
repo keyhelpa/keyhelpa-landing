@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import BreadCrumbs from "../breadcrumbs";
 import Toggle from "../card/cardToggle";
-import Colors from "common/Colors";
 import TextMessageModal from "modules/generic/modal/textMessage";
 import GoogleAuthenticatorModal from "modules/generic/modal/googleAuthenticator";
 import SecurityQuestionModal from "modules/generic/modal/securityQuestion";
@@ -79,16 +78,8 @@ class Stack extends React.Component {
         });
         if (response.data.length > 0) {
           let temp = response.data[0];
-          if (temp.sms === 1) {
-            menu[0].flag = true;
-          } else {
-            menu[0].flag = false;
-          }
-          if (temp.google_auth === 1) {
-            menu[1].flag = true;
-          } else {
-            menu[1].flag = false;
-          }
+          menu[0].flag = temp.sms === 1;
+          menu[1].flag = temp.google_auth === 1;
           this.setState({ data: response.data });
         } else {
           this.setState({
@@ -96,7 +87,7 @@ class Stack extends React.Component {
           });
         }
       },
-      (error) => {
+      () => {
         this.setState({
           isLoading: false,
         });
@@ -104,15 +95,14 @@ class Stack extends React.Component {
     );
   }
 
-  next(code, num) {
+  next(num) {
     const { user } = this.props.state;
-    let lastCharRemoved = code.slice(2, code.length);
     let params = {
       platform: "sms",
-      phoneNumber: lastCharRemoved.concat(num),
+      phoneNumber: "+61" + num,
       account_id: user?.id,
     };
-    API.request(Routes.securitySettingsSetup, params, (response) => {
+    API.request(Routes.securitySettingsSetup, params, () => {
       this.setState({
         textMessage: false,
         addMobile: true,
@@ -141,7 +131,7 @@ class Stack extends React.Component {
         account_id: user?.id,
       };
     }
-    API.request(Routes.securitySettingsUpdate, params, (response) => {
+    API.request(Routes.securitySettingsUpdate, params, () => {
       this.retrieve();
     });
   }
@@ -255,8 +245,8 @@ class Stack extends React.Component {
         {textMessage && (
           <TextMessageModal
             show={textMessage}
-            next={(code, num) => {
-              this.next(code, num);
+            next={(num) => {
+              this.next(num);
             }}
             onCancel={() => {
               this.setState({
@@ -330,8 +320,7 @@ class Stack extends React.Component {
 
 const mapStateToProps = (state) => ({ state: state });
 
-const mapDispatchToProps = (dispatch) => {
-  const { actions } = require("reduxhandler");
+const mapDispatchToProps = () => {
   return {};
 };
 

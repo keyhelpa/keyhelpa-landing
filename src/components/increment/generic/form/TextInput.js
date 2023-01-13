@@ -80,6 +80,21 @@ export default class TextInput extends React.Component {
             </span>
           )}
 
+          {this.props.prefix && (
+            <span
+              style={{
+                float: "left",
+                display: "flex",
+                justifyContent: "left",
+                alignItems: "center",
+                height: 50,
+              }}
+              className="href-link"
+            >
+              <span>{this.props.prefix}</span>
+            </span>
+          )}
+
           <input
             type={this.props.type}
             placeholder={this.props.placeholder}
@@ -98,11 +113,17 @@ export default class TextInput extends React.Component {
               ...this.props.inputStyle,
             }}
             onChange={(e) => {
+              if (this.props.numbersOnly) {
+                const { value } = e.target;
+                e.target.value = value
+                  .replace(/[^0-9.]/g, "")
+                  .replace(/(\..*)\./g, "$1");
+              }
               this.validation(e);
             }}
             max={this.props.max}
             min={this.props.min}
-            onKeyPress={(event) =>
+            onKeyDown={(event) =>
               event.key === "Enter" &&
               this.props.enterEnable &&
               this.props.onEnter()

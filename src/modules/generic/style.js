@@ -33,6 +33,7 @@ export default {
   formControlContainer: {
     float: "left",
     width: "100%",
+    display: "flex",
     backgroundColor: "transparent",
     borderBottomWidth: "3px",
     borderBottomColor: Colors.gray,

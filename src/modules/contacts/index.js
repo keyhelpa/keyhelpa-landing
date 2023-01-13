@@ -6,7 +6,6 @@ import "./Style.css";
 import Routes from "common/Routes";
 import API from "services/api";
 import Button from "modules/generic/button";
-import countryCodes from "country-codes-list";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Colors from "common/Colors";
 import "./mobile.css";
@@ -14,7 +13,6 @@ import validator from "services/validator";
 import Modal from "modules/generic/modal/textButton";
 import TextInput from "components/increment/generic/form/TextInput";
 import TextArea from "components/increment/generic/form/TextArea";
-import ContactNumber from "components/increment/generic/form/ContactNumber";
 const style = {
   iconAgent: {
     width: 40,
@@ -51,13 +49,9 @@ export class Contacts extends Component {
       email: null,
       eemail: null,
       contactNumber: null,
-      contactPrefix: null,
+      errorContactNumber: null,
       organization: null,
       message: null,
-      mobilePrefixes: countryCodes.customList(
-        "countryCode",
-        "+{countryCallingCode}"
-      ),
       submitted: false,
       error: null,
       show: false,
@@ -76,15 +70,7 @@ export class Contacts extends Component {
   }
 
   handleSubmit() {
-    const {
-      name,
-      email,
-      contactNumber,
-      contactPrefix,
-      organization,
-      message,
-      error,
-    } = this.state;
+    const { name, email, contactNumber, organization, message } = this.state;
     // if (this.state.errorMessage !== null) {
     //   return
     // }
@@ -96,7 +82,7 @@ export class Contacts extends Component {
       name: name,
       email: validator.checkEmail(email) ? email : null,
       details: JSON.stringify({
-        contact_number: "+" + contactPrefix + contactNumber,
+        contact_number: "+61" + contactNumber,
         organization: organization,
         message: message,
       }),
@@ -105,14 +91,14 @@ export class Contacts extends Component {
       params.name !== null &&
       params.name !== undefined &&
       params.email !== null &&
-      params.email != undefined &&
+      params.email !== undefined &&
       JSON.parse(params.details).contactNumber !== null &&
       JSON.parse(params.details).organization !== null &&
       JSON.parse(params.details).organization !== undefined &&
       JSON.parse(params.details).message !== null &&
       JSON.parse(params.details).message !== undefined
     ) {
-      API.request(Routes.createContact, params, (response) => {
+      API.request(Routes.createContact, params, () => {
         this.setState({
           submitted: true,
           name: null,
@@ -133,7 +119,6 @@ export class Contacts extends Component {
   }
 
   renderLeft() {
-    const { theme } = this.state;
     const { accountType } = this.props.state;
     console.log({
       accountType,
@@ -213,7 +198,7 @@ export class Contacts extends Component {
   }
 
   renderAlert() {
-    const { theme, error, show, submitted } = this.state;
+    const { show } = this.state;
     const { accountType } = this.props.state;
     return (
       <div>
@@ -243,7 +228,7 @@ export class Contacts extends Component {
   }
 
   renderRight() {
-    const { theme, mobilePrefixes, errorMessage } = this.state;
+    const { errorMessage } = this.state;
     const {
       name,
       ename,
@@ -385,35 +370,35 @@ export class Contacts extends Component {
               }}
               className="full-width-mobile contactNumber"
             >
-              <p
-                style={{
-                  color: Colors.white,
-                }}
-              >
-                <b>Telephone</b>
-              </p>
-              <ContactNumber
-                contactNumber={this.state.contactNumber}
-                hasFlag={false}
-                style={{ borderBottom: "3px solid white" }}
-                textColor={{ color: "white" }}
-                handleMobileNumber={(countryCode, mobile, errorMobile) => {
+              <TextInput
+                placeholder={"Phone number"}
+                type={"tel"}
+                label={"Telephone"}
+                value={contactNumber}
+                prefix={"+61"}
+                numbersOnly={true}
+                onChange={(mobile, errorMobile) => {
                   this.setState({
-                    contactPrefix: countryCode,
                     contactNumber: mobile,
-                    errorMessage: errorMobile,
+                    errorContactNumber: errorMobile,
                   });
                 }}
-                errorMobile={errorMessage}
+                style={{
+                  borderBottom: "solid 3px " + Colors.white,
+                }}
+                inputStyle={{
+                  color: Colors.white,
+                }}
+                errorStyle={{
+                  color: Colors.white,
+                }}
+                validation={{
+                  type: "text_without_space",
+                  size: 0,
+                  column: "Mobile number",
+                  error: this.state.errorContactNumber,
+                }}
               />
-              {/* <Form.Select aria-label="Default select example" style={{ width: '130px', margin: 0 }} onChange={(e) => this.setState({ contactPrefix: e.target.value })}>
-                {
-                  Object.values(mobilePrefixes).map(item => (
-                    <option value={item}>{item}</option>
-                  ))
-                }
-              </Form.Select>
-              <Form.Control style={{ margin: 0 }} type="number" size="sm" onChange={(e) => this.setState({ contactNumber: e.target.value })}></Form.Control> */}
             </div>
           </div>
 
@@ -481,7 +466,7 @@ export class Contacts extends Component {
               }}
               value={message}
               rows={5}
-              onChange={(message, errorMesssage) => {
+              onChange={(message) => {
                 this.setState({
                   message,
                 });
@@ -518,7 +503,6 @@ export class Contacts extends Component {
   }
 
   renderContent() {
-    const { accountType } = this.props.state;
     return (
       <div
         style={{
@@ -571,8 +555,7 @@ export class Contacts extends Component {
 
 const mapStateToProps = (state) => ({ state: state });
 
-const mapDispatchToProps = (dispatch) => {
-  const { actions } = require("reduxhandler");
+const mapDispatchToProps = () => {
   return {};
 };
 
