@@ -9,10 +9,12 @@ import Button from "modules/generic/button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Colors from "common/Colors";
 import "./mobile.css";
-import validator from "services/validator";
 import Modal from "modules/generic/modal/textButton";
 import TextInput from "components/increment/generic/form/TextInput";
 import TextArea from "components/increment/generic/form/TextArea";
+import loaderFreelance from "../../assets/img/Dual Ring-1.4s-16px free.svg";
+import loaderAgent from "../../assets/img/Dual Ring-1.4s-16px agent.svg";
+
 const style = {
   iconAgent: {
     width: 40,
@@ -23,7 +25,7 @@ const style = {
     justifyContent: "center",
     borderRadius: 20,
     marginRight: 20,
-    backgroundColor: "#34475D", //34475D
+    backgroundColor: "#34475D",
     color: "white",
   },
   iconHelpa: {
@@ -43,79 +45,123 @@ export class Contacts extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isLoading: false,
+
       theme: "agent",
       name: null,
-      ename: null,
+      errorName: null,
       email: null,
-      eemail: null,
-      contactNumber: null,
-      errorContactNumber: null,
+      errorEmail: null,
+      phone: null,
+      errorPhone: null,
       organization: null,
-      message: null,
+      errorOrganization: null,
+      message: "",
+      errorMessage: null,
       submitted: false,
       error: null,
       show: false,
-      errorMessage: null,
-      successMessage: null,
+      responseMessage: null,
+      submitErrorMessage: null,
+      loader: null,
     };
   }
 
   componentDidMount() {
     const { history } = this.props;
     if (history.location.pathname.includes("agent")) {
-      this.setState({ theme: "agent" });
+      this.setState({
+        theme: "agent",
+        loader: loaderAgent,
+      });
     } else {
-      this.setState({ theme: "helpa" });
+      this.setState({
+        theme: "helpa",
+        loader: loaderFreelance,
+      });
     }
   }
 
   handleSubmit() {
-    const { name, email, contactNumber, organization, message } = this.state;
-    // if (this.state.errorMessage !== null) {
-    //   return
-    // }
+    const {
+      name,
+      email,
+      phone,
+      organization,
+      message,
+      errorName,
+      errorEmail,
+      errorPhone,
+      errorOrganization,
+      errorMessage,
+    } = this.state;
+
+    if (!name || !email || !phone || !organization || !message) {
+      this.setState({
+        submitErrorMessage: "All fields are required",
+        responseMessage: null,
+      });
+      return;
+    }
+
+    if (
+      errorName ||
+      errorEmail ||
+      errorPhone ||
+      errorOrganization ||
+      errorMessage
+    ) {
+      this.setState({
+        submitErrorMessage: "Fields contain errors",
+        responseMessage: null,
+      });
+      return;
+    }
+
     this.setState({
-      errorMessage: null,
-      successMessage: null,
+      responseMessage: null,
+      submitErrorMessage: null,
+      isLoading: true,
     });
+
     let params = {
       name: name,
-      email: validator.checkEmail(email) ? email : null,
-      details: JSON.stringify({
-        contact_number: "+61" + contactNumber,
-        organization: organization,
-        message: message,
-      }),
+      email: email,
+      phone: phone,
+      organization: organization,
+      message: message,
     };
-    if (
-      params.name !== null &&
-      params.name !== undefined &&
-      params.email !== null &&
-      params.email !== undefined &&
-      JSON.parse(params.details).contactNumber !== null &&
-      JSON.parse(params.details).organization !== null &&
-      JSON.parse(params.details).organization !== undefined &&
-      JSON.parse(params.details).message !== null &&
-      JSON.parse(params.details).message !== undefined
-    ) {
-      API.request(Routes.createContact, params, () => {
+
+    API.request(
+      Routes.contactForm,
+      params,
+      (response) => {
         this.setState({
+          isLoading: false,
           submitted: true,
+          responseMessage: response.message,
           name: null,
           email: null,
+          phone: null,
           organization: null,
-          eorganization: null,
-          message: null,
-          contactNumber: null,
-          successMessage: "Successfully submitted.",
+          message: "",
+          errorName: null,
+          errorEmail: null,
+          errorPhone: null,
+          errorOrganization: null,
+          errorMessage: null,
           show: true,
         });
-      });
-    } else {
-      this.setState({
-        errorMessage: "Please fill up the required fields.",
-      });
-    }
+      },
+      (error) => {
+        const arrResponse = Object.values(error?.data).flat();
+        debugger;
+        this.setState({
+          isLoading: false,
+          responseMessage: arrResponse,
+        });
+      }
+    );
   }
 
   renderLeft() {
@@ -228,17 +274,20 @@ export class Contacts extends Component {
   }
 
   renderRight() {
-    const { errorMessage } = this.state;
     const {
       name,
-      ename,
       email,
-      eemail,
-      contactNumber,
+      phone,
       organization,
-      eorganization,
       message,
-      successMessage,
+      errorName,
+      errorEmail,
+      errorPhone,
+      errorOrganization,
+      errorMessage,
+      responseMessage,
+      loader,
+      submitErrorMessage,
     } = this.state;
     const { accountType } = this.props.state;
     return (
@@ -258,24 +307,21 @@ export class Contacts extends Component {
         }}
         className="full-width-mobile text-field-container"
       >
-        {errorMessage && errorMessage !== "Invalid Phone Number" && (
-          <p
-            style={{
-              color: Colors.white,
-            }}
-          >
-            {errorMessage}
-          </p>
+        {submitErrorMessage &&
+          submitErrorMessage !== "Invalid Phone Number" && (
+            <p
+              style={{
+                color: Colors.white,
+              }}
+            >
+              {submitErrorMessage}
+            </p>
+          )}
+
+        {responseMessage && (
+          <p style={{ color: Colors.white }}>{responseMessage}</p>
         )}
-        {successMessage && (
-          <p
-            style={{
-              color: Colors.white,
-            }}
-          >
-            {successMessage}
-          </p>
-        )}
+
         <div
           style={{
             width: "100%",
@@ -295,10 +341,11 @@ export class Contacts extends Component {
               type={"text"}
               label={"Full name"}
               value={name}
-              onChange={(name, ename) => {
+              onChange={(name, errorName) => {
                 this.setState({
                   name,
-                  ename,
+                  errorName,
+                  responseMessage: null,
                 });
               }}
               style={{
@@ -314,7 +361,7 @@ export class Contacts extends Component {
                 size: 2,
                 type: "text",
                 column: "Name",
-                error: ename,
+                error: errorName,
               }}
             />
           </div>
@@ -338,10 +385,11 @@ export class Contacts extends Component {
                 type={"text"}
                 value={email}
                 label={"Email"}
-                onChange={(email, eemail) => {
+                onChange={(email, errorEmail) => {
                   this.setState({
                     email,
-                    eemail,
+                    errorEmail,
+                    responseMessage: null,
                   });
                 }}
                 style={{
@@ -354,10 +402,10 @@ export class Contacts extends Component {
                   color: Colors.white,
                 }}
                 validation={{
-                  size: 2,
+                  size: 8,
                   type: "email",
                   column: "Email",
-                  error: eemail,
+                  error: errorEmail,
                 }}
               />
             </div>
@@ -374,15 +422,31 @@ export class Contacts extends Component {
                 placeholder={"Phone number"}
                 type={"tel"}
                 label={"Telephone"}
-                value={contactNumber}
+                value={phone}
                 prefix={"+61"}
                 numbersOnly={true}
-                onChange={(mobile, errorMobile) => {
-                  this.setState({
-                    contactNumber: mobile,
-                    errorContactNumber: errorMobile,
-                  });
+                onChange={(phone, errorPhone) => {
+                  if (!isNaN(phone) && phone.length <= 9) {
+                    this.setState({
+                      phone,
+                      errorPhone,
+                      responseMessage: null,
+                    });
+                  }
                 }}
+                validation={[
+                  {
+                    type: "text",
+                    size: 9,
+                    column: "phone_number",
+                    error: errorPhone,
+                  },
+                  {
+                    type: "required",
+                    column: "phone_number",
+                    error: errorPhone,
+                  },
+                ]}
                 style={{
                   borderBottom: "solid 3px " + Colors.white,
                 }}
@@ -391,12 +455,6 @@ export class Contacts extends Component {
                 }}
                 errorStyle={{
                   color: Colors.white,
-                }}
-                validation={{
-                  type: "text_without_space",
-                  size: 0,
-                  column: "Mobile number",
-                  error: this.state.errorContactNumber,
                 }}
               />
             </div>
@@ -415,10 +473,11 @@ export class Contacts extends Component {
               type={"text"}
               label={"Organisation"}
               value={organization}
-              onChange={(organization, eorganization) => {
+              onChange={(organization, errorOrganization) => {
                 this.setState({
                   organization,
-                  eorganization,
+                  errorOrganization,
+                  responseMessage: null,
                 });
               }}
               style={{
@@ -430,12 +489,19 @@ export class Contacts extends Component {
               errorStyle={{
                 color: Colors.white,
               }}
-              validation={{
-                size: 2,
-                type: "text",
-                column: "Organization",
-                error: eorganization,
-              }}
+              validation={[
+                {
+                  size: 2,
+                  type: "text",
+                  column: "Organization",
+                  error: errorOrganization,
+                },
+                {
+                  type: "required",
+                  column: "Organization",
+                  error: errorOrganization,
+                },
+              ]}
             />
           </div>
           <div
@@ -466,15 +532,20 @@ export class Contacts extends Component {
               }}
               value={message}
               rows={5}
-              onChange={(message) => {
-                this.setState({
-                  message,
-                });
+              onChange={(message, errorMessage) => {
+                if (message.length <= 5000) {
+                  this.setState({
+                    message,
+                    errorMessage,
+                    responseMessage: null,
+                  });
+                }
               }}
               validation={{
                 type: "text",
-                size: 0,
+                size: 20,
                 column: "Message",
+                error: errorMessage,
               }}
             />
           </div>
@@ -483,6 +554,8 @@ export class Contacts extends Component {
           {/* <p>Captcha</p> */}
           <Button
             title={"Submit"}
+            loader={loader}
+            isLoading={this.state.isLoading}
             style={{
               backgroundColor: Colors.white,
               color:
@@ -545,9 +618,7 @@ export class Contacts extends Component {
         }}
       >
         {this.renderContent()}
-        {/* {this.state.submitted && ( */}
-        {this.renderAlert()}
-        {/* )} */}
+        {this.state.submitted && this.renderAlert()}
       </div>
     );
   }
