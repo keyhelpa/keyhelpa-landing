@@ -15,4 +15,5 @@ export default {
   createContact: `${REACT_APP_API_URL}contactus/create_with_email`,
   freelancer: `${REACT_APP_FREELANCER_SANDBOX_URL}`,
   agent: `${REACT_APP_AGENT_SANDBOX_URL}`,
+  contactForm: `${REACT_APP_API_URL}contact-form`,
 };

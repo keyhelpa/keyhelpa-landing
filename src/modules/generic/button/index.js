@@ -13,6 +13,16 @@ export default class Button extends React.Component {
         onClick={(e) => this.props.onChange(e.value)}
       >
         {this.props.title}
+        {this.props.isLoading && (
+          <span
+            style={{
+              position: "absolute",
+              paddingLeft: 10,
+            }}
+          >
+            <img src={this.props.loader} alt="" />
+          </span>
+        )}
       </button>
     );
   }

@@ -8,14 +8,31 @@ export default class TextInput extends React.Component {
     super(props);
   }
 
+  getValidationResponse(value, validation) {
+    return Validator.validate(value, validation);
+  }
+
+  getValidationError() {
+    const { validation } = this.props;
+
+    if (!Array.isArray(validation)) {
+      return validation.error;
+    }
+
+    return validation.map((validator) => validator.error).find((err) => !!err);
+  }
+
   validation = (e) => {
     const { validation, type } = this.props;
-    let response = Validator.validate(
-      e.target.value,
-      validation,
-      validation.column
-    );
-    if (response === true) {
+    const { value } = e.target;
+
+    const response = !Array.isArray(validation)
+      ? this.getValidationResponse(value, validation)
+      : validation
+          .map((validator) => this.getValidationResponse(value, validator))
+          .find((resp) => !!resp) || null;
+
+    if (!response) {
       if (type === "file") {
         this.props.onChange(e.target.files[0], null);
       } else {
@@ -54,6 +71,7 @@ export default class TextInput extends React.Component {
           style={{
             ...BasicStyles.formControlContainer,
             ...this.props.style,
+            display: "flex",
           }}
         >
           {this.props.iconLeft && (
@@ -88,8 +106,8 @@ export default class TextInput extends React.Component {
                 justifyContent: "left",
                 alignItems: "center",
                 height: 50,
+                fontWeight: 600,
               }}
-              className="href-link"
             >
               <span>{this.props.prefix}</span>
             </span>
@@ -98,7 +116,7 @@ export default class TextInput extends React.Component {
           <input
             type={this.props.type}
             placeholder={this.props.placeholder}
-            value={this.props.value}
+            value={this.props.value ?? ""}
             disabled={this.props.disable ? this.props.disable : false}
             maxLength={this.props.max ? this.props.max : "60000"}
             style={{
@@ -117,7 +135,7 @@ export default class TextInput extends React.Component {
                 const { value } = e.target;
                 e.target.value = value
                   .replace(/[^0-9.]/g, "")
-                  .replace(/(\..*)\./g, "$1");
+                  .replace(/(\.*)\./g, "$1");
               }
               this.validation(e);
             }}
@@ -174,20 +192,16 @@ export default class TextInput extends React.Component {
             float: "left",
           }}
         >
-          {this.props.validation &&
-            this.props.validation.error &&
-            this.props.validation.error !== "Invalid Phone Number" &&
-            this.props.validation.error !==
-              "Please fill up the required fields." && (
-              <label
-                style={{
-                  color: Colors.danger,
-                  ...this.props.errorStyle,
-                }}
-              >
-                <b>Oops!</b> {this.props.validation.error}
-              </label>
-            )}
+          {this.props.validation && this.getValidationError() && (
+            <label
+              style={{
+                color: Colors.danger,
+                ...this.props.errorStyle,
+              }}
+            >
+              <b>Oops!</b> {this.getValidationError()}
+            </label>
+          )}
         </div>
       </div>
     );
