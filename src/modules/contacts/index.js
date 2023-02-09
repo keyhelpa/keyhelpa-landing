@@ -14,6 +14,8 @@ import TextInput from "components/increment/generic/form/TextInput";
 import TextArea from "components/increment/generic/form/TextArea";
 import loaderFreelance from "../../assets/img/Dual Ring-1.4s-16px free.svg";
 import loaderAgent from "../../assets/img/Dual Ring-1.4s-16px agent.svg";
+import lighterGray from "../../assets/lighterGray.png";
+import lighterPynk from "../../assets/lighterPink.png";
 
 const style = {
   iconAgent: {
@@ -609,12 +611,19 @@ export class Contacts extends Component {
     );
   }
   render() {
+    const { accountType } = this.props.state;
     return (
       <div
         style={{
           width: "100%",
           float: "left",
           minHeight: "100vh",
+          backgroundImage:
+            accountType === "agent"
+              ? `url(${lighterGray})`
+              : `url(${lighterPynk})`,
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
         }}
       >
         {this.renderContent()}
