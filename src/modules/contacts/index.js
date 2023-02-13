@@ -12,8 +12,9 @@ import "./mobile.css";
 import Modal from "modules/generic/modal/textButton";
 import TextInput from "components/increment/generic/form/TextInput";
 import TextArea from "components/increment/generic/form/TextArea";
-import loaderFreelance from "../../assets/img/Dual Ring-1.4s-16px free.svg";
 import loaderAgent from "../../assets/img/Dual Ring-1.4s-16px agent.svg";
+import lighterGray from "../../assets/lighterGray.png";
+import lighterPynk from "../../assets/lighterPink.png";
 
 const style = {
   iconAgent: {
@@ -68,18 +69,10 @@ export class Contacts extends Component {
   }
 
   componentDidMount() {
-    const { history } = this.props;
-    if (history.location.pathname.includes("agent")) {
-      this.setState({
-        theme: "agent",
-        loader: loaderAgent,
-      });
-    } else {
-      this.setState({
-        theme: "helpa",
-        loader: loaderFreelance,
-      });
-    }
+    this.setState({
+      theme: "agent",
+      loader: loaderAgent,
+    });
   }
 
   handleSubmit() {
@@ -180,18 +173,14 @@ export class Contacts extends Component {
       >
         <h1
           style={{
-            color:
-              accountType === "agent"
-                ? Colors.agentTextTitle
-                : Colors.helpaTextTitle,
+            color: Colors.agentTextTitle,
           }}
         >
           Contact us
         </h1>
         <p
           style={{
-            color:
-              accountType === "agent" ? Colors.agentText : Colors.helpaText,
+            color: Colors.agentText,
           }}
         >
           We love questions and feedback - and we're always happy to help! Here
@@ -202,10 +191,7 @@ export class Contacts extends Component {
         <div>
           <p
             style={{
-              color:
-                accountType === "agent"
-                  ? Colors.agentDarkGray
-                  : Colors.helpaDarkPink,
+              color: Colors.agentDarkGray,
               fontWeight: "bold",
             }}
           >
@@ -225,9 +211,7 @@ export class Contacts extends Component {
                 }}
               >
                 <span
-                  style={
-                    accountType === "agent" ? style.iconAgent : style.iconHelpa
-                  }
+                  style={style.iconAgent}
                   className="cursor-hover"
                   onClick={() => {
                     window.location.href = item.route;
@@ -245,7 +229,6 @@ export class Contacts extends Component {
 
   renderAlert() {
     const { show } = this.state;
-    const { accountType } = this.props.state;
     return (
       <div>
         <Modal
@@ -258,11 +241,7 @@ export class Contacts extends Component {
           }
           withButton={true}
           buttonMsg={"Ok"}
-          color={
-            accountType === "agent"
-              ? Colors.agentDarkGray
-              : Colors.helpaDarkPink
-          }
+          color={Colors.agentDarkGray}
           onCancel={() =>
             this.setState({
               show: false,
@@ -289,16 +268,12 @@ export class Contacts extends Component {
       loader,
       submitErrorMessage,
     } = this.state;
-    const { accountType } = this.props.state;
     return (
       <div
         style={{
           width: "75%",
           float: "right",
-          background:
-            accountType === "agent"
-              ? Colors.agentDarkGray
-              : Colors.helpaDarkPink,
+          background: Colors.agentDarkGray,
           borderRadius: "25px 0 0 25px/ 25px 0 0 25px",
           padding: 30,
           color: Colors.white,
@@ -423,7 +398,6 @@ export class Contacts extends Component {
                 type={"tel"}
                 label={"Telephone"}
                 value={phone}
-                prefix={"+61"}
                 numbersOnly={true}
                 onChange={(phone, errorPhone) => {
                   if (!isNaN(phone) && phone.length <= 9) {
@@ -558,10 +532,7 @@ export class Contacts extends Component {
             isLoading={this.state.isLoading}
             style={{
               backgroundColor: Colors.white,
-              color:
-                accountType === "agent"
-                  ? Colors.agentDarkGray
-                  : Colors.helpaDarkPink,
+              color: Colors.agentDarkGray,
               fontSize: "24px",
               width: "10%",
               float: "right",
@@ -609,12 +580,19 @@ export class Contacts extends Component {
     );
   }
   render() {
+    const { accountType } = this.props.state;
     return (
       <div
         style={{
           width: "100%",
           float: "left",
           minHeight: "100vh",
+          backgroundImage:
+            accountType === "agent"
+              ? `url(${lighterGray})`
+              : `url(${lighterPynk})`,
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
         }}
       >
         {this.renderContent()}
