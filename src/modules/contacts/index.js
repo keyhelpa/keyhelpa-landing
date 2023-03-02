@@ -443,9 +443,9 @@ export class Contacts extends Component {
             }}
           >
             <TextInput
-              placeholder={"Organisation name"}
+              placeholder={"Organization name"}
               type={"text"}
-              label={"Organisation"}
+              label={"Organization"}
               value={organization}
               onChange={(organization, errorOrganization) => {
                 this.setState({
