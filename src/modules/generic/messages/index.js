@@ -1,26 +1,31 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import Style from './style'
-import { withRouter } from 'react-router-dom';
-import BreadCrumbs from "modules/generic/breadcrumbs"
-import TextInput from "components/increment/generic/form/TextInput"
-import Button from '@mui/material/Button';
-import Colors from 'common/Colors'
-import Grid from '@mui/material/Grid';
-import { AttachFile, SentimentSatisfiedAltRounded, SearchRounded, SendRounded } from '@mui/icons-material';
-import { faSearch } from '@fortawesome/free-solid-svg-icons'
-import { SvgIcon } from '@mui/material';
-import { BasicStyles } from 'common';
-import Message from './message';
-import People from './people';
-import MenuButton from 'components/increment/generic/pagination/menuButton';
-import Config from 'config.js';
-import API from 'services/api'
-import Routes from 'common/Routes'
-import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
-import _ from 'lodash'
-import Footer from './footer';
-import Header from './header';
+import React from "react";
+import { connect } from "react-redux";
+import Style from "./style";
+import { withRouter } from "react-router-dom";
+import BreadCrumbs from "modules/generic/breadcrumbs";
+import TextInput from "components/increment/generic/form/TextInput";
+import Button from "@mui/material/Button";
+import Colors from "common/Colors";
+import Grid from "@mui/material/Grid";
+import {
+  AttachFile,
+  SentimentSatisfiedAltRounded,
+  SearchRounded,
+  SendRounded,
+} from "@mui/icons-material";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { SvgIcon } from "@mui/material";
+import { BasicStyles } from "common";
+import Message from "./message";
+import People from "./people";
+import MenuButton from "components/increment/generic/pagination/menuButton";
+import Config from "config.js";
+import API from "services/api";
+import Routes from "common/Routes";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import _ from "lodash";
+import Footer from "./footer";
+import Header from "./header";
 
 class Stack extends React.Component {
   constructor(props) {
@@ -30,23 +35,25 @@ class Stack extends React.Component {
       text: null,
       search: null,
       error: null,
-      selected: 'Agent',
+      selected: "Agent",
       activeMessage: null,
       // messages: [],
-      updateMessage: []
-    }
+      updateMessage: [],
+    };
   }
 
   menu = () => {
     const { selected } = this.state;
     return (
-      <div style={{
-        float: 'right',
-        width: 250,
-        position: 'absolute',
-        right: 10,
-        bottom: 0
-      }}>
+      <div
+        style={{
+          float: "right",
+          width: 250,
+          position: "absolute",
+          right: 10,
+          bottom: 0,
+        }}
+      >
         {/* <MenuButton
           data={['Agent', 'Freelancer']}
           selected={selected}
@@ -64,44 +71,44 @@ class Stack extends React.Component {
           }}
         /> */}
       </div>
-    )
-  }
-
+    );
+  };
 
   searchRight = () => {
     const { search } = this.state;
     return (
-      <div style={{
-        padding: '25px 25px 0px 25px',
-        height: '10vh'
-      }}>
+      <div
+        style={{
+          padding: "25px 25px 0px 25px",
+          height: "10vh",
+        }}
+      >
         <TextInput
-          placeholder={'Search for job title, ID, Agent, date'}
+          placeholder={"Search for job title, ID, Agent, date"}
           type={"text"}
           style={{
-            background: 'transparent',
-            float: 'left',
+            background: "transparent",
+            float: "left",
           }}
           value={search}
           onChange={(params, error) => {
             this.setState({
               search: params,
-              error: ''
-            })
+              error: "",
+            });
           }}
-          onClickRightIcon={() => {
-          }}
+          onClickRightIcon={() => {}}
           iconLeft={faSearch}
           iconStyle={Colors.gray}
           validation={{
-            type: 'text_without_space',
+            type: "text_without_space",
             size: 0,
-            column: 'Region'
+            column: "Region",
           }}
         />
       </div>
-    )
-  }
+    );
+  };
 
   render() {
     const { activeMessage, updateMessage } = this.state;
@@ -109,67 +116,80 @@ class Stack extends React.Component {
     return (
       <div style={Style.mainContainer}>
         <BreadCrumbs
-          title={'Messages'}
-          page={'messages'}
+          title={"Messages"}
+          page={"messages"}
           backIcon={true}
           description="keep your credentials private and secured."
           style={{
-            borderBottomWidth: 0
+            borderBottomWidth: 0,
           }}
         />
         {/* {this.menu()} */}
-        <div style={{
-          width: '100%',
-          float: 'left',
-          minHeight: '70vh',
-          marginTop: 20,
-          border: 'solid 1px ' + Colors.activeGray,
-          borderRadius: 25,
-          display: 'flex',
-          marginBottom: 100
-        }}>
-          {<div className={activeMessage ? 'container-40-full-mobile-hide' : 'container-100'} style={{
-            height: '70vh',
-            borderTopLeftRadius: 24,
-            borderBottomLeftRadius: 25
-          }}>
-            {this.searchRight()}
-            <People
-              setActiveMessage={(item) => {
-                this.setState({
-                  activeMessage: null
-                })
-                setTimeout(() => {
-                  this.setState({
-                    activeMessage: item
-                  })
-                }, 100)
-              }}
-            />
-          </div>}
+        <div
+          style={{
+            width: "100%",
+            float: "left",
+            minHeight: "70vh",
+            marginTop: 20,
+            border: "solid 1px " + Colors.activeGray,
+            borderRadius: 25,
+            display: "flex",
+            marginBottom: 100,
+          }}
+        >
           {
-            activeMessage &&
-            <div className='container-70-full-mobile' style={{
-              // border: 'solid 1px ' + Colors.activeGray,
-              height: '70vh',
-              borderTopRightRadius: 24,
-              borderBottomRightRadius: 25
-            }}>
+            <div
+              className={
+                activeMessage
+                  ? "container-40-full-mobile-hide"
+                  : "container-100"
+              }
+              style={{
+                height: "70vh",
+                borderTopLeftRadius: 24,
+                borderBottomLeftRadius: 25,
+              }}
+            >
+              {this.searchRight()}
+              <People
+                setActiveMessage={(item) => {
+                  this.setState({
+                    activeMessage: null,
+                  });
+                  setTimeout(() => {
+                    this.setState({
+                      activeMessage: item,
+                    });
+                  }, 100);
+                }}
+              />
+            </div>
+          }
+          {activeMessage && (
+            <div
+              className="container-70-full-mobile"
+              style={{
+                // border: 'solid 1px ' + Colors.activeGray,
+                height: "70vh",
+                borderTopRightRadius: 24,
+                borderBottomRightRadius: 25,
+              }}
+            >
               <Header
                 activeMessage={activeMessage}
                 onClose={() => {
-                  this.setState({ activeMessage: null })
+                  this.setState({ activeMessage: null });
                 }}
               />
               <Message
                 activeMessage={activeMessage}
                 setMessages={(messages) => {
                   // this.setState({ messages: messages })
-                  this.props.setMessages(messages)
+                  this.props.setMessages(messages);
                 }}
                 updatedMessage={updateMessage}
                 clearUpdate={() => {
-                  this.setState({ updateMessage: [] })
+                  this.setState({ updateMessage: [] });
                 }}
                 ref={this.myRef}
               />
@@ -177,26 +197,27 @@ class Stack extends React.Component {
                 activeMessage={activeMessage}
                 messages={messages}
                 updateMessage={(message) => {
-                  this.setState({ updatedMessage: message })
-                  this.props.setMessages(message)
+                  this.setState({ updatedMessage: message });
+                  this.props.setMessages(message);
                 }}
               />
             </div>
-          }
+          )}
         </div>
       </div>
-    )
+    );
   }
 }
 
 const mapStateToProps = (state) => ({ state: state });
 
 const mapDispatchToProps = (dispatch) => {
-  const { actions } = require('reduxhandler');
+  const { actions } = require("reduxhandler");
   return {
-    setMessages: (messages) => {dispatch(actions.setMessages(messages))}
+    setMessages: (messages) => {
+      dispatch(actions.setMessages(messages));
+    },
   };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Stack));
-

@@ -1,14 +1,14 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import Colors from 'common/Colors'
-import { Modal } from 'react-bootstrap'
-import ModalHeader from './header'
-import ModalFooter from './footer'
-import Style from './style'
-import SmsCodeInput from 'modules/generic/form/SmsCode'
-import API from 'services/api'
-import Routes from 'common/Routes'
+import React from "react";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+import Colors from "common/Colors";
+import { Modal } from "react-bootstrap";
+import ModalHeader from "./header";
+import ModalFooter from "./footer";
+import Style from "./style";
+import SmsCodeInput from "modules/generic/form/SmsCode";
+import API from "services/api";
+import Routes from "common/Routes";
 
 class Stack extends React.Component {
   constructor(props) {
@@ -18,81 +18,93 @@ class Stack extends React.Component {
       errorMessage: null,
       textCode: null,
       errorCode: null,
-      errorMessage: null
+      errorMessage: null,
     };
   }
 
   componentDidMount() {
-    this.retrieve()
-
+    this.retrieve();
   }
-  retrieve(){
+  retrieve() {
     const { user } = this.props.state;
-    if(user == null)return
+    if (user == null) return;
     this.setState({
-      isLoading: true
-    })
-    API.request(Routes.securitySettingsRetrieve, {
-      condition: [{
-        value: user.id,
-        column: 'account_id',
-        clause: '='
-      }]
-    }, response => {
-      this.setState({
-        isLoading: false
-      })
-      if(response && response.data > 0){
+      isLoading: true,
+    });
+    API.request(
+      Routes.securitySettingsRetrieve,
+      {
+        condition: [
+          {
+            value: user.id,
+            column: "account_id",
+            clause: "=",
+          },
+        ],
+      },
+      (response) => {
         this.setState({
-          data: response.data[0],
-          textCode: response.data[0].code
-        })
-      }else{
+          isLoading: false,
+        });
+        if (response && response.data > 0) {
+          this.setState({
+            data: response.data[0],
+            textCode: response.data[0].code,
+          });
+        } else {
+          this.setState({
+            data: null,
+          });
+        }
+      },
+      (error) => {
         this.setState({
-          data: null
-        })
+          isLoading: false,
+        });
       }
-    }, error => {
-      this.setState({
-        isLoading: false
-      })
-    })
+    );
   }
   navigate(route) {
-    this.props.history.push(route)
+    this.props.history.push(route);
   }
   submit() {
     const { data, textCode } = this.state;
     const { user } = this.props.state;
-    let parameter = data ? {
-      id: data.id,
-      account_id: user.id,
-      details: JSON.stringify({
-        textCode
-      })
-    }
+    let parameter = data
+      ? {
+          id: data.id,
+          account_id: user.id,
+          details: JSON.stringify({
+            textCode,
+          }),
+        }
       : {
-        account_id: user.id,
-        details: JSON.stringify({
-          textCode
-        })
-      };
+          account_id: user.id,
+          details: JSON.stringify({
+            textCode,
+          }),
+        };
     this.setState({
-      isSubmitLoading: true
-    })
-    API.request(data ? Routes.securitySettingsUpdate : Routes.securitySettingsCreate, parameter, response => {
-      this.setState({
-        isSubmitLoading: false
-      })
-      if (response && response.data) {
-        this.navigate('')
-      }
-    }, error => {
-      this.setState({
-        errorMessage: 'Invalid',
-        isSubmitLoading: false
-      })
+      isSubmitLoading: true,
     });
+    API.request(
+      data ? Routes.securitySettingsUpdate : Routes.securitySettingsCreate,
+      parameter,
+      (response) => {
+        this.setState({
+          isSubmitLoading: false,
+        });
+        if (response && response.data) {
+          this.navigate("");
+        }
+      },
+      (error) => {
+        this.setState({
+          errorMessage: "Invalid",
+          isSubmitLoading: false,
+        });
+      }
+    );
   }
   // componentDidMount() {
   //   const { user } = this.props.state;
@@ -131,38 +143,39 @@ class Stack extends React.Component {
   body() {
     const { textCode, errorCode } = this.state;
     return (
-      <Modal.Body style={{
-        paddingLeft: 20,
-        paddingRight: 20
-      }}>
+      <Modal.Body
+        style={{
+          paddingLeft: 20,
+          paddingRight: 20,
+        }}
+      >
         <div
           style={{
-            width: '100%',
-            float: 'left',
+            width: "100%",
+            float: "left",
           }}
-          className="full-width-mobile">
+          className="full-width-mobile"
+        >
           <div
             style={{
-              width: '100%',
-              float: 'left',
-              textAlign: 'center'
+              width: "100%",
+              float: "left",
+              textAlign: "center",
             }}
             className="full-width-mobile"
           >
             <SmsCodeInput
-            value={textCode}
+              value={textCode}
               onChange={(textCode, errorCode) => {
                 this.setState({
-                  textCode
-                })
+                  textCode,
+                });
               }}
             />
           </div>
-
         </div>
       </Modal.Body>
-
-    )
+    );
   }
 
   render() {
@@ -172,56 +185,58 @@ class Stack extends React.Component {
         onHide={() => this.props.onCancels()}
         style={Style.modal}
       >
-
         <ModalHeader
-          title={'Enter SMS code'}
-          subTitle={'Text message verification'}
+          title={"Enter SMS code"}
+          subTitle={"Text message verification"}
           subTitle1={`We've sent a text message to`}
           onCancel={() => this.props.onCancels()}
         />
 
-        <h2 style={{ alignSelf: 'center' }}>{this.props.number}</h2>
+        <h2 style={{ alignSelf: "center" }}>{this.props.number}</h2>
 
-        {
-          this.body()
-        }
+        {this.body()}
 
         <ModalFooter
-          actions={[{
-            title: 'Next'
-          }]}
+          actions={[
+            {
+              title: "Next",
+            },
+          ]}
           onClick={(params) => {
-            this.submit()
+            this.submit();
           }}
           bottomComponent={() => {
             return (
-              <p>Didn't receive your code?
-                <b style={{
-                  paddingLeft: 5
-                }}
+              <p>
+                Didn't receive your code?
+                <b
+                  style={{
+                    paddingLeft: 5,
+                  }}
                   onClick={() => {
-                    this.navigate('')
+                    this.navigate("");
                   }}
                   className="href-link"
                 >
                   Resend.
-                </b></p>
-            )
+                </b>
+              </p>
+            );
           }}
         />
-
       </Modal>
-    )
+    );
   }
 }
 const mapStateToProps = (state) => ({ state: state });
 
 const mapDispatchToProps = (dispatch) => {
-  const { actions } = require('reduxhandler');
+  const { actions } = require("reduxhandler");
   return {
-    login: (user, token) => { dispatch(actions.login(user, token)) }
+    login: (user, token) => {
+      dispatch(actions.login(user, token));
+    },
   };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Stack));
-

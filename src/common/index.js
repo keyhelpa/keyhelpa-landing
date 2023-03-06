@@ -8,4 +8,4 @@ export const Colors = _Color;
 export const Helper = _Helper;
 export const Routes = _Routes;
 export const BasicStyles = _BasicStyles;
-export const Config = _Config
+export const Config = _Config;

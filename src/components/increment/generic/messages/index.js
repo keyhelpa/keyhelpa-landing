@@ -1,27 +1,32 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import Style from './style'
-import { withRouter } from 'react-router-dom';
-import BreadCrumbs from "modules/generic/breadcrumbs"
-import TextInput from "components/increment/generic/form/TextInput"
-import Button from '@mui/material/Button';
-import Colors from 'common/Colors'
-import Grid from '@mui/material/Grid';
-import { AttachFile, SentimentSatisfiedAltRounded, SearchRounded, SendRounded } from '@mui/icons-material';
-import { faSearch } from '@fortawesome/free-solid-svg-icons'
-import { SvgIcon } from '@mui/material';
-import { BasicStyles } from 'common';
-import Message from './message';
-import People from './people';
-import MenuButton from 'components/increment/generic/pagination/menuButton';
-import Config from 'config.js';
-import API from 'services/api'
-import Routes from 'common/Routes'
-import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
-import _ from 'lodash'
-import Footer from './footer';
-import Header from './header';
-const {REACT_APP_AGENT, REACT_APP_HELPA}=process.env
+import React from "react";
+import { connect } from "react-redux";
+import Style from "./style";
+import { withRouter } from "react-router-dom";
+import BreadCrumbs from "modules/generic/breadcrumbs";
+import TextInput from "components/increment/generic/form/TextInput";
+import Button from "@mui/material/Button";
+import Colors from "common/Colors";
+import Grid from "@mui/material/Grid";
+import {
+  AttachFile,
+  SentimentSatisfiedAltRounded,
+  SearchRounded,
+  SendRounded,
+} from "@mui/icons-material";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { SvgIcon } from "@mui/material";
+import { BasicStyles } from "common";
+import Message from "./message";
+import People from "./people";
+import MenuButton from "components/increment/generic/pagination/menuButton";
+import Config from "config.js";
+import API from "services/api";
+import Routes from "common/Routes";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import _ from "lodash";
+import Footer from "./footer";
+import Header from "./header";
+const { REACT_APP_AGENT, REACT_APP_HELPA } = process.env;
 class Stack extends React.Component {
   constructor(props) {
     super(props);
@@ -30,173 +35,200 @@ class Stack extends React.Component {
       text: null,
       search: null,
       error: null,
-      selected: 'Agent',
+      selected: "Agent",
       activeMessage: null,
       messages: [],
-      updateMessage: []
-    }
+      updateMessage: [],
+    };
   }
 
   componentDidMount() {
-    if (this.props.match && this.props.match.params && this.props.match.params.code) {
+    if (
+      this.props.match &&
+      this.props.match.params &&
+      this.props.match.params.code
+    ) {
       const { user } = this.props.state;
       const { limit, offset, data } = this.state;
-      if (user === null) return
+      if (user === null) return;
       let parameter = {
-        condition: [{
-          value: this.props.match.params.code,
-          column: 'title',
-          clause: '='
-        }],
+        condition: [
+          {
+            value: this.props.match.params.code,
+            column: "title",
+            clause: "=",
+          },
+        ],
         limit: 1,
-        offset: 0
-      }
-      this.setState({ isLoading: true })
-      API.request(Routes.messengerGroupRetrieve, parameter, response => {
-        this.setState({ isLoading: false })
-        if (response.data.length > 0) {
-          this.setState({
-            activeMessage: response.data[0]
-          })
+        offset: 0,
+      };
+      this.setState({ isLoading: true });
+      API.request(
+        Routes.messengerGroupRetrieve,
+        parameter,
+        (response) => {
+          this.setState({ isLoading: false });
+          if (response.data.length > 0) {
+            this.setState({
+              activeMessage: response.data[0],
+            });
+          }
+        },
+        (error) => {
+          this.setState({ isLoading: false });
         }
-      }, error => {
-        this.setState({ isLoading: false })
-      })
+      );
     }
   }
 
   menu = () => {
     const { selected } = this.state;
     return (
-      <div style={{
-        float: 'right',
-        width: 250,
-        position: 'absolute',
-        right: 10,
-        bottom: -20
-      }}>
+      <div
+        style={{
+          float: "right",
+          width: 250,
+          position: "absolute",
+          right: 10,
+          bottom: -20,
+        }}
+      >
         <MenuButton
-          data={['Agent', 'Freelancer']}
+          data={["Agent", "Freelancer"]}
           selected={selected}
           style={{
             color: Colors.gray,
             backgroundColor: Colors.activeGray,
-            float: 'left'
+            float: "left",
           }}
           onChange={(param) => {
-            if (param === 'Agent') {
-              window.location.href = REACT_APP_AGENT
+            if (param === "Agent") {
+              window.location.href = REACT_APP_AGENT;
             } else {
-              window.location.href = REACT_APP_HELPA
+              window.location.href = REACT_APP_HELPA;
             }
           }}
         />
       </div>
-    )
-  }
-
+    );
+  };
 
   searchRight = () => {
     const { search } = this.state;
     return (
-      <div style={{
-        padding: '25px 25px 0px 25px',
-        height: '10vh'
-      }}>
+      <div
+        style={{
+          padding: "25px 25px 0px 25px",
+          height: "10vh",
+        }}
+      >
         <TextInput
-          placeholder={'Search for job title, ID, Agent, date'}
+          placeholder={"Search for job title, ID, Agent, date"}
           type={"text"}
           style={{
-            background: 'transparent',
-            float: 'left',
+            background: "transparent",
+            float: "left",
           }}
           value={search}
           onChange={(params, error) => {
             this.setState({
               search: params,
-              error: ''
-            })
+              error: "",
+            });
           }}
           onClickRightIcon={() => {
-            console.log('--')
+            console.log("--");
           }}
           iconLeft={faSearch}
           iconStyle={Colors.gray}
           validation={{
-            type: 'text_without_space',
+            type: "text_without_space",
             size: 0,
-            column: 'Region'
+            column: "Region",
           }}
         />
       </div>
-    )
-  }
+    );
+  };
 
   render() {
     const { activeMessage, messages, updateMessage } = this.state;
     return (
       <div style={Style.mainContainer}>
         <BreadCrumbs
-          title={'Messages'}
-          page={'messages'}
+          title={"Messages"}
+          page={"messages"}
           backIcon={true}
           description="keep your credentials private and secured."
           style={{
-            borderBottomWidth: 0
+            borderBottomWidth: 0,
           }}
         />
         {/* {this.menu()} */}
-        <div style={{
-          width: '100%',
-          float: 'left',
-          minHeight: '70vh',
-          marginTop: 20,
-          border: 'solid 1px ' + Colors.activeGray,
-          borderRadius: 25,
-          display: 'flex',
-          marginBottom: 100
-        }}>
-          {<div className={activeMessage ? 'container-40-full-mobile-hide' : 'container-100'} style={{
-            height: '70vh',
-            borderTopLeftRadius: 24,
-            borderBottomLeftRadius: 25
-          }}>
-            {this.searchRight()}
-            <People
-              setActiveMessage={(item) => {
-                this.setState({
-                  activeMessage: null
-                })
-                setTimeout(() => {
-                  this.setState({
-                    activeMessage: item
-                  })
-                }, 100)
-              }}
-            />
-          </div>}
+        <div
+          style={{
+            width: "100%",
+            float: "left",
+            minHeight: "70vh",
+            marginTop: 20,
+            border: "solid 1px " + Colors.activeGray,
+            borderRadius: 25,
+            display: "flex",
+            marginBottom: 100,
+          }}
+        >
           {
-            activeMessage &&
-            <div className='container-70-full-mobile' style={{
-              // border: 'solid 1px ' + Colors.activeGray,
-              height: '70vh',
-              borderTopRightRadius: 24,
-              borderBottomRightRadius: 25
-            }}>
+            <div
+              className={
+                activeMessage
+                  ? "container-40-full-mobile-hide"
+                  : "container-100"
+              }
+              style={{
+                height: "70vh",
+                borderTopLeftRadius: 24,
+                borderBottomLeftRadius: 25,
+              }}
+            >
+              {this.searchRight()}
+              <People
+                setActiveMessage={(item) => {
+                  this.setState({
+                    activeMessage: null,
+                  });
+                  setTimeout(() => {
+                    this.setState({
+                      activeMessage: item,
+                    });
+                  }, 100);
+                }}
+              />
+            </div>
+          }
+          {activeMessage && (
+            <div
+              className="container-70-full-mobile"
+              style={{
+                // border: 'solid 1px ' + Colors.activeGray,
+                height: "70vh",
+                borderTopRightRadius: 24,
+                borderBottomRightRadius: 25,
+              }}
+            >
               <Header
                 activeMessage={activeMessage}
                 onClose={() => {
-                  this.setState({ activeMessage: null })
+                  this.setState({ activeMessage: null });
                 }}
               />
               <Message
                 activeMessage={activeMessage}
                 setMessages={(messages) => {
-                  this.setState({ messages: messages })
+                  this.setState({ messages: messages });
                 }}
                 updatedMessage={updateMessage}
                 clearUpdate={() => {
-                  this.setState({ updateMessage: [] })
+                  this.setState({ updateMessage: [] });
                 }}
                 ref={this.myRef}
               />
@@ -204,25 +236,23 @@ class Stack extends React.Component {
                 activeMessage={activeMessage}
                 messages={messages}
                 updateMessage={(message) => {
-                  console.log(message, '------')
-                  this.setState({ updatedMessage: message })
+                  console.log(message, "------");
+                  this.setState({ updatedMessage: message });
                 }}
               />
             </div>
-          }
+          )}
         </div>
       </div>
-    )
+    );
   }
 }
 
 const mapStateToProps = (state) => ({ state: state });
 
 const mapDispatchToProps = (dispatch) => {
-  const { actions } = require('reduxhandler');
-  return {
-  };
+  const { actions } = require("reduxhandler");
+  return {};
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Stack));
-
