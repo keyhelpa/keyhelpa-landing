@@ -412,12 +412,12 @@ export class Contacts extends Component {
                   {
                     type: "text",
                     size: 9,
-                    column: "phone_number",
+                    column: "Phone number",
                     error: errorPhone,
                   },
                   {
                     type: "required",
-                    column: "phone_number",
+                    column: "Phone number",
                     error: errorPhone,
                   },
                 ]}
