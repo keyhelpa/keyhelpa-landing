@@ -400,7 +400,7 @@ export class Contacts extends Component {
                 value={phone}
                 numbersOnly={true}
                 onChange={(phone, errorPhone) => {
-                  if (!isNaN(phone) && phone.length <= 9) {
+                  if (!isNaN(phone) && phone.length <= 10) {
                     this.setState({
                       phone,
                       errorPhone,
