@@ -15,7 +15,7 @@ export default {
               </p>
             );
           },
-          url: "k6M5C-oKw9k",
+          url: "DMC19h9NO-c",
         },
         {
           title: "Sales Assistance help",
@@ -134,7 +134,7 @@ export default {
               </p>
             );
           },
-          url: "k6M5C-oKw9k",
+          url: "DMC19h9NO-c",
         },
         {
           title: "Sales Assistance help",
