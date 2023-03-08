@@ -134,7 +134,7 @@ export default {
               </p>
             );
           },
-          url: "k6M5C-oKw9k",
+          url: "OkawKs7-3GI",
         },
         {
           title: "Sales Assistance help",
@@ -149,7 +149,7 @@ export default {
               </p>
             );
           },
-          url: "5sMKX22BHeE",
+          url: "GXQtf860ALc",
         },
       ],
       features: [
