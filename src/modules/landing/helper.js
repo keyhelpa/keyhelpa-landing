@@ -15,7 +15,7 @@ export default {
               </p>
             );
           },
-          url: "DMC19h9NO-c",
+          url: "FZiS7jAVMe0",
         },
         {
           title: "Sales Assistance help",
@@ -30,7 +30,7 @@ export default {
               </p>
             );
           },
-          url: "5sMKX22BHeE",
+          url: "k-8Ya41zqWg",
         },
       ],
       features: [
@@ -134,7 +134,7 @@ export default {
               </p>
             );
           },
-          url: "DMC19h9NO-c",
+          url: "OkawKs7-3GI",
         },
         {
           title: "Sales Assistance help",
@@ -149,7 +149,7 @@ export default {
               </p>
             );
           },
-          url: "5sMKX22BHeE",
+          url: "GXQtf860ALc",
         },
       ],
       features: [
