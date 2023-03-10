@@ -8,6 +8,7 @@ import './Style.css'
 import API from 'services/api'
 import Routes from 'common/Routes'
 import Config from "config";
+const {REACT_APP_HELPA}=process.env;
 
 export class Features extends Component {
     constructor(props) {
@@ -24,12 +25,12 @@ export class Features extends Component {
           {/* Web */}
           <div className='web'>
             <Grid className='gridBg' style={
-              theme == 'agent' ? {backgroundImage: `url(${bgAgent})`, backgroundColor: '#F1F5FB'} : {backgroundImage: `url(${bgHelpa})`, backgroundColor: '#FFFAFC'}}
+              theme === 'agent' ? {backgroundImage: `url(${bgAgent})`, backgroundColor: '#F1F5FB'} : {backgroundImage: `url(${bgHelpa})`, backgroundColor: '#FFFAFC'}}
               container alignItems={'center'} justifyContent={'center'}>
               {
                 features.map((item, index) => {
                   // console.log('features', item);
-                  if(index != 3){
+                  if(index !== 3){
                     // circle with arrows
                     if(index % 2 === 0){
                       return(
@@ -50,7 +51,7 @@ export class Features extends Component {
                               display: 'flex',
                               width: '100%',
                               height: 'auto',
-                            }} src={theme =='agent' ? require('../../assets/uniform_images/agent-circle.png') : require('../../assets/uniform_images/helpa-circle.png')}></img>
+                            }} src={theme ==='agent' ? require('../../assets/uniform_images/agent-circle.png') : require('../../assets/uniform_images/helpa-circle.png')} alt={}></img>
                             <h3 style={{
                               position: 'absolute',
                               left: '50%',
@@ -74,7 +75,7 @@ export class Features extends Component {
                           <img style={{
                           width: '100%',
                           height: 'auto',
-                        }} src={theme =='agent' ? require('../../assets/uniform_images/agent-circle-1.png') : require('../../assets/uniform_images/helpa-circle-1.png')}></img>
+                        }} src={theme ==='agent' ? require('../../assets/uniform_images/agent-circle-1.png') : require('../../assets/uniform_images/helpa-circle-1.png')} alt={}></img>
                         <h3 style={{
                             position: 'absolute',
                             left: '50%',
@@ -83,11 +84,11 @@ export class Features extends Component {
                             color: '#34475D'
                           }}>{item.title}</h3>
                         </div>
-                          
+
                           <h3 style={{
                               color: '#34475DA3'
                             }}>{item.description}</h3>
-                          
+
                         </Grid>
                     )
                   }
@@ -104,7 +105,7 @@ export class Features extends Component {
                       <img style={{
                       width: '100%',
                       height: 'auto',
-                    }} src={theme =='agent' ? require('../../assets/uniform_images/agent-circle-2.png') : require('../../assets/uniform_images/helpa-circle-2.png')}></img>
+                    }} src={theme ==='agent' ? require('../../assets/uniform_images/agent-circle-2.png') : require('../../assets/uniform_images/helpa-circle-2.png')} alt={}></img>
                       <h3 style={{
                         position: 'absolute',
                         left: '50%',
@@ -131,14 +132,14 @@ export class Features extends Component {
                   fontSize: '24px',
                   width: '10%'
                 }}
-                onChange={() => window.location.href = Config.HELPA}
+                onChange={() => window.location.href = REACT_APP_HELPA}
               ></Button>
-            </Grid>       
+            </Grid>
           </div>
           {/* Mobile */}
           <div className='mobile'>
             <Grid className='gridBg' style={
-              theme == 'agent' ? {backgroundImage: `url(${bgAgent})`, backgroundColor: '#F1F5FB'} : {backgroundImage: `url(${bgHelpa})`, backgroundColor: '#FFFAFC'}}
+              theme === 'agent' ? {backgroundImage: `url(${bgAgent})`, backgroundColor: '#F1F5FB'} : {backgroundImage: `url(${bgHelpa})`, backgroundColor: '#FFFAFC'}}
               container alignItems={'center'} justifyContent={'center'}>
               <Box sx={{
                 width: '100%',
@@ -146,7 +147,7 @@ export class Features extends Component {
               }}>
               {
                 features.map((item, index) => {
-                  if(index != 3){
+                  if(index !== 3){
                     if(index %2 === 0){
                       // left
                       return(
@@ -162,7 +163,7 @@ export class Features extends Component {
                           <img style={{
                           width: '100%',
                           height: 'auto',
-                        }} src={theme =='agent' ? require('../../assets/uniform_images/agent-mobile-circle.png') : require('../../assets/uniform_images/helpa-mobile-circle.png')}></img>
+                        }} src={theme ==='agent' ? require('../../assets/uniform_images/agent-mobile-circle.png') : require('../../assets/uniform_images/helpa-mobile-circle.png')} alt={}></img>
                         <h3 style={{
                             position: 'absolute',
                             left: '50%',
@@ -171,7 +172,7 @@ export class Features extends Component {
                             color: '#34475D'
                           }}>{item.title}</h3>
                         </div>
-                          
+
                         </Grid>
                         <Grid item xs={6} style={{
                           textAlign: 'center',
@@ -180,7 +181,7 @@ export class Features extends Component {
                         <h3 style={{
                               color: '#34475DA3'
                             }}>{item.description}
-                            
+
                           </h3>
                         </Grid>
                         </div>
@@ -198,7 +199,7 @@ export class Features extends Component {
                         <h3 style={{
                             color: '#34475DA3'
                           }}>{item.description}
-                          
+
                         </h3>
                         </Grid>
                           <Grid item xs={6} style={{
@@ -210,7 +211,7 @@ export class Features extends Component {
                           <img style={{
                           width: '100%',
                           height: 'auto',
-                        }} src={theme =='agent' ? require('../../assets/uniform_images/agent-mobile-circle-1.png') : require('../../assets/uniform_images/helpa-mobile-circle-1.png')}></img>
+                        }} src={theme ==='agent' ? require('../../assets/uniform_images/agent-mobile-circle-1.png') : require('../../assets/uniform_images/helpa-mobile-circle-1.png')} alt={}></img>
                         <h3 style={{
                             position: 'absolute',
                             left: '50%',
@@ -236,7 +237,7 @@ export class Features extends Component {
                       <h3 style={{
                           color: '#34475DA3'
                         }}>{item.description}
-                        
+
                       </h3>
                       </Grid>
                         <Grid item xs={6} style={{
@@ -248,7 +249,7 @@ export class Features extends Component {
                         <img style={{
                         width: '100%',
                         height: 'auto',
-                      }} src={theme =='agent' ? require('../../assets/uniform_images/agent-mobile-circle-2.png') : require('../../assets/uniform_images/helpa-mobile-circle-2.png')}></img>
+                      }} src={theme ==='agent' ? require('../../assets/uniform_images/agent-mobile-circle-2.png') : require('../../assets/uniform_images/helpa-mobile-circle-2.png')} alt={}></img>
                       <h3 style={{
                           position: 'absolute',
                           left: '50%',
@@ -258,7 +259,7 @@ export class Features extends Component {
                         }}>{item.title}</h3>
                       </div>
                       </Grid>
-                      
+
                       </div>
                     )
                   }
@@ -275,7 +276,7 @@ export class Features extends Component {
                   fontSize: '24px',
                   width: '10%'
                 }}
-                onChange={() => window.location.href = Config.HELPA}
+                onChange={() => window.location.href = REACT_APP_HELPA}
                 ></Button>
             </Grid>
           </div>

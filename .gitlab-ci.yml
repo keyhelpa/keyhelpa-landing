@@ -1,0 +1,55 @@
+stages:
+  - build
+  - deploy
+
+.build:
+  stage: build
+  image: node:16
+  allow_failure: false
+  artifacts:
+    paths:
+      - build/
+    when: on_success
+    expire_in: 1h
+  variables:
+    NODE_OPTIONS: --max_old_space_size=3584
+  script:
+    - cp $ENV ./.env
+    - npm install --legacy-peer-deps
+    - npm run build
+
+build:dev:
+  extends: .build
+  environment: dev
+  only:
+    - dev
+
+build:prod:
+  extends: .build
+  environment: prod
+  only:
+    - main
+
+.deploy:
+  stage: deploy
+  image: python:latest
+  when: on_success
+  script:
+    - pip install awscli
+    - aws configure set aws_access_key_id "$AWS_ACCESS_KEY_ID"
+    - aws configure set aws_secret_access_key "$AWS_SECRET_ACCESS_KEY"
+    - aws configure set region "$AWS_DEFAULT_REGION"
+    - aws s3 sync ./build/ s3://$AWS_BUCKET_NAME/ --delete
+    - aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DISTRIBUTION_ID --paths "/*"
+
+deploy:dev:
+  extends: .deploy
+  environment: dev
+  only:
+    - dev
+
+deploy:prod:
+  extends: .deploy
+  environment: prod
+  only:
+    - main

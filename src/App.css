@@ -9,7 +9,7 @@
   pointer-events: none;
 }
 
-.MuiSelect-select{
+.MuiSelect-select {
   padding: 0px !important;
 }
 
@@ -68,7 +68,7 @@ iframe {
 .modal-content {
   border-radius: 25px !important;
 }
-.MuiOutlinedInput-notchedOutline{
+.MuiOutlinedInput-notchedOutline {
   border: none !important;
 }
 
@@ -90,7 +90,6 @@ iframe {
   }
 }
 
-
 /* jumping image logo */
 
 @keyframes jump {
@@ -109,16 +108,13 @@ iframe {
 
 .header-logo:hover {
   transform-origin: 50% 50% !important;
-  animation: jump .5s linear alternate infinite !important;
+  animation: jump 0.5s linear alternate infinite !important;
 }
-
 
 .active-color-hover:hover {
   cursor: pointer !important;
   opacity: 0.5;
 }
-
-
 
 .href-link:hover {
   cursor: pointer !important;
@@ -130,7 +126,6 @@ iframe {
 }
 
 @media (max-width: 991px) {
-
   /* 
     Homepage
   */
@@ -158,7 +153,6 @@ iframe {
   .video-player-text-holder {
     margin-top: 25px !important;
   }
-
 
   /* 
     others css

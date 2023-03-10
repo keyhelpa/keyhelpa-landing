@@ -1,49 +1,48 @@
-.cursor-hover-helpa:hover{
-    background-color: #E62D7E!important;
-    box-shadow: 0 0 11px rgba(33,33,33,.2); 
+.cursor-hover-helpa:hover {
+  background-color: #e62d7e !important;
+  box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
 }
 
 .cursor-hover-helpa:hover .card-text {
-    color: white!important; 
+  color: white !important;
 }
 .cursor-hover-helpa:hover .card-icon {
-    color: white!important; 
+  color: white !important;
 }
 
-.cursor-hover-agent:hover{
-    background-color: #34475D!important;
-    box-shadow: 0 0 11px rgba(33,33,33,.2); 
+.cursor-hover-agent:hover {
+  background-color: #34475d !important;
+  box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
 }
 .cursor-hover-agent:hover .card-text {
-    color: white!important; 
+  color: white !important;
 }
 .cursor-hover-agent:hover .card-icon {
-    color: white!important; 
+  color: white !important;
 }
-.b-agent{
-    color: #34475D!important;
-    font-size: 16px!important;
+.b-agent {
+  color: #34475d !important;
+  font-size: 16px !important;
 }
-.b-helpa{
-    color: #E62D7E!important;
-    font-size: 16px!important;
+.b-helpa {
+  color: #e62d7e !important;
+  font-size: 16px !important;
 }
-.imageSize{
-    width: 30%!important;
+.imageSize {
+  width: 30% !important;
 }
 @media (max-width: 991px) {
-.imageSize{
-    width: 40%!important;
-}
+  .imageSize {
+    width: 40% !important;
+  }
 }
 @media (max-width: 736px) {
-    .imageSize{
-        width: 50%!important;
-    }
+  .imageSize {
+    width: 50% !important;
+  }
 }
 @media (max-width: 414px) {
-    .imageSize{
-        width: 85%!important;
-    }
+  .imageSize {
+    width: 85% !important;
+  }
 }
-    

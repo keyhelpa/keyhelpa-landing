@@ -1,419 +1,525 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom';
-import Strings from 'modules/generic/helper/String'
-import './Style.css'
-import Routes from 'common/Routes'
-import API from 'services/api'
-import Button from 'modules/generic/button'
-import countryCodes from 'country-codes-list'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import Colors from 'common/Colors'
-import './mobile.css'
-import validator from 'services/validator'
-import Modal from 'modules/generic/modal/textButton'
-import TextInput from "components/increment/generic/form/TextInput"
-import TextArea from 'components/increment/generic/form/TextArea'
-import ContactNumber from 'components/increment/generic/form/ContactNumber';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+import Strings from "modules/generic/helper/String";
+import "./Style.css";
+import Routes from "common/Routes";
+import API from "services/api";
+import Button from "modules/generic/button";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Colors from "common/Colors";
+import "./mobile.css";
+import Modal from "modules/generic/modal/textButton";
+import TextInput from "components/increment/generic/form/TextInput";
+import TextArea from "components/increment/generic/form/TextArea";
+import loaderAgent from "../../assets/img/Dual Ring-1.4s-16px agent.svg";
+import lighterGray from "../../assets/lighterGray.png";
+import lighterPynk from "../../assets/lighterPink.png";
+
 const style = {
   iconAgent: {
     width: 40,
     height: 40,
-    float: 'center',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
+    float: "center",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
     borderRadius: 20,
     marginRight: 20,
-    backgroundColor: '#34475D', //34475D
-    color: 'white'
+    backgroundColor: "#34475D",
+    color: "white",
   },
   iconHelpa: {
     width: 40,
     height: 40,
     // float: 'center',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
     borderRadius: 20,
     marginRight: 20,
-    backgroundColor: '#E62D7E',
-    color: 'white'
-  }
-}
+    backgroundColor: "#E62D7E",
+    color: "white",
+  },
+};
 export class Contacts extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-      theme: 'agent',
+      isLoading: false,
+
+      theme: "agent",
       name: null,
-      ename: null,
+      errorName: null,
       email: null,
-      eemail: null,
-      contactNumber: null,
-      contactPrefix: null,
+      errorEmail: null,
+      phone: null,
+      errorPhone: null,
       organization: null,
-      message: null,
-      mobilePrefixes: countryCodes.customList('countryCode', '+{countryCallingCode}'),
+      errorOrganization: null,
+      message: "",
+      errorMessage: null,
       submitted: false,
       error: null,
       show: false,
-      errorMessage: null,
-      successMessage: null
-    }
+      responseMessage: null,
+      submitErrorMessage: null,
+      loader: null,
+    };
   }
 
   componentDidMount() {
-    const { history } = this.props
-    if (history.location.pathname.includes('agent')) {
-      this.setState({ theme: 'agent' })
-    } else {
-      this.setState({ theme: 'helpa' })
-    }
+    this.setState({
+      theme: "agent",
+      loader: loaderAgent,
+    });
   }
 
   handleSubmit() {
-    const { name, email, contactNumber, contactPrefix, organization, message, error } = this.state
-    // if (this.state.errorMessage !== null) {
-    //   return
-    // }
+    const {
+      name,
+      email,
+      phone,
+      organization,
+      message,
+      errorName,
+      errorEmail,
+      errorPhone,
+      errorOrganization,
+      errorMessage,
+    } = this.state;
+
+    if (!name || !email || !phone || !organization || !message) {
+      this.setState({
+        submitErrorMessage: "All fields are required",
+        responseMessage: null,
+      });
+      return;
+    }
+
+    if (
+      errorName ||
+      errorEmail ||
+      errorPhone ||
+      errorOrganization ||
+      errorMessage
+    ) {
+      this.setState({
+        submitErrorMessage: "Fields contain errors",
+        responseMessage: null,
+      });
+      return;
+    }
+
     this.setState({
-      errorMessage: null,
-      successMessage: null
-    })
+      responseMessage: null,
+      submitErrorMessage: null,
+      isLoading: true,
+    });
+
     let params = {
       name: name,
-      email: validator.checkEmail(email) ? email : null,
-      details: JSON.stringify({
-        contact_number: '+' + contactPrefix + contactNumber,
-        organization: organization,
-        message: message
-      })
-    }
-    if (params.name !== null && params.name !== undefined && params.email !== null && params.email != undefined && JSON.parse(params.details).contactNumber !== null && JSON.parse(params.details).organization !== null && JSON.parse(params.details).organization !== undefined && JSON.parse(params.details).message !== null && JSON.parse(params.details).message !== undefined) {
-      API.request(Routes.createContact, params, response => {
+      email: email,
+      phone: phone,
+      organization: organization,
+      message: message,
+    };
+
+    API.request(
+      Routes.contactForm,
+      params,
+      (response) => {
         this.setState({
+          isLoading: false,
           submitted: true,
+          responseMessage: response.message,
           name: null,
           email: null,
+          phone: null,
           organization: null,
-          eorganization: null,
-          message: null,
-          contactNumber: null,
-          successMessage: 'Successfully submitted.',
-          show: true
-        })
-        setTimeout(() => {
-          window.location.reload()
-        }, 5000)
-      })
-    } else {
-      this.setState({
-        errorMessage: 'Please fill up the required fields.'
-      })
-    }
+          message: "",
+          errorName: null,
+          errorEmail: null,
+          errorPhone: null,
+          errorOrganization: null,
+          errorMessage: null,
+          show: true,
+        });
+      },
+      (error) => {
+        const arrResponse = Object.values(error?.data).flat();
+        debugger;
+        this.setState({
+          isLoading: false,
+          responseMessage: arrResponse,
+        });
+      }
+    );
   }
 
   renderLeft() {
-    const { theme } = this.state
     const { accountType } = this.props.state;
     console.log({
-      accountType
-    })
+      accountType,
+    });
     return (
-      <div style={{
-        width: '80%',
-        float: 'left',
-        marginLeft: '40%',
-      }}
+      <div
+        style={{
+          width: "80%",
+          float: "left",
+          marginLeft: "40%",
+        }}
         className="full-width-mobile mt-mobile-50 contact-left-side-content"
       >
-        <h1 style={{
-          color: accountType == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle
-        }}>Contact us</h1>
-        <p style={{
-          color: accountType == 'agent' ? Colors.agentText : Colors.helpaText
-        }}>We love questions and feedback - and we're always happy to help! Here are some ways to contact us.</p>
-        <br /><br />
+        <h1
+          style={{
+            color: Colors.agentTextTitle,
+          }}
+        >
+          Contact us
+        </h1>
+        <p
+          style={{
+            color: Colors.agentText,
+          }}
+        >
+          We love questions and feedback - and we're always happy to help! Here
+          are some ways to contact us.
+        </p>
+        <br />
+        <br />
         <div>
-          <p style={{
-            color: accountType == 'agent' ? Colors.agentDarkGray : Colors.helpaDarkPink,
-            fontWeight: 'bold'
-          }}>support@keyhelpa.com</p>
-          <div style={{
-            width: '100%',
-            float: 'left'
-          }}>
-            {
-              Strings.socialMedias.map((item) => (
-                <div style={{
-                  float: 'left'
-                }}>
-                  <span
-                    style={accountType === 'agent' ? style.iconAgent : style.iconHelpa} className="cursor-hover"
-                    onClick={() => {
-                      window.location.href = item.route
-                    }}
-                  >
-                    <FontAwesomeIcon icon={item.icon} size="1x" />
-                  </span>
-                </div>
-              ))
-            }
+          <p
+            style={{
+              color: Colors.agentDarkGray,
+              fontWeight: "bold",
+            }}
+          >
+            support@keyhelpa.com
+          </p>
+          <div
+            style={{
+              width: "100%",
+              float: "left",
+            }}
+          >
+            {Strings.socialMedias.map((item, index) => (
+              <div
+                key={index}
+                style={{
+                  float: "left",
+                }}
+              >
+                <span
+                  style={style.iconAgent}
+                  className="cursor-hover"
+                  onClick={() => {
+                    window.location.href = item.route;
+                  }}
+                >
+                  <FontAwesomeIcon icon={item.icon} size="1x" />
+                </span>
+              </div>
+            ))}
           </div>
         </div>
       </div>
-    )
+    );
   }
 
   renderAlert() {
-    const { theme, error, show, submitted } = this.state
-    const { accountType } = this.props.state;
+    const { show } = this.state;
     return (
       <div>
         <Modal
           customFooter={true}
           centered={true}
           show={show}
-          title={'Thank  you!'}
-          description={'Your message has been sent. Our support team will respond within 24 hours'}
+          title={"Thank  you!"}
+          description={
+            "Your message has been sent. Our support team will respond within 24 hours"
+          }
           withButton={true}
-          buttonMsg={'Ok'}
-          color={accountType == 'agent' ? Colors.agentDarkGray : Colors.helpaDarkPink}
-          onCancel={() => this.setState({
-            show: false
-          })}
+          buttonMsg={"Ok"}
+          color={Colors.agentDarkGray}
+          onCancel={() =>
+            this.setState({
+              show: false,
+            })
+          }
         />
       </div>
-    )
+    );
   }
 
   renderRight() {
-    const { theme, mobilePrefixes, errorMessage } = this.state
-    const { name, ename, email, eemail, contactNumber, organization, eorganization, message, successMessage } = this.state
-    const { accountType } = this.props.state;
+    const {
+      name,
+      email,
+      phone,
+      organization,
+      message,
+      errorName,
+      errorEmail,
+      errorPhone,
+      errorOrganization,
+      errorMessage,
+      responseMessage,
+      loader,
+      submitErrorMessage,
+    } = this.state;
     return (
       <div
         style={{
-          width: '60%',
-          float: 'left',
-          background: accountType == 'agent' ? Colors.agentDarkGray : Colors.helpaDarkPink,
-          borderRadius: 20,
+          width: "75%",
+          float: "right",
+          background: Colors.agentDarkGray,
+          borderRadius: "25px 0 0 25px/ 25px 0 0 25px",
           padding: 30,
           color: Colors.white,
-          marginLeft: '30%',
-          minHeight: '45vh'
+          margin: "10% 0 10% 30%",
+          minHeight: "45vh",
         }}
         className="full-width-mobile text-field-container"
       >
-        {
-          errorMessage && (
-            <p style={{
-              color: Colors.white
-            }}>
-              {
-                errorMessage
-              }
+        {submitErrorMessage &&
+          submitErrorMessage !== "Invalid Phone Number" && (
+            <p
+              style={{
+                color: Colors.white,
+              }}
+            >
+              {submitErrorMessage}
             </p>
-          )
-        }
-        {
-          successMessage && (
-            <p style={{
-              color: Colors.white
-            }}>
-              {
-                successMessage
-              }
-            </p>
-          )
-        }
-        <div style={{
-          width: '100%',
-          float: 'left',
-        }}>
-          <div style={{
-            width: '100%',
-            float: 'left',
-            color: Colors.white,
-            marginBottom: 25
-          }}>
+          )}
+
+        {responseMessage && (
+          <p style={{ color: Colors.white }}>{responseMessage}</p>
+        )}
+
+        <div
+          style={{
+            width: "100%",
+            float: "left",
+          }}
+        >
+          <div
+            style={{
+              width: "100%",
+              float: "left",
+              color: Colors.white,
+              marginBottom: 25,
+            }}
+          >
             <TextInput
-              placeholder={'Type full name here'}
+              placeholder={"Type full name here"}
               type={"text"}
-              label={'Full name'}
+              label={"Full name"}
               value={name}
-              onChange={(name, ename) => {
+              onChange={(name, errorName) => {
                 this.setState({
                   name,
-                  ename
-                })
+                  errorName,
+                  responseMessage: null,
+                });
               }}
               style={{
-                borderBottom: 'solid 3px ' + Colors.white
+                borderBottom: "solid 3px " + Colors.white,
               }}
               inputStyle={{
-                color: Colors.white
+                color: Colors.white,
               }}
               errorStyle={{
-                color: Colors.white
+                color: Colors.white,
               }}
               validation={{
                 size: 2,
-                type: 'text',
-                column: 'Name',
-                error: ename
+                type: "text",
+                column: "Name",
+                error: errorName,
               }}
             />
           </div>
 
-          <div style={{
-            width: '100%',
-            float: 'left',
-            color: Colors.white
-          }}>
-            <div style={{
-              float: 'left',
-              width: '50%',
-              marginBottom: 25
+          <div
+            style={{
+              display: "flex",
+              width: "100%",
+              marginBottom: 25,
+              color: Colors.white,
             }}
+          >
+            <div
+              style={{
+                float: "left",
+              }}
               className="full-width-mobile email"
             >
               <TextInput
-                placeholder={'Type email here'}
+                placeholder={"Type email here"}
                 type={"text"}
                 value={email}
-                label={'Email'}
-                onChange={(email, eemail) => {
+                label={"Email"}
+                onChange={(email, errorEmail) => {
                   this.setState({
                     email,
-                    eemail
-                  })
+                    errorEmail,
+                    responseMessage: null,
+                  });
                 }}
                 style={{
-                  borderBottom: 'solid 3px ' + Colors.white
+                  borderBottom: "solid 3px " + Colors.white,
                 }}
                 inputStyle={{
-                  color: Colors.white
+                  color: Colors.white,
                 }}
                 errorStyle={{
-                  color: Colors.white
+                  color: Colors.white,
                 }}
                 validation={{
-                  size: 2,
-                  type: 'email',
-                  column: 'Email',
-                  error: eemail
+                  size: 8,
+                  type: "email",
+                  column: "Email",
+                  error: errorEmail,
                 }}
               />
             </div>
 
-            <div style={{
-              float: 'left',
-              width: '45%',
-              marginBottom: 25,
-              marginLeft: 35
-            }}
+            <div
+              style={{
+                float: "left",
+                marginLeft: 35,
+                paddingLeft: 20,
+              }}
               className="full-width-mobile contactNumber"
             >
-              <p style={{
-                color: Colors.white
-              }}>
-                <b>Telephone</b>
-              </p>
-              <ContactNumber
-                contactNumber={this.state.contactNumber}
-                hasFlag={false}
-                style={{ borderBottom: '3px solid white' }}
-                textColor={{ color: 'white' }}
-                handleMobileNumber={(countryCode, mobile, errorMobile) => {
-                  this.setState({
-                    contactPrefix: countryCode,
-                    contactNumber: mobile,
-                    errorMessage: errorMobile
-                  })
+              <TextInput
+                placeholder={"Phone number"}
+                type={"tel"}
+                label={"Telephone"}
+                value={phone}
+                numbersOnly={true}
+                onChange={(phone, errorPhone) => {
+                  if (!isNaN(phone) && phone.length <= 10) {
+                    this.setState({
+                      phone,
+                      errorPhone,
+                      responseMessage: null,
+                    });
+                  }
                 }}
-                errorMobile={''}
+                validation={[
+                  {
+                    type: "text",
+                    size: 9,
+                    column: "Phone number",
+                    error: errorPhone,
+                  },
+                  {
+                    type: "required",
+                    column: "Phone number",
+                    error: errorPhone,
+                  },
+                ]}
+                style={{
+                  borderBottom: "solid 3px " + Colors.white,
+                }}
+                inputStyle={{
+                  color: Colors.white,
+                }}
+                errorStyle={{
+                  color: Colors.white,
+                }}
               />
-              {/* <Form.Select aria-label="Default select example" style={{ width: '130px', margin: 0 }} onChange={(e) => this.setState({ contactPrefix: e.target.value })}>
-                {
-                  Object.values(mobilePrefixes).map(item => (
-                    <option value={item}>{item}</option>
-                  ))
-                }
-              </Form.Select>
-              <Form.Control style={{ margin: 0 }} type="number" size="sm" onChange={(e) => this.setState({ contactNumber: e.target.value })}></Form.Control> */}
             </div>
-
           </div>
 
-          <div style={{
-            width: '100%',
-            float: 'left',
-            color: Colors.white,
-            marginBottom: 25
-          }}>
+          <div
+            style={{
+              width: "100%",
+              float: "left",
+              color: Colors.white,
+              marginBottom: 25,
+            }}
+          >
             <TextInput
-              placeholder={'Organisation name'}
+              placeholder={"Organization name"}
               type={"text"}
-              label={'Organisation'}
+              label={"Organization"}
               value={organization}
-              onChange={(organization, eorganization) => {
+              onChange={(organization, errorOrganization) => {
                 this.setState({
                   organization,
-                  eorganization
-                })
+                  errorOrganization,
+                  responseMessage: null,
+                });
               }}
               style={{
-                borderBottom: 'solid 3px ' + Colors.white
+                borderBottom: "solid 3px " + Colors.white,
               }}
               inputStyle={{
-                color: Colors.white
+                color: Colors.white,
               }}
               errorStyle={{
-                color: Colors.white
+                color: Colors.white,
               }}
-              validation={{
-                size: 2,
-                type: 'text',
-                column: 'Organization',
-                error: eorganization
-              }}
+              validation={[
+                {
+                  size: 2,
+                  type: "text",
+                  column: "Organization",
+                  error: errorOrganization,
+                },
+                {
+                  type: "required",
+                  column: "Organization",
+                  error: errorOrganization,
+                },
+              ]}
             />
           </div>
-          <div style={{
-            width: '100%',
-            float: 'left',
-            color: Colors.white,
-            marginBottom: 25
-          }}>
+          <div
+            style={{
+              width: "100%",
+              float: "left",
+              color: Colors.white,
+              marginBottom: 25,
+            }}
+          >
             <TextArea
-              placeholder={'Type your message here'}
+              placeholder={"Type your message here"}
               type={"text"}
-              label={'Message'}
+              label={"Message"}
               style={{
-                background: 'transparent',
+                background: "transparent",
                 paddingLeft: 0,
                 paddingRight: 0,
-                borderBottom: 'solid 2px ' + Colors.white
+                borderBottom: "solid 2px " + Colors.white,
               }}
               inputStyle={{
-                color: Colors.white
+                color: Colors.white,
+                fontSize: 14,
+                paddingTop: 10,
               }}
               errorStyle={{
-                color: Colors.white
+                color: Colors.white,
               }}
               value={message}
               rows={5}
-              onChange={(message, errorMesssage) => {
-                this.setState({
-                  message
-                })
+              onChange={(message, errorMessage) => {
+                if (message.length <= 5000) {
+                  this.setState({
+                    message,
+                    errorMessage,
+                    responseMessage: null,
+                  });
+                }
               }}
               validation={{
-                type: 'text',
-                size: 0,
-                column: 'Message'
+                type: "text",
+                size: 20,
+                column: "Message",
+                error: errorMessage,
               }}
             />
           </div>
@@ -421,76 +527,88 @@ export class Contacts extends Component {
         <div>
           {/* <p>Captcha</p> */}
           <Button
-            title={'Submit'}
+            title={"Submit"}
+            loader={loader}
+            isLoading={this.state.isLoading}
             style={{
               backgroundColor: Colors.white,
-              color: accountType == 'agent' ? Colors.agentDarkGray : Colors.helpaDarkPink,
-              fontSize: '24px',
-              width: '10%',
-              float: 'right'
+              color: Colors.agentDarkGray,
+              fontSize: "24px",
+              width: "10%",
+              float: "right",
             }}
             onChange={() => {
-              this.handleSubmit()
+              this.handleSubmit();
             }}
           ></Button>
         </div>
       </div>
-    )
+    );
   }
 
-
   renderContent() {
-    const { accountType } = this.props.state
     return (
-      <div style={{
-        width: '100%',
-        float: 'left',
-        minHeight: '100vh',
-        display: 'flex',
-        alignItems: 'center'
-      }}
+      <div
+        style={{
+          width: "100%",
+          float: "left",
+          minHeight: "100vh",
+          display: "flex",
+          alignItems: "center",
+        }}
         className="full-width-mobile unset-flex-mobile"
       >
-        <div style={{
-          width: '30%',
-          float: 'left'
-        }}
+        <div
+          style={{
+            width: "30%",
+            float: "left",
+          }}
           className="full-width-mobile"
         >
           {this.renderLeft()}
         </div>
-        <div style={{
-          width: '70%',
-          float: 'left'
-        }}
-          className="full-width-mobile">
+        <div
+          style={{
+            width: "70%",
+            float: "left",
+          }}
+          className="full-width-mobile"
+        >
           {this.renderRight()}
         </div>
       </div>
-    )
+    );
   }
   render() {
+    const { accountType } = this.props.state;
     return (
-      <div style={{
-        width: '100%',
-        float: 'left',
-        minHeight: '100vh'
-      }}>
+      <div
+        style={{
+          width: "100%",
+          float: "left",
+          minHeight: "100vh",
+          backgroundImage:
+            accountType === "agent"
+              ? `url(${lighterGray})`
+              : `url(${lighterPynk})`,
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+        }}
+      >
         {this.renderContent()}
-        {/* {this.state.submitted && ( */}
-        {this.renderAlert()}
-        {/* )} */}
+        {this.state.submitted && this.renderAlert()}
       </div>
-    )
+    );
   }
 }
 
-const mapStateToProps = (state) => ({ state: state })
+const mapStateToProps = (state) => ({ state: state });
 
-const mapDispatchToProps = (dispatch) => {
-  const { actions } = require('reduxhandler');
-  return {
-  }
-}
+const mapDispatchToProps = () => {
+  return {};
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Contacts))
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(Contacts));
