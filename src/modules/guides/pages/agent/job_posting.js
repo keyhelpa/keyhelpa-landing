@@ -135,7 +135,7 @@ class JobPosting extends Component {
         <p
           style={{
             color:
-              theme == "agent" ? Colors.agentTextTitle : Colors.helpaTextTitle,
+              theme === "agent" ? Colors.agentTextTitle : Colors.helpaTextTitle,
             marginBottom: "5%",
           }}
         >
@@ -143,8 +143,7 @@ class JobPosting extends Component {
           your project? Now is the time to create your job posting to attract,
           to invite and to hire Helpa.
         </p>
-
-        <VideoCard url={url} />
+        {url && <VideoCard url={url} />}
         {this.renderContent()}
       </div>
     );

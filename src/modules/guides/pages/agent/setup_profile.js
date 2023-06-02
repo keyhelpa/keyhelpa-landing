@@ -63,8 +63,8 @@ class SetupAgent extends Component {
           <li>
             On the Contact details page, most of the information is
             automatically populated with data you used during your registration.
-            Please add your mobile phone number. Click the “Next button” to
-            proceed to the Billing page.
+            Please add your mobile phone. Click the “Next button” to proceed to
+            the Billing page.
           </li>
           <li>
             On the Billing page, add your authorized banking details to be used
@@ -101,15 +101,14 @@ class SetupAgent extends Component {
         <p
           style={{
             color:
-              theme == "agent" ? Colors.agentTextTitle : Colors.helpaTextTitle,
+              theme === "agent" ? Colors.agentTextTitle : Colors.helpaTextTitle,
             marginBottom: "5%",
           }}
         >
           Have you registered as an Agent in KeyHelpa? If yes, it is time to
           complete your profile setup to access all features of KeyHelpa!
         </p>
-
-        <VideoCard url={url} />
+        {url && <VideoCard url={url} />}
         {this.renderContent()}
       </div>
     );

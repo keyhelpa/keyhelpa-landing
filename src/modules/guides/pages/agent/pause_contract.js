@@ -142,7 +142,7 @@ class PauseContractAgent extends Component {
         <p
           style={{
             color:
-              theme == "agent" ? Colors.agentTextTitle : Colors.helpaTextTitle,
+              theme === "agent" ? Colors.agentTextTitle : Colors.helpaTextTitle,
             marginBottom: "5%",
           }}
         >
@@ -153,8 +153,7 @@ class PauseContractAgent extends Component {
           Helpa and explain why you have paused the contract and when you are
           planning to restart it.
         </p>
-
-        <VideoCard url={url} />
+        {url && <VideoCard url={url} />}
         {this.renderContent()}
       </div>
     );

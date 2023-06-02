@@ -86,6 +86,7 @@ class EditBasicAgent extends Component {
   }
 
   render() {
+    const { theme } = this.props;
     const { url } = this.state;
     return (
       <div
@@ -97,7 +98,7 @@ class EditBasicAgent extends Component {
         <p
           style={{
             color:
-              theme == "agent" ? Colors.agentTextTitle : Colors.helpaTextTitle,
+              theme === "agent" ? Colors.agentTextTitle : Colors.helpaTextTitle,
             marginBottom: "5%",
           }}
         >
@@ -106,8 +107,7 @@ class EditBasicAgent extends Component {
           also important to Helpa who are looking for Agents with good
           credibility and fit to their choice of work location.{" "}
         </p>
-
-        <VideoCard url={url} />
+        {url && <VideoCard url={url} />}
         {this.renderContent()}
       </div>
     );

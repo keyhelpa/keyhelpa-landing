@@ -33,7 +33,7 @@ export class Video extends Component {
           <h1
             style={{
               color:
-                theme == "agent"
+                theme === "agent"
                   ? Colors.agentTextTitle
                   : Colors.helpaTextTitle,
               marginBottom: 25,
@@ -78,7 +78,7 @@ export class Video extends Component {
                     height: "300px",
                     // background: theme == 'agent' ? Colors.agentTextTitle : Colors.helpaTextTitle,
                     backgroundImage: `url(${
-                      theme == "agent"
+                      theme === "agent"
                         ? AgentVideoThumbnail
                         : HelpaVideoThumbnail
                     })`,
@@ -91,6 +91,7 @@ export class Video extends Component {
                   }}
                   className="active-color-hover full-width-mobile video-player-holder"
                   onClick={() => {
+                    console.log(item);
                     this.setState({
                       video: item,
                     });
@@ -103,7 +104,7 @@ export class Video extends Component {
                       borderRadius: "50px",
                       float: "left",
                       background:
-                        theme == "agent" ? Colors.agentGray : Colors.helpaPink,
+                        theme === "agent" ? Colors.agentGray : Colors.helpaPink,
                       alignItems: "center",
                       alignContent: "center",
                       display: "flex",
@@ -131,7 +132,7 @@ export class Video extends Component {
                     className="mobile-justify-text-center"
                     style={{
                       color:
-                        theme == "agent"
+                        theme === "agent"
                           ? Colors.agentTextTitle
                           : Colors.helpaTextTitle,
                     }}
@@ -142,7 +143,7 @@ export class Video extends Component {
                     className="mobile-justify-text-center"
                     style={{
                       color:
-                        theme == "agent"
+                        theme === "agent"
                           ? Colors.agentTextTitle
                           : Colors.helpaVidText,
                     }}
@@ -177,7 +178,7 @@ export class Video extends Component {
           className="full-width-mobile"
         >
           {this.renderLeft(
-            theme == "agent"
+            theme === "agent"
               ? {
                   title: "What do you need a Helpa for?",
                   description: () => {
@@ -185,7 +186,7 @@ export class Video extends Component {
                       <p
                         style={{
                           color:
-                            theme == "agent"
+                            theme === "agent"
                               ? Colors.agentTextTitle
                               : Colors.helpaTextTitle,
                         }}
@@ -205,7 +206,7 @@ export class Video extends Component {
                       <p
                         style={{
                           color:
-                            theme == "agent"
+                            theme === "agent"
                               ? Colors.agentTextTitle
                               : Colors.helpaVidText,
                         }}

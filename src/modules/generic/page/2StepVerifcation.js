@@ -281,7 +281,7 @@ class StepVerifcation extends React.Component {
           </p>
           {platform == "sms" && (
             <p>
-              We send an otp to your phone number: ******
+              We send an otp to your mobile phone: ******
               {user?.information?.cellular_number.slice(-4)}
             </p>
           )}

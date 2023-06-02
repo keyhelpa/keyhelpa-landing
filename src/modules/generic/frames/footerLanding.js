@@ -13,22 +13,29 @@ const links = [
   {
     title: "About Us",
     route: "/about_us",
+    thirdPartyResource: false,
   },
   {
     title: "Contact Us",
     route: "/contact_us",
+    thirdPartyResource: false,
   },
   {
     title: "Privacy Policy",
-    route: "/privacy_policy",
+    route:
+      "https://keyhelpa-docs.s3.ap-southeast-2.amazonaws.com/website_disclaimer_august_16_2021.pdf",
+    thirdPartyResource: true,
   },
   {
     title: "Terms and Conditions",
-    route: "/terms_and_conditions",
+    route:
+      "https://keyhelpa-docs.s3.ap-southeast-2.amazonaws.com/Terms_and_conditions_final_May23.pdf",
+    thirdPartyResource: true,
   },
   {
     title: "FAQs",
     route: "/faq",
+    thirdPartyResource: false,
   },
 ];
 // {
@@ -58,6 +65,10 @@ class Stack extends React.Component {
 
   navigate(route) {
     this.props.history.push(route);
+  }
+
+  navigateThirdPartyResource(route) {
+    window.open(route, "_blank");
   }
 
   quickLinks() {
@@ -103,13 +114,17 @@ class Stack extends React.Component {
                       color: "white",
                     }}
                     onClick={() => {
-                      window.scrollTo(0, 0);
                       const { accountType } = this.props.state;
-                      this.navigate(
-                        accountType
-                          ? "/" + accountType + item.route
-                          : "/helpa/" + item.route
-                      );
+                      if (item.thirdPartyResource) {
+                        this.navigateThirdPartyResource(item.route);
+                      } else {
+                        window.scrollTo(0, 0);
+                        this.navigate(
+                          accountType
+                            ? "/" + accountType + item.route
+                            : "/helpa/" + item.route
+                        );
+                      }
                     }}
                     className="href-link"
                   >

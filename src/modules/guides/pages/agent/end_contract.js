@@ -147,7 +147,7 @@ class EndContractAgent extends Component {
         <p
           style={{
             color:
-              theme == "agent" ? Colors.agentTextTitle : Colors.helpaTextTitle,
+              theme === "agent" ? Colors.agentTextTitle : Colors.helpaTextTitle,
             marginBottom: "5%",
           }}
         >
@@ -156,8 +156,7 @@ class EndContractAgent extends Component {
           contract through KeyHelpa and has it accepted by the Helpa, can end
           the contract of the job he/she has with the Helpa.
         </p>
-
-        <VideoCard url={url} />
+        {url && <VideoCard url={url} />}
         {this.renderContent()}
       </div>
     );

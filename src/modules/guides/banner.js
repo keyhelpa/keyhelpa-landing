@@ -18,7 +18,7 @@ class Guide extends Component {
           float: "left",
           height: "60vh",
           backgroundColor:
-            theme == "agent" ? Colors.agentGray : Colors.helpaPink,
+            theme === "agent" ? Colors.agentGray : Colors.helpaPink,
           display: "flex",
           alignItems: "center",
           marginTop: 30,

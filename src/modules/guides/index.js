@@ -169,10 +169,10 @@ class Guide extends Component {
             marginTop: 25,
             marginBottom: 25,
             color:
-              theme == "agent" ? Colors.agentDarkGray : Colors.helpaDarkPink,
+              theme === "agent" ? Colors.agentDarkGray : Colors.helpaDarkPink,
           }}
         >
-          {theme == "agent" ? "Agent Guides" : "Helpa Guides"}
+          {theme === "agent" ? "Agent Guides" : "Helpa Guides"}
         </h1>
         <div
           style={{
@@ -220,7 +220,7 @@ class Guide extends Component {
                 style={{
                   fontSize: 60,
                   color:
-                    theme == "agent"
+                    theme === "agent"
                       ? Colors.agentDarkGray
                       : Colors.helpaDarkPink,
                 }}
@@ -229,7 +229,7 @@ class Guide extends Component {
               <p
                 style={{
                   color:
-                    theme == "agent"
+                    theme === "agent"
                       ? Colors.agentDarkGray
                       : Colors.helpaDarkPink,
                 }}
@@ -240,7 +240,7 @@ class Guide extends Component {
               <p
                 style={{
                   color:
-                    theme == "agent"
+                    theme === "agent"
                       ? Colors.agentTextTitle
                       : Colors.helpaTextTitle,
                 }}
@@ -263,7 +263,7 @@ class Guide extends Component {
           width: "100%",
           float: "left",
           backgroundColor:
-            theme == "agent"
+            theme === "agent"
               ? Colors.agentBackgroundColor
               : Colors.helpaBackgroundColor,
         }}
@@ -273,7 +273,7 @@ class Guide extends Component {
         <div
           style={{
             backgroundColor:
-              theme == "agent"
+              theme === "agent"
                 ? Colors.agentBackgroundColor
                 : Colors.helpaBackgroundColor,
             float: "left",

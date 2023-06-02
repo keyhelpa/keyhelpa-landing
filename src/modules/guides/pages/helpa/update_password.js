@@ -93,7 +93,7 @@ class UpdatePasswordHelpa extends Component {
         <p
           style={{
             color:
-              theme == "agent" ? Colors.agentTextTitle : Colors.helpaTextTitle,
+              theme === "agent" ? Colors.agentTextTitle : Colors.helpaTextTitle,
             marginBottom: "5%",
           }}
         >
@@ -102,8 +102,7 @@ class UpdatePasswordHelpa extends Component {
           that even if someone finds an old or saved password, it will no longer
           be useful, and your data will be secure.
         </p>
-
-        <VideoCard url={url} />
+        {url && <VideoCard url={url} />}
         {this.renderContent()}
       </div>
     );

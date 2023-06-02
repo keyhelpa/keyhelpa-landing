@@ -283,7 +283,7 @@ export class Contacts extends Component {
         className="full-width-mobile text-field-container"
       >
         {submitErrorMessage &&
-          submitErrorMessage !== "Invalid Phone Number" && (
+          submitErrorMessage !== "Invalid Mobile phone" && (
             <p
               style={{
                 color: Colors.white,
@@ -394,9 +394,9 @@ export class Contacts extends Component {
               className="full-width-mobile contactNumber"
             >
               <TextInput
-                placeholder={"Phone number"}
+                placeholder={"Mobile phone"}
                 type={"tel"}
-                label={"Telephone"}
+                label={"Mobile phone"}
                 value={phone}
                 numbersOnly={true}
                 onChange={(phone, errorPhone) => {
@@ -410,14 +410,19 @@ export class Contacts extends Component {
                 }}
                 validation={[
                   {
+                    type: "australian_phone",
+                    column: "Mobile phone",
+                    error: errorPhone,
+                  },
+                  {
                     type: "text",
                     size: 9,
-                    column: "Phone number",
+                    column: "Mobile phone",
                     error: errorPhone,
                   },
                   {
                     type: "required",
-                    column: "Phone number",
+                    column: "Mobile phone",
                     error: errorPhone,
                   },
                 ]}

@@ -116,7 +116,7 @@ class UpdateBankAgent extends Component {
         <p
           style={{
             color:
-              theme == "agent" ? Colors.agentTextTitle : Colors.helpaTextTitle,
+              theme === "agent" ? Colors.agentTextTitle : Colors.helpaTextTitle,
             marginBottom: "5%",
           }}
         >
@@ -124,8 +124,7 @@ class UpdateBankAgent extends Component {
           transactions with KeyHelpa. It is important that you keep your account
           funded enough especially when paying Helpas.{" "}
         </p>
-
-        <VideoCard url={url} />
+        {url && <VideoCard url={url} />}
         {this.renderContent()}
       </div>
     );

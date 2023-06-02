@@ -122,7 +122,7 @@ class CreateContract extends Component {
         <p
           style={{
             color:
-              theme == "agent" ? Colors.agentTextTitle : Colors.helpaTextTitle,
+              theme === "agent" ? Colors.agentTextTitle : Colors.helpaTextTitle,
             marginBottom: "5%",
           }}
         >
@@ -130,8 +130,7 @@ class CreateContract extends Component {
           contract that you will be sending to Helpa upon hiring. Check how to
           hire helpa <a href="#">here</a>.
         </p>
-
-        <VideoCard url={url} />
+        {url && <VideoCard url={url} />}
         {this.renderContent()}
       </div>
     );

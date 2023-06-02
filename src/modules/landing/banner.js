@@ -26,13 +26,9 @@ class Banner extends Component {
     const { history, setColor, setSelectedUser } = this.props;
     const { theme } = this.props;
     if (theme === "helpa") {
-      setSelectedUser("agent");
-      history.push("/agent");
-      location.reload();
+      document.getElementById("Agents Looking for Helpas").click();
     } else {
-      setSelectedUser("helpa");
-      history.push("/helpa");
-      window.location.reload();
+      document.getElementById("Helpas Looking to Earn").click();
     }
   }
   render() {
@@ -43,14 +39,14 @@ class Banner extends Component {
         <div className="web">
           <div className={theme === "helpa" ? "show" : "hidden"}>
             <img
-              className={theme == "helpa" ? "Helpa" : ""}
+              className={theme === "helpa" ? "Helpa" : ""}
               src={require("../../assets/Helpa.png")}
             ></img>
           </div>
           <div className="tooltip">
             <img
-              className={theme == "agent" ? "agentRobyn" : ""}
-              src={theme == "agent" ? require("../../assets/Robyn.png") : ""}
+              className={theme === "agent" ? "agentRobyn" : ""}
+              src={theme === "agent" ? require("../../assets/Robyn.png") : ""}
             ></img>
             <div className="right">
               <h3 className="tooltip-title">
@@ -58,7 +54,7 @@ class Banner extends Component {
               </h3>
               <p className="tooltip-desc">
                 {theme === "agent"
-                  ? "Robyn is a licence  Real Estate Agent. She just signed four new clients who have all put their properties on the market, and she needs help at the open houses."
+                  ? "Robyn is a licenced real estate agent. She just signed four new clients who have put their properties on the market, and she needs help at the open houses."
                   : ""}
               </p>
               <i></i>
@@ -67,9 +63,9 @@ class Banner extends Component {
 
           <div className="tooltip">
             <img
-              className={theme == "agent" ? "agentPaul" : "freelanceSarah"}
+              className={theme === "agent" ? "agentPaul" : "freelanceSarah"}
               src={
-                theme == "agent"
+                theme === "agent"
                   ? require("../../assets/Paul.png")
                   : require("../../assets/Sarah.png")
               }
@@ -80,7 +76,7 @@ class Banner extends Component {
               </h3>
               <p className="tooltip-desc">
                 {theme === "agent"
-                  ? "Paul is a senior property manager at a busy real estate office. The agency manages properties, and he has a lot going on dealing with landlords and tenants."
+                  ? "Paul is a senior property manager at a busy real estate office. The agency manages many properties, and he has a lot going on dealing with landlords and tenants."
                   : "Sarah is a mother of two, a licensed agent with years of experience; due to her family commitments, she is limited by the number of hours she can work each week. However, Sarah's lifestyle dynamics prompted her to find a new way of earning extra money and to be her own boss."}
               </p>
               <i></i>
@@ -89,9 +85,9 @@ class Banner extends Component {
 
           <div className="tooltip">
             <img
-              className={theme == "agent" ? "agentTrevor" : "freelanceAlan"}
+              className={theme === "agent" ? "agentTrevor" : "freelanceAlan"}
               src={
-                theme == "agent"
+                theme === "agent"
                   ? require("../../assets/Trevor.png")
                   : require("../../assets/Alan.png")
               }
@@ -111,9 +107,9 @@ class Banner extends Component {
 
           <div className="tooltip">
             <img
-              className={theme == "agent" ? "agentJohn" : "freelanceLana"}
+              className={theme === "agent" ? "agentJohn" : "freelanceLana"}
               src={
-                theme == "agent"
+                theme === "agent"
                   ? require("../../assets/JohnAgent.png")
                   : require("../../assets/Lana.png")
               }
@@ -133,9 +129,9 @@ class Banner extends Component {
 
           <div className="tooltip">
             <img
-              className={theme == "agent" ? "Agent" : "freelanceTracey"}
+              className={theme === "agent" ? "Agent" : "freelanceTracey"}
               src={
-                theme == "agent"
+                theme === "agent"
                   ? require("../../assets/Agent.png")
                   : require("../../assets/Tracey.png")
               }
@@ -155,14 +151,14 @@ class Banner extends Component {
 
           <div className="tooltip">
             <img
-              className={theme == "helpa" ? "freelanceJohn" : ""}
+              className={theme === "helpa" ? "freelanceJohn" : ""}
               src={
-                theme == "helpa" ? require("../../assets/JohnHelpa.png") : ""
+                theme === "helpa" ? require("../../assets/JohnHelpa.png") : ""
               }
             ></img>
             <div className="left">
               <h3 className="tooltip-title">
-                {theme == "helpa" ? "John" : ""}
+                {theme === "helpa" ? "John" : ""}
               </h3>
               <p className="tooltip-desc">
                 {theme === "helpa"
@@ -190,9 +186,9 @@ class Banner extends Component {
               width: "100%",
               marginTop: "25%",
             }}
-            className={theme == "helpa" ? "Helpa" : ""}
+            className={theme === "helpa" ? "Helpa" : ""}
             src={
-              theme == "agent"
+              theme === "agent"
                 ? require("../../assets/agent-mobile-bg.png")
                 : require("../../assets/helpa-mobile-bg.png")
             }
@@ -209,7 +205,7 @@ class Banner extends Component {
                 style={{
                   fontSize: 25,
                   color:
-                    theme == "agent"
+                    theme === "agent"
                       ? Colors.helpaDarkPink
                       : Colors.agentDarkGray,
                 }}
@@ -221,7 +217,7 @@ class Banner extends Component {
                 style={{
                   fontSize: 25,
                   color:
-                    theme == "agent"
+                    theme === "agent"
                       ? Colors.helpaDarkPink
                       : Colors.agentDarkGray,
                 }}

@@ -125,6 +125,7 @@ const Header = (props) => {
             >
               {Helper.login.leftMenu.map((item, index) => (
                 <b
+                  id={item.title}
                   style={{
                     color: props.textColor,
                     paddingLeft: 50,
@@ -163,29 +164,33 @@ const Header = (props) => {
               justifyContent: "right",
             }}
           >
-            {Helper.login.rightMenu.map((item, index) => (
-              <b
-                style={{
-                  color: props.textColor,
-                  paddingLeft: 50,
-                  float: "right",
-                  fontSize: 18,
-                  cursor: "pointer",
-                }}
-                onClick={() => {
-                  if (item.type === "internal") {
-                    history.push("/" + accountType + item.route);
-                  } else {
-                    Helper.redirect(accountType, item.title);
-                  }
-                  window.scrollTo(0, 0);
-                }}
-                key={index}
-                className="hide-on-mobile href-link"
-              >
-                {item.title}
-              </b>
-            ))}
+            {Helper.login.rightMenu
+              .filter((item) =>
+                location.pathname === "/" ? item.title === "Guides" : true
+              )
+              .map((item, index) => (
+                <b
+                  style={{
+                    color: props.textColor,
+                    paddingLeft: 50,
+                    float: "right",
+                    fontSize: 18,
+                    cursor: "pointer",
+                  }}
+                  onClick={() => {
+                    if (item.type === "internal") {
+                      history.push("/" + accountType + item.route);
+                    } else {
+                      Helper.redirect(accountType, item.title);
+                    }
+                    window.scrollTo(0, 0);
+                  }}
+                  key={index}
+                  className="hide-on-mobile href-link"
+                >
+                  {item.title}
+                </b>
+              ))}
           </div>
         </div>
       </div>
@@ -208,14 +213,14 @@ const Header = (props) => {
           style={{
             display: "flex",
             alignItems: "center",
-            borderRadius: 10,
+            justifyContent: "center",
+            borderRadius: 13,
             backgroundColor:
               accountType === "agent"
                 ? Colors.agentBackgroundColor
                 : Colors.helpaBackgroundColor,
-            paddingLeft: 15,
-            paddingRight: 15,
-            height: 50,
+            height: 40,
+            width: 43,
           }}
           className="href-link"
         >
@@ -227,7 +232,8 @@ const Header = (props) => {
                 : Colors.helpaDarkPink
             }
             className="href-link"
-            size="2x"
+            size="1x"
+            style={{ zoom: 1.5 }}
           />
         </div>
       </div>

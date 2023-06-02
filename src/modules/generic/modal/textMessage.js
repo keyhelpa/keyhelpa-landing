@@ -34,7 +34,7 @@ export default class Stack extends React.Component {
           className="full-width-mobile"
         >
           <TextInput
-            placeholder={"Mobile"}
+            placeholder={"Mobile phone"}
             type={"text"}
             value={contactNumber}
             numbersOnly={true}
@@ -70,7 +70,7 @@ export default class Stack extends React.Component {
         style={Style.modal}
       >
         <ModalHeader
-          title={"Add your mobile"}
+          title={"Add your mobile phone"}
           subTitle={"Text message verification"}
           onCancel={() => this.props.onCancel()}
         />
