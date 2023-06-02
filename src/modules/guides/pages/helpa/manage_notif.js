@@ -96,7 +96,7 @@ class ManageNotifHelpa extends Component {
         <p
           style={{
             color:
-              theme == "agent" ? Colors.agentTextTitle : Colors.helpaTextTitle,
+              theme === "agent" ? Colors.agentTextTitle : Colors.helpaTextTitle,
             marginBottom: "25px",
           }}
         >
@@ -104,8 +104,7 @@ class ManageNotifHelpa extends Component {
           Agent. It is important for them to get notified what has been going on
           with their jobs, contracts, and any activities they do in KeyHelpa.
         </p>
-
-        <VideoCard url={url} />
+        {url && <VideoCard url={url} />}
         {this.renderContent()}
       </div>
     );

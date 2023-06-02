@@ -100,7 +100,7 @@ class CreateAccountAgent extends Component {
           Get started with KeyHelpa and hire Helpa when you need help by
           creating an account.
         </p>
-        <VideoCard url={url} />
+        {url && <VideoCard url={url} />}
         {this.renderContent()}
       </div>
     );

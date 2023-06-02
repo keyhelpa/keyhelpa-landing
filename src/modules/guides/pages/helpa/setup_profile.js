@@ -147,7 +147,7 @@ class SetupHelpa extends Component {
         <p
           style={{
             color:
-              theme == "agent" ? Colors.agentTextTitle : Colors.helpaTextTitle,
+              theme === "agent" ? Colors.agentTextTitle : Colors.helpaTextTitle,
             marginBottom: "5%",
           }}
         >
@@ -155,8 +155,7 @@ class SetupHelpa extends Component {
           is time to complete your profile setup to access all features of
           KeyHelpa!
         </p>
-
-        <VideoCard url={url} />
+        {url && <VideoCard url={url} />}
         {this.renderContent()}
       </div>
     );

@@ -109,6 +109,7 @@ function Sidebar(props) {
           width: "100%",
           paddingLeft: 0,
           paddingBottom: 0,
+          marginBottom: 0,
           backgroundColor: history.location.pathname.includes("agent")
             ? Colors.agentHeaderBackground
             : Colors.helpaHeaderBackground,
@@ -148,7 +149,7 @@ function Sidebar(props) {
                       width: "40px",
                     }}
                   >
-                    {item.iconType && item.iconType == "material" ? (
+                    {item.iconType && item.iconType === "material" ? (
                       <SvgIcon
                         component={item.icon}
                         style={{

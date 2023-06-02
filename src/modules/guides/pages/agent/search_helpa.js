@@ -137,7 +137,7 @@ class SearchHelpa extends Component {
         <p
           style={{
             color:
-              theme == "agent" ? Colors.agentTextTitle : Colors.helpaTextTitle,
+              theme === "agent" ? Colors.agentTextTitle : Colors.helpaTextTitle,
             marginBottom: "5%",
           }}
         >
@@ -145,8 +145,7 @@ class SearchHelpa extends Component {
           projects at your preferred location, experience, or availability?
           Start searching among our freelancers or shall we say “Helpa”!
         </p>
-
-        <VideoCard url={url} />
+        {url && <VideoCard url={url} />}
         {this.renderContent()}
       </div>
     );

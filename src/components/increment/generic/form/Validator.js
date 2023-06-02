@@ -58,6 +58,13 @@ export default {
         if (!LETTER_REGEX.test(value)) {
           return column + " should contain letters only.";
         }
+        return null;
+      }
+      case "australian_phone": {
+        if (!value.startsWith("04")) {
+          return column + ' should start from "04"';
+        }
+        return null;
       }
     }
   },

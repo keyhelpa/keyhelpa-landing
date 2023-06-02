@@ -95,7 +95,7 @@ class CreateAccountHelpa extends Component {
         <p
           style={{
             color:
-              theme == "agent" ? Colors.agentTextTitle : Colors.helpaTextTitle,
+              theme === "agent" ? Colors.agentTextTitle : Colors.helpaTextTitle,
             marginBottom: "5%",
           }}
         >
@@ -103,9 +103,7 @@ class CreateAccountHelpa extends Component {
           you want with us.Get started with KeyHelpa and be your own boss, get
           paid securely!
         </p>
-
-        <VideoCard url={url} />
-
+        {url && <VideoCard url={url} />}
         {this.renderContent()}
       </div>
     );

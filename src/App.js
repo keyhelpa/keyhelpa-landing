@@ -5,7 +5,6 @@ import Footer from "modules/generic/frames/footerLanding.js";
 import RouteList from "./modules/routes";
 import Sidebar from "./modules/generic/frames/sidebarLanding";
 import React, { useState } from "react";
-import { Paper } from "@mui/material";
 import { connect } from "react-redux";
 import Colors from "common/Colors";
 import { useLocation } from "react-router-dom";
@@ -17,6 +16,19 @@ function App(props) {
   const { loginRightMenu, loginLeftMenu } = props.state;
   const [showMenu, setShowMenu] = useState(false);
   const location = useLocation();
+
+  const getHeaderBackground = () => {
+    if (location.pathname === "/") {
+      return "transparent";
+    }
+    return helpaRoutes.includes(location.pathname) ||
+      location.pathname.includes("/helpa/guides")
+      ? Colors.helpaHeaderBackground
+      : agentRoutes.includes(location.pathname) ||
+        location.pathname.includes("/agent/guides")
+      ? Colors.agentHeaderBackground
+      : "inherit";
+  };
 
   return (
     <div
@@ -38,15 +50,7 @@ function App(props) {
             setIsDropdownMenu(!isDropdownMenu);
           }}
           userType={localStorage.getItem("user_type")}
-          backgroundColor={
-            helpaRoutes.includes(location.pathname) ||
-            location.pathname.includes("/helpa/guides")
-              ? Colors.helpaHeaderBackground
-              : agentRoutes.includes(location.pathname) ||
-                location.pathname.includes("/agent/guides")
-              ? Colors.agentHeaderBackground
-              : "inherit"
-          }
+          backgroundColor={getHeaderBackground()}
           textColor={
             helpaRoutes.includes(location.pathname) ||
             agentRoutes.includes(location.pathname) ||
@@ -65,7 +69,12 @@ function App(props) {
           >
             <Sidebar
               {...props}
-              loginRightMenu={[...loginLeftMenu, ...loginRightMenu]}
+              loginRightMenu={[
+                ...loginLeftMenu,
+                ...loginRightMenu.filter((item) =>
+                  location.pathname === "/" ? item.title === "Guides" : true
+                ),
+              ]}
               onClick={() => {
                 setShowMenu(false);
               }}

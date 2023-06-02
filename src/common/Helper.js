@@ -56,11 +56,12 @@ export default {
       },
     ],
     rightMenu: [
-      {
-        title: "Guides",
-        type: "internal",
-        route: "/guides",
-      },
+      // TODO not delete, agreed with PM
+      // {
+      //   title: "Guides",
+      //   type: "internal",
+      //   route: "/guides",
+      // },
       {
         title: "Members login",
         type: "external",

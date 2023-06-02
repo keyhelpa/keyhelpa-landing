@@ -113,7 +113,6 @@ export default {
   setColor() {
     if (Helper.ACCOUNT_TYPE === "landing") {
       let curr_path = window.location.pathname;
-      console.log("<>><<><><><><><<<><>", curr_path.includes("agent"));
       if (curr_path.includes("agent")) {
         Colors.footerBackground = "#59687A";
         Colors.footerIcons = "#E62D7E";

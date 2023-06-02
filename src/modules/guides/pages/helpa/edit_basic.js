@@ -94,7 +94,7 @@ class EditBasicHelpa extends Component {
         <p
           style={{
             color:
-              theme == "agent" ? Colors.agentTextTitle : Colors.helpaTextTitle,
+              theme === "agent" ? Colors.agentTextTitle : Colors.helpaTextTitle,
             marginBottom: "5%",
           }}
         >
@@ -103,8 +103,7 @@ class EditBasicHelpa extends Component {
           also important to agents who are looking for Helpas with good
           credibility to be fit for the job they are hiring.{" "}
         </p>
-
-        <VideoCard url={url} />
+        {url && <VideoCard url={url} />}
         {this.renderContent()}
       </div>
     );

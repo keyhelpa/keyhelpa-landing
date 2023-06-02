@@ -99,7 +99,7 @@ class UpdateBankHelpa extends Component {
         <p
           style={{
             color:
-              theme == "agent" ? Colors.agentTextTitle : Colors.helpaTextTitle,
+              theme === "agent" ? Colors.agentTextTitle : Colors.helpaTextTitle,
             marginBottom: "5%",
           }}
         >
@@ -108,8 +108,7 @@ class UpdateBankHelpa extends Component {
           active as this is where you will receive your payments from the job
           you work for from an Agent.
         </p>
-
-        <VideoCard url={url} />
+        {url && <VideoCard url={url} />}
         {this.renderContent()}
       </div>
     );

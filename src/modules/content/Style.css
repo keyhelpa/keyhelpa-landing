@@ -40,21 +40,60 @@
 }
 
 .imageLeft {
-  position: absolute;
-  left: 12.5%;
-  padding: 4%;
+  /*position: absolute;*/
+  /*left: 12.5%;*/
+  /*padding: 4%;*/
 }
 
 .imageRight {
-  position: absolute;
-  padding: 4%;
-  left: 42.5%;
+  /*position: absolute;*/
+  /*padding: 4%;*/
+  /*left: 42.5%;*/
 }
 
 .helpaLeft {
+  /*position: absolute;*/
+  /*left: 28%;*/
+  /*padding: 4%;*/
+}
+
+.click-overlay {
+  height: 715px;
+  width: 660px;
   position: absolute;
-  left: 28%;
-  padding: 4%;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 15%;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.left-half {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 50%;
+}
+
+.agent-img {
+  position: absolute;
+  top: 15%;
+  right: -62px;
+}
+
+.right-half {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 50%;
+}
+
+.helpa-img {
+  position: absolute;
+  top: 15%;
+  left: -62px;
 }
 
 .textLeft h1,
@@ -93,12 +132,12 @@
 
 .animate {
   width: 5%;
-  transition: width 2s;
+  transition: width 700ms;
 }
 
 .reverse {
   width: 100%;
-  transition: width 2s;
+  transition: width 700ms;
 }
 
 @media (max-width: 991px) {
@@ -107,11 +146,20 @@
     width: 15%;
   }
 
+  .click-overlay {
+    aspect-ratio: 1/1.1;
+    top: 17%;
+    height: auto;
+    width: 34%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
   .imageLeft,
   .imageRight,
   .helpaLeft {
-    width: 45%;
-    padding-top: 50% !important;
+    width: 60%;
+    /*padding-top: 50% !important;*/
   }
 
   .helpaLeft,
@@ -125,7 +173,37 @@
 
   .animate {
     width: 18%;
-    transition: width 2s;
+    transition: width 700ms;
+  }
+
+  .left-half {
+    position: static;
+    right: 0;
+  }
+
+  .right-half {
+    position: static;
+    left: 0;
+  }
+
+  .imageLeft {
+    position: absolute;
+    left: 2.5%;
+    padding: 4%;
+    margin-top: 10%;
+  }
+
+  .imageRight {
+    position: absolute;
+    padding: 4%;
+    left: 39.5%;
+    margin-top: 10%;
+  }
+
+  .helpaLeft {
+    position: absolute;
+    left: 28%;
+    padding: 4%;
   }
 
   .container {

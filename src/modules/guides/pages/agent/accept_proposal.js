@@ -109,7 +109,7 @@ class AcceptProposal extends Component {
         <p
           style={{
             color:
-              theme == "agent" ? Colors.agentTextTitle : Colors.helpaTextTitle,
+              theme === "agent" ? Colors.agentTextTitle : Colors.helpaTextTitle,
             marginBottom: "5%",
           }}
         >
@@ -118,7 +118,7 @@ class AcceptProposal extends Component {
           Helpa you invited and those you did not send a job invitation who were
           interested to apply for your job hiring that they send you a proposal.
         </p>
-        <VideoCard url={url} />
+        {url && <VideoCard url={url} />}
         {this.renderContent()}
       </div>
     );

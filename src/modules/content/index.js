@@ -1,10 +1,9 @@
-import { Box, Container } from "@mui/material";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { Helper } from "common";
 import "./Style.css";
-
+import VideoModal from "../generic/modal/video";
+import withWindowDimensions from "../../common/withWindowDimensions";
 class Homepage extends Component {
   constructor(props) {
     super(props);
@@ -13,12 +12,13 @@ class Homepage extends Component {
       agent: false,
       showRight: false,
       startAlt: false,
+      video: null,
+      showVideo: false,
     };
   }
   async componentDidMount() {
     if (this.props !== undefined) {
       const { selectedUser } = this.props.state;
-      console.log(">>>>", selectedUser);
       if (selectedUser == null) {
         this.setState({
           showLeft: false,
@@ -32,41 +32,6 @@ class Homepage extends Component {
     if (userType) {
       this.setState({ startAlt: true });
       await this.handleSelect(userType);
-    }
-  }
-  renderLeft() {
-    return (
-      <Box sx={{ height: "100vh", bgColor: "#cfe8fc" }}>
-        <h1>left</h1>
-      </Box>
-    );
-  }
-  renderRight() {
-    return (
-      <Box sx={{ height: "100vh", bgColor: "#cfe8fc" }}>
-        <h1>right</h1>
-      </Box>
-    );
-  }
-  handleClick(event) {
-    const { setSelectedUser, setRightMenu, setColor } = this.props;
-    let elem = document.getElementById("first");
-    let coord = elem.getBoundingClientRect();
-    let inWidth = coord.width;
-    let temp = event.screenX - coord.left;
-    this.setState({ startAlt: true });
-    if (this.state.startAlt === false) {
-      if (inWidth / 2 > temp) {
-        setSelectedUser("agent");
-        localStorage.setItem("user_type", "agent");
-        this.setState({ showLeft: true, showRight: false });
-        setRightMenu("agent");
-      } else {
-        setSelectedUser("helpa");
-        localStorage.setItem("user_type", "helpa");
-        this.setState({ showLeft: false, showRight: true });
-        setRightMenu("helpa");
-      }
     }
   }
 
@@ -85,46 +50,63 @@ class Homepage extends Component {
     }
   }
 
-  handleHover(id, mouseEvent, hidden, show, classes) {
-    let temp = document.getElementById(id);
-    let toBeHidden = document.getElementById(hidden);
-    let toBeShow = document.getElementById(show);
-    let textLeft = document.getElementById("textLeft");
-    let textRight = document.getElementById("textRight");
+  handleImgClick(e) {
+    const clickedXSide = this.getClickedHorizontalSide(e);
+    const clickedYSide = this.getClickedVerticalSide(e);
+    e.stopPropagation();
+    let video;
+    switch (clickedXSide + clickedYSide) {
+      case "lefttop":
+        video = { url: "UcPjJNF14kw" };
+        break;
+      case "leftbottom":
+        video = { url: "KZ4sZq0ZF1A" };
+        break;
+      case "righttop":
+        video = { url: "P_Ck-4XNGsM" };
+        break;
+      case "rightbottom":
+        video = { url: "l4iB_xsHXIQ" };
+        break;
+    }
+    this.setState({ video });
+  }
 
-    if (mouseEvent === "enter") {
-      temp.classList.add("animate");
-      temp.classList.remove("reverse");
-      console.log("=======", id);
-      if (show === "agentRight") {
-        toBeHidden.className = classes + " hidden";
-        toBeShow.className = classes + " display";
-        textRight.className = "textRight display";
-      } else {
-        toBeHidden.className = "imageLeft hidden";
-        toBeShow.className = "helpaLeft display";
-        textLeft.className = "textLeft display";
-      }
+  getClickedHorizontalSide(e) {
+    const clickTarget = e.target;
+    const clickTargetWidth = clickTarget.offsetWidth;
+    const xCoordInClickTarget =
+      e.clientX - clickTarget.getBoundingClientRect().left;
+    if (clickTargetWidth / 2 > xCoordInClickTarget) {
+      return "left";
     } else {
-      temp.classList.add("reverse");
-      temp.classList.remove("animate");
-      if (show === "agentRight") {
-        toBeHidden.className = classes + " display";
-        toBeShow.className = classes + " hidden";
-        textRight.className = "textRight hidden";
-      } else {
-        toBeHidden.className = "imageLeft display";
-        toBeShow.className = "helpaLeft hidden";
-        textLeft.className = "textLeft hidden";
-      }
+      return "right";
+    }
+  }
+
+  getClickedVerticalSide(e) {
+    const clickTarget = e.target;
+    const clickTargetHeight = clickTarget.offsetHeight;
+    const yCoordInClickTarget =
+      e.clientY - clickTarget.getBoundingClientRect().top;
+    if (clickTargetHeight / 2 > yCoordInClickTarget) {
+      return "top";
+    } else {
+      return "bottom";
     }
   }
 
   render() {
-    const { showLeft, showRight, startAlt } = this.state;
-    console.log(showLeft, showRight);
+    const { video, showVideo } = this.state;
+    const { isMobileSized } = this.props;
+    console.log("-> isMobileSized", isMobileSized);
+
     return (
-      <div id="container">
+      <div id="container" style={{ position: "relative", cursor: "pointer" }}>
+        <div
+          className={showVideo ? "click-overlay" : ""}
+          onClick={(event) => this.handleImgClick(event)}
+        ></div>
         <div className="subContainer">
           <div className="containerLeft" id="containerLeft">
             <div
@@ -134,76 +116,57 @@ class Homepage extends Component {
             >
               <h1>AGENT</h1>
             </div>
+
+            {isMobileSized && (
+              <div
+                style={{
+                  marginTop: "100px",
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+              >
+                <img src={require("assets/img/agents.png")} />
+              </div>
+            )}
+
             <div
+              className={"left-half"}
               onClick={() => {
-                this.handleSelect("agent");
-                this.props.history.push("/agent");
+                document.getElementById("Agents Looking for Helpas").click();
               }}
             >
               <img
-                src={require("assets/img/agentLeft.png")}
-                onMouseEnter={() =>
-                  this.handleHover(
-                    "containerRight",
-                    "enter",
-                    "helpaRight",
-                    "agentRight",
-                    "imageRight"
-                  )
-                }
-                onMouseLeave={() =>
-                  this.handleHover(
-                    "containerRight",
-                    "leave",
-                    "helpaRight",
-                    "agentRight",
-                    "imageRight"
-                  )
-                }
-                className="imageLeft display"
+                src={require(isMobileSized
+                  ? "assets/img/agentImageMobile.png"
+                  : "assets/img/agentLeft.png")}
+                className="imageLeft display agent-img"
                 id="agentLeft"
-              ></img>
-
-              <img
-                src={require("assets/img/agentRight.png")}
-                className="imageRight hidden"
-                id="agentRight"
-              ></img>
+              />
             </div>
           </div>
           <div className="containerRight" id="containerRight">
+            {isMobileSized && (
+              <div
+                style={{
+                  marginTop: "100px",
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+              >
+                <img src={require("assets/img/helpas.png")} />
+              </div>
+            )}
             <div
+              className={"right-half"}
               onClick={() => {
-                this.handleSelect("helpa");
-                this.props.history.push("/helpa");
+                document.getElementById("Helpas Looking to Earn").click();
               }}
             >
               <img
-                src={require("assets/img/helpaLeft.png")}
-                className="helpaLeft hidden"
-                id="helpaLeft"
-              ></img>
-              <img
-                src={require("assets/img/helpaRight.png")}
-                onMouseEnter={() =>
-                  this.handleHover(
-                    "containerLeft",
-                    "enter",
-                    "agentLeft",
-                    "helpaLeft",
-                    "helpaLeft"
-                  )
-                }
-                onMouseLeave={() =>
-                  this.handleHover(
-                    "containerLeft",
-                    "leave",
-                    "agentLeft",
-                    "helpaLeft",
-                    "helpaLeft"
-                  )
-                }
-                className="imageRight display"
+                src={require(isMobileSized
+                  ? "assets/img/freelanceImageMobile.png"
+                  : "assets/img/helpaRight.png")}
+                className="imageRight display helpa-img"
                 id="helpaRight"
               ></img>
             </div>
@@ -216,36 +179,17 @@ class Homepage extends Component {
             </div>
           </div>
         </div>
-        {/* <div className={`${!showLeft && !showRight ? 'containers' : showLeft ? 'leftBg' : 'rightBg'}`}>
-          <div className="landing-image">
-            <img src={require('../../assets/img/agentLeft.png')} className="imageLeft" id="first"></img>
-            
-          </div>
-          {
-            startAlt && (
-              <div style={{display: 'flex'}}>
-                {
-                  showRight && (
-                  <div className="textLeft" onClick={() => this.handleSelect('agent')}>
-                    <h1>AGENT</h1>
-                  </div>
-                  )
-                }
-                <div style={{width: '95%'}}>
-                  <img src={require('../../assets/image_gray.png')} className={`landing-image ${ showRight ? 'hide' : 'display'}`} id="gray"></img>
-                  <img src={require('../../assets/image_pink.png')} className={`landing-image ${showLeft ? 'hide' : 'display'}`} id="pink"></img>
-                </div>
-                {
-                  showLeft && (
-                  <div className="textRight" onClick={() => this.handleSelect('helpa')}>
-                    <h1>HELPA</h1>
-                  </div>
-                  )
-                }
-              </div>
-            )
-          }
-        </div> */}
+        {video && showVideo && (
+          <VideoModal
+            show={true}
+            data={video}
+            onCancel={() => {
+              this.setState({
+                video: null,
+              });
+            }}
+          />
+        )}
       </div>
     );
   }
@@ -265,4 +209,4 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(withRouter(Homepage));
+)(withRouter(withWindowDimensions(Homepage)));

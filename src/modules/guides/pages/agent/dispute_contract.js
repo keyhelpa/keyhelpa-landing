@@ -139,7 +139,7 @@ class DisputeContractAgent extends Component {
         <p
           style={{
             color:
-              theme == "agent" ? Colors.agentTextTitle : Colors.helpaTextTitle,
+              theme === "agent" ? Colors.agentTextTitle : Colors.helpaTextTitle,
             marginBottom: "5%",
           }}
         >
@@ -149,8 +149,7 @@ class DisputeContractAgent extends Component {
           end up in court and damage to agencies connections and reputation if
           handled poorly.{" "}
         </p>
-
-        <VideoCard url={url} />
+        {url && <VideoCard url={url} />}
         {this.renderContent()}
       </div>
     );

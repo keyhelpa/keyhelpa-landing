@@ -137,7 +137,7 @@ class ManageSecurityAgent extends Component {
         <p
           style={{
             color:
-              theme == "agent" ? Colors.agentTextTitle : Colors.helpaTextTitle,
+              theme === "agent" ? Colors.agentTextTitle : Colors.helpaTextTitle,
             marginBottom: "5%",
           }}
         >
@@ -146,8 +146,7 @@ class ManageSecurityAgent extends Component {
           an extra layer of security, now, to block unauthorised access and to
           have an additional protection for your account.{" "}
         </p>
-
-        <VideoCard url={url} />
+        {url && <VideoCard url={url} />}
         {this.renderContent()}
       </div>
     );

@@ -87,7 +87,7 @@ class SendInvite extends Component {
         <p
           style={{
             color:
-              theme == "agent" ? Colors.agentTextTitle : Colors.helpaTextTitle,
+              theme === "agent" ? Colors.agentTextTitle : Colors.helpaTextTitle,
             marginBottom: "5%",
           }}
         >
@@ -95,8 +95,7 @@ class SendInvite extends Component {
           are hiring? Don’t hesitate to send them a job invitation now so that
           they can be notified and will check on your job post.
         </p>
-
-        <VideoCard url={url} />
+        {url && <VideoCard url={url} />}
         {this.renderContent()}
       </div>
     );

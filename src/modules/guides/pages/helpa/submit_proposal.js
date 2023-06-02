@@ -140,7 +140,7 @@ class Stack extends Component {
         <p
           style={{
             color:
-              theme == "agent" ? Colors.agentTextTitle : Colors.helpaTextTitle,
+              theme === "agent" ? Colors.agentTextTitle : Colors.helpaTextTitle,
             marginBottom: "5%",
           }}
         >
@@ -148,8 +148,7 @@ class Stack extends Component {
           among the jobs you have searched? Let the Agent know your interest by
           sending them a job proposal.
         </p>
-
-        <VideoCard url={url} />
+        {url && <VideoCard url={url} />}
         {this.renderContent()}
       </div>
     );

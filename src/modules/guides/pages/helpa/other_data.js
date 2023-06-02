@@ -99,7 +99,7 @@ class OtherData extends Component {
         <p
           style={{
             color:
-              theme == "agent" ? Colors.agentTextTitle : Colors.helpaTextTitle,
+              theme === "agent" ? Colors.agentTextTitle : Colors.helpaTextTitle,
             marginBottom: "5%",
           }}
         >
@@ -110,8 +110,7 @@ class OtherData extends Component {
           they are hiring. Your additional or other data plays an important
           factor to attract hiring Agents.{" "}
         </p>
-
-        <VideoCard url={url} />
+        {url && <VideoCard url={url} />}
         {this.renderContent()}
       </div>
     );

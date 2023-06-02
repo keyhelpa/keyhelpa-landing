@@ -28,7 +28,7 @@ export class Video extends Component {
             <Grid
               className="gridBg"
               style={
-                theme == "agent"
+                theme === "agent"
                   ? {
                       backgroundImage: `url(${bgAgent})`,
                       backgroundColor: "#F1F5FB",
@@ -59,7 +59,7 @@ export class Video extends Component {
                     marginBottom: "10%",
                   }}
                 >
-                  {theme == "agent"
+                  {theme === "agent"
                     ? "What do you need a Helpa for?"
                     : "What kind of work can I help with?"}
                 </h1>
@@ -69,7 +69,7 @@ export class Video extends Component {
                     color: "#34475DA3",
                   }}
                 >
-                  {theme == "agent"
+                  {theme === "agent"
                     ? "Do you need help with your property opens this weekend? Need more manpower to complete your inspection reports? Let KeyHelpa find the freelance help you need."
                     : "We’ve got real estate agencies, agents and property managers looking for help from experienced people just like you. You’ll find a range of real estate industry - related jobs right here."}
                 </p>
@@ -148,7 +148,7 @@ export class Video extends Component {
           <Grid
             className="gridBg"
             style={
-              theme == "agent"
+              theme === "agent"
                 ? {
                     backgroundImage: `url(${bgAgent})`,
                     backgroundColor: "#F1F5FB",
@@ -171,12 +171,12 @@ export class Video extends Component {
               }}
             >
               <h1 className="videoHeader">
-                {theme == "agent"
+                {theme === "agent"
                   ? "What do you need a Helpa for?"
                   : "What kind of work can I help with?"}
               </h1>
               <h3 className="videoSubHeader">
-                {theme == "agent"
+                {theme === "agent"
                   ? "Do you need help with your property opens this weekend? Need more manpower to complete your inspection reports? Let KeyHelpa find the freelance help you need."
                   : "We’ve got real estate agencies, agents and property managers looking for help from experienced people just like you. You’ll find a range of real estate industry-related jobs right here."}
               </h3>

@@ -34,7 +34,6 @@ class RouteList extends Component {
   render() {
     const { location } = this.props;
     const currentKey = location.pathname.split("/")[1] || "/";
-    console.log("============", currentKey);
     const timeout = { enter: 200, exit: 400 };
     return (
       <div>
@@ -61,7 +60,7 @@ class RouteList extends Component {
           </CSSTransition>
         </TransitionGroup> */}
         <Switch>
-          <Route path="/" exact component={Landing}></Route>
+          <Route path="/" exact component={Homepage}></Route>
           <Route path="/agent" exact component={Landing}></Route>
           <Route path="/helpa" exact component={Landing}></Route>
           <Route path="/agent/faq" exact component={Faq}></Route>
@@ -90,9 +89,10 @@ class RouteList extends Component {
             exact
             component={PrivacyPolicy}
           ></Route>
-          <Route path="/helpa/guides/:path?" component={Guides}></Route>
-          <Route path="/agent/guides/:path?" component={Guides}></Route>
-          <Route path="/guides" exact component={Guides}></Route>
+          // TODO not delete, agreed with PM
+          {/*<Route path="/helpa/guides/:path?" component={Guides}></Route>*/}
+          {/*<Route path="/agent/guides/:path?" component={Guides}></Route>*/}
+          {/*<Route path="/guides" exact component={Guides}></Route>*/}
           <Route path="*" component={PageNotFound}></Route>
           {/* {
             localStorage.getItem('user_type') === 'helpa' ? (
